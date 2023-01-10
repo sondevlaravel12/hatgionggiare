@@ -10,16 +10,27 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 // -----------end spatie media
+// ------------spatie laravel-sluggable
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+// ------------end spatie laravel-sluggable
 
 class Product extends Model implements HasMedia
 {
     use HasFactory;
 
     use InteractsWithMedia;
+    use HasSlug;
+
+
 
     protected $guared =[];
 
-
+    //Implicit Binding: Customizing The Key Name
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
     // ------------------- Spatie Media ---------------------------//
     public function registerMediaCollections(): void
     {
@@ -47,6 +58,16 @@ class Product extends Model implements HasMedia
             ->height(600);
     }
     // -------------------End Spatie Media ---------------------------//
+
+    // ------------------- Spatie laravel-sluggable ---------------------------//
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
+    }
+    // ------------------- end Spatie laravel-sluggable ---------------------------//
 
     ////  ------------------ Accessor--------------------------------- ////
     protected function price(): Attribute
@@ -82,7 +103,7 @@ class Product extends Model implements HasMedia
             return $this->getFirstMedia('products')->getUrl($size);
         }
         else{
-            return asset('images/noimage.jpeg');
+            return asset('noimage.jpeg');
         }
     }
     // public function getImageUrls($size='medium'){

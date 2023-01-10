@@ -33,7 +33,7 @@ Route::post('/store',[AdminController::class,'store'])->name('admin.register_sto
 
 /* --------------------- User route  --------------------------- */
 Route::get('/', [FrontendIndexController::class,'index'])->name('home');
-Route::get('sanpham/{id}', [ProductController::class,'show'])->name('products.show');
+Route::get('sanpham/{product}/{slug?}', [ProductController::class,'show'])->name('products.show');
 
 
 /* --------------------- End User route  --------------------------- */

@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function show($id){
-        $product = Product::findOrFail($id);
+    public function show(Product $product){
+        //$product = Product::findOrFail($id);
         $bestSellings = Product::where('best_selling',1)->limit(6)->get();
         return view('frontend.product.detail', compact('product','bestSellings'));
     }

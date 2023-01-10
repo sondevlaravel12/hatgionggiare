@@ -1,19 +1,18 @@
 @extends('frontend.main_master')
 @section('title')
-Sản phẩm: {{ $product->name }}
+sản phẩm: {{ $product->name }}
+@endsection
+@section('breadcrumb')
+{{ Breadcrumbs::view('breadcrumbs::json-ld', 'products.show', $product) }}
 @endsection
 @section('content')
 <div class="breadcrumb">
 	<div class="container">
-		<div class="breadcrumb-inner">
-			<ul class="list-inline list-unstyled">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Clothing</a></li>
-				<li class='active'>Floral Print Buttoned</li>
-			</ul>
-		</div><!-- /.breadcrumb-inner -->
+        {{ Breadcrumbs::render('products.show', $product) }}
+
 	</div><!-- /.container -->
 </div><!-- /.breadcrumb -->
+
 <div class='container'>
 	<div class='row single-product'>
 

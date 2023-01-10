@@ -10,6 +10,7 @@
 <meta name="robots" content="all">
 
 <title>@yield('title')</title>
+@yield('breadcrumb')
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css')}}">
