@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\frontend\IndexController as FrontendIndexController;
+use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,8 @@ Route::post('/store',[AdminController::class,'store'])->name('admin.register_sto
 
 /* --------------------- User route  --------------------------- */
 Route::get('/', [FrontendIndexController::class,'index'])->name('home');
+Route::get('sanpham/{id}', [ProductController::class,'show'])->name('products.show');
+
 
 /* --------------------- End User route  --------------------------- */
 Route::get('/dashboard', function () {
