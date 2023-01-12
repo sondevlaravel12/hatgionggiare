@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\frontend\CategoryController;
 use App\Http\Controllers\frontend\IndexController as FrontendIndexController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -33,7 +34,10 @@ Route::post('/store',[AdminController::class,'store'])->name('admin.register_sto
 
 /* --------------------- User route  --------------------------- */
 Route::get('/', [FrontendIndexController::class,'index'])->name('home');
-Route::get('sanpham/{product}/{slug?}', [ProductController::class,'show'])->name('products.show');
+Route::get('san-pham/{product}/{slug?}', [ProductController::class,'show'])->name('products.show');
+Route::get('danh-muc/tat-ca/san-pham', [CategoryController::class,'index'])->name('categories.products.index');
+Route::get('danh-muc/{category}/san-pham', [CategoryController::class,'show'])->name('categories.products.show');
+
 
 
 /* --------------------- End User route  --------------------------- */

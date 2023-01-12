@@ -16,15 +16,12 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $products = Product::factory(10)->create();
-        $path = '/Users/sonnguyen/Desktop/devweb/softviet/public/frontend/assets/images/products_temp/';
-        foreach($products as $index=> $product){
-            if($index>0)$index= $index*3;
+        $products = Product::factory(5)->create()->each(function($product){
+            $path = 'http://softviet.test/image_for_seeding/products_temp/';
             for($i=1;$i<=3;$i++){
-                $imagePath = $path .'p' . $index+$i . '.jpg';
-                $product->addMedia($imagePath)->toMediaCollection('products');
+                $imagePath = $path .'p' . rand(1,30) . '.jpg';
+                $product->addMediaFromUrl($imagePath)->toMediaCollection('products');
             }
-
-        }
+        });
     }
 }

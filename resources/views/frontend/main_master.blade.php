@@ -32,13 +32,16 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+@yield('css')
 </head>
 <body class="cnt-home">
 <!-- ============================================== HEADER ============================================== -->
 @include('frontend.body.header')
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
-  @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
 </div>
 <!-- /#top-banner-and-menu -->
 

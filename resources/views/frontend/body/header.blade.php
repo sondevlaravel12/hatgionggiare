@@ -123,8 +123,9 @@
             <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
               <div class="nav-outer">
                 <ul class="nav navbar-nav">
-                  <li class="active dropdown yamm-fw"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Trang chủ</a> </li>
-                  <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Danh mục sản phẩm</a>
+                  <li class="active dropdown yamm-fw"> <a href="{{ route('home') }}">Trang chủ</a> </li>
+                  <li class="active dropdown yamm-fw"> <a href="{{ route('categories.products.index') }}">Danh mục sản phẩm</a> </li>
+                  {{-- <li class="dropdown yamm mega-menu"> <a href="" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Danh mục sản phẩm</a>
                     <ul class="dropdown-menu container">
                       <li>
                         <div class="yamm-content ">
@@ -164,7 +165,7 @@
                         </div>
                       </li>
                     </ul>
-                  </li>
+                  </li> --}}
                   <li class="dropdown hidden-sm"> <a href="category.html">Giới thiệu</a> </li>
                   <li class="dropdown hidden-sm"> <a href="category.html">Tin tức</a> </li>
                   <li class="dropdown hidden-sm"> <a href="category.html">Liên hệ</a> </li>

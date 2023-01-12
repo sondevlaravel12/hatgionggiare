@@ -94,8 +94,22 @@ class Product extends Model implements HasMedia
             get: fn ($value) => number_format($value, 0, ',', '.') .' đ',
         );
     }
+    public function getDiscountPercentageAttribute()
+{
+    $priceBefore = $this->getRawOriginal('price');
+    $priceAfter = $this->getRawOriginal('discount_price');
+    $discountPercentage =  ceil((($priceBefore - $priceAfter)/$priceBefore) *100);
+    //return number_format($discountPercentage, 0, ',', '.');
+    return $discountPercentage;
+}
     ////  ------------------End Accessor--------------------------------- ////
 
+     // ------------------- Relationship ---------------------------//
+     public function Category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+     // ------------------- End Relationship ---------------------------//
 
     // -------------------other function ---------------------------//
     public function getFirstImageUrl($size='thumb'){
@@ -105,6 +119,10 @@ class Product extends Model implements HasMedia
         else{
             return asset('noimage.jpeg');
         }
+    }
+    public static function getDiscountProducts($numberOfProducts=4){
+        $products = Product::all();
+        return $products->sortByDesc('discountPercentage')->take($numberOfProducts);
     }
     // public function getImageUrls($size='medium'){
     //     if($this->getMedia('products')){
