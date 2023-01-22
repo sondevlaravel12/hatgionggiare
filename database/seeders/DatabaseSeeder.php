@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             // AdminSeeder::class,
             //ProductSeeder::class,
             CategorySeeder::class,
+            //SliderSeeder::class,
+            //Postseeder::class,
         ]);
 
     }

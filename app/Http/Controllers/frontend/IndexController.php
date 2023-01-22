@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,11 @@ class IndexController extends Controller
     public function index(){
         $categories = Category::latest()->limit(3)->get();
         $products = Product::latest()->limit(12)->get();
-        $mostDiscountedProducts = Product::getDiscountProducts();
+        $posts = Post::latest()->limit(6)->get();
+        $bestSellings = Product::where('best_selling',1)->limit(6)->get();
+        $mostDiscountedProducts = Product::getDiscountProducts(8);
 
-        return view('frontend.index', compact(['products', 'categories','mostDiscountedProducts']));
+        return view('frontend.index', compact(['products', 'categories','mostDiscountedProducts','bestSellings','posts']));
     }
     public function show($id){
         // $product = Product::findOrFail($id);

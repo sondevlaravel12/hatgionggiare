@@ -14,8 +14,12 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 // ------------end spatie laravel-sluggable
+// ------------Buyable interface use for cart
+use Gloudemans\Shoppingcart\Contracts\Buyable;
+// ------------End Buyable interface use for cart
 
-class Product extends Model implements HasMedia
+
+class Product extends Model implements HasMedia, Buyable
 {
     use HasFactory;
 
@@ -110,6 +114,21 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(Category::class);
     }
      // ------------------- End Relationship ---------------------------//
+
+     // ---------------Buyable  interface.------------------------/////
+    public function getBuyableIdentifier($options = null) {
+        return $this->id;
+    }
+    public function getBuyableDescription($options = null) {
+        return $this->name;
+    }
+    public function getBuyablePrice($options = null) {
+        return $this->getRawOriginal('discount_price');
+    }
+    public function getBuyableWeight($options = null) {
+        return 1;
+    }
+    // ---------------End Buyable  interface.------------------------/////
 
     // -------------------other function ---------------------------//
     public function getFirstImageUrl($size='thumb'){

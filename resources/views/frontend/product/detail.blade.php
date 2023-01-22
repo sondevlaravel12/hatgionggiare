@@ -31,7 +31,7 @@ sản phẩm: {{ $product->name }}
 									<a data-lightbox="image-1" data-title="Gallery"
 										href="{{ $image->getUrl('large') }}">
 										<img class="img-responsive" alt="" src="{{ $image->getUrl('thumb') }}"
-											data-echo="{{ $image->getUrl('medium') }}" />
+											data-echo="{{ $image->getUrl('large') }}" />
 									</a>
 								</div>
                                 <!-- /.single-product-gallery-item -->
@@ -62,7 +62,7 @@ sản phẩm: {{ $product->name }}
 						</div><!-- /.single-product-gallery -->
 					</div><!-- /.gallery-holder -->
 					<div class='col-sm-6 col-md-7 product-info-block'>
-						<div class="product-info">
+						<div class="product-info" id="product_detail_info">
 							<h1 class="name">{{ $product->name }}</h1>
 
 							<div class="rating-reviews m-t-20">
@@ -144,14 +144,14 @@ sản phẩm: {{ $product->name }}
 													<div class="arrow minus gradient"><span class="ir"><i
 																class="icon fa fa-sort-desc"></i></span></div>
 												</div>
-												<input type="text" value="1">
+												<input type="text" id="quantity" value="1" min="1">
+
 											</div>
 										</div>
 									</div>
-
+                                    <input type="hidden" id="product_id" value="{{ $product->id }}">
 									<div class="col-sm-7">
-										<a href="#" class="btn btn-primary"><i
-												class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+										<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ hàng</button>
 									</div>
 
 
