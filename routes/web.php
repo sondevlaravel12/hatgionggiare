@@ -7,6 +7,7 @@ use App\Http\Controllers\frontend\IndexController as FrontendIndexController;
 use App\Http\Controllers\frontend\PostController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\WishlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,14 @@ Route::get('san-pham/modal/show/{id}', [ProductController::class,'ajaxModalShow'
 Route::post('gio-hang/them-vao-gio-hang', [CartController::class,'ajaxAddtoCart'])->name('cart.store');
 Route::get('mini-gio-hang/fill-in', [CartController::class,'ajaxFillinMiniCart'])->name('minicart.fill');
 Route::get('mini-gio-hang/item/remove/{rowId}', [CartController::class,'ajaxRemoveMiniCartItem'])->name('minicart.item.remove');
+route::get('gio-hang', [UserCartController::class, 'index'])->name('cart.index');
+Route::get('user/gio-hang/hien-thi-san-pham', [UserCartController::class,'indexAjaxShowCartItem'])->name('cart.index.indexAjaxShowCartItem');
+
+Route::get('user/gio-hang/san-pham/xoa/{itemId}', [UserCartController::class,'removeCartItem'])->name('cart.item.remove');
+
+Route::get('/user/gio-hang/san-pham/tang/{itemId}', [UserCartController::class,'increaseQuantity'])->name('cart.item.increase');
+Route::get('/user/gio-hang/san-pham/giam/{itemId}', [UserCartController::class,'decreaseQuantity'])->name('cart.item.increase');
+
 
 // wishlist controller
 route::group(['prefix'=>'user','middleware'=>['auth']], function(){

@@ -11,7 +11,8 @@
               {{-- <li><a href="#"><i class="icon fa fa-check"></i>Thanh toán</a></li>  --}}
               <li><a href="#"><i class="icon fa fa-check"></i>Chính sách đổi trả </a></li>
               <li><a href="#"><i class="icon fa fa-check"></i>Điều khoản mua hàng & thanh toán</a></li>
-              <li><a href="{{ route('wishlist.index') }}"><i class="icon fa fa-heart"></i>Danh sách yêu thích</a></li>
+              <li><a href="{{ route('cart.index') }}"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+              <li><a href="{{ route('wishlist.index') }}"><i class="icon fa fa-heart"></i>Sản phẩm yêu thích</a></li>
               @auth
                 <li><a href="{{ route('dashboard') }}"><i class="icon fa fa-user"></i>Thông tin tài khoản</a></li>
               @else

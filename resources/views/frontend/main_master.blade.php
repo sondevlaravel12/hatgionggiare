@@ -75,55 +75,70 @@
 
 <!-- Add to Cart Product Modal -->
 @include('cart.modal_option_1')
-<!-- End Add to Cart Product Modal -->
+
+
+{{-- setup --}}
 <script>
-    //------------------------------ setup
-    var $productHolder;
-    if($('#product_detail_info').length){
-        $productHolder = $('#product_detail_info');
-    }else if($('#productModal').length)
+    var $productHolder = $('#product_detail_info');;
+    var $modalHolder = $('#productModal');
+    const FORMATTER = new Intl.NumberFormat('de-DE',
     {
-        $productHolder = $('#productModal');
-    }
+        style: 'currency',
+        currency: 'vnd',
+    });
+
     //var $productHolder = $('#product_detail_info') || $('#productModal');
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    //------------------------------ end setup
 
+</script>
+{{-- End setup --}}
+
+
+{{-- cart --}}
+<script>
     function productModalShow(id){
 
         $.ajax({
             type: "GET",
-            url: "san-pham/modal/show/" + id,
+            url: "/san-pham/modal/show/" + id,
             dataType: "json",
             success: function (response) {
 
-                $productHolder.find('#name').text(response.product.name);
-                $productHolder.find('#description').text(response.product.description);
-                $productHolder.find('#image').attr('src',response.imageUrl)
+                $modalHolder.find('#name').text(response.product.name);
+                $modalHolder.find('#description').text(response.product.description);
+                $modalHolder.find('#image').attr('src',response.imageUrl)
 
                 if(response.product.discount_price==''){
-                    $productHolder.find('#discount_price').text('');
-                    $productHolder.find('#base_price').text(response.product.base_price);
+                    $modalHolder.find('#discount_price').text('');
+                    $modalHolder.find('#base_price').text(response.product.base_price);
                 }else{
-                    $productHolder.find('#discount_price').text(response.product.discount_price);
-                    $productHolder.find('#base_price').text(response.product.base_price);
+                    $modalHolder.find('#discount_price').text(response.product.discount_price);
+                    $modalHolder.find('#base_price').text(response.product.base_price);
                 }
-                $productHolder.find('#quantity').val(1);
-                $productHolder.find('#product_id').val(response.product.id);
+                $modalHolder.find('#quantity').val(1);
+                $modalHolder.find('#product_id').val(response.product.id);
 
             }
         });
     }
 
     function addToCart() {
-        var $product_id = $productHolder.find('#product_id').val();
-        var $quantity = $productHolder.find('#quantity').val();
+        // modal is open
+        if($("#cartModal").hasClass("in")){
+            var $product_id = $modalHolder.find('#product_id').val();
+            var $quantity = $modalHolder.find('#quantity').val();
 
-         $.ajax({
+        }else{
+            var $product_id = $productHolder.find('#product_id').val();
+            var $quantity = $productHolder.find('#quantity').val();
+        }
+
+
+        $.ajax({
                 type: "POST",
                 url: "/gio-hang/them-vao-gio-hang",
                 data: {product_id:$product_id, quantity:$quantity},
@@ -155,38 +170,39 @@
         });
 
     }
+
     function fillinMiniCart(){
-       $.ajax({
-           type: 'GET',
-           url: '/mini-gio-hang/fill-in',
-           dataType:'json',
-           success:function(response){
+        $.ajax({
+        type: 'GET',
+        url: '/mini-gio-hang/fill-in',
+        dataType:'json',
+        success:function(response){
                 var $miniCart ="";
-               $.each(response.contents, function (key, cartItem) {
+            $.each(response.contents, function (key, cartItem) {
                 $miniCart += `<div class="cart-item product-summary">
                     <div class="row">
-                      <div class="col-xs-4">
+                    <div class="col-xs-4">
                         <div class="image"> <a href="detail.html"><img src="${cartItem.options.image}" alt=""></a> </div>
-                      </div>
-                      <div class="col-xs-7">
+                    </div>
+                    <div class="col-xs-7">
                         <h3 class="name"><a href="index.php?page-detail">${cartItem.name}</a></h3>
-                        <div class="price">${cartItem.price} x ${cartItem.qty}</div>
-                      </div>
-                      <div class="col-xs-1 action">
+                        <div class="price">${FORMATTER.format(cartItem.price)} x ${cartItem.qty}</div>
+                    </div>
+                    <div class="col-xs-1 action">
                         <button type="submit" id="${cartItem.rowId}" onclick="miniCartRemoveItem(this.id)"><i class="fa fa-trash"></i></button>
                         </div>
                     </div>
-                  </div>
-                  <!-- /.cart-item -->
-                  <div class="clearfix"></div>
-                  <hr>`
+                </div>
+                <!-- /.cart-item -->
+                <div class="clearfix"></div>
+                <hr>`
 
-               });
-               var $miniCartHolder = $('#miniCartHolder');
-               $miniCartHolder.find('#quantity').html(response.quantity);
-               $miniCartHolder.find('.subtotal').html(response.subtotal);
+            });
+            var $miniCartHolder = $('#miniCartHolder');
+            $miniCartHolder.find('#quantity').html(response.quantity);
+            $miniCartHolder.find('.subtotal').html(response.subtotal);
 
-               $('#miniCart').html($miniCart);
+            $('#miniCart').html($miniCart);
             }
         });
     }
@@ -199,14 +215,16 @@
             dataType: "json",
             success: function (response) {
                 fillinMiniCart();
+                $('#miniCartHolder').addClass('open');
+                cart()
 
                 // Start Message
                 const Toast = Swal.mixin({
-                      toast: true,
-                      position: 'top-end',
-                      icon: 'success',
-                      showConfirmButton: false,
-                      timer: 3000
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
                     })
                 if ($.isEmptyObject(response.error)) {
                     console.log("success removing");
@@ -226,10 +244,116 @@
         });
     }
 
+    function cart() {
+        $.ajax({
+            type: "get",
+            url: "/user/gio-hang/hien-thi-san-pham",
+            dataType: "json",
+            success: function (response) {
+                var $rows = "";
+                $.each(response.contents, function(key, cartItem){
+                    $rows += `<tr>
+                                        <td class="col-md-2"><img src="${cartItem.options.image}" alt="imga" ></td>
+                                        <td class="col-md-2">
+                                            <div class="product-name"><a href="#">${cartItem.name }</a></div>
+                                            <div class="rating">
+                                                <i class="fa fa-star rate"></i>
+                                                <i class="fa fa-star rate"></i>
+                                                <i class="fa fa-star rate"></i>
+                                                <i class="fa fa-star rate"></i>
+                                                <i class="fa fa-star non-rate"></i>
+                                                <span class="review">( 06 Reviews )</span>
+                                            </div>
+                                            <div class="price">
+                                                ${cartItem.price}
+                                            </div>
+                                        </td>
+                                        <td class="col-md-2">
+                                            ${cartItem.qty >1
+                                            ?
+                                            `<button type="submit" id="${cartItem.rowId}" class="btn btn-danger btn-sm" onclick="decreaseQuantity(this.id)">-</button>`
+                                            :
+                                            `<button type="submit" id="${cartItem.rowId}" class="btn btn-danger btn-sm" disabled>-</button>`
+                                            }
 
+                                            <input type="text" value="${cartItem.qty}" min="1" max="100" disabled="" style="width:25px;" >
+                                            <button type="submit" id="${cartItem.rowId}" class="btn btn-success btn-sm" onclick="increaseQuantity(this.id)">+</button>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <strong>${FORMATTER.format(cartItem.subtotal)} </strong>
+                                        </td>
+                                        <td class="col-md-1 close-btn">
+                                            <button id="${ cartItem.rowId }" onclick="removeCartItem(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                        </td>
+                                    </tr>`
+                })
+                $('#cartTableBody').html($rows);
+            }
+        });
+    }
+    cart();
+    function removeCartItem(cartItemId){
+        $.ajax({
+            type: "get",
+            url: "/user/gio-hang/san-pham/xoa/" +cartItemId ,
+            dataType: "json",
+            success: function (response) {
+                cart();
+                fillinMiniCart();
+                // Start Message
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                    //   icon: 'success',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(response.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: response.success
+                    })
+                }else{
+                    Toast.fire({
+                        icon: 'error',
+                        type: 'error',
+                        title: response.error
+                    })
+                }
+                // End Message
+            }
+        });
+    }
+
+    function increaseQuantity(rowId){
+        $.ajax({
+            type: "get",
+            url: "/user/gio-hang/san-pham/tang/" + rowId,
+            dataType: "json",
+            success: function (response) {
+                cart();
+                fillinMiniCart();
+            }
+        });
+    }
+    function decreaseQuantity(rowId){
+        $.ajax({
+            type: "get",
+            url: "/user/gio-hang/san-pham/giam/" + rowId,
+            dataType: "json",
+            success: function (response) {
+                cart();
+                fillinMiniCart();
+            }
+        });
+    }
 </script>
+{{-- End cart --}}
+
+{{-- wishlist --}}
 <script>
-    function addToWishlist(productId){
+     function addToWishlist(productId){
         $.ajax({
             type: "get",
             url: "/user/yeu-thich/san-pham/them/" +productId,
@@ -262,8 +386,6 @@
             }
         });
     }
-</script>
-<script>
     function wishlist() {
         $.ajax({
             type: "get",
@@ -280,7 +402,7 @@
                         $price = $product.base_price;
                     }
                     $rows += `<tr>
-                                        <td class="col-md-2"><img src="${response.images[key]}" alt="imga"></td>
+                                        <td class="col-md-2"><img src="${response.images[key]}" alt="imga" ></td>
                                         <td class="col-md-7">
                                             <div class="product-name"><a href="#">${$product.name }</a></div>
                                             <div class="rating">
@@ -342,6 +464,26 @@
         });
     }
 </script>
+{{-- End wishlist --}}
+
+{{-- detail product page  --}}
+<script>
+    function arrowUp(){
+        var $productDetailQty = $productHolder.find('#quantity');
+        $currentQuantity =  parseInt($productDetailQty.val());
+        $productDetailQty.val($currentQuantity+1);
+    }
+    function arrowDown(){
+        var $productDetailQty = $productHolder.find('#quantity');
+        $currentQuantity =  parseInt($productDetailQty.val());
+        if($currentQuantity>1){
+            $productDetailQty.val($currentQuantity-1);
+        }
+    }
+</script>
+{{-- end detail product page  --}}
+
+
 
 </body>
 </html>

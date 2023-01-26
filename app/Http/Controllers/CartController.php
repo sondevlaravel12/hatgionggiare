@@ -12,8 +12,8 @@ class CartController extends Controller
 
         $product = Product::findOrFail($request->product_id);
         $quantity = $request->quantity;
-        Cart::add($product, 1,['image'=>$product->getFirstImageUrl('medium')]);
-        return response()->json(['success'=>"successfully add product to cart"]);
+        Cart::add($product, $quantity,['image'=>$product->getFirstImageUrl('medium')]);
+        return response()->json(['success'=>"Thêm sản phẩm vào giỏ hàng thành công"]);
     }
     public function ajaxFillinMiniCart(){
         $contents = Cart::content();

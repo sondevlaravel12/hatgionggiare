@@ -111,17 +111,17 @@ sản phẩm: {{ $product->name }}
 									<div class="col-sm-6">
 										<div class="favorite-button m-t-10">
 											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right"
-												title="Wishlist" href="#">
+												title="thêm vào danh sách yêu thích" href="javascript:;" id="{{ $product->id }}" onclick="addToWishlist(this.id)">
 												<i class="fa fa-heart"></i>
 											</a>
-											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right"
+											{{-- <a class="btn btn-primary" data-toggle="tooltip" data-placement="right"
 												title="Add to Compare" href="#">
 												<i class="fa fa-signal"></i>
 											</a>
 											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right"
 												title="E-mail" href="#">
 												<i class="fa fa-envelope"></i>
-											</a>
+											</a> --}}
 										</div>
 									</div>
 
@@ -139,10 +139,10 @@ sản phẩm: {{ $product->name }}
 										<div class="cart-quantity">
 											<div class="quant-input">
 												<div class="arrows">
-													<div class="arrow plus gradient"><span class="ir"><i
-																class="icon fa fa-sort-asc"></i></span></div>
+													<div class="arrow plus gradient"><a id="" class="ir" href="javascript:;" onclick="arrowUp()"><i
+																class="icon fa fa-sort-asc"></i></a></div>
 													<div class="arrow minus gradient"><span class="ir"><i
-																class="icon fa fa-sort-desc"></i></span></div>
+																class="icon fa fa-sort-desc" onclick="arrowDown()"></i></span></div>
 												</div>
 												<input type="text" id="quantity" value="1" min="1">
 
@@ -352,8 +352,9 @@ sản phẩm: {{ $product->name }}
 			<section class="section featured-product wow fadeInUp">
 				<h3 class="section-title">sản phẩm bán chạy</h3>
 				<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
-                    @foreach ($bestSellings as $bestSelling)
-                    <div class="item item-carousel">
+                    @foreach ($bestSellings as $product)
+                    @include('frontend.product._product_item_carousel',['tag'=>'sale'])
+                    {{-- <div class="item item-carousel">
 						<div class="products">
 
 							<div class="product">
@@ -409,7 +410,7 @@ sản phẩm: {{ $product->name }}
 							</div><!-- /.product -->
 
 						</div><!-- /.products -->
-					</div><!-- /.item -->
+					</div><!-- /.item --> --}}
                     @endforeach
 
 
