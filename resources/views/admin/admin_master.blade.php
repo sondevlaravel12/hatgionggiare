@@ -1,70 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="{{ asset('panel/assets/images/favicon.png')}}" >
-        <!--Page title-->
-        <title>Admin easy Learning</title>
-        <!--bootstrap-->
-        <link rel="stylesheet" href="{{ asset('panel/assets/css/bootstrap.min.css')}}">
-        <!--font awesome-->
-        <link rel="stylesheet" href="{{ asset('panel/assets/css/all.min.css')}}">
-        <!-- metis menu -->
-        <link rel="stylesheet" href="{{ asset('panel/assets/plugins/metismenu-3.0.4/assets/css/metisMenu.min.css')}}">
-        <link rel="stylesheet" href="{{ asset('panel/assets/plugins/metismenu-3.0.4/assets/css/mm-vertical-hover.css')}}">
-        <!-- chart -->
 
-        <!-- <link rel="stylesheet" href="assets/plugins/chartjs-bar-chart/chart.css')}}"> -->
-        <!--Custom CSS-->
-        <link rel="stylesheet" href="{{ asset('panel/assets/css/style.css')}}">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>@yield('title')</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{asset('backend/assets/images/favicon.ico')}}">
+
+        <!-- jquery.vectormap css -->
+        <link href="{{asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css" />
+
+        <!-- DataTables -->
+        {{-- <link href="{{asset('backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" /> --}}
+
+        <!-- Responsive datatable examples -->
+        {{-- <link href="{{asset('backend/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" /> --}}
+        <!-- Taginput -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" >
+        <!-- Bootstrap Css -->
+        <link href="{{asset('backend/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+        <!-- Icons Css -->
+        <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{{asset('backend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+        @stack('stylesheets')
     </head>
-    <body id="page-top">
-        <!-- preloader -->
-        <div class="preloader">
-            <img src="{{ asset('panel/assets/images/preloader.gif')}}" alt="">
+
+    <body data-topbar="dark" >
+    {{-- <body data-topbar="light" data-sidebar="dark" data-sidebar-size="small" > --}}
+
+
+
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+
+            @include('admin.body.header')
+
+            <!-- ========== Left Sidebar Start ========== -->
+            @include('admin.body.sidebar')
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="container-fluid">
+                        @yield('content')
+                    </div>
+                </div>
+
+                <!-- End Page-content -->
+
+                @include('admin.body.footer')
+
+            </div>
+            <!-- end main content-->
+
         </div>
-        <!-- wrapper -->
-        <div class="wrapper">
+        <!-- END layout-wrapper -->
 
-           @yield('content')
+        <!-- Right Sidebar -->
 
-        </div><!--/ wrapper -->
+        <!-- /Right-bar -->
 
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
 
+        <!-- JAVASCRIPT -->
 
-        <!-- jquery -->
-        <script src="{{ asset('panel/assets/js/jquery.min.js')}}"></script>
-        <!-- popper Min Js -->
-        <script src="{{ asset('panel/assets/js/popper.min.js')}}"></script>
-        <!-- Bootstrap Min Js -->
-        <script src="{{ asset('panel/assets/js/bootstrap.min.js')}}"></script>
-        <!-- Fontawesome-->
-        <script src="{{ asset('panel/assets/js/all.min.js')}}"></script>
-        <!-- metis menu -->
-        <script src="{{ asset('panel/assets/plugins/metismenu-3.0.4/assets/js/metismenu.js')}}"></script>
-        <script src="{{ asset('panel/assets/plugins/metismenu-3.0.4/assets/js/mm-vertical-hover.js')}}"></script>
-        <!-- nice scroll bar -->
-        <script src="{{ asset('panel/assets/plugins/scrollbar/jquery.nicescroll.min.js')}}"></script>
-        <script src="{{ asset('panel/assets/plugins/scrollbar/scroll.active.js')}}"></script>
-        <!-- counter -->
-        <script src="{{ asset('panel/assets/plugins/counter/js/counter.js')}}"></script>
-        <!-- chart -->
-   <script src="{{ asset('panel/assets/plugins/chartjs-bar-chart/Chart.min.js')}}"></script>
-        <script src="{{ asset('panel/assets/plugins/chartjs-bar-chart/chart.js')}}"></script>
-        <!-- pie chart -->
-        <script src="{{ asset('panel/assets/plugins/pie_chart/chart.loader.js')}}"></script>
-        <script src="{{ asset('panel/assets/plugins/pie_chart/pie.active.js')}}"></script>
+        <script src="{{asset('backend/assets/libs/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('backend/assets/libs/metismenu/metisMenu.min.js')}}"></script>
+        <script src="{{asset('backend/assets/libs/simplebar/simplebar.min.js')}}"></script>
+        <script src="{{asset('backend/assets/libs/node-waves/waves.min.js')}}"></script>
 
 
-        <!-- Main js -->
-        <script src="{{ asset('panel/assets/js/main.js')}}"></script>
+        <!-- apexcharts -->
+        <script src="{{asset('backend/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+
+        <!-- jquery.vectormap map -->
+        <script src="{{asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+        <script src="{{asset('backend/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js')}}"></script>
+
+        <!-- Required datatable js -->
+        {{-- <script src="{{asset('backend/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script> --}}
+        {{-- <script src="{{asset('backend/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script> --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!-- Datatable modify sorting with non english language : not work-->
+        <script src="//cdn.datatables.net/plug-ins/1.12.1/sorting/intl.js"></script>
+        {{-- <script src="{{asset('backend/assets/js/pages/datatable_sorting_intl.js')}}"></script> --}}
+        <!-- Datatable init js -->
+        {{-- <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script> --}}
+        {{-- <script src="{{asset('backend/assets/js/pages/datatables_default_setting.js')}}"></script> --}}
 
 
+        <!-- Responsive examples -->
+        {{-- <script src="{{asset('backend/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script> --}}
+        {{-- <script src="{{asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script> --}}
+
+        <script src="{{asset('backend/assets/js/pages/dashboard.init.js')}}"></script>
+
+        <!-- App js -->
+        <script src="{{asset('backend/assets/js/app.js')}}"></script>
 
 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+        <script>
+         @if(Session::has('message'))
+         var type = "{{ Session::get('alert-type','info') }}"
+         switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+         }
+         @endif
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <script src="{{ asset('backend/assets/js/sweetalert.js') }}"></script>
+
+         <!--tinymce js-->
+         <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
+
+         <!-- init js -->
+         <script src="{{ asset('backend/assets/js/pages/form-editor.init.js') }}"></script>
+         <!-- Taginput -->
+         <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
+         <script src="{{asset('backend/assets/js/typeahead.bundle.js')}}"></script>
+        @stack('scripts')
     </body>
+
 </html>

@@ -7,7 +7,9 @@ return [
      * The disk on which to store added files and derived images by default. Choose
      * one or more of the disks you've configured in config/filesystems.php.
      */
-    'disk_name' => 'media',
+    'disk_name' => env('MEDIA_DISK', 'general'),
+    // 'disk_name' => 'media',
+
 
     /*
      * The maximum file size of an item in bytes.
@@ -64,7 +66,8 @@ return [
     /*
      * The class that contains the strategy for determining a media file's path.
      */
-    'path_generator' => App\Services\MediaLibrary\CustomPathGenerator::class,
+    'path_generator' => Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator::class,
+    // 'path_generator' => App\Services\MediaLibrary\CustomPathGenerator::class,
 
     /*
      * Here you can specify which path generator should be used for the given class.

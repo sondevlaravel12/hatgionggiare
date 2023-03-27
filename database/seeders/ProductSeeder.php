@@ -20,7 +20,8 @@ class ProductSeeder extends Seeder
             $path = 'http://softviet.test/image_for_seeding/products_temp/';
             for($i=1;$i<=3;$i++){
                 $imagePath = $path .'p' . rand(1,30) . '.jpg';
-                $product->addMediaFromUrl($imagePath)->toMediaCollection('products');
+                // $product->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('products','productFiles');
+                $product->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('products');
             }
         });
     }

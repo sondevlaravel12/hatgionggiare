@@ -18,12 +18,12 @@ class CartController extends Controller
     public function ajaxFillinMiniCart(){
         $contents = Cart::content();
     	$quantity = Cart::count();
-    	$subtotal = Cart::subtotal();
+    	$priceTotal = Cart::priceTotal();
 
     	return response()->json(array(
     		'contents' => $contents,
     		'quantity' => $quantity,
-    		'subtotal' => $subtotal,
+    		'priceTotal' => $priceTotal,
 
     	));
     }

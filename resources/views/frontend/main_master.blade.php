@@ -145,6 +145,7 @@
                 dataType: "json",
                 success: function (response) {
                     fillinMiniCart();
+                    calculateTotal();
                     $('#closeModel').click();
 
                     // Start Message
@@ -200,7 +201,7 @@
             });
             var $miniCartHolder = $('#miniCartHolder');
             $miniCartHolder.find('#quantity').html(response.quantity);
-            $miniCartHolder.find('.subtotal').html(response.subtotal);
+            $miniCartHolder.find('.subtotal').html(response.priceTotal);
 
             $('#miniCart').html($miniCart);
             }
@@ -253,7 +254,7 @@
                 var $rows = "";
                 $.each(response.contents, function(key, cartItem){
                     $rows += `<tr>
-                                        <td class="col-md-2"><img src="${cartItem.options.image}" alt="imga" ></td>
+                                        <td class="col-md-2"><img class="img-fluid img-responsive" src="${cartItem.options.image}" alt="imga" ></td>
                                         <td class="col-md-2">
                                             <div class="product-name"><a href="#">${cartItem.name }</a></div>
                                             <div class="rating">
@@ -265,7 +266,7 @@
                                                 <span class="review">( 06 Reviews )</span>
                                             </div>
                                             <div class="price">
-                                                ${cartItem.price}
+                                                ${FORMATTER.format(cartItem.price)}
                                             </div>
                                         </td>
                                         <td class="col-md-2">
@@ -280,7 +281,7 @@
                                             <button type="submit" id="${cartItem.rowId}" class="btn btn-success btn-sm" onclick="increaseQuantity(this.id)">+</button>
                                         </td>
                                         <td class="col-md-2">
-                                            <strong>${FORMATTER.format(cartItem.subtotal)} </strong>
+                                            <strong>${FORMATTER.format(cartItem.qty*cartItem.price)} </strong>
                                         </td>
                                         <td class="col-md-1 close-btn">
                                             <button id="${ cartItem.rowId }" onclick="removeCartItem(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
@@ -300,6 +301,7 @@
             success: function (response) {
                 cart();
                 fillinMiniCart();
+                calculateTotal();
                 // Start Message
                 const Toast = Swal.mixin({
                       toast: true,
@@ -334,6 +336,7 @@
             success: function (response) {
                 cart();
                 fillinMiniCart();
+                calculateTotal();
             }
         });
     }
@@ -345,7 +348,62 @@
             success: function (response) {
                 cart();
                 fillinMiniCart();
+                calculateTotal();
             }
+        });
+    }
+    function calculateTotal(){
+        var $totalContainer = $('#totalContainer');
+        var $totalDiscountContainer = $totalContainer.find('#totalDiscountContainer');
+        $.ajax({
+            type: "get",
+            url: "/user/gio-hang/san-pham/tinh-tong/",
+            dataType: "json",
+            success: function (response) {
+                if(response.coupon){
+                    $totalDiscountContainer.show();
+                    $totalContainer.find('#couponCode').text(response.coupon);
+                    $totalContainer.find('#totalDiscount').text('-'+response.totalDiscount);
+                }else{
+                    $totalDiscountContainer.hide();
+                }
+                $totalContainer.find('#priceTotal').text(response.priceTotal);
+                $totalContainer.find('#total').text(response.total);
+            }
+        });
+    }
+    calculateTotal();
+    function applyCoupon(){
+        var $couponName = $('#couponName').val();
+         $.ajax({
+                type: "post",
+                url: "/user/gio-hang/them-coupon",
+                data: {couponName:$couponName},
+                dataType: "json",
+                success: function (response) {
+                    calculateTotal();
+                    // Start Message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        // position: 'bottom-left',
+                        showConfirmButton: false,
+                        timer: 3000
+                        })
+                    if ($.isEmptyObject(response.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: response.success
+                        })
+                    }else{
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: response.error
+                        })
+                    }
+                    // End Message
+                }
         });
     }
 </script>

@@ -18,7 +18,9 @@ class Postseeder extends Seeder
         Post::factory(5)->create()->each(function($post){
             $path = 'http://softviet.test/image_for_seeding/posts/';
             $imagePath = $path .'p' . rand(1,5) . '.jpg';
-            $post->addMediaFromUrl($imagePath)->toMediaCollection('posts');
+            // $post->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('posts', 'postFiles');
+            // $post->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('posts', 'media');
+            $post->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('posts');
             $post->setDefaultValueForPostExcerpt();
             $post->save();
         });

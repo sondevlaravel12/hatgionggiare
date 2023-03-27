@@ -26,7 +26,7 @@ class Post extends Model implements HasMedia
      public function registerMediaCollections(): void
      {
          $this
-             ->addMediaCollection('products')
+             ->addMediaCollection('posts')
              ->acceptsMimeTypes(['image/jpeg','image/png','image/svg'])
              ->onlyKeepLatest(3)
              ;

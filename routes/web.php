@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\frontend\CategoryController;
 use App\Http\Controllers\frontend\IndexController as FrontendIndexController;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 /* --------------------- Admin route  --------------------------- */
 Route::prefix('admin')->group(function(){
 
@@ -31,10 +33,25 @@ Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout')->m
 Route::get('/register',[AdminController::class,'register'])->name('admin.register');
 Route::post('/store',[AdminController::class,'store'])->name('admin.register_store');
 
+// coupon
+Route::get('/coupons',[CouponController::class,'index'])->name('admin.coupons.index');
+Route::get('/coupons/create',[CouponController::class,'create'])->name('admin.coupons.create');
+Route::post('/coupons/store',[CouponController::class,'store'])->name('admin.coupons.store');
+Route::get('/coupons/{coupon}/edit',[CouponController::class,'edit'])->name('admin.coupons.edit');
+Route::put('/coupons/{coupon}/update',[CouponController::class,'update'])->name('admin.coupons.update');
+
+
+Route::delete('/coupons/{coupon}/delete',[CouponController::class,'destroy'])->name('admin.coupons.destroy');
+
 });
 
 
 /* --------------------- End Admin route  --------------------------- */
+/* --------------------- Backend route  --------------------------- */
+
+
+
+/* --------------------- End Backend route  --------------------------- */
 
 /* --------------------- User route  --------------------------- */
 Route::get('/', [FrontendIndexController::class,'index'])->name('home');
@@ -51,8 +68,12 @@ Route::get('user/gio-hang/hien-thi-san-pham', [UserCartController::class,'indexA
 
 Route::get('user/gio-hang/san-pham/xoa/{itemId}', [UserCartController::class,'removeCartItem'])->name('cart.item.remove');
 
-Route::get('/user/gio-hang/san-pham/tang/{itemId}', [UserCartController::class,'increaseQuantity'])->name('cart.item.increase');
-Route::get('/user/gio-hang/san-pham/giam/{itemId}', [UserCartController::class,'decreaseQuantity'])->name('cart.item.increase');
+Route::get('user/gio-hang/san-pham/tang/{itemId}', [UserCartController::class,'increaseQuantity'])->name('cart.item.increase');
+Route::get('user/gio-hang/san-pham/giam/{itemId}', [UserCartController::class,'decreaseQuantity'])->name('cart.item.increase');
+
+Route::get('user/gio-hang/san-pham/tinh-tong', [UserCartController::class,'calculateTotal'])->name('cart.calculateTotal');
+
+Route::post('user/gio-hang/them-coupon', [UserCartController::class,'addCoupon'])->name('cart.addCoupon');
 
 
 // wishlist controller

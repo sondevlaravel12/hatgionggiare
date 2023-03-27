@@ -19,7 +19,8 @@ class SliderSeeder extends Seeder
             $path = 'http://softviet.test/image_for_seeding/sliders/';
 
             $imagePath = $path .'s' . rand(1,2) . '.jpg';
-            $product->addMediaFromUrl($imagePath)->toMediaCollection('sliders');
+            // $product->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('sliders');
+            $product->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('sliders','sliderFiles');
 
         });
     }

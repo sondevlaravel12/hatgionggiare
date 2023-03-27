@@ -37,9 +37,56 @@ return [
         ],
         'media' => [
             'driver' => 'local',
-            'root'   => public_path('media'),
-            'url'    => env('APP_URL').'/media',
+
+            // directory for storing
+            'root'   => public_path('media/posts'),
+            // 'root'   => public_path('storage'),
+
+            // directory for geting image url
+            'url'    => env('APP_URL').'/media/posts',
+            // 'url'    => env('APP_URL').'/storage',
         ],
+        // for spatie media custome path
+        'postFiles' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/public/posts'),
+            'url'        => env('APP_URL') . '/posts',
+            'visibility' => 'public'
+        ],
+
+        'productFiles' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/public/products'),
+            'url'        => env('APP_URL') . '/products',
+            'visibility' => 'public'
+        ],
+        'sliderFiles' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/public/sliders'),
+            'url'        => env('APP_URL') . '/sliders',
+            'visibility' => 'public'
+        ],
+        'categoryFiles' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/public/categories'),
+            'url'        => env('APP_URL') . '/categories',
+            'visibility' => 'public'
+        ],
+
+        'general' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/generals'),
+            'url' => env('APP_URL').'/generals',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+        // end for spatie media custome path
+
+        // 'media' => [
+        //     'driver' => 'local',
+        //     'root'   => public_path('media'),
+        //     'url'    => env('APP_URL').'/media',
+        // ],
 
         'public' => [
             'driver' => 'local',
@@ -75,7 +122,11 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        // public_path('storage') => storage_path('app/public'),
+        public_path('generals') => storage_path('app/public/generals'),
+        public_path('posts') => storage_path('app/public/posts'),
+        public_path('products') => storage_path('app/public/products'),
+        public_path('sliders') => storage_path('app/public/sliders'),
     ],
 
 ];
