@@ -38,6 +38,16 @@
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
+                        <span>Sản Phẩm</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.products.index') }}">Danh Sách Sản Phẩm</a></li>
+                        <li><a href="{{ route('admin.products.create') }}">Thêm mới Sản Phẩm</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
                         <span>Other</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">

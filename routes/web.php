@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\ProductController as BackendProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\frontend\CategoryController;
 use App\Http\Controllers\frontend\IndexController as FrontendIndexController;
@@ -40,8 +41,17 @@ Route::post('/coupons/store',[CouponController::class,'store'])->name('admin.cou
 Route::get('/coupons/{coupon}/edit',[CouponController::class,'edit'])->name('admin.coupons.edit');
 Route::put('/coupons/{coupon}/update',[CouponController::class,'update'])->name('admin.coupons.update');
 
-
 Route::delete('/coupons/{coupon}/delete',[CouponController::class,'destroy'])->name('admin.coupons.destroy');
+
+// product
+Route::get('/products',[BackendProductController::class,'index'])->name('admin.products.index');
+Route::get('/products/create',[BackendProductController::class,'create'])->name('admin.products.create');
+
+// Route::post('/products/store',[BackendProductController::class,'store'])->name('admin.products.store');
+Route::get('/products/{coupon}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
+// Route::put('/products/{coupon}/update',[BackendProductController::class,'update'])->name('admin.products.update');
+
+Route::delete('/products/{coupon}/delete',[BackendProductController::class,'destroy'])->name('admin.products.destroy');
 
 });
 
