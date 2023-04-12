@@ -32,12 +32,12 @@
 
 
                         <th>Id</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Published</th>
-                        <th>Action</th>
-                        <th>Create at</th>
-                        <th>Upadate at</th>
+                        <th>Hình</th>
+                        <th>Tên</th>
+                        <th>Xuất bản</th>
+                        <th>Chỉnh sửa</th>
+                        <th>Ngày tạo</th>
+                        <th>Ngày cập nhật</th>
 
 
                     </tr>
@@ -63,14 +63,14 @@
                                 </div>
                             </td>
                             <td>
-                                <form action="{{route('admin.products.destroy', $product)}}" method="POST" id="confirm_delete">
-                                    @method('DELETE')
+                                {{-- <form action="{{route('admin.products.destroy', $product)}}" method="POST" id="confirm_delete">
+                                    @method('DELETE') --}}
                                     {{-- <a href="{{route('product.detail', $product)}}" class="popup-youtube btn btn-link mb-2"><i class="fas fa-eye"></i> Preview</a> --}}
                                     {{-- <a target="_blank" href="{{route('product.detail', $product)}}" class="btn btn-sm btn-link"><i class="fas fa-link"></i> link</a> --}}
-                                    <a href="{{route('admin.products.edit',  $product)}}" class="btn btn-sm btn-link"><i class="far fa-edit"></i> Edit</a>
-                                    <button type="submit" class="btn btn-sm btn-link" ><i class="far fa-trash-alt"></i> Delete</button>
-                                    @csrf
-                                </form>
+                                    <a href="{{route('admin.products.edit',  $product)}}" class="btn btn-sm btn-link"><i class="far fa-edit"></i> Sửa</a>
+                                    <button type="submit" class="btn btn-sm btn_product_delete" data-productid="{{$product->id}}"><i class="far fa-trash-alt"></i> Xóa</button>
+                                    {{-- @csrf --}}
+                                {{-- </form> --}}
                             </td>
 
                             <td>{{$product->created_at ? \Carbon\Carbon::parse($product->created_at)->diffForHumans() : ''}}</td>
@@ -92,11 +92,13 @@
 
 <script>
 
-$(document).ready( function () {
-    $('#datatable').DataTable({
+// $(document).ready( function () {
+    var $dataTable = $('#datatable').DataTable({
 
         });
-} );
+    var $table = $('#datatable');
+
+// } );
 
 </script>
  <!-- Magnific Popup-->
@@ -140,6 +142,55 @@ $(document).ready( function () {
         });
 
     });
+
+ </script>
+
+
+ <script>
+    // sweetalert before deleting
+    // var $dataTable = $table.DataTable({});
+    $table.on('click','.btn_product_delete', function(){
+        // event.preventDefault();
+        Swal.fire({
+            title: 'Bạn có chắc muốn?',
+            text: "Xóa xóa sản phẩm này không?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Vâng, xóa sản phẩm!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                var $row = $dataTable.row($(this).parents('tr'));
+                var $productId = $(this).attr('data-productid');
+                // console.log($productId);
+                deleteProduct($productId, $row)
+            }
+
+        })
+
+    });
+
+    function deleteProduct($productId, $row){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: "DELETE",
+            url: "/admin/products/ajax-delete",
+            data: {productID:$productId},
+            dataType: "json",
+            success: function (response) {
+                if(response.message){
+                $row.remove().draw(false);
+                toastr.success(response.message);
+                return true;
+                };
+            }
+        });
+    };
 
  </script>
 @endpush

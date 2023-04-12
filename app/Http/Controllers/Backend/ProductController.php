@@ -59,9 +59,19 @@ class ProductController extends Controller
     public function destroy(Product $product){
         $product->delete();
         $notification = [
-            'message' => 'xóa product thành công',
+            'message' => 'xóa sản phẩm thành công',
             'alert-type' =>'success'
         ];
         return back()->with($notification );
+    }
+
+    public function ajaxDelete(Request $request){
+        $invoice = Product::whereId($request->productID)
+        ->first();
+        if($invoice->delete()){
+            return response()->json(['message'=>'xóa sản phẩm thành công']);
+        }
+        return response()->json(['error'=>'some errors']);
+
     }
 }

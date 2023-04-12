@@ -47,13 +47,20 @@ Route::delete('/coupons/{coupon}/delete',[CouponController::class,'destroy'])->n
 Route::get('/products',[BackendProductController::class,'index'])->name('admin.products.index');
 Route::get('/products/create',[BackendProductController::class,'create'])->name('admin.products.create');
 
-// Route::post('/products/store',[BackendProductController::class,'store'])->name('admin.products.store');
-Route::get('/products/{coupon}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
-// Route::put('/products/{coupon}/update',[BackendProductController::class,'update'])->name('admin.products.update');
 
-Route::delete('/products/{coupon}/delete',[BackendProductController::class,'destroy'])->name('admin.products.destroy');
+
+// Route::post('/products/store',[BackendProductController::class,'store'])->name('admin.products.store');
+Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
+// Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
+
+Route::delete('/products/{product}/delete',[BackendProductController::class,'destroy'])->name('admin.products.destroy');
+Route::delete('/products/ajax-delete', [BackendProductController::class,'ajaxDelete']);
+
+
+
 
 });
+
 
 
 /* --------------------- End Admin route  --------------------------- */
