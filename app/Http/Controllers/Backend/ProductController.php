@@ -35,9 +35,9 @@ class ProductController extends Controller
     //     }
     // }
 
-    // public function edit(Product $product){
-    //     return view('admin.product.edit', compact('product'));
-    // }
+    public function edit(Product $product){
+        return view('admin.product.edit', compact('product'));
+    }
     // public function update(product $product, Request $request){
     //     $validated = $request->validate([
     //         'name' => 'required|min:2|max:255',

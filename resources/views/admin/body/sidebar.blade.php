@@ -43,6 +43,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.products.index') }}">Danh Sách Sản Phẩm</a></li>
                         <li><a href="{{ route('admin.products.create') }}">Thêm mới Sản Phẩm</a></li>
+                        <li><a href="{{ route('admin.categories.index') }}">Danh Mục Sản Phẩm</a></li>
                     </ul>
                 </li>
                 <li>

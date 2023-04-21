@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 // ------------spatie media
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 // -----------end spatie media
+
 // ------------spatie laravel-sluggable
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -20,7 +22,8 @@ class Category extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
     use HasSlug;
-    protected $guared =[];
+    protected $guarded =[];
+    // protected $fillable = ['name'];
 
      // ------------------- Spatie Media ---------------------------//
      public function registerMediaCollections(): void
@@ -61,10 +64,26 @@ class Category extends Model implements HasMedia
      // ------------------- end Spatie laravel-sluggable ---------------------------//
 
      // ------------------- Relationship ---------------------------//
-     public function Products()
+     public function products()
     {
         return $this->hasMany(Product::class);
     }
+    public function parent(){
+        return $this->belongsTo($this,'parent_id','id');
+    }
+    public function children()
+    {
+       return $this->hasMany($this, 'parent_id');
+    }
      // ------------------- End Relationship ---------------------------//
+
+     public function getFirstImageUrl($size='thumb'){
+        if($this->getFirstMedia('categories')){
+            return $this->getFirstMedia('categories')->getUrl($size);
+        }
+        else{
+            return asset('noimage.jpeg');
+        }
+    }
 
 }

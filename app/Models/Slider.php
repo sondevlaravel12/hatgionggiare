@@ -14,7 +14,7 @@ class Slider extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
-    protected $guared =[];
+    protected $guarded =[];
 
     // ------------------- Spatie Media ---------------------------//
     public function registerMediaCollections(): void

@@ -122,10 +122,11 @@ return [
     */
 
     'links' => [
-        // public_path('storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('app/public'),
         public_path('generals') => storage_path('app/public/generals'),
         public_path('posts') => storage_path('app/public/posts'),
         public_path('products') => storage_path('app/public/products'),
+        public_path('categories') => storage_path('app/public/categories'),
         public_path('sliders') => storage_path('app/public/sliders'),
     ],
 

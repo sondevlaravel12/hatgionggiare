@@ -28,7 +28,7 @@ class Product extends Model implements HasMedia, Buyable
 
 
 
-    protected $guared =[];
+    protected $guarded =[];
 
     //Implicit Binding: Customizing The Key Name
     // public function getRouteKeyName()
