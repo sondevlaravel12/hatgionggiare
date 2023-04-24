@@ -20,7 +20,6 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required|min:2|max:255',
             'image'=> [
-                'nullable',
                 'image',
                 'mimes:jpg,jpeg,png,gif',
             ],
@@ -58,7 +57,6 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required|min:2|max:255',
             'image'=> [
-                'nullable',
                 'image',
                 'mimes:jpg,jpeg,png,gif',
             ],

@@ -5,7 +5,10 @@
     <!-- Image-Uploader -->
         <!--Material Design Iconic Font-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        {{-- http://dragdropimage.test/ --}}
         <link rel="stylesheet" href="{{asset('asset/admin/stylesheets/image-uploader.min.css')}}">
+        {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> --}}
 
 @endpush
 @section('content')
@@ -62,8 +65,8 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="form-label">Giá sản phẩm</label>
-                                                <input class="form-control" type="number" name="price" value="{{old('price')}}"  >
-                                                @error('price')
+                                                <input class="form-control" type="number" name="base_price" value="{{old('base_price')}}"  >
+                                                @error('base_price')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -71,8 +74,8 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="form-label">Giá khuyến mãi</label>
-                                                <input class="form-control" type="number" name="discount" value="{{old('discount')}}"  >
-                                                @error('discount')
+                                                <input class="form-control" type="number" name="discount_price" value="{{old('discount_price')}}"  >
+                                                @error('discount_price')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -82,11 +85,12 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">Category</label>
+                                                <label for="example-text-input" class="form-label">Danh mục sản phẩm</label>
                                                 <select class="form-select" aria-label="Default select example" name="category_id">
-                                                    {{-- @foreach ($categories as $category)
-                                                    <option value="{{$category->id}}" >{{$category->title}}</option>
-                                                    @endforeach --}}
+                                                    <option selected="" value="not_selected">Chọn danh mục</option>
+                                                    @foreach ($categories as $category)
+                                                    <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }} >{{$category->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -100,7 +104,7 @@
 
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="mb-3">
+                                            <div class="mb-3 input-field">
                                                 <label class="active">Photos</label>
                                                 <div class="input-images-1" style="padding-top: .5rem;"></div>
                                             </div>
@@ -115,8 +119,8 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Short Description</label>
-                                                <textarea  class="myeditorinstance" name="short_description" class="form-control">{!!old('short_description')!!}</textarea>
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Mô tả ngắn</label>
+                                                <textarea  id="short_description" name="short_description" class="form-control">{!!old('short_description')!!}</textarea>
                                                 @error('short_description')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
@@ -127,7 +131,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Nội dung</label>
                                                 <textarea class="myeditorinstance" name="description">{!!old('description')!!}</textarea>
                                                 @error('description')
                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -139,7 +143,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Specification</label>
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Thông số kỹ thuật</label>
                                                 <textarea class="myeditorinstance" name="specification">{!!old('specification')!!}</textarea>
                                                 @error('specification')
                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -233,21 +237,29 @@ triggerTabList.forEach(function (triggerEl) {
 </script>
 
 <!-- Image-Uploader -->
-{{-- <script type="text/javascript" src="http://example.com/jquery.min.js"></script>
-<script type="text/javascript" src="http://example.com/image-uploader.min.js"></script> --}}
+{{-- https://christianbayer.github.io/image-uploader/ --}}
 <script type="text/javascript" src="{{asset('asset/admin/javascripts/image-uploader.min.js')}}"></script>
+
 <Script>
 
 $('.input-images-1').imageUploader({
     imagesInputName: 'photos',
-
+    label: 'Kéo thả hình vào đây, hoặc bấm vào để tải hình',
     extensions: ['.jpg','.jpeg','.png','.gif','.svg'],
     mimes: ['image/jpeg','image/png','image/gif','image/svg+xml'],
-    maxSize: 10000,
+    maxSize: 5 * 1024 * 1024,
     maxFiles: 10,
 
 
 });
 </Script>
+<script>
+    tinymce.init({
+    selector: 'textarea#short_description',
+  });
+</script>
+
+<!--end Image-Uploader -->
+
 
 @endpush
