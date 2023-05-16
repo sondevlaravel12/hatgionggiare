@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Manipulations;
 // -----------end spatie media
 // ------------spatie laravel-sluggable
 use Spatie\Sluggable\HasSlug;
@@ -17,9 +18,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class Post extends Model implements HasMedia
 {
-    use HasFactory;
-    use InteractsWithMedia;
-    use HasSlug;
+    use HasFactory, InteractsWithMedia, HasSlug;
     protected $guared =[];
 
      // ------------------- Spatie Media ---------------------------//
@@ -36,17 +35,26 @@ class Post extends Model implements HasMedia
      {
 
         $this
-            ->addMediaConversion('thumb')
-            ->width(100)
-            ->height(100);
-        $this
-            ->addMediaConversion('medium')
-            ->width(300)
-            ->height(300);
-        $this
-            ->addMediaConversion('large')
-            ->width(600)
-            ->height(600);
+        ->addMediaConversion('thumb')
+        ->fit(Manipulations::FIT_FILL, 195, 108, function ($constraint) {
+            $constraint->upsize();
+        })
+        ->background('fff')
+        ->format('png');
+    $this
+        ->addMediaConversion('medium')
+        ->fit(Manipulations::FIT_FILL, 390, 217, function ($constraint) {
+            $constraint->upsize();
+        })
+        ->background('fff')
+        ->format('png');
+    $this
+        ->addMediaConversion('large')
+        ->fit(Manipulations::FIT_FILL, 780, 433, function ($constraint) {
+            $constraint->upsize();
+        })
+        ->background('fff')
+        ->format('png');
      }
      // -------------------End Spatie Media ---------------------------//
 

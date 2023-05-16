@@ -94,7 +94,7 @@ sản phẩm: {{ $product->name }}
 							</div><!-- /.stock-container -->
 
 							<div class="description-container m-t-20">
-								{{$product->short_description}}
+								{!!$product->short_description!!}
 							</div><!-- /.description-container -->
 
 							<div class="price-container info-container m-t-20">
@@ -183,7 +183,8 @@ sản phẩm: {{ $product->name }}
 
 							<div id="description" class="tab-pane in active">
 								<div class="product-tab">
-									<p class="text">{{ $product->description }}</p>
+									{!! $product->description !!}
+									{!! $product->specification !!}
 								</div>
 							</div><!-- /.tab-pane -->
 

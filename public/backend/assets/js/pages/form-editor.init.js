@@ -12,13 +12,23 @@
 //     plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker","searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking","save table contextmenu directionality emoticons template paste textcolor"],
 //     toolbar:"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons"
 //   });
-var editor_config = {
+var description_config = {
     path_absolute : "/",
     selector: 'textarea.myeditorinstance',
     height:500,
 
     entity_encoding : "raw",
-    document_base_url:'http://ccls3.test/',
+
+    relative_urls: false,
+    remove_script_host: false,
+    convert_urls: true,
+    document_base_url: "http://softviet.test/",
+
+//     relative_urls : false,
+// remove_script_host : true,
+// document_base_url : "/",
+// convert_urls : true,
+
     plugins: [
       "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
       "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -31,7 +41,7 @@ var editor_config = {
       var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
       var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
 
-      var cmsURL = editor_config.path_absolute + 'laravel-filemanager?editor=' + meta.fieldname;
+      var cmsURL = description_config.path_absolute + 'laravel-filemanager?editor=' + meta.fieldname;
       if (meta.filetype == 'image') {
         cmsURL = cmsURL + "&type=Images";
       } else {
@@ -52,5 +62,14 @@ var editor_config = {
     }
   };
 
-  tinymce.init(editor_config);
+  tinymce.init(description_config);
+
+
+  var short_description_config = {
+    path_absolute : "/",
+    selector: 'textarea#short_description',
+    height: 250,
+};
+
+tinymce.init(short_description_config);
 

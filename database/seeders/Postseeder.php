@@ -20,7 +20,7 @@ class Postseeder extends Seeder
             $imagePath = $path .'p' . rand(1,5) . '.jpg';
             // $post->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('posts', 'postFiles');
             // $post->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('posts', 'media');
-            $post->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('posts');
+            $post->addMediaFromUrl($imagePath)->preservingOriginal()->toMediaCollection('posts','postFiles');
             $post->setDefaultValueForPostExcerpt();
             $post->save();
         });

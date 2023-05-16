@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Manipulations;
 // -----------end spatie media
 
 class Slider extends Model implements HasMedia
@@ -31,16 +32,25 @@ class Slider extends Model implements HasMedia
 
         $this
             ->addMediaConversion('thumb')
-            ->width(145)
-            ->height(34);
+            ->fit(Manipulations::FIT_FILL, 145, 62, function ($constraint) {
+                $constraint->upsize();
+            })
+            ->background('fff')
+            ->format('png');
         $this
             ->addMediaConversion('medium')
-            ->width(435)
-            ->height(185);
+            ->fit(Manipulations::FIT_FILL, 435, 185, function ($constraint) {
+                $constraint->upsize();
+            })
+            ->background('fff')
+            ->format('png');
         $this
             ->addMediaConversion('large')
-            ->width(870)
-            ->height(370);
+            ->fit(Manipulations::FIT_FILL, 870, 370, function ($constraint) {
+                $constraint->upsize();
+            })
+            ->background('fff')
+            ->format('png');
     }
     // -------------------End Spatie Media ---------------------------//
 

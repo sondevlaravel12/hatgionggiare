@@ -72,6 +72,12 @@ return [
             'url'        => env('APP_URL') . '/categories',
             'visibility' => 'public'
         ],
+        'postCategoryFiles' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/public/postscategories'),
+            'url'        => env('APP_URL') . '/post-categories',
+            'visibility' => 'public'
+        ],
 
         'general' => [
             'driver' => 'local',
@@ -127,6 +133,7 @@ return [
         public_path('posts') => storage_path('app/public/posts'),
         public_path('products') => storage_path('app/public/products'),
         public_path('categories') => storage_path('app/public/categories'),
+        public_path('postscategories') => storage_path('app/public/postscategories'),
         public_path('sliders') => storage_path('app/public/sliders'),
     ],
 

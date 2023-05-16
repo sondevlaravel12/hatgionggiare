@@ -49,6 +49,17 @@
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
+                        <span>Bài viết</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.posts.index') }}">Danh Sách Bài Viết</a></li>
+                        {{-- <li><a href="{{ route('admin.products.create') }}">Thêm Mới Bài Viết</a></li> --}}
+                        <li><a href="#">Danh Mục Bài Viết</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
                         <span>Other</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">

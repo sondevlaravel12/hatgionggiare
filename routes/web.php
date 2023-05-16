@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController as BackendCategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\ProductController as BackendProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\frontend\CategoryController;
@@ -50,8 +51,17 @@ Route::controller(BackendProductController::class)->group(function(){
     Route::get('/products/create','create')->name('admin.products.create');
     Route::post('/products/store', 'store')->name('admin.products.store');
     Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
-    // Route::delete('/products/{product}/delete',[BackendProductController::class,'destroy'])->name('admin.products.destroy');
     Route::delete('/products/ajax-delete', [BackendProductController::class,'ajaxDelete']);
+    Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
+});
+
+// Post
+Route::controller(BackendPostController::class)->group(function(){
+    Route::get('/posts','index')->name('admin.posts.index');
+    Route::get('/posts/create','create')->name('admin.posts.create');
+    Route::post('/posts/store', 'store')->name('admin.posts.store');
+    // Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
+    Route::delete('/posts/ajax-delete', 'ajaxDelete');
     // Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
 });
 
@@ -80,6 +90,9 @@ Route::controller(BackendCategoryController::class)->group(function(){
 
 /* --------------------- Backend route  --------------------------- */
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 
 /* --------------------- End Backend route  --------------------------- */

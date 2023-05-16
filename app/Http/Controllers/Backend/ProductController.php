@@ -62,26 +62,77 @@ class ProductController extends Controller
 
     public function edit(Product $product){
         $categories = Category::latest()->get();
-        return view('admin.product.edit', compact('product','categories'));
+         // Get all media files in the 'products' collection for the product
+         $preloaded = [];
+         foreach ($product->getMedia('products') as $media) {
+             $preloaded[] = [
+                 'id' => $media->id,
+                 'src' => $media->getUrl(),
+             ];
+         }
+         // Render the edit product view with the product data and media IDs
+        return view('admin.product.edit', [
+            'product'=>$product,
+            'categories'=>$categories,
+            'preloaded'=>$preloaded,
+        ]);
     }
-    // public function update(product $product, Request $request){
-    //     $validated = $request->validate([
-    //         'name' => 'required|min:2|max:255',
-    //         'code' => 'required|min:2|max:255',
-    //         'discount' => 'required|min:1|max:100',
-    //         'expiry' => 'required',
-    //     ]);
-    //     $input = $request->except([]);
-    //     $input['code'] = strtoupper( $input['code']);
+    public function update(product $product, Request $request){
+        $validated = $request->validate([
+            'name' => 'required|min:2|max:255',
+            'base_price'=>'required|numeric',
+            'discount_price'=>'required|numeric',
+            // 'category_id' => 'required',
+            'description' => 'required|min:10',
+            // 'specification'=>'min:10',
+            // 'photos'=> [
+            //     'image',
+            //     'mimes:jpg,jpeg,png,gif',
+            // ]
+            'category_id' => 'nullable|exists:categories,id',
+        ]);
 
-    //     $product->update($input);
+        $input = $request->except(['photos','category_id','preloadedImages','deletedImages']);
+        // update some text, num inputs
+        $product->update($input);
 
-    //     $notifycation = [
-    //         'message' => 'Cập nhật product thành công',
-    //         'alert-type' =>'success'
-    //     ];
-    //     return redirect()->route('admin.products.index')->with($notifycation);
-    // }
+        // delete the images that were in $mediaCollection but not in  $preloadedIds
+        $preloadedIds = array_flatten($request->input('preloadedImages', []));
+        $mediaCollection = $product->getMedia('products');
+        $mediaIds = $mediaCollection->pluck('id')->toArray();
+        $idsToDelete = array_diff($mediaIds, $preloadedIds);
+
+        foreach ($mediaCollection as $media) {
+            if (in_array($media->id, $idsToDelete)) {
+                $media->delete();
+            }
+        }
+         // Upload the new images, if any
+         if($request->hasFile('photos')){
+            foreach($request->file('photos') as $photo){
+                if($photo->isValid()){
+                    $product->addMedia($photo)->toMediaCollection('products','productFiles');
+                }
+            }
+        }
+        // update category
+        // Check if a new category is selected by the user
+        $selectedCategoryId = $request->input('category_id');
+        if ($selectedCategoryId && $selectedCategoryId !== 'not_selected' && $selectedCategoryId !== $product->category_id){
+            $category = Category::findOrFail($selectedCategoryId);
+            // Update product category
+            $product->category()->associate($category)->save();
+        } elseif (!$product->category) {
+            // If no category is selected by the user and the product has no category by default, set category to null
+            $product->category()->dissociate()->save();
+        }
+
+        $notifycation = [
+            'message' => 'Cập nhật product thành công',
+            'alert-type' =>'success'
+        ];
+        return redirect()->route('admin.products.index')->with($notifycation);
+    }
     public function destroy(Product $product){
         $product->delete();
         $notification = [

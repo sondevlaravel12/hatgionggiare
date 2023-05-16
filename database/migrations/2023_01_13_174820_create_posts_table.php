@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('excerpt')->nullable();;
             $table->integer('status')->default(1);
             $table->enum('type', ['post', 'page', 'news', 'faq'])->default('post');
-            $table->integer('category_id')->nullable();
+            $table->integer('pcategory_id')->nullable();
             $table->integer('hot')->default(0);
             $table->timestamps();
         });

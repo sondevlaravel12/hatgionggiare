@@ -17,15 +17,14 @@ use Spatie\Sluggable\SlugOptions;
 // ------------Buyable interface use for cart
 use Gloudemans\Shoppingcart\Contracts\Buyable;
 // ------------End Buyable interface use for cart
+use Spatie\Image\Manipulations;
+use App\Traits\HasMediaConversions;
+
 
 
 class Product extends Model implements HasMedia, Buyable
 {
-    use HasFactory;
-
-    use InteractsWithMedia;
-    use HasSlug;
-
+    use HasFactory, InteractsWithMedia, HasSlug, HasMediaConversions;
 
 
     protected $guarded =[];
@@ -47,19 +46,42 @@ class Product extends Model implements HasMedia, Buyable
     }
     public function registerMediaConversions(Media $media = null): void
     {
+        $this->registerMediaConversionsTrait();
+    }
+    // public function registerMediaConversions(Media $media = null): void
+    // {
+    //     $this
+    //         ->addMediaConversion('thumb')
+    //         ->fit(Manipulations::FIT_FILL, 100, 100, function ($constraint) {
+    //             $constraint->upsize();
+    //         })
+    //         ->background('fff')
+    //         // ->border('000', 10)
+    //         ->format('png');
+    //     $this
+    //         ->addMediaConversion('medium')
+    //         ->fit(Manipulations::FIT_FILL, 300, 300, function ($constraint) {
+    //             $constraint->upsize();
+    //         })
+    //         ->background('fff')
+    //         // ->border('000', 10)
+    //         ->format('png');
+    //     $this
+    //         ->addMediaConversion('large')
+    //         ->fit(Manipulations::FIT_FILL, 600, 600, function ($constraint) {
+    //             $constraint->upsize();
+    //         })
+    //         ->background('fff')
+    //         // ->border('000', 10)
+    //         ->format('png');
+    // }
 
-        $this
-            ->addMediaConversion('thumb')
-            ->width(100)
-            ->height(100);
-        $this
-            ->addMediaConversion('medium')
-            ->width(300)
-            ->height(300);
-        $this
-            ->addMediaConversion('large')
-            ->width(600)
-            ->height(600);
+    public function getSquarePosition($constraint)
+    {
+        $constraint->aspectRatio();
+        $constraint->upsize();
+        $constraint->background('ffffff');
+        $constraint->size($this->getWidth(), $this->getWidth(), 'center');
     }
     // -------------------End Spatie Media ---------------------------//
 
@@ -99,13 +121,14 @@ class Product extends Model implements HasMedia, Buyable
         );
     }
     public function getDiscountPercentageAttribute()
-{
-    $priceBefore = $this->getRawOriginal('price');
+    {
+    // $priceBefore = $this->getRawOriginal('price');
+    $priceBefore = $this->getRawOriginal('base_price');
     $priceAfter = $this->getRawOriginal('discount_price');
     $discountPercentage =  ceil((($priceBefore - $priceAfter)/$priceBefore) *100);
     //return number_format($discountPercentage, 0, ',', '.');
     return $discountPercentage;
-}
+    }
     ////  ------------------End Accessor--------------------------------- ////
 
      // ------------------- Relationship ---------------------------//

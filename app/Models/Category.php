@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\Traits\HasMediaConversions;
 // -----------end spatie media
 
 // ------------spatie laravel-sluggable
@@ -21,7 +22,7 @@ class Category extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
-    use HasSlug;
+    use HasSlug, HasMediaConversions;
     protected $guarded =[];
     // protected $fillable = ['name'];
 
@@ -38,18 +39,7 @@ class Category extends Model implements HasMedia
      public function registerMediaConversions(Media $media = null): void
      {
 
-         $this
-             ->addMediaConversion('thumb')
-             ->width(100)
-             ->height(100);
-         $this
-             ->addMediaConversion('medium')
-             ->width(300)
-             ->height(300);
-         $this
-             ->addMediaConversion('large')
-             ->width(600)
-             ->height(600);
+         $this->registerMediaConversionsTrait();
      }
      // -------------------End Spatie Media ---------------------------//
 
