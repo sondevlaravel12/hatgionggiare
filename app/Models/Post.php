@@ -80,4 +80,10 @@ class Post extends Model implements HasMedia
     public function setDefaultValueForPostExcerpt(){
         $this->excerpt = Str::words(strip_tags($this->description),20,'...');
     }
+    // relationship
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+    // end of relationship
+
 }

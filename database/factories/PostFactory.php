@@ -16,9 +16,18 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        $paragraphs = $this->faker->paragraphs(rand(2, 6));
+        $title = $this->faker->realText(50);
+        // $description = "<h1>{$title}</h1>";
+        $description = "";
+        foreach ($paragraphs as $para) {
+            $description .= "<p>{$para}</p>";
+        }
+        $user_id = rand(0,2);
         return [
-            'title' => fake()->name(fake()->numberBetween(20, 40)),
-            'description' => fake()->realText(),
+            'title' => $title,
+            'description' => $description,
+            'user_id'=>$user_id,
 
         ];
     }

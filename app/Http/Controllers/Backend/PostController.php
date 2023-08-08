@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pcategory;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -12,52 +13,49 @@ class PostController extends Controller
         $posts = Post::latest()->get();
         return view('admin.post.index', compact('posts'));
     }
-    // public function create(){
-    //     $categories = Category::latest()->get();
-    //     return view('admin.product.create', compact('categories'));
-    // }
-    // public function store(Request $request){
-    //     $validated = $request->validate([
-    //         'name' => 'required|min:2|max:255',
-    //         'base_price'=>'required',
-    //         'discount_price'=>'required',
-    //         // 'category_id' => 'required',
-    //         'description' => 'required|min:10',
-    //         // 'specification'=>'min:10',
-    //         // 'photos'=> [
-    //         //     'image',
-    //         //     'mimes:jpg,jpeg,png,gif',
-    //         // ]
-    //     ]);
-    //     // dd($request->file('photos'));
+    public function create(){
+        $categories = Pcategory::latest()->get();
+        return view('admin.post.create', compact('categories'));
+    }
+    public function store(Request $request){
+        $validated = $request->validate([
+            'title' => 'required|min:2|max:255',
+            'description' => 'required|min:10',
+            // 'specification'=>'min:10',
+            // 'photos'=> [
+            //     'image',
+            //     'mimes:jpg,jpeg,png,gif',
+            // ]
+        ]);
+        dd($request->all());
 
-    //     $input = $request->except(['photos','category_id']);
+        $input = $request->except(['photos','category_id']);
 
 
-    //     if($product = Product::create($input)){
-    //         if($request->category_id!='not_selected'){
-    //             $category = Category::findOrFail($request->category_id);
-    //             if($category){
-    //                 $category->products()->save($product);
-    //             }
-    //         }
+        // if($product = Product::create($input)){
+        //     if($request->category_id!='not_selected'){
+        //         $category = Category::findOrFail($request->category_id);
+        //         if($category){
+        //             $category->products()->save($product);
+        //         }
+        //     }
 
-    //         if($request->hasFile('photos')){
-    //             foreach($request->file('photos') as $photo){
-    //                 // dd($photo);
-    //                 // if($photo->isValid()){
-    //                     $product->addMedia($photo)->toMediaCollection('products','productFiles');
-    //                 // }
-    //             }
-    //         }
+        //     if($request->hasFile('photos')){
+        //         foreach($request->file('photos') as $photo){
+        //             // dd($photo);
+        //             // if($photo->isValid()){
+        //                 $product->addMedia($photo)->toMediaCollection('products','productFiles');
+        //             // }
+        //         }
+        //     }
 
-    //         $notifycation = [
-    //             'message' => 'Product Create successfully',
-    //             'alert-type' =>'success'
-    //         ];
-    //         return redirect()->route('admin.products.index')->with($notifycation);
-    //     }
-    // }
+        //     $notifycation = [
+        //         'message' => 'Product Create successfully',
+        //         'alert-type' =>'success'
+        //     ];
+        //     return redirect()->route('admin.products.index')->with($notifycation);
+        // }
+    }
 
     // public function edit(Product $product){
     //     $categories = Category::latest()->get();

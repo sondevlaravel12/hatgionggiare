@@ -26,6 +26,19 @@ Breadcrumbs::for('products.show', function (BreadcrumbTrail $trail, $product) {
     $trail->push($product->name, route('products.show', $product));
 });
 
+// Home > Bài viết
+Breadcrumbs::for('posts', function (BreadcrumbTrail $trail){
+    $trail->parent('home');
+    $trail->push('Bài viết', route('posts.index'));
+
+});
+// Home > Bài viết > tên bài
+Breadcrumbs::for('posts.show', function (BreadcrumbTrail $trail, $post) {
+    $trail->parent('posts');
+    $trail->push($post->title, route('posts.show', $post));
+});
+
+
 
 
 // // Home >  tin tuc

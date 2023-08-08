@@ -103,6 +103,14 @@ Route::get('/', [FrontendIndexController::class,'index'])->name('home');
 Route::get('san-pham/{product}/{slug?}', [ProductController::class,'show'])->name('products.show');
 Route::get('san-pham/modal/show/{id}', [ProductController::class,'ajaxModalShow'])->name('products.modal.show');
 
+// post controller
+Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
+Route::get('bai-viet/{post}/{slug?}', [PostController::class,'show'])->name('posts.show');
+
+
+
+
+
 // cart controller
 Route::post('gio-hang/them-vao-gio-hang', [CartController::class,'ajaxAddtoCart'])->name('cart.store');
 Route::get('mini-gio-hang/fill-in', [CartController::class,'ajaxFillinMiniCart'])->name('minicart.fill');

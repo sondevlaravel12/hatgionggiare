@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Product;
+use Database\Factories\AboutFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -30,7 +31,8 @@ class DatabaseSeeder extends Seeder
             // SliderSeeder::class,
             // Postseeder::class,
             //CouponSeeder::class,
-            PostCategorySeeder::class,
+            // PostCategorySeeder::class,
+            AboutSeeder::class,
         ]);
 
     }

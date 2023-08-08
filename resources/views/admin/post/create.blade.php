@@ -1,175 +1,74 @@
 @extends('admin.admin_master')
 @push('stylesheets')
-     <!-- twitter-bootstrap-wizard css -->
-     <link rel="stylesheet" href="{{asset('backend/assets/libs/twitter-bootstrap-wizard/prettify.css')}}">
-    <!-- Image-Uploader -->
-        <!--Material Design Iconic Font-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        {{-- http://dragdropimage.test/ --}}
         <link rel="stylesheet" href="{{asset('asset/admin/stylesheets/image-uploader.min.css')}}">
-        {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> --}}
-
 @endpush
 @section('content')
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Thêm mới sản phẩm</h4>
-
-
-                <div id="progrss-wizard" class="twitter-bs-wizard">
-                    <ul class="twitter-bs-wizard-nav nav-justified nav nav-pills">
-                        <li class="nav-item">
-                            <a href="#step1" class="nav-link" data-toggle="tab">
-                                <span class="step-number">01</span>
-                                <span class="step-title">Thông tin chung</span>
-                            </a>
-                        </li>
-                        <li class="nav-item" >
-                            <a href="#step2" class="nav-link active" data-toggle="tab">
-                                <span class="step-number">02</span>
-                                <span class="step-title">Hình Ảnh</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item" >
-                            <a href="#step3" class="nav-link" data-toggle="tab">
-                                <span class="step-number">03</span>
-                                <span class="step-title">Mô tả sản phẩm</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <div id="bar" class="progress mt-3">
-                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 50%;"></div>
-                    </div>
-                    <form action="{{route('admin.products.store')}}" method="POST"  enctype="multipart/form-data">
-                        @csrf
-                        <div class="tab-content twitter-bs-wizard-tab-content">
-                            <div class="tab-pane" id="step1">
-
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">Tên Sản Phẩm</label>
-                                                <input class="form-control" type="text" name="name" value="{{old('name')}}"  >
-                                                @error('name')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">Giá sản phẩm</label>
-                                                <input class="form-control" type="number" name="base_price" value="{{old('base_price')}}"  >
-                                                @error('base_price')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">Giá khuyến mãi</label>
-                                                <input class="form-control" type="number" name="discount_price" value="{{old('discount_price')}}"  >
-                                                @error('discount_price')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">Danh mục sản phẩm</label>
-                                                <select class="form-select" aria-label="Default select example" name="category_id">
-                                                    <option selected="" value="not_selected">Chọn danh mục</option>
-                                                    @foreach ($categories as $category)
-                                                    <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }} >{{$category->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-                            </div>
-                            <div class="tab-pane active" id="step2">
-                            <div>
-
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="mb-3 input-field">
-                                                <label class="active">Photos</label>
-                                                <div class="input-images-1" style="padding-top: .5rem;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                            </div>
-                            </div>
-                            <div class="tab-pane" id="step3">
-                                <div>
-
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Mô tả ngắn</label>
-                                                <textarea  id="short_description" name="short_description" class="form-control">{!!old('short_description')!!}</textarea>
-                                                @error('short_description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Nội dung</label>
-                                                <textarea class="myeditorinstance" name="description">{!!old('description')!!}</textarea>
-                                                @error('description')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Thông số kỹ thuật</label>
-                                                <textarea class="myeditorinstance" name="specification">{!!old('specification')!!}</textarea>
-                                                @error('specification')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
+                <h4 class="card-title mb-4">Thêm mới bài viết</h4>
+                <form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên bài viết</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="title" value="{{old('title')}}"  >
+                            @error('title')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <ul class="pager wizard twitter-bs-wizard-pager-link">
 
-                            <li class="previous"><a href="javascript:;">Previous</a></li>
-                            <li class="next"><a id="nextA" href="javascript:;">Next</a></li>
-                            <li class="finishbtn" style="float: right; display: none" >
-                                <button style="background-color: #0f9cf3;
-                                    color: #fff;" type="submit" class="btn">
-                                    <i class="fas fa-save"></i> Submit
-                                </button>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Hình ảnh</label>
+                        <div class="col-sm-10">
+                            <div class="mb-3 input-field">
+                                <div class="input-images-1" style="padding-top: .5rem;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Danh mục</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default select example" name="category_id">
+                                <option selected="">Chose category</option>
+                                @foreach ($categories as $category)
+                                <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                                @endforeach
+                                </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Nội dung bài viết</label>
+                        <div class="col-sm-10">
+                            <textarea class="myeditorinstance" name="description">{!! old('description') !!}</textarea>
+                            @error('description')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Trích dẫn</label>
+                        <div class="col-sm-10">
+                            <textarea name="excerpt" class="form-control">{!! old('excerpt') !!}</textarea>
+                            @error('excerpt')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        </div>
+                    </div>
+                    <!-- end row -->
+                    <div class="button-items">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light float-end">
+                            <i class="fas fa-save"></i> Lưu
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
