@@ -12,6 +12,11 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Trang chủ', route('home'));
 });
+// about
+Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Giới thiệu', route('about'));
+});
 
 // Home >  Danh mục sản phẩm
 Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
