@@ -20,8 +20,8 @@ bài viết: {{ $post->name }}
                 <div class="blog-post wow fadeInUp">
                         <img class="img-responsive" src="{{ $post->getFirstImageUrl('large') }}" alt="">
                         <h1>{{ $post->title }}</h1>
-                        <span class="author">{{ $post->user->name }}</span>
-                        <span class="review">7 Comments</span>
+                        <span class="author">{{ $post->user?$post->user->name:'' }}</span>
+                        {{-- <span class="review">7 Comments</span> --}}
                         <span class="date-time">{{ $post->created_at }}</span>
                         {!!$post->description !!}
                         {{-- <div class="social-media">
@@ -33,7 +33,7 @@ bài viết: {{ $post->name }}
                             <a href="" class="hidden-xs"><i class="fa fa-pinterest"></i></a>
                         </div> --}}
                 </div>
-                <div class="blog-write-comment outer-bottom-xs outer-top-xs">
+                {{-- <div class="blog-write-comment outer-bottom-xs outer-top-xs">
                     <div class="row">
                         <div class="col-md-12">
                             <h4>Leave A Comment</h4>
@@ -74,7 +74,7 @@ bài viết: {{ $post->name }}
                             <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Submit Comment</button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
         </div>

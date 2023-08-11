@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AboutController as BackendAboutController;
 use App\Http\Controllers\Backend\CategoryController as BackendCategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\backend\PostController as BackendPostController;
@@ -30,57 +31,62 @@ use Illuminate\Support\Facades\Route;
 /* --------------------- Admin route  --------------------------- */
 Route::prefix('admin')->group(function(){
 
-Route::get('/login',[AdminController::class,'index'])->name('login-form');
-Route::post('/login/owner',[AdminController::class,'login'])->name('admin.login');
-Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard')->middleware('admin');
-Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout')->middleware('admin');
-Route::get('/register',[AdminController::class,'register'])->name('admin.register');
-Route::post('/store',[AdminController::class,'store'])->name('admin.register_store');
+    Route::get('/login',[AdminController::class,'index'])->name('login-form');
+    Route::post('/login/owner',[AdminController::class,'login'])->name('admin.login');
+    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard')->middleware('admin');
+    Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout')->middleware('admin');
+    Route::get('/register',[AdminController::class,'register'])->name('admin.register');
+    Route::post('/store',[AdminController::class,'store'])->name('admin.register_store');
 
-// coupon
-Route::get('/coupons',[CouponController::class,'index'])->name('admin.coupons.index');
-Route::get('/coupons/create',[CouponController::class,'create'])->name('admin.coupons.create');
-Route::post('/coupons/store',[CouponController::class,'store'])->name('admin.coupons.store');
-Route::get('/coupons/{coupon}/edit',[CouponController::class,'edit'])->name('admin.coupons.edit');
-Route::put('/coupons/{coupon}/update',[CouponController::class,'update'])->name('admin.coupons.update');
-
-Route::delete('/coupons/{coupon}/delete',[CouponController::class,'destroy'])->name('admin.coupons.destroy');
-
-// product
-Route::controller(BackendProductController::class)->group(function(){
-    Route::get('/products','index')->name('admin.products.index');
-    Route::get('/products/create','create')->name('admin.products.create');
-    Route::post('/products/store', 'store')->name('admin.products.store');
-    Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
-    Route::delete('/products/ajax-delete', [BackendProductController::class,'ajaxDelete']);
-    Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
-});
-
-// Post
-Route::controller(BackendPostController::class)->group(function(){
-    Route::get('/posts','index')->name('admin.posts.index');
-    Route::get('/posts/create','create')->name('admin.posts.create');
-    Route::post('/posts/store', 'store')->name('admin.posts.store');
-    // Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
-    Route::delete('/posts/ajax-delete', 'ajaxDelete');
-    // Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
-});
-
-// category
-Route::controller(BackendCategoryController::class)->group(function(){
-    Route::get('/categories','index')->name('admin.categories.index');
-    Route::get('/categories/create','create')->name('admin.categories.create');
-    Route::post('/categories/store', 'store')->name('admin.categories.store');
-    Route::delete('/categories/ajax-delete', 'ajaxDelete');
-    // admin.categories.update
-
-    // Route::delete('/categories/{category}/delete','destroy')->name('admin.categories.destroy');
-    Route::get('/categories/{category}/edit','edit')->name('admin.categories.edit');
-    Route::put('/categories/{category}/update','update')->name('admin.categories.update');
+    // about
+    Route::get('/about/edit',[BackendAboutController::class,'edit'])->name('admin.about.edit');
+    Route::put('/about/{about}/update',[BackendAboutController::class,'update'])->name('admin.about.update');
 
 
+    // coupon
+    Route::get('/coupons',[CouponController::class,'index'])->name('admin.coupons.index');
+    Route::get('/coupons/create',[CouponController::class,'create'])->name('admin.coupons.create');
+    Route::post('/coupons/store',[CouponController::class,'store'])->name('admin.coupons.store');
+    Route::get('/coupons/{coupon}/edit',[CouponController::class,'edit'])->name('admin.coupons.edit');
+    Route::put('/coupons/{coupon}/update',[CouponController::class,'update'])->name('admin.coupons.update');
 
-});
+    Route::delete('/coupons/{coupon}/delete',[CouponController::class,'destroy'])->name('admin.coupons.destroy');
+
+    // product
+    Route::controller(BackendProductController::class)->group(function(){
+        Route::get('/products','index')->name('admin.products.index');
+        Route::get('/products/create','create')->name('admin.products.create');
+        Route::post('/products/store', 'store')->name('admin.products.store');
+        Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
+        Route::delete('/products/ajax-delete', [BackendProductController::class,'ajaxDelete']);
+        Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
+    });
+
+    // Post
+    Route::controller(BackendPostController::class)->group(function(){
+        Route::get('/posts','index')->name('admin.posts.index');
+        Route::get('/posts/create','create')->name('admin.posts.create');
+        Route::post('/posts/store', 'store')->name('admin.posts.store');
+        // Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
+        Route::delete('/posts/ajax-delete', 'ajaxDelete');
+        // Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
+    });
+
+    // category
+    Route::controller(BackendCategoryController::class)->group(function(){
+        Route::get('/categories','index')->name('admin.categories.index');
+        Route::get('/categories/create','create')->name('admin.categories.create');
+        Route::post('/categories/store', 'store')->name('admin.categories.store');
+        Route::delete('/categories/ajax-delete', 'ajaxDelete');
+        // admin.categories.update
+
+        // Route::delete('/categories/{category}/delete','destroy')->name('admin.categories.destroy');
+        Route::get('/categories/{category}/edit','edit')->name('admin.categories.edit');
+        Route::put('/categories/{category}/update','update')->name('admin.categories.update');
+
+
+
+    });
 
 
 
@@ -109,6 +115,8 @@ Route::get('san-pham/modal/show/{id}', [ProductController::class,'ajaxModalShow'
 // post controller
 Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
 Route::get('bai-viet/{post}/{slug?}', [PostController::class,'show'])->name('posts.show');
+Route::get('danh-muc/{category_id}/bai-viet', [PostController::class,'group'])->name('posts.category.group');
+
 
 
 

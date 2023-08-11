@@ -1,0 +1,3245 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" nonce="0db3a49b536b4cedb6bac2a9224" src="//local.adguard.org?ts=1691578344976&amp;type=content-script&amp;dmn=hatgionglamson.com&amp;pth=%2F&amp;app=com.google.Chrome&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+<script type="text/javascript" nonce="0db3a49b536b4cedb6bac2a9224" src="//local.adguard.org?ts=1691578344976&amp;name=AdGuard%20Extra&amp;type=user-script"></script><link rel="stylesheet" type="text/css" href="/asset/lib/bootstrap/css/bootstrap.min.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/lib/font-awesome/css/font-awesome.min.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/lib/select2/css/select2.min.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/lib/jquery.bxslider/jquery.bxslider.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/lib/owl.carousel/owl.carousel.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/lib/jquery-ui/jquery-ui.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/animate.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/reset.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/style.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/responsive.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/option2.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/plugin/font-awesome/css/font-awesome.min.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/custom.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/autosearch.css?v=20190410" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/menu_mobile.css?v=20190410" />
+
+    <!--Rating star-->
+    <link rel="stylesheet" href="/asset/plugin/rating/css/Fr.star.css?v=20190410" />
+
+    <!--Cart sidebar-->
+    <link rel="stylesheet" href="/asset/css/cart_sidebar.css?v=20190410" />
+
+    <!--Facebook app id-->
+    <meta property="fb:app_id" content="560532431526184" />
+
+    <!--ico web-->
+    <link rel="icon" type="image/png" href="/asset/upload/image/logotuychinh1.png"/>
+
+    <title>Hạt giống hoa, hạt giống cây ăn quả, cây cảnh, phụ kiện, vật tự nông nghiệp nhập khẩu, chất lượng, giá tốt nhất!</title>
+
+    <meta name="description" content='hatgionglamson.com chuyên cung cấp các loại hạt giống, cây trồng, vật tư nông nghiệp, đảm bảo chất lượng, giá tốt nhất thị trường!'>
+    <meta name="keywords" content='hatgionglamson.com chuyên cung cấp các loại hạt giống, cây trồng, vật tư nông nghiệp, đảm bảo chất lượng, giá tốt nhất thị trường!'>
+    <meta name="author" content="lechinh8x">
+    <meta itemprop="name" content="Hạt giống hoa, hạt giống cây ăn quả, cây cảnh, phụ kiện, vật tự nông nghiệp nhập khẩu, chất lượng, giá tốt nhất!" />
+    <meta itemprop="description" content="hatgionglamson.com chuyên cung cấp các loại hạt giống, cây trồng, vật tư nông nghiệp, đảm bảo chất lượng, giá tốt nhất thị trường!" />
+    <meta itemprop="image" content="" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="article:publisher" content="" />
+
+    <script>
+        var current_page = 'trang-chu';
+        var url = 'https://hatgionglamson.com/';
+    </script>
+
+    <!--Tuỳ chỉnh css--->
+    <style>
+        /**Thanh menu mau do**/
+.option2 .nav-top-menu {
+    background: #49A73F !important;
+}
+/**video youtube**/
+.videocontainer {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/**facebook post**/
+.fb {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.facebookembed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#fb-post {
+  width: 90%;
+  margin: 0 auto !important;
+}
+/**dan lai san pham**/
+@media only screen and (min-width: 600px) {
+ .product-list li {
+   height: 350px !important;
+}
+    </style>
+
+        <!---Header code--->
+
+  <!-- Google Tag Manager added 11.4.2020 -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PD83XXW');</script>
+        <!-- End Google Tag Manager -->
+</head>
+
+<body class="option2 home option2" id="wrapper">
+
+<!--Facebook comment-->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0&appId=560532431526184&autoLogAppEvents=1"></script>
+
+<!---Body code--->
+<!-- Google Tag Manager (noscript) added: 11.4.2020 -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD83XXW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0" nonce="Ega91dHC"></script>
+<div id="page-content-wrapper">
+
+
+
+<!-- Menu top pc mobile -->
+<div id="header" class="header">
+    <div class="top-header">
+        <div class="container">
+            <div class="nav-top-links">
+                <a class="first-item" href="#">
+                    <img id='phone_icon' alt="phone" src="/asset/image/phone.png">
+                    <strong>
+                            <a href="tel: 0862 572 752" style="color:red">
+                                 0862 572 752                            </a>
+                     </strong>
+                </a>
+                <a href="#">
+                    <img alt="email" id='email_icon' src="/asset/image/email.png">
+                    <strong style="color:#00F;">
+                        <a href="mailto:hatgionglamson@gmail.com"  style="color:blue">
+                            hatgionglamson@gmail.com                        </a>
+                    </strong>
+                </a>
+            </div>
+
+            <div class="top-bar-social">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+            </div>
+
+            <div class="support-link">
+                                <a href="/gioi-thieu">Giới Thiệu</a> <a href="/lien-he">Liên Hệ</a>
+<a href="/tin-tuc/chinh-sach-doi-tra-2.html" > Chính sách đổi trả </a>
+<a href="/tin-tuc/dieu-khoan-mua-hang-va-thanh-toan-3.html" >Điều khoản mua hàng & thanh toán</a>                </div>
+        </div>
+    </div>
+
+    <!--/.top-header -->
+
+    <!-- MAIN HEADER -->
+    <div class="container main-header">
+
+        <div class="row">
+
+            <div class="col-xs-4 col-sm-12 col-md-5 col-lg-4 header-search-box">
+
+                <form class="form-inline" method="GET" action="/tim-kiem">
+
+                    <div class="form-group input-serach">
+
+                        <input type="text" name="q"  placeholder="Tìm kiếm..." id="autosearch">
+
+                    </div>
+
+                    <button type="submit" class="pull-right btn-search">
+
+                        <!--                        <i class="fa fa-search"></i>-->
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <!--Logo web-->
+
+            <div class="col-xs-9 col-sm-9 col-md-4 col-lg-4 logo">
+
+                <a style="float:right" href="/">
+                    <img alt="" src="/asset/upload/image/logotuychinh.png?v=20190410" />
+                </a>
+
+            </div>
+
+
+
+            <!--Thông báo giỏ hàng, icon giỏ hàng-->
+
+            <div class="col-xs-3 col-sm-3 col-md-4 col-lg-4 group-button-header">
+
+                <div class="btn-cart" id="cart-block">
+
+                    <a title="Giỏ hàng của bạn" href="/gio-hang">Giỏ hàng</a>
+
+
+
+                    <!--Số lượng sản phẩm-->
+
+                    <span class="notify notify-right">0</span>
+
+
+
+                    <div class="cart-block">
+
+                        <div class="cart-block-content">
+
+
+
+                            <!--Số lượng sản phẩm-->
+
+                            <h5 class="cart-title">0 sản phẩm</h5>
+
+
+
+                            <div class="cart-block-list">
+
+                                <ul class="icon_gio_hang">
+
+                                    <!--Danh sách sản phẩm trong icon giỏ hàng-->
+
+
+
+                                </ul>
+
+                            </div>
+
+                            <div class="toal-cart">
+
+                                <span>Tổng cộng</span>
+
+                                <span class="toal-price pull-right"> 0 </span>
+
+                            </div>
+
+                            <div class="cart-buttons">
+
+                                <a href="/thanh-toan-don-hang" class="btn-check-out">Thanh toán</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- END MANIN HEADER -->
+
+    <div id="nav-top-menu" class="nav-top-menu">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div id="main-menu" class="col-sm-12 main-menu">
+
+                    <nav class="navbar navbar-default">
+
+                        <div class="container-fluid">
+
+                            <div class="navbar-header">
+
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+
+                                    <i class="fa fa-bars"></i>
+
+                                </button>
+
+                                <a class="navbar-brand" href="#">MENU</a>
+
+                            </div>
+
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class='nav navbar-nav'><li id='trang-chu'><a href='https://hatgionglamson.com/'> TRANG CHỦ</a></li><li id='danh-muc-san-pham'><a href='https://hatgionglamson.com/danh-muc-san-pham'> DANH MỤC SẢN PHẨM</a></li><li id=''><a href='https://hatgionglamson.com/tin-tuc/hot-sale-thang-7-uu-dai-ngap-tran-giam-gia-den-50-68.html'> GIẢM GIÁ</a></li><li id='gioi-thieu'><a href='https://hatgionglamson.com/gioi-thieu'> GIỚI THIỆU</a></li><li id='tin-tuc'><a href='https://hatgionglamson.com/tin-tuc'> TIN TỨC</a></li><li id=''><a href='https://www.youtube.com/channel/UCXI6eakeFYdRf1QQXJk7iwA?sub_confirmation=1'> VIDEO</a></li><li id='lien-he'><a href='https://hatgionglamson.com/lien-he'> LIÊN HỆ</a></li></ul>
+
+                            </div>
+
+                        </div>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+            <!-- userinfo on top-->
+
+            <div id="form-search-opntop">
+
+            </div>
+
+            <!-- userinfo on top-->
+
+            <div id="user-info-opntop">
+
+            </div>
+
+            <!-- CART ICON ON MMENU -->
+
+            <div id="shopping-cart-box-ontop" style="display: none;">
+
+                <i class="fa fa-shopping-cart"></i>
+
+                <div class="shopping-cart-box-ontop-content"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- end header -->
+
+
+<!-- Home slideder-->
+
+<div id="home-slider">
+
+    <div class="container">
+
+        <div class="row">
+
+<!--            <div class="col-sm-3 slider-left"></div>-->
+
+            <div class="col-sm-12 header-top-right">
+
+                <div class="homeslider">
+
+                    <ul id="contenhomeslider">
+
+
+
+                                <li>
+
+                                    <a href="https://hatgionglamson.com/tin-tuc/hat-giong-lam-son-giam-20-gia-toan-bo-hat-giong-nhan-dip-30-thang-4-90.html">
+
+                                                                                <img src="/asset/upload/image/45.png?v=20190410">
+
+                                    </a>
+
+                                </li>
+
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<div class="page-top">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-12">
+
+                <h2 class="page-heading">
+
+                    <span class="page-heading-title title_home_sp_hot">SẢN PHẨM HOT</span>
+
+                </h2>
+
+                <div class="latest-deals-product">
+
+                    <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "10" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":5}}'>
+
+                        <!--Sản phẩm hot-->
+
+
+
+
+
+                                <li>
+
+                                    <div class="left-block">
+
+                                        <a href="/san-pham/hat-giong-mang-tay-chiu-nhiet-nang-suat-cao-20-hat-405.html">
+
+                                            <img class="img-responsive lazy" alt="Hạt Giống Măng Tây Chịu Nhiệt Năng Suất Cao - 20 Hạt" data-src="/asset/upload/image/medium/mang-tay-chiu-nhiet-nang-xuat-cao.jpg?v=20190410" />
+
+                                        </a>
+
+                                        <div class="add-to-cart list_product" product_id="405">
+
+                                            <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                        </div>
+
+                                        <div class="price-percent-reduction2">
+
+                                            -36% OFF
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="right-block">
+
+                                        <h5 class="product-name">
+
+                                            <a href="/san-pham/hat-giong-mang-tay-chiu-nhiet-nang-suat-cao-20-hat-405.html">
+
+                                                Hạt Giống Măng Tây Chịu Nhiệt Năng Suất Cao - 20 Hạt
+                                            </a>
+
+                                        </h5>
+
+                                        <div class="content_price">
+
+                                            <span class="price product-price">35.000</span>
+
+                                            <span class="price old-price">55.000</span>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+
+
+
+                                <li>
+
+                                    <div class="left-block">
+
+                                        <a href="/san-pham/hat-giong-hoa-thuoc-duoc-nhieu-mau-tang-vien-nen-nay-mam-50-hat-36.html">
+
+                                            <img class="img-responsive lazy" alt="Hạt Giống Hoa Thược Dược Nhiều Màu - Tặng viên nén nảy mầm -  50 Hạt" data-src="/asset/upload/image/medium/hat-giong-hoa-thuoc-duoc-nhieu-mau.jpg?v=20190410" />
+
+                                        </a>
+
+                                        <div class="add-to-cart list_product" product_id="36">
+
+                                            <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                        </div>
+
+                                        <div class="price-percent-reduction2">
+
+                                            -63% OFF
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="right-block">
+
+                                        <h5 class="product-name">
+
+                                            <a href="/san-pham/hat-giong-hoa-thuoc-duoc-nhieu-mau-tang-vien-nen-nay-mam-50-hat-36.html">
+
+                                                Hạt Giống Hoa Thược Dược Nhiều Màu - Tặng viên nén nảy mầm -  50 Hạt
+                                            </a>
+
+                                        </h5>
+
+                                        <div class="content_price">
+
+                                            <span class="price product-price">30.000</span>
+
+                                            <span class="price old-price">80.000</span>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+
+
+
+                                <li>
+
+                                    <div class="left-block">
+
+                                        <a href="/san-pham/hat-giong-mang-tay-xanh-267.html">
+
+                                            <img class="img-responsive lazy" alt="Hạt Giống Măng Tây Xanh" data-src="/asset/upload/image/medium/hat-giong-mang-tay-xanh-lamson1.png?v=20190410" />
+
+                                        </a>
+
+                                        <div class="add-to-cart list_product" product_id="267">
+
+                                            <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                        </div>
+
+                                        <div class="price-percent-reduction2">
+
+                                            -36% OFF
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="right-block">
+
+                                        <h5 class="product-name">
+
+                                            <a href="/san-pham/hat-giong-mang-tay-xanh-267.html">
+
+                                                Hạt Giống Măng Tây Xanh
+                                            </a>
+
+                                        </h5>
+
+                                        <div class="content_price">
+
+                                            <span class="price product-price">35.000</span>
+
+                                            <span class="price old-price">55.000</span>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+
+
+
+                                <li>
+
+                                    <div class="left-block">
+
+                                        <a href="/san-pham/hat-giong-rau-ngo-265.html">
+
+                                            <img class="img-responsive lazy" alt="Hạt Giống Rau Ngò" data-src="/asset/upload/image/medium/hat-giong-rau-ngo-lamson.jpg?v=20190410" />
+
+                                        </a>
+
+                                        <div class="add-to-cart list_product" product_id="265">
+
+                                            <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                        </div>
+
+                                        <div class="price-percent-reduction2">
+
+                                            -43% OFF
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="right-block">
+
+                                        <h5 class="product-name">
+
+                                            <a href="/san-pham/hat-giong-rau-ngo-265.html">
+
+                                                Hạt Giống Rau Ngò
+                                            </a>
+
+                                        </h5>
+
+                                        <div class="content_price">
+
+                                            <span class="price product-price">20.000</span>
+
+                                            <span class="price old-price">35.000</span>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+
+
+
+                                <li>
+
+                                    <div class="left-block">
+
+                                        <a href="/san-pham/hat-giong-xuong-rong-mix-du-loai--297.html">
+
+                                            <img class="img-responsive lazy" alt="Hạt Giống Xương Rồng Mix Đủ Loại " data-src="/asset/upload/image/medium/hat-giong-xuong-rong-mix-du-loai-1.6__.jpg?v=20190410" />
+
+                                        </a>
+
+                                        <div class="add-to-cart list_product" product_id="297">
+
+                                            <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                        </div>
+
+                                        <div class="price-percent-reduction2">
+
+                                            -30% OFF
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="right-block">
+
+                                        <h5 class="product-name">
+
+                                            <a href="/san-pham/hat-giong-xuong-rong-mix-du-loai--297.html">
+
+                                                Hạt Giống Xương Rồng Mix Đủ Loại
+                                            </a>
+
+                                        </h5>
+
+                                        <div class="content_price">
+
+                                            <span class="price product-price">35.000</span>
+
+                                            <span class="price old-price">50.000</span>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+
+
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Baner bottom -->
+
+
+            <div class="row banner-bottom" style="margin-right: 0px !important;">
+
+
+                    <div class="col-sm-6 item-left">
+
+                        <div class="banner-boder-zoom">
+
+                            <a href="#">
+
+                                <img class="img-responsive lazy" data-src="/asset/upload/image/hoa-sen-can3.jpg" />
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-6 item-left">
+
+                        <div class="banner-boder-zoom">
+
+                            <a href="https://hatgionglamson.com/danh-muc-san-pham">
+
+                                <img class="img-responsive lazy" data-src="/asset/upload/image/Untitled-2.jpg" />
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+            </div>
+
+
+        <!-- end banner bottom -->
+
+    </div>
+
+</div>
+
+
+
+<!--Tab danh mục sản phẩm-->
+
+<style>
+
+    .right-block .product-name{
+
+        font-weight: bold;
+
+    }
+
+</style>
+
+
+
+<div class="content-page">
+
+    <div class="container">
+        <!-- sports, fashion, electronic, digital, furniture, jewelry -->
+
+
+
+
+
+
+
+
+
+            <div class="category-featured jewelry">
+
+            <nav class="navbar nav-menu show-brand">
+
+                <div class="container">
+
+                    <!--Tiêu đề danh mục-->
+
+                    <div class="navbar-brand" style="width:auto; padding-right:40px;">
+
+                        <a href="/hat-giong-an-qua-165.html">
+
+                            HẠT GIỐNG ĂN QUẢ
+                        </a>
+
+                    </div>
+
+                    <span class="toggle-menu"></span>
+
+
+
+                    <!--Danh sách group tab-->
+
+                    <div class="collapse navbar-collapse">
+
+                        <ul class="nav navbar-nav">
+
+                            <li class="active">
+
+                                <a href="/hat-giong-an-qua-165.html">Xem tất cả</a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+
+
+            <div class="product-featured clearfix">
+
+                <div class="row">
+
+
+                    <!--Danh sách sản phẩm theo từng tab-->
+
+                    <div class="col-sm-12 col-right-tab">
+
+                        <div class="product-featured-tab-content">
+
+                            <div class="tab-container">
+
+
+
+                                <!--Sản phẩm ở tab mặc định-->
+
+                                <div class="tab-panel active" id="tab-active">
+
+                                    <div class="box-right" style="width:100%">
+
+                                        <ul class="product-list row">
+
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-viet-quat-xanh-goi-001-gram-9.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-viet-quat-xanh-4.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="9">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-viet-quat-xanh-goi-001-gram-9.html">
+
+                                                                        Hạt Giống Việt Quất Xanh - Tặng viên nén nảy mầm - Gói 0,01 Gram                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">50.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-viet-quat-do-goi-001-gram-30-hat-10.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/viet-quat-do-1.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="10">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-viet-quat-do-goi-001-gram-30-hat-10.html">
+
+                                                                        Hạt Giống Việt Quất Đỏ - Tặng viên nén nảy mầm - Gói 0,01 Gram ~ 30 Hạt                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-dua-luoi-ruot-vang-goi-15-hat-11.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-dua-luoi-ruot-vang.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="11">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-dua-luoi-ruot-vang-goi-15-hat-11.html">
+
+                                                                        Hạt Giống Dưa Lưới Ruột Vàng - Tặng viên nén nảy mầm - Gói 15 Hạt                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">25.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-du-du-ruot-do-10-hat-48.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/du-du-ruot-do2.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="48">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-du-du-ruot-do-10-hat-48.html">
+
+                                                                        Hạt Giống Đu Đủ Ruột Đỏ - 10 Hạt                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-dau-tay-do-chiu-han-goi-lon-49.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-dau-tay-do.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="49">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-dau-tay-do-chiu-han-goi-lon-49.html">
+
+                                                                        Hạt Giống Dâu Tây Đỏ Chịu Nhiệt - Gói Lớn                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">70.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-dau-tay-trang-f1-nga-tang-vien-nen-nay-mam-50.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-dau-tay-trang1.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="50">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-dau-tay-trang-f1-nga-tang-vien-nen-nay-mam-50.html">
+
+                                                                        Hạt Giống Dâu Tây Trắng - F1 Nga - Tặng Viên Nén Nảy Mầm                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">80.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-du-du-sieu-lun-f1-thailan-tang-vien-nen-nay-mam-51.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/du-du-sieu-lun-thai-lan-11.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="51">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-du-du-sieu-lun-f1-thailan-tang-vien-nen-nay-mam-51.html">
+
+                                                                        Hạt Giống Đu Đủ Siêu Lùn - F1 ThaiLan - Tặng Viên Nén Nảy Mầm                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">35.000</span>
+
+                                                                    <span class="price old-price">50.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-dua-le-sieu-ngot-f1-nhat-ban-tang-kem-vien-nen-nay-mam-54.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-dua-le-sieu-ngot-f1.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="54">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-dua-le-sieu-ngot-f1-nhat-ban-tang-kem-vien-nen-nay-mam-54.html">
+
+                                                                        Hạt Giống Dưa Lê Siêu Ngọt F1 - Nhật Bản - Tặng Kèm Viên Nén Nảy Mầm                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">25.000</span>
+
+                                                                    <span class="price old-price">50.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+            <div class="category-featured fashion">
+
+            <nav class="navbar nav-menu show-brand">
+
+                <div class="container">
+
+                    <!--Tiêu đề danh mục-->
+
+                    <div class="navbar-brand" style="width:auto; padding-right:40px;">
+
+                        <a href="/hat-giong-rau-cu-174.html">
+
+                            HẠT GIỐNG RAU CỦ
+                        </a>
+
+                    </div>
+
+                    <span class="toggle-menu"></span>
+
+
+
+                    <!--Danh sách group tab-->
+
+                    <div class="collapse navbar-collapse">
+
+                        <ul class="nav navbar-nav">
+
+                            <li class="active">
+
+                                <a href="/hat-giong-rau-cu-174.html">Xem tất cả</a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+
+
+            <div class="product-featured clearfix">
+
+                <div class="row">
+
+
+                    <!--Danh sách sản phẩm theo từng tab-->
+
+                    <div class="col-sm-12 col-right-tab">
+
+                        <div class="product-featured-tab-content">
+
+                            <div class="tab-container">
+
+
+
+                                <!--Sản phẩm ở tab mặc định-->
+
+                                <div class="tab-panel active" id="tab-active">
+
+                                    <div class="box-right" style="width:100%">
+
+                                        <ul class="product-list row">
+
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-bap-cai-ti-hon-tim-f1-de-trong-57.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-bap-cai-ti-hon-tim-2.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="57">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-bap-cai-ti-hon-tim-f1-de-trong-57.html">
+
+                                                                        Hạt Giống Bắp Cải Tí Hon Tím - F1 Dễ Trồng                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">50.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-bap-cai-ti-hon-xanh-f1-de-trong-58.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-bap-cai-ti-hon-xanh-1.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="58">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-bap-cai-ti-hon-xanh-f1-de-trong-58.html">
+
+                                                                        Hạt Giống Bắp Cải Tí Hon Xanh - F1 Dễ Trồng                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">50.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-bau-ho-lo-80.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/bau-ho-lo_(3).jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="80">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-bau-ho-lo-80.html">
+
+                                                                        Hạt Giống Bầu Hồ Lô                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">20.000</span>
+
+                                                                    <span class="price old-price">35.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-bau-ho-lo-thien-nga-82.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/bau-ho-lo-thien-nga_(1).png?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="82">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-bau-ho-lo-thien-nga-82.html">
+
+                                                                        Hạt Giống Bầu Hồ Lô Thiên Nga                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">60.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-bau-sao-lai-f1-cao-san-83.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/unnamed.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="83">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-bau-sao-lai-f1-cao-san-83.html">
+
+                                                                        Hạt Giống Bầu Sao Lai F1 Cao Sản                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">20.000</span>
+
+                                                                    <span class="price old-price">40.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-ca-chua-bi-do-lun-f1-goi-lon-84.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/ca-chua-bi-do-lun_(1).jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="84">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-ca-chua-bi-do-lun-f1-goi-lon-84.html">
+
+                                                                        Hạt Giống Cà Chua Bi Đỏ Lùn F1 Gói Lớn                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-ca-chua-cherry-do-f1-goi-lon-85.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/cherry-do-8.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="85">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-ca-chua-cherry-do-f1-goi-lon-85.html">
+
+                                                                        Hạt Giống Cà Chua Cherry Đỏ F1 Gói Lớn                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-ca-chua-cherry-do-f1-goi-lon-86.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-ca-chua-cherry-vang-4.1_.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="86">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-ca-chua-cherry-do-f1-goi-lon-86.html">
+
+                                                                        Hạt Giống Cà Chua Cherry Vàng F1 Gói Lớn                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">50.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+            <div class="category-featured sports">
+
+            <nav class="navbar nav-menu show-brand">
+
+                <div class="container">
+
+                    <!--Tiêu đề danh mục-->
+
+                    <div class="navbar-brand" style="width:auto; padding-right:40px;">
+
+                        <a href="/hat-giong-hoa-164.html">
+
+                            HẠT GIỐNG HOA
+                        </a>
+
+                    </div>
+
+                    <span class="toggle-menu"></span>
+
+
+
+                    <!--Danh sách group tab-->
+
+                    <div class="collapse navbar-collapse">
+
+                        <ul class="nav navbar-nav">
+
+                            <li class="active">
+
+                                <a href="/hat-giong-hoa-164.html">Xem tất cả</a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+
+
+            <div class="product-featured clearfix">
+
+                <div class="row">
+
+
+                    <!--Danh sách sản phẩm theo từng tab-->
+
+                    <div class="col-sm-12 col-right-tab">
+
+                        <div class="product-featured-tab-content">
+
+                            <div class="tab-container">
+
+
+
+                                <!--Sản phẩm ở tab mặc định-->
+
+                                <div class="tab-panel active" id="tab-active">
+
+                                    <div class="box-right" style="width:100%">
+
+                                        <ul class="product-list row">
+
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-cuc-van-tho-f1-vang-cam-1.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat_giong_van_tho_f1.png?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="1">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-cuc-van-tho-f1-vang-cam-1.html">
+
+                                                                        Hạt Giống Cúc Vạn Thọ F1 Vàng Cam - Tặng kèm viên nén nảy mầm                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">35.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/cu-giong-hoa-ly-2.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/cu-giong-hoa-ly1.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="2">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/cu-giong-hoa-ly-2.html">
+
+                                                                        Củ Giống Hoa Ly SIZE LỚN- Tặng kèm viên nén nảy mầm                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">40.000</span>
+
+                                                                    <span class="price old-price">60.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-sen-dai-loan-canh-kep-12-hat-3.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-sen-dai-loan-canh-kep.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="3">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-sen-dai-loan-canh-kep-12-hat-3.html">
+
+                                                                        Hạt Giống Sen Đài Loan Cánh Kép  - Tặng kèm viên nén nảy mầm - 12 Hạt                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">50.000</span>
+
+                                                                    <span class="price old-price">80.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-hoa-thuoc-duoc-do-goi-50-hat-4.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-hoa-thuoc-duoc-do.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="4">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-hoa-thuoc-duoc-do-goi-50-hat-4.html">
+
+                                                                        Hạt Giống Hoa Thược Dược Đỏ  - Tặng kèm viên nén nảy mầm - Gói 50 Hạt                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">80.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-hoa-xac-phao-mix-mau-goi-20-hat-5.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-hoa-xac-phao.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="5">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-hoa-xac-phao-mix-mau-goi-20-hat-5.html">
+
+                                                                        Hạt Giống Hoa Xác Pháo Mix Màu - Tặng kèm viên nén nảy mầm - Gói 20 Hạt                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">25.000</span>
+
+                                                                    <span class="price old-price">40.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-hoa-day-leo-xanh-goi-15-20-hat-6.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-day-leo-xanh.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="6">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-hoa-day-leo-xanh-goi-15-20-hat-6.html">
+
+                                                                        Hạt Giống Hoa Dây Leo Xanh - Tặng kèm viên nén nảy mầm - Gói 15- 20 hạt                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">25.000</span>
+
+                                                                    <span class="price old-price">40.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-hoa-mong-tay-kep-50-hat-7.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-hoa-mong-tay-kep1.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="7">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-hoa-mong-tay-kep-50-hat-7.html">
+
+                                                                        Hạt Giống Hoa Móng Tay Kép - Tặng kèm viên nén nảy mầm - 50 hạt                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/hat-giong-hoa-huong-duong-sieu-bong-goi-30-hat-12.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/hat-giong-hoa-huong-duong-sieu-bong.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="12">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/hat-giong-hoa-huong-duong-sieu-bong-goi-30-hat-12.html">
+
+                                                                        Hạt Giống Hoa Hướng Dương Siêu Bông - Tặng viên nén nảy mầm- Gói 30 Hạt                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">30.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+            <div class="category-featured fashion">
+
+            <nav class="navbar nav-menu show-brand">
+
+                <div class="container">
+
+                    <!--Tiêu đề danh mục-->
+
+                    <div class="navbar-brand" style="width:auto; padding-right:40px;">
+
+                        <a href="/dung-cu-nong-nghiep-153.html">
+
+                            DỤNG CỤ NÔNG NGHIỆP
+                        </a>
+
+                    </div>
+
+                    <span class="toggle-menu"></span>
+
+
+
+                    <!--Danh sách group tab-->
+
+                    <div class="collapse navbar-collapse">
+
+                        <ul class="nav navbar-nav">
+
+                            <li class="active">
+
+                                <a href="/dung-cu-nong-nghiep-153.html">Xem tất cả</a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+
+
+            <div class="product-featured clearfix">
+
+                <div class="row">
+
+
+                    <!--Danh sách sản phẩm theo từng tab-->
+
+                    <div class="col-sm-12 col-right-tab">
+
+                        <div class="product-featured-tab-content">
+
+                            <div class="tab-container">
+
+
+
+                                <!--Sản phẩm ở tab mặc định-->
+
+                                <div class="tab-panel active" id="tab-active">
+
+                                    <div class="box-right" style="width:100%">
+
+                                        <ul class="product-list row">
+
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/sumicoat-16-19-16-phan-bon-re-phong-thich-dinh-duong-co-kiem-soat-14.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/phan-bon-sumicoat.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="14">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/sumicoat-16-19-16-phan-bon-re-phong-thich-dinh-duong-co-kiem-soat-14.html">
+
+                                                                        Sumicoat 16-19-16 PHÂN Bón Rễ Phóng Thích Dinh Dưỡng Có Kiểm Soát                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">40.000</span>
+
+                                                                    <span class="price old-price">60.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/phan-tan-cham-nhat-ban-sumiat-15.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/phan_bon_tan_cham.png?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="15">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/phan-tan-cham-nhat-ban-sumiat-15.html">
+
+                                                                        Phân Tan Chậm Nhật Bản SUMIAT                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">35.000</span>
+
+                                                                    <span class="price old-price">65.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/che-pham-kich-hoa-lan-alpha-omega-thai-lan-16.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/che_pham_kich_hoa_lan.png?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="16">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/che-pham-kich-hoa-lan-alpha-omega-thai-lan-16.html">
+
+                                                                        Chế Phẩm Kích Hoa Lan Alpha Omega Thái Lan                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">110.000</span>
+
+                                                                    <span class="price old-price">200.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/combo-10-50-100-vien-nen-kich-thich-nay-mam-17.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/vien-nen-kich-thich-nay-mam.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="17">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/combo-10-50-100-vien-nen-kich-thich-nay-mam-17.html">
+
+                                                                        Combo 10 - 50 - 100 Viên Nén Kích Thích Nảy Mầm                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">25.000</span>
+
+                                                                    <span class="price old-price">35.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/phan-bon-tan-cham-bo-sung-vi-luong-255.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/phan-bon-tan-cham-bo-xung-vi-luong.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="255">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/phan-bon-tan-cham-bo-sung-vi-luong-255.html">
+
+                                                                        Phân Bón Tan Chậm Bổ Sung Vi Lượng                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">35.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/phan-bon-tan-cham-sieu-kich-re-mam-256.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/phan-bon-tan-cham-kich-re.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="256">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/phan-bon-tan-cham-sieu-kich-re-mam-256.html">
+
+                                                                        Phân Bón Tan Chậm Siêu Kích Rễ Mầm                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">40.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+
+                                                        <li class="col-xs-12 col-sm-12 col-sm-3">
+
+
+
+                                                            <div class="left-block">
+
+                                                                <a href="/san-pham/phan-bon-tan-cham-kich-bong-tuyet-dinh-257.html">
+
+                                                                    <img class="img-responsive lazy" data-src="/asset/upload/image/large/phan-bon-tan-cham-kich-bong.jpg?v=20190410" />
+
+                                                                </a>
+
+                                                                <div class="add-to-cart list_product" product_id="257">
+
+                                                                    <a title="Add to Cart" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="right-block">
+
+                                                                <h5 class="product-name">
+
+                                                                    <a href="/san-pham/phan-bon-tan-cham-kich-bong-tuyet-dinh-257.html">
+
+                                                                        Phân Bón Tan Chậm Kích Bông                                                                    </a>
+
+                                                                </h5>
+
+                                                                <div class="content_price">
+
+                                                                    <span class="price product-price">45.000</span>
+
+                                                                    <span class="price old-price">55.000</span>
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                        </li>
+
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+
+
+<div id="content-wrap">
+
+    <div class="container">
+
+        <!-- service 2 -->
+
+        <div class="services2">
+            <!-- home_three_block -->
+                        <ul>
+
+                <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+
+                    <div class="service-wapper">
+
+                        <div class="row">
+
+                            <div class="col-sm-6 image">
+
+                                <div class="icon">
+
+                                    <img src="/asset/image/icon-s1.png" alt="service">
+
+                                </div>
+
+                                <h3 class="title"><a href="#">CHẤT LƯỢNG</a></h3>
+
+                            </div>
+
+                            <div class="col-sm-6 text">
+
+                                Đảm bảo hạt giống F1, chất lượng với tỉ lệ nảy mầm trên >90%.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+                <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+
+                    <div class="service-wapper">
+
+                        <div class="row">
+
+                            <div class="col-sm-6 image">
+
+                                <div class="icon">
+
+                                    <img src="/asset/image/icon-s2.png" alt="service">
+
+                                </div>
+
+                                <h3 class="title"><a href="#">Ship toàn quốc</a></h3>
+
+                            </div>
+
+                            <div class="col-sm-6 text">
+
+                                Giao hàng tận nơi trên toàn quốc, chỉ thanh toán tiền khi nhận được hàng
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+                <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+
+                    <div class="service-wapper">
+
+                        <div class="row">
+
+                            <div class="col-sm-6 image">
+
+                                <div class="icon">
+
+                                    <img src="/asset/image/icon-s5.png" alt="service">
+
+                                </div>
+
+                                <h3 class="title"><a href="#">TƯ VẤN 24/7</a></h3>
+
+                            </div>
+
+                            <div class="col-sm-6 text">
+
+                                Dịch vụ khách hàng 24/7, năng động, nhiệt tình, tư vấn các vấn đề về hạt giống cây trồng
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <!-- ./service 2 -->
+
+    </div> <!-- /.container -->
+
+</div>
+
+
+
+﻿<!-- Footer -->
+
+<footer id="footer">
+
+    <div class="container">
+
+        <!-- introduce-box -->
+
+        <div id="introduce-box" class="row">
+
+            <div class="col-md-3">
+
+                <div id="address-box">
+
+                    <a href="#">
+
+                        <img src="/asset/upload/image/logotuychinh.png?v=20190410" />
+
+                    </a>
+                    <style>
+                        #address-list div{
+                            margin-bottom: 5px;
+                        }
+                    </style>
+                    <div id="address-list">
+
+                        <!--Địa Chỉ-->
+                        <div> <b>CTY TNHH TMDV LÂM SƠN</b>:   77D Bàu Cát 8, Phường 11, Quận Tân Bình, TP.HCM </div>
+                        <!--Địa Chỉ 2-->
+                        <div> <b>Kho Bảo Lộc</b>:  105/2 Phan Chu Trinh, Phường Lộc Tiến, Thành Phố Bảo Lộc, Tỉnh Lâm Đồng </div>
+                        <!--Phone-->
+                        <div> <b>Hotline</b>: <a href='tel: 0862 572 752' style='color:red'>  0862 572 752 </a> </div>
+                        <!--Phone 2-->
+                        <div> <b>MST</b>: <a href='tel: 0316478995' style='color:red'>  0316478995 </a> </div>
+                        <div>
+                            <b>Email</b>: hatgionglamson@gmail.com                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-sm-3">
+
+                <div class="introduce-title">TIN TỨC</div>
+
+                <ul id="introduce-company"  class="introduce-list">
+
+
+
+
+
+                            <li>
+
+                                <a href="/tin-tuc/mach-ban-cach-trong-hoa-huong-duong-tai-nha-bang-hat-78.html" >
+
+                                    Mách Bạn Cách Trồng Hoa Hướng Dương Tại Nhà Bằng Hạt
+                                </a>
+
+                            </li>
+
+
+
+
+                            <li>
+
+                                <a href="/tin-tuc/ban-da-biet-nhung-loi-ich-tu-dau-bap-xanh-sieu-lun-35.html" >
+
+                                    Bạn Đã Biết Những Lợi Ích Từ Đậu Bắp Xanh Siêu Lùn?
+                                </a>
+
+                            </li>
+
+
+
+
+                            <li>
+
+                                <a href="/tin-tuc/cong-dung-cua-dau-bap-khong-phai-ai-cung-biet-34.html" >
+
+                                    Công Dụng Của Đậu Bắp Không Phải Ai Cũng Biết
+                                </a>
+
+                            </li>
+
+
+
+
+                            <li>
+
+                                <a href="/tin-tuc/thanh-phan-dinh-duong-va-cong-dung-cua-cai-duoi-phung-17.html" >
+
+                                    Thành Phần Dinh Dưỡng Và Công Dụng Của Cải Đuôi Phụng
+                                </a>
+
+                            </li>
+
+
+
+
+                            <li>
+
+                                <a href="/tin-tuc/loi-ich-bat-ngo-cua-dau-bap-do-33.html" >
+
+                                    Lợi Ích Bất Ngờ Của Đậu Bắp Đỏ
+                                </a>
+
+                            </li>
+
+
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="col-sm-3">
+
+                <div class="introduce-title">SẢN PHẨM</div>
+
+                <ul id = "introduce-Account" class="introduce-list">
+
+
+
+
+<!--                                    -->
+
+
+                            <li>
+
+                                <a href="https://hatgionglamson.com/san-pham/hat-giong-hoa-mai-lun-do-301.html">
+
+                                    Hạt Giống Hoa Mai Lùn Đỏ
+                                </a>
+
+                            </li>
+
+
+
+<!--                                    -->
+
+
+                            <li>
+
+                                <a href="https://hatgionglamson.com/san-pham/hat-giong-cai-xoan-kale-laci-100-hat-375.html">
+
+                                    Hạt Giống Cải Xoăn Kale Laci - 100 Hạt
+                                </a>
+
+                            </li>
+
+
+
+<!--                                    -->
+
+
+                            <li>
+
+                                <a href="https://hatgionglamson.com/san-pham/combo-5-goi-hat-giong-cu-cai-trang-100-gram-178.html">
+
+                                    Combo 5 Gói Hạt Giống Củ Cải Trắng - 100 Gram
+                                </a>
+
+                            </li>
+
+
+
+<!--                                    -->
+
+
+                            <li>
+
+                                <a href="https://hatgionglamson.com/san-pham/combo-5-goi-hat-giong-cai-be-dun-f1-100-gram-212.html">
+
+                                    Combo 5 Gói Hạt Giống Cải Bẹ Dún F1 100 Gram
+                                </a>
+
+                            </li>
+
+
+
+<!--                                    -->
+
+
+                            <li>
+
+                                <a href="https://hatgionglamson.com/san-pham/combo-5-goi-hat-giong-ca-rot-tron-paris-phap-2.5-gram-216.html">
+
+                                    Combo 5 Gói Hạt Giống Cà Rốt Tròn Paris Pháp 2.5 Gram
+                                </a>
+
+                            </li>
+
+
+
+                </ul>
+
+            </div>
+
+
+
+
+
+            <div class="col-md-3">
+
+                <div id="contact-box">
+
+                    <div class="introduce-title">NHẬN THÔNG TIN</div>
+
+                    <div class="input-group" id="mail-box">
+                        <input type="text" placeholder="Your Email Address">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">OK
+                            </button>
+                        </span>
+                    </div>
+
+                    <!-- /input-group -->
+                    <div class="introduce-title">BẢN ĐỒ ĐƯỜNG ĐI</div>
+                    <div class="social-link">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6924263309224!2d106.70113541507452!3d10.834833292281887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175290918d2da67%3A0x4790767ae50b4ad6!2zVsaw4budbiBMYW4gUuG7q25nIFTDonkgQ2hp!5e0!3m2!1sen!2s!4v1577718986951!5m2!1sen!2s" width="350" height="150" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+        </div><!-- /#introduce-box -->
+
+        <div id="footer-menu-box">
+
+            <div class="col-sm-12">
+
+                <ul class="footer-menu-list">
+<li><a href="/gioi-thieu" >Giới Thiệu</a></li>
+<li><a href="/tin-tuc" >Tin Tức</a></li>
+<li><a href="/lien-he" >Liên Hệ</a></li>
+<li><a href="/tin-tuc/chinh-sach-doi-tra-2.html" > Chính sách đổi trả </a></li>
+<li><a href="/tin-tuc/dieu-khoan-mua-hang-va-thanh-toan-3.html" >Điều khoản mua hàng & thanh toán</a></li>
+</ul>
+            </div>
+
+        </div><!-- /#footer-menu-box -->
+
+    </div>
+
+</footer>
+
+<!---Contact butotn--->
+    <!---Contact Button-->
+<link href="/asset/contact_button/style.css" rel="stylesheet" type="text/css" />
+<div class="social-button">
+    <div class="social-button-content">
+
+        <a href="https://zalo.me/0862572752" class="zalo" id='contact_zalo' target='_blank'>
+            <i></i>
+            <span>Zalo:  0862 572 752</span>
+        </a>
+
+        <a href="tel: 0862 572 752" class="call-icon" rel="nofollow" id='contact_phone'>
+            <i></i>
+            <span>Hotline:  0862 572 752</span>
+        </a>
+
+        <a href="https://www.messenger.com/t/hatgionglamson" class="sms" id='contact_facebook' target='_blank'>
+            <i></i>
+            <span>Facebook Messenger</span>
+        </a>
+
+    </div>
+</div>
+</div>
+
+<!--Cart sidebar-->
+<div id="cart_sidebar_html">
+        <div class="cart-sidebar">
+
+        <div id="cart-loading" class="hide"></div>
+
+        <div class="widget-wrapper">
+
+            <div id="cart-info" class="cart-info">
+
+                <span class="title">Giỏ Hàng</span>
+
+                <ul class="list-unstyled">
+
+
+
+
+
+                </ul>
+
+
+
+                <!--Tổng số tiền-->
+
+                <div class="subtotal">
+
+                    Tổng Cộng:
+
+               <span>
+
+               <span class="amount">
+
+                   <strong class="money" style="color: #199427;">
+
+                       0 ₫
+
+                   </strong>
+
+               </span>
+
+
+
+               </span>
+
+
+
+                </div>
+
+                <div class="buttons">
+
+                    <a href="/gio-hang" class="btn-viewcart" title="xem giỏ hàng">XEM GIỎ HÀNG</a>
+
+                    <a href="/thanh-toan-don-hang" class="btn-pay" title="thanh toán">XÁC NHẬN MUA HÀNG</a>
+
+                    <a href="#" onclick="return hideCart()" class="btn-viewcart hidden-lg hidden-md hidden-desktop"
+
+                       title="đóng giỏ hàng">ĐÓNG GIỎ HÀNG</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div></div>
+
+<a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
+
+<!-- Script-->
+<script type="text/javascript" src="/asset/lib/jquery/jquery-1.11.2.min.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/lib/bootstrap/js/bootstrap.min.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/lib/select2/js/select2.min.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/lib/jquery.bxslider/jquery.bxslider.min.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/lib/owl.carousel/owl.carousel.min.js?v=20190410"></script>
+<!--<script type="text/javascript" src="/asset/lib/jquery.countdown/jquery.countdown.min.js"></script>-->
+
+<!-- OUNTDOWN -->
+<script type="text/javascript" src="/asset/lib/countdown/jquery.plugin.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/lib/countdown/jquery.countdown.js?v=20190410"></script>
+
+<!-- ./COUNTDOWN -->
+<script type="text/javascript" src="/asset/js/jquery.actual.min.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/js/theme-script.js?v=20190410"></script>
+
+<!--extra js-->
+<script type="text/javascript" src="/asset/lib/jquery.elevatezoom.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/lib/jquery-ui/jquery-ui.min.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/lib/fancyBox/jquery.fancybox.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/plugin/noty/packaged/jquery.noty.packaged.js?v=20190410"></script>
+<script type="text/javascript" src="/asset/js/common.js?v=20190410"></script>
+
+<!--Khung chat mua hàng-->
+    <!--Khung chat mua hàng-->
+<link rel="stylesheet" type="text/css" href="/asset/chat/style.css" />
+
+<!--Khung chat mua hàng-->
+<script src="/asset/chat/script.js"></script>
+
+<div id="popup_chat" class="popup_close">
+    <div class="offline_heading">
+        <label class="button_chat_offline_text" style="font-weight: bold;" >ĐĂNG KÝ MUA HÀNG</label><i class="fa fa-angle-up shrink_icon toggle_popup"></i>
+    </div>
+
+    <div class="popup_body">
+        <form id="contactForm">
+
+            <p class="bg-success info" id="box_info">
+                Chào bạn! Bạn ghi rõ cụ thể thông tin mua hàng, chung tôi sẽ lên đơn hàng và gửi tới bạn trong 3-5 ngày làm việc!
+            </p>
+
+            <p class="bg-success info" id="box_success" style="display: none; color: red">
+                            </p>
+
+
+                <!--mã sản phẩm-->
+                <input type="hidden" value="0" name="masanpham">
+
+                <!--nguoi nhap-->
+                <input type="hidden" value="lechinh" name="nguoinhap">
+
+                <!--Giá sản phẩm-->
+                <input type="hidden" value="0" name="giasanpham" />
+
+                <!--current url-->
+                <input type="hidden" value="aHR0cHM6Ly9oYXRnaW9uZ2xhbXNvbi5jb20vPw==" name="current_url">
+
+                <!--current url-->
+                <input type="hidden" value="https://hatgionglamson.com/" name="chat_url" id='chat_url'>
+
+                <!--Current time stamp-->
+                <input type="hidden" value="1691517519" name="random_key">
+
+                <!--******************************-->
+                <!--Họ tên-->
+                <div class="form-group">
+                    <input type="text" class="form-control" name="hoten" placeholder="Họ Tên*" required id="hoten" maxlength="100">
+                </div>
+
+                <!--Phone-->
+                <div class="form-group">
+                    <input type="text" class="form-control" name="dienthoai" placeholder="Số Điện Thoại*" required id="dienthoai" maxlength="100">
+                </div>
+
+                <!--Địa chỉ-->
+                <div class="form-group">
+                    <input type="text" class="form-control" name="diachi" placeholder="Đia chỉ nhận hàng tại nhà*" required id="diachi" maxlength="200">
+                </div>
+
+                <!--Sản phẩm đặt-->
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" placeholder="Số Lượng + Sản Phẩm Muốn Mua*" name="sanphamdat" required id="sanphamdat" maxlength="200"></textarea>
+                </div>
+
+                <button id="submitInfo" type="submit" class="btn btn-default">Gởi Thông Tin</button>
+                <input type="hidden" value="ok" name="submitInfo">
+        </form>
+    </div>
+</div>
+<!--Rating plugin-->
+<script src="/asset/plugin/rating/js/Fr.star.js?v=20190410"></script>
+<script src="/asset/plugin/rating/js/rate.js?v=20190410"></script>
+
+<!--Lazy load-->
+<script type="text/javascript" src="/asset/plugin/jquery_lazy/jquery.lazy.min.js?v=20190410"></script>
+<script src="/asset/plugin/validation/jquery.validate.min.js?v=20190410"></script>
+
+<!-- Disable copy -->
+
+
+<!---Footer code--->
+<script>
+var khung_fb = '<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhatgionglamson&tabs&width=340&height=214&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=2709312522633262" width="340" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>';
+$('#contact-box').html(khung_fb);
+</script>
+
+</body>
+
+</html>
+
+
+<script>
+
+    $(function(){
+
+        $('.navbar-nav li a').click(function(){
+
+            var tabid = $(this).attr('rel');
+
+
+
+            jQuery.ajax({
+
+                url:  '/common/get_product_tab',
+
+                data: {"tabid":tabid},
+
+                type: 'POST',
+
+                dataType: 'json',
+
+                success: function(data){
+
+                    if( data.status == 1 ){
+
+                        $('#tab-'+tabid+' .box-right .product-list').html( data.html );
+
+                    }
+
+                }
+
+            });
+
+
+
+        })
+
+    })
+
+</script>
+

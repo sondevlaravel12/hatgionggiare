@@ -86,4 +86,11 @@ class Post extends Model implements HasMedia
     }
     // end of relationship
 
+    //---- other function --------
+    // specify populer post depend on comments or likes or views???
+    public static function populer($num =2){
+        return Post::inRandomOrder()->limit($num)->get();
+    }
+    //---- end of other function
+
 }

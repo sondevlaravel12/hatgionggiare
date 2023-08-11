@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class About extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+    // protected $fillable =['company_name','description','contact'];
+
 }

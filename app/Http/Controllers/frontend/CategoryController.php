@@ -15,8 +15,8 @@ class CategoryController extends Controller
         return view('frontend.category.index', compact('products','categories'));
     }
     public function show(Category $category){
-        $categories = Category::latest()->limit(3)->get();
+        // $categories = Category::latest()->limit(3)->get();
         $products = $category->products->toQuery()->paginate(12);
-        return view('frontend.category.detail',compact('category','products','categories'));
+        return view('frontend.category.detail',compact('category','products'));
     }
 }

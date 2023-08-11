@@ -22,7 +22,7 @@ var description_config = {
     relative_urls: false,
     remove_script_host: false,
     convert_urls: true,
-    document_base_url: "http://softviet.test/",
+    document_base_url: "http://hatgionggiare.test/",
 
 //     relative_urls : false,
 // remove_script_host : true,
@@ -67,9 +67,10 @@ var description_config = {
 
   var short_description_config = {
     path_absolute : "/",
-    selector: 'textarea#short_description',
+    selector: 'textarea.shorttext',
     height: 250,
 };
 
 tinymce.init(short_description_config);
+
 

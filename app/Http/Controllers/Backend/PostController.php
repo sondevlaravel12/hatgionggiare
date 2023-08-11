@@ -40,7 +40,6 @@ class PostController extends Controller
         //         }
         //     }
 
-        //     if($request->hasFile('photos')){
         //         foreach($request->file('photos') as $photo){
         //             // dd($photo);
         //             // if($photo->isValid()){

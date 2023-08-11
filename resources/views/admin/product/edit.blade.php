@@ -139,7 +139,7 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Mô tả ngắn</label>
-                                                <textarea  id="short_description" name="short_description" class="form-control">{!!old('short_description')??$product->short_description!!}</textarea>
+                                                <textarea   name="short_description" class="form-control shorttext">{!!old('short_description')??$product->short_description!!}</textarea>
                                                 @error('short_description')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
