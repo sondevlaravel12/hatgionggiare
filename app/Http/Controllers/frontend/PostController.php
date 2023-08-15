@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Pcategory;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -16,7 +17,9 @@ class PostController extends Controller
         $parentCategories = Pcategory::where('parent_id',0)->get();
         $populerPosts = Post::populer();
         $recentPosts = Post::latest()->limit(2)->get();
-        return view('frontend.post.index', compact(['posts','parentCategories','populerPosts','recentPosts']));
+        // $productTags = Tag::has('posts')->with('posts')->take(5)->get();
+        $postTags = Tag::has('posts')->with('posts')->take(5)->get();
+        return view('frontend.post.index', compact(['posts','parentCategories','populerPosts','recentPosts','postTags']));
     }
     public function show(Post $post){
         return view('frontend.post.detail', compact(['post']));
@@ -28,10 +31,12 @@ class PostController extends Controller
             $parentCategories = Pcategory::where('parent_id',0)->get();
             $populerPosts = Post::populer();
             $recentPosts = Post::latest()->limit(2)->get();
+            $postTags = Tag::has('posts')->with('posts')->take(5)->get();
+
 
             if($category->posts->count()>0){
                 $posts = $category->posts->toQuery()->paginate(3);
-                return view('frontend.post.index',compact(['posts','parentCategories','populerPosts','recentPosts']));
+                return view('frontend.post.post_by_cat',compact(['category','posts','parentCategories','populerPosts','recentPosts','postTags']));
                 // use frontend.post.index instead of post_by_cat bz there is no diffirent between these view right now
             }
 

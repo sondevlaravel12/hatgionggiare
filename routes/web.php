@@ -12,6 +12,7 @@ use App\Http\Controllers\frontend\CategoryController;
 use App\Http\Controllers\frontend\IndexController as FrontendIndexController;
 use App\Http\Controllers\frontend\PostController;
 use App\Http\Controllers\frontend\ProductController;
+use App\Http\Controllers\frontend\TagController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\WishlistController;
@@ -116,6 +117,10 @@ Route::get('san-pham/modal/show/{id}', [ProductController::class,'ajaxModalShow'
 Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
 Route::get('bai-viet/{post}/{slug?}', [PostController::class,'show'])->name('posts.show');
 Route::get('danh-muc/{category_id}/bai-viet', [PostController::class,'group'])->name('posts.category.group');
+
+// tag controller
+Route::get('tag/{tag}/san-pham', [TagController::class,'show'])->name('tags.products.show');
+Route::get('tag/{tag}/bai-viet', [TagController::class,'postsByTag'])->name('tags.posts.show');
 
 
 

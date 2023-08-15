@@ -42,6 +42,21 @@ Breadcrumbs::for('posts.show', function (BreadcrumbTrail $trail, $post) {
     $trail->parent('posts');
     $trail->push($post->title, route('posts.show', $post));
 });
+// Home >  Bài viết > tên Tag
+Breadcrumbs::for('postsByTag', function (BreadcrumbTrail $trail, $tag) {
+    $trail->parent('posts');
+    $trail->push($tag->name, route('tags.posts.show',$tag));
+});
+// Home >  Bài viết > tên Category
+Breadcrumbs::for('postsByCat', function (BreadcrumbTrail $trail, $category) {
+    $trail->parent('posts');
+    $trail->push($category->name, route('posts.category.group',$category));
+});
+// Home > tên Tag > Bài viết
+// Breadcrumbs::for('posts.show', function (BreadcrumbTrail $trail, $post) {
+//     $trail->parent('posts');
+//     $trail->push($post->title, route('tags.posts.show', $tag));
+// });
 
 
 
