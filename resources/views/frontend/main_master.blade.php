@@ -79,7 +79,8 @@
 
 {{-- setup --}}
 <script>
-    var $productHolder = $('#product_detail_info');;
+    var $productHolder = $('#product_detail_info');
+    // var $productSidebarHolder = $('#product_detail_info');
     var $modalHolder = $('#productModal');
     const FORMATTER = new Intl.NumberFormat('de-DE',
     {
@@ -136,7 +137,10 @@
             var $product_id = $productHolder.find('#product_id').val();
             var $quantity = $productHolder.find('#quantity').val();
         }
-
+        // var $productItemHolder = $(this).closest('.product_item_holder');
+        // var $product_id = $productHolder.find('#product_id').val();
+        // var $quantity = $productHolder.find('#quantity').val();
+        // console.log($productItemHolder);
 
         $.ajax({
                 type: "POST",

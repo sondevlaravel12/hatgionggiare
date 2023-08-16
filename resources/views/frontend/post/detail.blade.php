@@ -76,7 +76,9 @@ bài viết: {{ $post->name }}
                     </div>
                 </div> --}}
             </div>
-
+            <div class="col-md-3 sidebar">
+                @include('frontend.post._right_side_bar')
+            </div>
         </div>
     </div>
     @include('frontend.body.brands')

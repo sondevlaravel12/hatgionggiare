@@ -174,6 +174,15 @@ class Product extends Model implements HasMedia, Buyable
     //         return asset('images/noimage.jpeg');
     //     }
     // }
+    // specify populer products depend on what ???
+    public static function populer($num =2){
+        return Product::inRandomOrder()->limit($num)->get();
+    }
+    // specify hotdeal products depend on what ???
+    public static function hotDeals($num =3){
+        // return Product::inRandomOrder()->limit($num)->get();
+        return Product::getDiscountProducts(3);
+    }
     // -------------------end other function ---------------------------//
 
 }

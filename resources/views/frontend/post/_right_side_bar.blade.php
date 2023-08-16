@@ -78,7 +78,13 @@
         <div class="sidebar-widget-body outer-top-xs">
             <div class="tag-list">
                 @foreach ($postTags as $postTag)
-                <a class="item active" title="Vest" href="{{ route('tags.posts.show', $postTag) }}">{{ $postTag->name }}</a>
+                <a class="item
+                @if (!isset($tag))
+                    active
+                @elseif (isset($tag)&&$postTag->id==$tag->id)
+                    active
+                @endif
+                " title="Vest" href="{{ route('tags.posts.show', $postTag) }}">{{ $postTag->name }}</a>
                 @endforeach
 
             </div><!-- /.tag-list -->

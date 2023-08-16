@@ -19,7 +19,7 @@
         @else
             <li class="" ><a href="{{ route('categories.products.index') }}">Tat ca san pham</a></li>
             @foreach (App\Models\Category::latest()->limit(3)->get() as $cat)
-            <li class="{{ $cat->id==$category->id?'active':'' }}"><a href="{{ route('categories.products.show',$cat) }}">{{ $cat->name }}</a></li>
+            <li class="{{isset($category) && $cat->id==$category->id?'active':'' }}"><a href="{{ route('categories.products.show',$cat) }}">{{ $cat->name }}</a></li>
             @endforeach
 
         @endif

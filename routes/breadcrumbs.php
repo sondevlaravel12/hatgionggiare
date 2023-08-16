@@ -21,7 +21,12 @@ Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {
 // Home >  Danh mục sản phẩm
 Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Sản phẩm', route('home'));
+    $trail->push('Danh Mục Sản phẩm', route('categories.products.index'));
+});
+// Home >  Danh mục sản phẩm > tên danh mục
+Breadcrumbs::for('productCategory', function (BreadcrumbTrail $trail, $category) {
+    $trail->parent('products');
+    $trail->push($category->name, route('categories.products.show', $category));
 });
 
 // Home >  Danh mục sản phẩm > Chi tiết sản phẩm

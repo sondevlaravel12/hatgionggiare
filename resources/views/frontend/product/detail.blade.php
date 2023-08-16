@@ -16,7 +16,7 @@ sản phẩm: {{ $product->name }}
 <div class='container'>
 	<div class='row single-product'>
 
-		<div class='col-md-12'>
+		<div class='col-md-9'>
 			<div class="detail-block">
 				<div class="row  wow fadeInUp">
 
@@ -420,6 +420,9 @@ sản phẩm: {{ $product->name }}
 			<!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
 
 		</div><!-- /.col -->
+        <div class='col-md-3 sidebar'>
+            @include('frontend.product._sidebar')
+        </div><!-- /.sidebar -->
 		<div class="clearfix"></div>
 	</div>
     @include('frontend.body.brands')

@@ -119,7 +119,7 @@ Route::get('bai-viet/{post}/{slug?}', [PostController::class,'show'])->name('pos
 Route::get('danh-muc/{category_id}/bai-viet', [PostController::class,'group'])->name('posts.category.group');
 
 // tag controller
-Route::get('tag/{tag}/san-pham', [TagController::class,'show'])->name('tags.products.show');
+Route::get('tag/{tag}/san-pham', [ProductController::class,'productsByTag'])->name('tags.products.show');
 Route::get('tag/{tag}/bai-viet', [TagController::class,'postsByTag'])->name('tags.posts.show');
 
 
