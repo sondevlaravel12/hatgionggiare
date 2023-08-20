@@ -158,7 +158,7 @@
                   </li> --}}
                   <li class="dropdown hidden-sm"> <a href="{{ route('about') }}">Giới thiệu</a> </li>
                   <li class="dropdown hidden-sm"> <a href="{{ route('posts.index') }}">Tin tức</a> </li>
-                  <li class="dropdown hidden-sm"> <a href="category.html">Liên hệ</a> </li>
+                  <li class="dropdown hidden-sm"> <a href="{{ route('contact') }}">Liên hệ</a> </li>
                   <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
                 </ul>
                 <!-- /.navbar-nav -->

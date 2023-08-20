@@ -64,7 +64,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.about.edit') }}">Giới thiệu Cty</a></li>
-                        <li><a href="#">Add New Slider</a></li>
+                        <li><a href="{{ route('admin.contact.edit') }}">Trang liên lạc</a></li>
                         <li><a href="#">Add New Slider</a></li>
                     </ul>
                 </li>

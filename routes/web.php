@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\ProductController as BackendProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\frontend\AboutController;
 use App\Http\Controllers\frontend\CategoryController;
 use App\Http\Controllers\frontend\IndexController as FrontendIndexController;
@@ -42,6 +43,9 @@ Route::prefix('admin')->group(function(){
     // about
     Route::get('/about/edit',[BackendAboutController::class,'edit'])->name('admin.about.edit');
     Route::put('/about/{about}/update',[BackendAboutController::class,'update'])->name('admin.about.update');
+    // contact
+    Route::get('/contact/edit',[ContactController::class,'edit'])->name('admin.contact.edit');
+    Route::put('/contact/{contact}/update',[ContactController::class,'update'])->name('admin.contact.update');
 
 
     // coupon
@@ -107,7 +111,10 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 /* --------------------- User route  --------------------------- */
 Route::get('/', [FrontendIndexController::class,'index'])->name('home');
-Route::get('gioi_thieu/', [AboutController::class,'index'])->name('about');
+Route::get('gioi-thieu/', [AboutController::class,'index'])->name('about');
+Route::get('lien-he/', [ContactController::class,'index'])->name('contact');
+Route::post('lien-he/gui-tin-nhan', [ContactController::class,'sentMessage'])->name('contact.sentmessage');
+
 
 // product controller
 Route::get('san-pham/{product}/{slug?}', [ProductController::class,'show'])->name('products.show');

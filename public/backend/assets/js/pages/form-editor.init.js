@@ -36,7 +36,7 @@ var description_config = {
       "emoticons template paste textpattern",
       "save table contextmenu directionality emoticons template paste textcolor"
     ],
-    toolbar:"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
+    toolbar:" insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
     file_picker_callback : function(callback, value, meta) {
       var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
       var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
@@ -59,7 +59,12 @@ var description_config = {
           callback(message.content);
         }
       });
-    }
+    },
+    formats: {
+        bold: { inline: 'b' },
+        italic: { inline: 'i' }
+      },
+    extended_valid_elements: 'b[*],i[*],span[*]'
   };
 
   tinymce.init(description_config);

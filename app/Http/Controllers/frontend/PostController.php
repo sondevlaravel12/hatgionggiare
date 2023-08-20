@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     private $posts,$parentCategories,$populerPosts,$recentPosts,$postTags;
-    public function fetchSideBar(){
+    private function fetchSideBar(){
         $this->posts = Post::latest()->paginate(3);
         $this->parentCategories = Pcategory::where('parent_id',0)->get();
         $this->populerPosts = Post::populer();

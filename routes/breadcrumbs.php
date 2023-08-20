@@ -17,6 +17,11 @@ Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Giới thiệu', route('about'));
 });
+// contact
+Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Liên hệ', route('contact'));
+});
 
 // Home >  Danh mục sản phẩm
 Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
