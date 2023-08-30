@@ -1,19 +1,34 @@
 @extends('frontend.main_master')
+@section('title')
+@isset($title)
+{{ $title }}
+@endisset
+@endsection
+@section('breadcrumb')
+{{ Breadcrumbs::view('breadcrumbs::json-ld', 'cart') }}
+@endsection
 @section('content')
     <div class="breadcrumb">
         <div class="container">
-            <div class="breadcrumb-inner">
-                <ul class="list-inline list-unstyled">
-                    <li><a href="home.html">Home</a></li>
-                    <li class='active'>gio hang</li>
-                </ul>
-            </div>
+            {{ Breadcrumbs::render('cart') }}
         </div>
     </div>
 
     <div class="body-content">
         <div class="container">
             <div class="row">
+                @if (Cart::content()->count()<1)
+                <div class="alert alert-danger" style="display:block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    Không có sản phẩm trong giỏ hàng
+                </div>
+                @endif
+                @if (session('message'))
+                <div class="alert alert-danger" style="display:block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <b>{{ session('message') }}</b>
+                </div>
+                @endif
                 <div class="shopping-cart">
                     <div class="shopping-cart-table">
                         <div class="table-responsive">
@@ -88,7 +103,7 @@
                                     <tr>
                                         <td>
                                             <div class="cart-checkout-btn pull-right">
-                                                <button type="submit" class="btn btn-primary checkout-btn">TIẾN HÀNH THANH TOÁN</button>
+                                                <a href="{{ route('cart.checkout') }}" class="btn btn-primary checkout-btn">TIẾN HÀNH THANH TOÁN</a>
                                             </div>
                                         </td>
                                     </tr>

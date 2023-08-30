@@ -20,10 +20,15 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        @if ($wishlistItems->count()<1)
+                                        <th colspan="4" class="heading-title">Không có sản phẩm yêu thích | hoặc bạn chưa đăng nhập</th>
+                                        @else
                                         <th colspan="4" class="heading-title">Danh sách yêu thích</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody id="wishlistTableBody">
+
                                     {{-- @foreach ($wishlistItems as $wishlistItem)
                                     @php
                                         $product = $wishlistItem->product;

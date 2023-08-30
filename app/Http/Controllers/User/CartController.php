@@ -14,6 +14,13 @@ class CartController extends Controller
     public function index(){
         return view('cart.index');
     }
+    public function checkout(){
+        if(Cart::content()->count()<1){
+            return redirect()->back()->with('message','Quý khách vui lòng đặt hàng lại!');
+        }
+        $title = 'Tiến hành thanh toán đơn hàng';
+        return view('cart.checkout')->with(['title'=>$title]);
+    }
     public function indexAjaxShowCartItem(){
         $contents = Cart::content();
     	$quantity = Cart::count();

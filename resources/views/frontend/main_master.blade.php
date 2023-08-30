@@ -14,6 +14,7 @@
 @yield('breadcrumb')
 
 <!-- Bootstrap Core CSS -->
+
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css')}}">
 
 <!-- Customizable CSS -->
@@ -142,37 +143,7 @@
         // var $quantity = $productHolder.find('#quantity').val();
         // console.log($productItemHolder);
 
-        $.ajax({
-                type: "POST",
-                url: "/gio-hang/them-vao-gio-hang",
-                data: {product_id:$product_id, quantity:$quantity},
-                dataType: "json",
-                success: function (response) {
-                    fillinMiniCart();
-                    calculateTotal();
-                    $('#closeModel').click();
-
-                    // Start Message
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 3000
-                        })
-                    if ($.isEmptyObject(response.error)) {
-                        Toast.fire({
-                            type: 'success',
-                            title: response.success
-                        })
-                    }else{
-                        Toast.fire({
-                            type: 'error',
-                            title: response.error
-                        })
-                    }
-                }
-        });
+        ajaxAddToCart($product_id, $quantity);
 
     }
 
@@ -480,10 +451,10 @@
                                             </div>
                                         </td>
                                         <td class="col-md-2">
-                                            <button id="${ wishlistItem.id }" onclick="moveToCart(this.id)" class="btn-upper btn btn-primary">Chuyển vào giỏ hàng</button>
+                                            <button id="${wishlistItem.id }" onclick="moveToCart(this.id)" class="btn-upper btn btn-primary">Chuyển vào giỏ hàng</button>
                                         </td>
                                         <td class="col-md-1 close-btn">
-                                            <button id="${ wishlistItem.id }" onclick="removeWishlistItem(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                            <button id="${wishlistItem.id }" onclick="removeWishlistItem(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
                                         </td>
                                     </tr>`
                 })
@@ -525,6 +496,88 @@
             }
         });
     }
+    function moveToCart(wishlistId){
+        $.ajax({
+            type: "get",
+            url: "/user/ds-yeu-thich/chuyen-vao-gio-hang/" +wishlistId ,
+            dataType: "json",
+            success: function (response) {
+                wishlist();
+                fillinMiniCart();
+                // Start Message
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                    //   icon: 'success',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(response.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: response.success
+                    })
+                }else{
+                    Toast.fire({
+                        icon: 'error',
+                        type: 'error',
+                        title: response.error
+                    })
+                }
+                // End Message
+            }
+        });
+
+    }
+    // child function
+    function ajaxAddToCart($product_id, $quantity){
+        $.ajax({
+                type: "POST",
+                url: "/gio-hang/them-vao-gio-hang",
+                data: {product_id:$product_id, quantity:$quantity},
+                dataType: "json",
+                success: function (response) {
+                    fillinMiniCart();
+                    calculateTotal();
+                    $('#closeModel').click();
+
+                    // Start Message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                        })
+                    if ($.isEmptyObject(response.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: response.success
+                        })
+                    }else{
+                        Toast.fire({
+                            type: 'error',
+                            title: response.error
+                        })
+                    }
+                }
+        });
+    }
+    // function removeWishlistItem($wishlistId){
+    //     $.ajax({
+    //             type: "POST",
+    //             url: "/ds-yeu-thich/xoa-san-pham",
+    //             data: {wishlistId:$wishlistId},
+    //             dataType: "json",
+    //             success: function (response) {
+
+    //                 console.log('xoa wishlist');
+    //             }
+    //     });
+
+    // }
+    // --- end child function
 </script>
 {{-- End wishlist --}}
 
@@ -546,6 +599,6 @@
 {{-- end detail product page  --}}
 
 
-
+@yield('javascript')
 </body>
 </html>

@@ -8,6 +8,8 @@ use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 
 class WishlistController extends Controller
 {
@@ -45,8 +47,19 @@ class WishlistController extends Controller
         return response()->json(['wishlistItems'=>$wishlistItems, 'images'=>$images]);
     }
     public function removeWishlistItem($wishlistId){
-        $wishlist = Wishlist::where('user_id',Auth::id())->where('id',$wishlistId);
+        $wishlist = Wishlist::where('user_id',Auth::id())->where('id',$wishlistId)->first();
+        $productId = $wishlist->product->id;
         $wishlist->delete();
-        return response()->json(['success'=>'xóa sản phẩm thành công']);
+        return response()->json(['success'=>'xóa sản phẩm thành công','productId'=>$productId]);
+    }
+    public function moveToCart($wishlistId){
+        $wishlist = Wishlist::where('user_id',Auth::id())->where('id',$wishlistId)->first();
+        if($product = $wishlist->product){
+            $quantity = 1;
+            Cart::add($product, $quantity,['image'=>$product->getFirstImageUrl('medium')]);
+            $wishlist->delete();
+            return response()->json(['success'=>'di chuyển sản phẩm vào giỏ hàng thành công']);
+        }
+
     }
 }

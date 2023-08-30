@@ -14,6 +14,7 @@ use App\Http\Controllers\frontend\IndexController as FrontendIndexController;
 use App\Http\Controllers\frontend\PostController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\frontend\TagController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\WishlistController;
@@ -139,6 +140,15 @@ Route::post('gio-hang/them-vao-gio-hang', [CartController::class,'ajaxAddtoCart'
 Route::get('mini-gio-hang/fill-in', [CartController::class,'ajaxFillinMiniCart'])->name('minicart.fill');
 Route::get('mini-gio-hang/item/remove/{rowId}', [CartController::class,'ajaxRemoveMiniCartItem'])->name('minicart.item.remove');
 route::get('gio-hang', [UserCartController::class, 'index'])->name('cart.index');
+
+// checkout process
+route::get('thanh-toan-don-hang', [UserCartController::class, 'checkout'])->name('cart.checkout');
+Route::post('hoan-thanh-don-hang', [OrderController::class,'store'])->name('order.store');
+route::get('Don-hang-da-hoan-thanh/{order}', [OrderController::class, 'thankyou'])->name('order.thankyou');
+
+
+
+
 Route::get('user/gio-hang/hien-thi-san-pham', [UserCartController::class,'indexAjaxShowCartItem'])->name('cart.index.indexAjaxShowCartItem');
 
 Route::get('user/gio-hang/san-pham/xoa/{itemId}', [UserCartController::class,'removeCartItem'])->name('cart.item.remove');
@@ -152,11 +162,12 @@ Route::post('user/gio-hang/them-coupon', [UserCartController::class,'addCoupon']
 
 
 // wishlist controller
-route::group(['prefix'=>'user','middleware'=>['auth']], function(){
+route::group(['prefix'=>'user'], function(){
     Route::get('yeu-thich/san-pham/them/{productId}', [WishlistController::class,'ajaxAddToWishlist'])->name('wishlist.item.add');
     Route::get('ds-yeu-thich', [WishlistController::class,'index'])->name('wishlist.index');
     Route::get('ds-yeu-thich/hien-thi-san-pham', [WishlistController::class,'indexAjaxShowWishlishItem'])->name('wishlist.index.ajaxShowWishlistItem');
     Route::get('/ds-yeu-thich/san-pham/xoa/{itemId}', [WishlistController::class,'removeWishlistItem'])->name('wishlist.item.remove');
+    Route::get('/ds-yeu-thich/chuyen-vao-gio-hang/{itemId}', [WishlistController::class,'moveToCart'])->name('wishlist.item.moveToCart');
 });
 
 
