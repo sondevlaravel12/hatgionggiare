@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('address_2')->nullable();
             $table->string('zalo_url')->nullable();
             $table->string('facebook_url')->nullable();
+            $table->integer('shipping_fee')->nullable();
             $table->timestamps();
         });
     }

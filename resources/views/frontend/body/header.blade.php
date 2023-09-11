@@ -69,7 +69,13 @@
               <div class="items-cart-inner">
                 <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
                 <div class="basket-item-count"><span class="count" id="quantity"></span></div>
-                <div class="total-price-basket"> <span class="lbl">GH -</span> <span class="total-price"> <span class="sign"></span><span  class="value subtotal"></span> </span> </div>
+                <div class="total-price-basket">
+                    <span class="lbl">GH -</span>
+                    <span class="total-price">
+                        <span  class="value subtotal"></span>
+                        <span class="sign">đ</span>
+                    </span>
+                </div>
               </div>
               </a>
               <ul class="dropdown-menu">
@@ -79,7 +85,7 @@
                     </div>
 
                     <div class="clearfix cart-total">
-                        <div class="pull-right"> <span class="text">Sub Total :</span><span class='price subtotal' id="price"></span> </div>
+                        <div class="pull-right"> <span class="text">Sub Total :</span><span class='price subtotal' id="price"></span>&nbsp;<span class="price">đ</span> </div>
                         <div class="clearfix"></div>
                         <a href="{{ route('cart.index') }}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
                     <!-- /.cart-total-->

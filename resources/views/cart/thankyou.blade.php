@@ -105,10 +105,15 @@
                             <div class="col-xs-8">{{ number_format($order->total, 0, ',', '.') .' đ' }}</div>
                         </div>
                         <hr>
-                        <div class="row grand-total">
-                            <div class="col-xs-4">Tổng cộng (đã tính phí vận chuyển)</div>
-                            <div class="col-xs-8">{{ number_format($order->total, 0, ',', '.') .' đ' }}</div>
-                        </div>
+                        <div class="row goods-total">
+                                <div class="col-xs-4">Phí vận chuyển</div>
+                                <div class="col-xs-8">{{ $shipping_fee }}<span> đ</span></div>
+                            </div>
+                            <hr>
+                            <div class="row grand-total">
+                                <div class="col-xs-4">Tổng cộng (đã tính phí vận chuyển)</div>
+                                <div class="col-xs-8">{{ $total }}<span> đ</span></div>
+                            </div>
 
             </div>
 

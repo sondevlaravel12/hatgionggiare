@@ -84,17 +84,17 @@
                                 <tr>
                                     <th>
                                         <div class="cart-sub-total">
-                                            Tiền hàng<span class="inner-left-md" id="priceTotal">600.000</span>
+                                            Tiền hàng<span class="inner-left-md" id="priceTotal">600.000</span>&nbsp;<span>đ</span>
                                         </div><hr>
                                         <div id="totalDiscountContainer">
                                             <div class="cart-sub-total">
-                                                <a href="#" title="cancel" class="icon"><i class="fa fa-trash-o"></i></a>
-                                                Mã (<span id="couponCode"></span>)<span class="inner-left-md" id="totalDiscount" ></span>
+                                                <button href="#" title="cancel" class="btn btn-danger btn-xs" onclick="removeCoupon()"><i class="fa fa-trash-o"></i></button>
+                                                <span id="couponCode" style="font-size: 8px"></span><span class="inner-left-md" id="totalDiscount" ></span>&nbsp;<span>đ</span>
                                             </div><hr>
                                         </div>
 
                                         <div class="cart-grand-total">
-                                            Thành tiền<span class="inner-left-md" id="total">500.000</span>
+                                            Thành tiền<span class="inner-left-md" id="total">500.000</span>&nbsp;<span>đ</span>
                                         </div>
                                     </th>
                                 </tr>

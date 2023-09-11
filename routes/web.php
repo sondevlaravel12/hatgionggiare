@@ -139,12 +139,12 @@ Route::get('tag/{tag}/bai-viet', [TagController::class,'postsByTag'])->name('tag
 Route::post('gio-hang/them-vao-gio-hang', [CartController::class,'ajaxAddtoCart'])->name('cart.store');
 Route::get('mini-gio-hang/fill-in', [CartController::class,'ajaxFillinMiniCart'])->name('minicart.fill');
 Route::get('mini-gio-hang/item/remove/{rowId}', [CartController::class,'ajaxRemoveMiniCartItem'])->name('minicart.item.remove');
-route::get('gio-hang', [UserCartController::class, 'index'])->name('cart.index');
+Route::get('gio-hang', [UserCartController::class, 'index'])->name('cart.index');
 
 // checkout process
-route::get('thanh-toan-don-hang', [UserCartController::class, 'checkout'])->name('cart.checkout');
+Route::get('thanh-toan-don-hang', [UserCartController::class, 'checkout'])->name('cart.checkout');
 Route::post('hoan-thanh-don-hang', [OrderController::class,'store'])->name('order.store');
-route::get('Don-hang-da-hoan-thanh/{order}', [OrderController::class, 'thankyou'])->name('order.thankyou');
+Route::get('don-hang-da-hoan-thanh/{order}', [OrderController::class, 'thankyou'])->name('order.thankyou');
 
 
 
@@ -159,6 +159,7 @@ Route::get('user/gio-hang/san-pham/giam/{itemId}', [UserCartController::class,'d
 Route::get('user/gio-hang/san-pham/tinh-tong', [UserCartController::class,'calculateTotal'])->name('cart.calculateTotal');
 
 Route::post('user/gio-hang/them-coupon', [UserCartController::class,'addCoupon'])->name('cart.addCoupon');
+Route::get('user/coupon/xoa', [UserCartController::class,'removeCoupon'])->name('cart.removeCoupon');
 
 
 // wishlist controller

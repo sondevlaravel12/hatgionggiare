@@ -35,6 +35,7 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 @yield('css')
 </head>
 <body class="cnt-home">
@@ -73,6 +74,37 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    @if(Session::has('message'))
+    // const Toast = Swal.mixin({
+    //                   toast: true,
+    //                   position: 'top-end',
+    //                   icon: 'error',
+    //                   showConfirmButton: false,
+    //                   timer: 3000
+    //                 });
+    // Toast.fire({
+    //                 type: 'error',
+    //                 title: "{{ session('message') }}"
+    //             })
+    var type = "{{ Session::get('alert-type','info') }}"
+         switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+         }
+
+    @endif
+   </script>
 
 <!-- Add to Cart Product Modal -->
 @include('cart.modal_option_1')
@@ -356,6 +388,37 @@
                 data: {couponName:$couponName},
                 dataType: "json",
                 success: function (response) {
+                    calculateTotal();
+                    // Start Message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        // position: 'bottom-left',
+                        showConfirmButton: false,
+                        timer: 3000
+                        })
+                    if ($.isEmptyObject(response.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: response.success
+                        })
+                    }else{
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: response.error
+                        })
+                    }
+                    // End Message
+                }
+        });
+    }
+    function removeCoupon(){
+        $.ajax({
+            type: "get",
+            url: "/user/coupon/xoa/",
+            dataType: "json",
+            success: function (response) {
                     calculateTotal();
                     // Start Message
                     const Toast = Swal.mixin({

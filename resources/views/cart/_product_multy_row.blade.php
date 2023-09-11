@@ -4,7 +4,7 @@
         <div class="row product-list-row">
             <div class="col col-xs-4 col-lg-4">
             <div class="product-image">
-                <div class="image"> <img src="{{ $product->getFirstImageUrl('medium') }}" alt=""> </div>
+                <a class="image" href="{{ route('products.show', $product) }}"> <img src="{{ $product->getFirstImageUrl('medium') }}" alt=""> </a>
             </div>
             <!-- /.product-image -->
             </div>

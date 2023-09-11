@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
+use App\Models\Webinfo;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -15,11 +16,15 @@ class CartController extends Controller
         return view('cart.index');
     }
     public function checkout(){
+        $shipping_fee = Webinfo::first()->shipping_fee;
+        $total = filter_var(Cart::total(), FILTER_SANITIZE_NUMBER_INT) + $shipping_fee;
+        $shipping_fee = number_format($shipping_fee,0,',','.');
+        $total = number_format($total,0,',','.');
         if(Cart::content()->count()<1){
             return redirect()->back()->with('message','Quý khách vui lòng đặt hàng lại!');
         }
         $title = 'Tiến hành thanh toán đơn hàng';
-        return view('cart.checkout')->with(['title'=>$title]);
+        return view('cart.checkout')->with(['title'=>$title,'shipping_fee'=>$shipping_fee,'total'=>$total]);
     }
     public function indexAjaxShowCartItem(){
         $contents = Cart::content();
@@ -89,9 +94,15 @@ class CartController extends Controller
             return response()->json(['success'=>'Thêm mã giảm giá thành công']);
         }else{
             Session::forget('coupon');
+            Cart::setGlobalDiscount(0);
             return response()->json(['error'=>'Mã giảm giá không khả dụng']);
         }
 
 
+    }
+    public function removeCoupon(){
+        Session::forget('coupon');
+        Cart::setGlobalDiscount(0);
+        return response()->json(['success'=>'Đã xóa mã giảm giá']);
     }
 }

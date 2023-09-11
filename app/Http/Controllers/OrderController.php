@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Webinfo;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -29,20 +30,33 @@ class OrderController extends Controller
         ]);
         $order = $this->storeOrderDetails($request);
         if($order){
+            session()->flash('order_status','successful');
             return redirect()->route('order.thankyou', $order);
         }else{
-            return redirect()->back()->withErrors(['message' =>'dat hang that bai']);
+            return redirect()->back()->withErrors([
+                'message' =>'dat hang that bai',
+                'alert-type'=>'error'
+            ]);
         }
 
 
     }
     public function thankyou(Order $order){
-        // if(!$order || Cart::content()->count()<1) return redirect()->back()->with('message','Không có sản phẩm trong giỏ hàng. Quý khách vui lòng đặt hàng lại');
-        $orderItems = $order->items;
-        // dd($orderItems);
-        Cart::destroy();
-        return view('cart.thankyou', compact('order','orderItems'));
-        // dd('hi');
+        if(session('order_status')=='successful'){
+            $shipping_fee = Webinfo::first()->shipping_fee;
+            $total =$order->total + $shipping_fee;
+            $shipping_fee = number_format($shipping_fee,0,',','.');
+            $total = number_format($total,0,',','.');
+            $orderItems = $order->items;
+            Cart::destroy();
+            return view('cart.thankyou', compact('order','orderItems','shipping_fee','total'));
+        }else{
+            return redirect()->route('home')->with([
+                'message'=>'Bạn không có quyền truy cập trang này',
+                'alert-type'=>'error'
+            ]);
+        }
+
 
     }
     public function storeOrderDetails(Request $request){
