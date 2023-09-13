@@ -15,6 +15,7 @@ use App\Http\Controllers\frontend\PostController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\frontend\TagController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\WishlistController;
@@ -47,6 +48,12 @@ Route::prefix('admin')->group(function(){
     // contact
     Route::get('/contact/edit',[ContactController::class,'edit'])->name('admin.contact.edit');
     Route::put('/contact/{contact}/update',[ContactController::class,'update'])->name('admin.contact.update');
+    // return policy
+    Route::get('/return-policy/edit',[PolicyController::class,'editReturnPolicy'])->name('admin.returnPolicy.edit');
+    Route::put('/return-policy/{returnPolicy}/update',[PolicyController::class,'updateReturnPolicy'])->name('admin.returnPolicy.update');
+    // purchasing policy
+    Route::get('/purchasing-policy/edit',[PolicyController::class,'editPurchasingPolicy'])->name('admin.purchasingPolicy.edit');
+    Route::put('/purchasing-policy/{purchasingPolicy}/update',[PolicyController::class,'updatePurchasingPolicy'])->name('admin.purchasingPolicy.update');
 
 
     // coupon
@@ -115,6 +122,9 @@ Route::get('/', [FrontendIndexController::class,'index'])->name('home');
 Route::get('gioi-thieu/', [AboutController::class,'index'])->name('about');
 Route::get('lien-he/', [ContactController::class,'index'])->name('contact');
 Route::post('lien-he/gui-tin-nhan', [ContactController::class,'sentMessage'])->name('contact.sentmessage');
+Route::get('chinh-sach-doi-tra/', [PolicyController::class,'showReturnPolicy'])->name('returnPolicy');
+Route::get('chinh-sach-mua-hang/', [PolicyController::class,'showPurchasingPolicy'])->name('purchasingPolicy');
+
 
 
 // product controller

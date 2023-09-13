@@ -9,8 +9,8 @@
 
               {{-- <li><a href="#"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li> --}}
               {{-- <li><a href="#"><i class="icon fa fa-check"></i>Thanh toán</a></li>  --}}
-              <li><a href="#"><i class="icon fa fa-check"></i>Chính sách đổi trả </a></li>
-              <li><a href="#"><i class="icon fa fa-check"></i>Điều khoản mua hàng & thanh toán</a></li>
+              <li><a href="{{ route('returnPolicy') }}"><i class="icon fa fa-check"></i>Chính sách đổi trả </a></li>
+              <li><a href="{{ route('purchasingPolicy') }}"><i class="icon fa fa-check"></i>Điều khoản mua hàng & thanh toán</a></li>
               <li><a href="{{ route('cart.index') }}"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li>
               <li><a href="{{ route('wishlist.index') }}"><i class="icon fa fa-heart"></i>Sản phẩm yêu thích</a></li>
               @auth

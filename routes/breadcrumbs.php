@@ -17,6 +17,16 @@ Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Giới thiệu', route('about'));
 });
+// return policy
+Breadcrumbs::for('returnPolicy', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Chính sách đổi trả hàng', route('returnPolicy'));
+});
+// purchasing policy
+Breadcrumbs::for('purchasingPolicy', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Chính sách mua hàng', route('purchasingPolicy'));
+});
 // contact
 Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
