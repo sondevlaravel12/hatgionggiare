@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\OtherInformation;
 use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -23,5 +24,9 @@ class IndexController extends Controller
         // $product = Product::findOrFail($id);
         // return view('frontend.product.detail', compact('product'));
         echo $id;
+    }
+    public function showBankInfor(){
+        $bankInfor = OtherInformation::where('key','bank_infor')->first();
+        return view('frontend.bank_infor', compact('bankInfor'));
     }
 }

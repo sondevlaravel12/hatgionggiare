@@ -32,6 +32,11 @@ Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Liên hệ', route('contact'));
 });
+// bank infor
+Breadcrumbs::for('bankinfor', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Thông tin chuyển khoản', route('bankinfor.show'));
+});
 
 // Home >  Danh mục sản phẩm
 Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {

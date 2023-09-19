@@ -15,6 +15,7 @@ use App\Http\Controllers\frontend\PostController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\frontend\TagController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OtherInforController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CartController as UserCartController;
@@ -54,6 +55,12 @@ Route::prefix('admin')->group(function(){
     // purchasing policy
     Route::get('/purchasing-policy/edit',[PolicyController::class,'editPurchasingPolicy'])->name('admin.purchasingPolicy.edit');
     Route::put('/purchasing-policy/{purchasingPolicy}/update',[PolicyController::class,'updatePurchasingPolicy'])->name('admin.purchasingPolicy.update');
+// purchasing policy
+    Route::get('/purchasing-policy/edit',[PolicyController::class,'editPurchasingPolicy'])->name('admin.purchasingPolicy.edit');
+    Route::put('/purchasing-policy/{purchasingPolicy}/update',[PolicyController::class,'updatePurchasingPolicy'])->name('admin.purchasingPolicy.update');
+    // bank account information
+    Route::get('/bank-infor/edit',[OtherInforController::class,'editBankInfor'])->name('admin.bankInfor.edit');
+    Route::put('/bank-infor/{otherInformation}/update',[OtherInforController::class,'updateBankInfor'])->name('admin.bankInfor.update');
 
 
     // coupon
@@ -124,6 +131,9 @@ Route::get('lien-he/', [ContactController::class,'index'])->name('contact');
 Route::post('lien-he/gui-tin-nhan', [ContactController::class,'sentMessage'])->name('contact.sentmessage');
 Route::get('chinh-sach-doi-tra/', [PolicyController::class,'showReturnPolicy'])->name('returnPolicy');
 Route::get('chinh-sach-mua-hang/', [PolicyController::class,'showPurchasingPolicy'])->name('purchasingPolicy');
+
+// payment information
+Route::get('thong-tin-chuyen-khoan', [FrontendIndexController::class,'showBankInfor'])->name('bankinfor.show');
 
 
 

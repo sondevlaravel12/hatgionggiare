@@ -67,6 +67,7 @@
                         <li><a href="{{ route('admin.contact.edit') }}">Trang liên lạc</a></li>
                         <li><a href="{{ route('admin.returnPolicy.edit') }}">Chính sách đổi trả</a></li>
                         <li><a href="{{ route('admin.purchasingPolicy.edit') }}">Chính sách mua hàng</a></li>
+                        <li><a href="{{ route('admin.bankInfor.edit') }}">Tài khoản ngân hàng</a></li>
                         <li><a href="#">Add New Slider</a></li>
                     </ul>
                 </li>
