@@ -114,7 +114,7 @@
     <!-- ============================================== HOT DEALS: END ============================================== -->
     <!-- ============================================== PRODUCT TAGS ============================================== -->
     <div class="sidebar-widget product-tag wow fadeInUp">
-        <h3 class="section-title">Post Tags</h3>
+        <h3 class="section-title">Tags Sản Phẩm</h3>
         <div class="sidebar-widget-body outer-top-xs">
             <div class="tag-list">
                 @foreach ($productTags as $productTag)
