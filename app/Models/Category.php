@@ -65,6 +65,10 @@ class Category extends Model implements HasMedia
     {
        return $this->hasMany($this, 'parent_id');
     }
+    // public function childrenHasProduct()
+    // {
+    //    return $this->children()->has('products');
+    // }
      // ------------------- End Relationship ---------------------------//
 
      public function getFirstImageUrl($size='thumb'){

@@ -32,7 +32,6 @@ class SidebarComposer
         $this->populerProducts = Product::populer();
         $this->recentProducts = Product::latest()->limit(2)->get();
         $this->categories = Category::latest()->limit(3)->get();
-        $this->products = Product::latest()->paginate(12);
         $this->hotDeals = Product::hotDeals();
         $this->productTags = Tag::has('products')->with('products')->take(5)->get();
     }
@@ -46,7 +45,6 @@ class SidebarComposer
     public function compose(View $view)
     {
         $view->with([
-            'products'=>$this->products,
             'categories'=>$this->categories,
             'parentCategories'=>$this->parentCategories,
             'populerProducts'=>$this->populerProducts,
