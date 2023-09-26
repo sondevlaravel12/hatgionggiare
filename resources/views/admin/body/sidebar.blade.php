@@ -71,6 +71,16 @@
                         <li><a href="#">Add New Slider</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Theme</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ asset('project_theme/frontend_theme/home.html') }}">Frontend</a></li>
+                        <li><a href="{{ asset('project_theme/backend_theme/ui-cards.html') }}">Backend</a></li>
+                    </ul>
+                </li>
 
                 {{-- <li>
                     <a href="#" class="has-arrow waves-effect">
