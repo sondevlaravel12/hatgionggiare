@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CategoryController as BackendCategoryController
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\ProductController as BackendProductController;
+use App\Http\Controllers\Backend\TagController as BackendTagController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\frontend\AboutController;
@@ -81,6 +82,18 @@ Route::prefix('admin')->group(function(){
         Route::delete('/products/ajax-delete', [BackendProductController::class,'ajaxDelete']);
         Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
     });
+     // tag
+     Route::controller(BackendTagController::class)->group(function(){
+        Route::get('/tags','index')->name('admin.tags.index');
+
+        // Route::get('/products/create','create')->name('admin.products.create');
+        // Route::post('/products/store', 'store')->name('admin.products.store');
+        // Route::get('/tags/{tag}/edit','edit')->name('admin.tag.edit');
+        Route::post('/tags/ajax-update','ajaxUpdate')->name('admin.tag.ajax-update');
+        Route::delete('/tags/ajax-destroy', 'ajaxDestroy')->name('admin.tag.ajax-destroy');
+
+    });
+
 
     // Post
     Route::controller(BackendPostController::class)->group(function(){

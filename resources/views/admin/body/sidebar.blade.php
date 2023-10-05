@@ -60,6 +60,17 @@
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
+                        <span>Tag</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.tags.index') }}">Danh sách tag</a></li>
+                        {{-- <li><a href="{{ route('admin.posts.create') }}">Tag bài viết</a></li> --}}
+                        <li><a href="#">Danh Mục Bài Viết</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
                         <span>Khác</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -77,8 +88,8 @@
                         <span>Theme</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ asset('project_theme/frontend_theme/home.html') }}">Frontend</a></li>
-                        <li><a href="{{ asset('project_theme/backend_theme/ui-cards.html') }}">Backend</a></li>
+                        <li><a target="_blank"  href="{{ asset('project_theme/frontend_theme/home.html') }}">Frontend</a></li>
+                        <li><a target="_blank"  href="{{ asset('project_theme/backend_theme/ui-cards.html') }}">Backend</a></li>
                     </ul>
                 </li>
 

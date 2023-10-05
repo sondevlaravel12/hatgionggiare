@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
-    protected $guared =[];
+    protected $guarded =['id'];
 
      // ------------------- Relationship ---------------------------//
      public function posts()
