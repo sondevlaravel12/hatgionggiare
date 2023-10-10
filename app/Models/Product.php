@@ -136,6 +136,9 @@ class Product extends Model implements HasMedia, Buyable
     {
         return $this->belongsTo(Category::class);
     }
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
      // ------------------- End Relationship ---------------------------//
 
      // ---------------Buyable  interface.------------------------/////

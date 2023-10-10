@@ -65,7 +65,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.tags.index') }}">Danh sách tag</a></li>
                         {{-- <li><a href="{{ route('admin.posts.create') }}">Tag bài viết</a></li> --}}
-                        <li><a href="#">Danh Mục Bài Viết</a></li>
+                        <li><a href="{{ route('admin.tags.tag-to-product') }}">Tag Sản Phẩm</a></li>
                     </ul>
                 </li>
                 <li>

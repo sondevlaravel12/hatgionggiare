@@ -1,7 +1,5 @@
-@extends('admin.admin_master')
-@push('stylesheets')
+@extends('admin.tag.tag_master')
 
-@endpush
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -56,105 +54,5 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    {{-- https://www.jqueryscript.net/table/crud-bstable.html  --}}
-    <script src="{{ asset('backend/assets/libs/crud-bstable/bstable.js') }}"></script>
-    <script>
-        var editableTable = new BSTable("bstable",{
-            editableColumns:"1",
-            $addButton: $('#new-row-button'),
-            advanced: {
-                columnLabel:'Sửa'
-            },
-            onEdit: function(row) {
-                // convert DOM object to jQuery object
-                var $row = $(row).closest('tr');
-                $tagId = $row.find('.tag-id').html();
-                if($tagId){
-                    $isCreate = 'no';
-                }else{
-                    $isCreate = 'yes';
-                }
-                $tagName = $row.find('.tag-name').html();
-                // console.log($tagId +' has name: ' +$tagName);
-                updateTag($tagId, $tagName, $isCreate);
-            },
-            onBeforeDelete: function(row) {
-                Swal.fire({
-                    title: 'Bạn có chắc muốn?',
-                    text: "Xóa xóa tag này không?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Vâng, xóa tag!'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        // convert DOM object to jQuery object
-                        var $row = $(row).closest('tr');
-                        $tagId = $row.find('.tag-id').html();
-                        deleteTag($tagId);
-                        // need check if delete tag complete or not before removing this row
-                        $row.remove();
 
-                        // console.log($row);
-                    }
-
-                })
-            },
-            onDelete: function(event) {
-            },
-            onAdd: function(row) {
-                // // convert DOM object to jQuery object
-                // var $row = $(row).closest('tr');
-                // $tagName = $row.find('.tag-name').html();
-                // console.log($tagName);
-                // // updateTag($tagId, $tagName);
-            },
-
-
-        });
-        editableTable.init();
-
-        function updateTag(tagId, tagName, isCreate){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-             $.ajax({
-                    type: "post",
-                    url: "/admin/tags/ajax-update",
-                    data: {id:tagId, name:tagName, isCreate:isCreate},
-                    dataType: "json",
-                    success: function (response) {
-                        if(response.message){
-                        toastr.success(response.message);
-                        };
-                    }
-                });
-        }
-        function deleteTag(tagId){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-             $.ajax({
-                    type: "DELETE",
-                    url: "/admin/tags/ajax-destroy",
-                    data: {id:tagId},
-                    dataType: "json",
-                    success: function (response) {
-                        if(response.message){
-                        toastr.success(response.message);
-                        };
-                    }
-                });
-        }
-    </script>
-    <script>
-
-    </script>
-@endpush
 

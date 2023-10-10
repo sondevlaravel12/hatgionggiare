@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,10 @@ class TagController extends Controller
     public function index(){
         $tags = Tag::orderBy('id','desc')->take(20)->get();
         return view('admin.tag.index', compact('tags'));
+    }
+    public function tagToProduct(){
+        $products = Product::with('tags')->latest()->get();
+        return view('admin.tag.tag_to_product', compact('products'));
     }
 
     public function edit(Tag $tag){
@@ -57,5 +62,10 @@ class TagController extends Controller
             'alert-type' =>'success'
         ];
         return back()->with($notification );
+    }
+    public function tagSearch(Request $request){
+        $term = $request->term;
+        $results = Tag::search($term );
+        return response()->json($results);
     }
 }

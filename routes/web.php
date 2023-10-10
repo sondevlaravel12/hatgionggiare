@@ -91,6 +91,11 @@ Route::prefix('admin')->group(function(){
         // Route::get('/tags/{tag}/edit','edit')->name('admin.tag.edit');
         Route::post('/tags/ajax-update','ajaxUpdate')->name('admin.tag.ajax-update');
         Route::delete('/tags/ajax-destroy', 'ajaxDestroy')->name('admin.tag.ajax-destroy');
+        Route::get('/tags/tag-to-product','tagToProduct')->name('admin.tags.tag-to-product');
+
+        Route::get('tags/search/{term}', 'tagSearch')->name('admin.tags.search');
+
+
 
     });
 
