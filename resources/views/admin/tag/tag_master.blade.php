@@ -3,112 +3,266 @@
    <!-- Lightbox css -->
    <link href="{{asset('backend/assets/libs/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css" />
    <style type="text/css">
-    /* .bootstrap-tagsinput .tag{
-        margin-right: 2px;
+        /* .bootstrap-tagsinput .tag{
+            margin-right: 2px;
+            color: #ffffff;
+            font-weight: 700px;
+        } */
+        .label-info {
+        background-color: #5bc0de;
+        }
+        .label {
+            display: inline;
+            padding: 0.2em 0.6em 0.3em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25em;
+        }
+        /* .bootstrap-tagsinput {
+            width: 100%;
+        } */
+        .bootstrap-tagsinput {
+            background-color: #fff;
+            border: none;
+            box-shadow: none;
+            display: inline-block;
+            padding: 4px 6px;
+            color: #555;
+            vertical-align: middle;
+            border-radius: 4px;
+            width: 100%;
+            line-height: 22px;
+            cursor: text;
+        }
+        .icon-github {
+            background: no-repeat url('../img/github-16px.png');
+            width: 16px;
+            height: 16px;
+        }
+
+
+        .accordion {
+            margin-bottom:-3px;
+        }
+
+        .accordion-group {
+            border: none;
+        }
+
+        .twitter-typeahead .tt-query,
+        .twitter-typeahead .tt-hint {
+            margin-bottom: 0;
+        }
+
+        .twitter-typeahead .tt-hint
+        {
+            display: none;
+        }
+
+        .tt-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            min-width: 160px;
+            padding: 5px 0;
+            margin: 2px 0 0;
+            list-style: none;
+            font-size: 14px;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            background-clip: padding-box;
+            cursor: pointer;
+        }
+
+        .tt-suggestion {
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            font-weight: normal;
+            line-height: 1.428571429;
+            color: #333333;
+            white-space: nowrap;
+        }
+
+        .tt-suggestion:hover,
+        .tt-suggestion:focus {
         color: #ffffff;
-        font-weight: 700px;
-    } */
-    .label-info {
-    background-color: #5bc0de;
-}
-.label {
-    display: inline;
-    padding: 0.2em 0.6em 0.3em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25em;
-}
-/* .bootstrap-tagsinput {
-    width: 100%;
-} */
-.bootstrap-tagsinput {
-    background-color: #fff;
-    border: none;
-    box-shadow: none;
-    display: inline-block;
-    padding: 4px 6px;
-    color: #555;
-    vertical-align: middle;
-    border-radius: 4px;
-    width: 100%;
-    line-height: 22px;
-    cursor: text;
-}
-.icon-github {
-    background: no-repeat url('../img/github-16px.png');
-    width: 16px;
-    height: 16px;
-}
+        text-decoration: none;
+        outline: 0;
+        background-color: #428bca;
+        }
 
-
-.accordion {
-    margin-bottom:-3px;
-}
-
-.accordion-group {
-    border: none;
-}
-
-.twitter-typeahead .tt-query,
-.twitter-typeahead .tt-hint {
-    margin-bottom: 0;
-}
-
-.twitter-typeahead .tt-hint
-{
-    display: none;
-}
-
-.tt-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 160px;
-    padding: 5px 0;
-    margin: 2px 0 0;
-    list-style: none;
-    font-size: 14px;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
-    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-    background-clip: padding-box;
-    cursor: pointer;
-}
-
-.tt-suggestion {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: normal;
-    line-height: 1.428571429;
-    color: #333333;
-    white-space: nowrap;
-}
-
-.tt-suggestion:hover,
-.tt-suggestion:focus {
-  color: #ffffff;
-  text-decoration: none;
-  outline: 0;
-  background-color: #428bca;
-}
-
-</style>
+    </style>
 @endpush
 @push('scripts')
     {{-- https://www.jqueryscript.net/table/crud-bstable.html  --}}
     <script src="{{ asset('backend/assets/libs/crud-bstable/bstable.js') }}"></script>
+    {{-- some global variable  --}}
+    <script>
+        var $modal = $('#edittagmodal');
+        var $modalcontent = $modal.find('.modal-content');
+        var $modalTagName = $modalcontent.find('input.tagname');
+        var $modalTagId = $modalcontent.find('input.tag-id-in-modal');
+
+    </script>
+    {{-- for list tags page  --}}
+        {{-- using event binding with jQuery   --}}
+        {{-- This is nice because now all the JS code is in one place and can be updated (in my opinion) more easily --}}
+        <script>
+            // need to use delegated events.
+            $table.on('click','.js-edit-tag', function () {
+                // -----fill in modal -----//
+                // get tag id
+                $tagId = $(this).siblings('input.tag-id').val();
+                // call ajax to get all tag info and fill in modal with infos just get
+                getTaginfo($tagId).done(function(data){
+                    // $modal = $('#edittagmodal');
+                    // $modalcontent = $modal.find('.modal-content');
+                    $modalTagName.val(data['name']);
+                    $modalTagId.val($tagId);
+                    $modal.modal('show');
+
+                })
+            });
+            $table.on('click','.js-remove-tag', function(){
+                if(confirm('bạn có chắc muốn xóa tag này không?')){
+                    // get tag id
+                    $tagId = $(this).siblings('input.tag-id').val();
+                    // get row
+                    $row = $(this).closest('tr');
+                    // call ajax to remove tag in database
+                    removeTag($tagId).done(function(data){
+                        // if remove successfully in db then remove this tag in view and show notification
+                        $row.remove();
+                        displayNotification(data['message']);
+                    }).fail(function(data){
+                        displayNotification("xóa tag thất bại","error");
+                    });
+                }else{
+
+                }
+
+            });
+
+            function getTaginfo(tagId){
+                // return the ajax promise
+                return $.ajax({
+                    type: "get",
+                    url: "/admin/tags/ajax-get-tag-info",
+                    data: {id:tagId},
+                    dataType: "json",
+                });
+            }
+            function removeTag(tagId){
+                // return the ajax promise
+                return $.ajax({
+                    type: "get",
+                    url: "/admin/tags/ajax-remove-tag",
+                    data: {id:tagId},
+                    dataType: "json",
+                });
+            }
+        </script>
+        {{-- end using event binding with jQuery   --}}
+        <script>
+            $('.btn-save-edit-tag').on('click', function(){
+                // get all informations in modal that user typed in
+                $modalcontent = $(this).closest('.modal-content');
+                $tagId = $modalcontent.find('input.tag-id-in-modal').val();
+                $tagName = $modalcontent.find('input.tagname').val();
+                // call ajax in order to update tag info
+                updateTagInfo($tagId,$tagName).done(function(data){
+                    // fill in row with new data
+                    $row = $table.find('input#' +$tagId).closest('tr');
+                    // $row = $table.find("tr[data-id='" + $tagId + "']");
+                    $row.find('td.tag-name').html($tagName);
+                    // hide modal
+                    $('#edittagmodal').modal('hide');
+                    // show notification
+                    displayNotification(data['message'],'success');
+                }).fail(function(data){
+                    displayNotification("cập nhật tag thất bại",'error');
+                    $('#edittagmodal').modal('hide');
+                });
+
+
+            })
+            function updateTagInfo(tagId, tagName){
+                return $.ajax({
+                    type: "get",
+                    url: "/admin/tags/ajax-update-tag-info",
+                    data: {id:tagId, name:tagName},
+                    dataType: "json",
+                });
+            }
+        </script>
+        {{-- for add new tag  --}}
+        <script>
+            $('div.page-title-right a#add-new-tag').click(function(){
+                // show blank modal
+                $addnewtagModal = $('#addnewtagmodal');
+                $addnewtagModal.find('input#tagname').val('');
+                $addnewtagModal.modal('show');
+
+            });
+            $('.modal button#btn-save-addnew-tag').click(function(){
+                // get tag information after user type in
+                $tagName = $addnewtagModal.find('input#tagname').val();
+                // call ajax in order create new tag in database
+                addNewTag($tagName).done(function(data){
+                    // add new tag in datatble view
+                    $newRow = $dataTable.row
+                            .add([
+                                data['tag']['id'],
+                                data['tag']['name'],
+                                '',
+                                '0',
+                                `
+                                <input class="tag-id" type="hidden" id="`+ data['tag']['id'] +`" value="`+ data['tag']['id'] +`">
+                                <button type="button" class="btn btn-sm btn-link js-edit-tag"><i class="far fa-edit"></i> Sửa</button>
+                                <button  class="btn btn-sm btn_product_delete js-remove-tag"><i class="far fa-trash-alt"></i> Xóa</button>
+                                `
+
+                            ]).node();
+                        $($newRow).find("td:eq(0)").addClass('tag-id');
+                        $($newRow).find("td:eq(1)").addClass('tag-name');
+                        // $($newRow).find('td')[1].addClass('tag-name');
+                        $dataTable.draw(false);
+                    // $($newRow).attr('')
+                    // show notification and close modal
+                    $addnewtagModal.modal('hide');
+                    displayNotification("thêm tag mới thành công","success");
+
+                })
+            })
+            function addNewTag(tagName){
+                return $.ajax({
+                    type: "get",
+                    url: "/admin/tags/ajax-addnew-tag",
+                    data: {name:tagName},
+                    dataType: "json",
+                });
+            }
+
+        </script>
+    {{-- end for list tags page  --}}
+
+
+
+    <script>
+    </script>
     <script>
         var editableTable = new BSTable("bstable",{
             editableColumns:"1",
@@ -179,7 +333,7 @@
                     dataType: "json",
                     success: function (response) {
                         if(response.message){
-                        toastr.success(response.message);
+                        displayNotification(response.message,'success');
                         };
                     }
                 });
@@ -197,83 +351,16 @@
                     dataType: "json",
                     success: function (response) {
                         if(response.message){
-                        toastr.success(response.message);
+                        displayNotification(response.message,'info');
+                        console.log('xoa roi ne');
                         };
                     }
                 });
         }
     </script>
+    {{-- end for list tags page  --}}
 
     {{-- for tag to product page  --}}
-    {{-- <script>
-        var $dataTable = $('#datatable').DataTable({
-
-            });
-        var $table = $('#datatable');
-    </script>
-    <script>
-        var editableTable = new BSTable("datatable",{
-            editableColumns:"4",
-            // $addButton: $('#new-row-button'),
-            advanced: {
-                columnLabel:'Sửa',
-                buttonHTML: `<div class="btn-group pull-right">
-                    <button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);">
-                        <span class="fa fa-edit" > </span>
-                    </button>
-
-                    <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);">
-                        <span class="fa fa-check-circle" > </span>
-                    </button>
-                    <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);">
-                        <span class="fa fa-times-circle" > </span>
-                    </button>
-                </div>`
-            },
-            onEdit: function(row) {
-                // convert DOM object to jQuery object
-                var $row = $(row).closest('tr');
-                $tagId = $row.find('.tag-id').html();
-                if($tagId){
-                    $isCreate = 'no';
-                }else{
-                    $isCreate = 'yes';
-                }
-                $tagName = $row.find('.tag-name').html();
-                // console.log($tagId +' has name: ' +$tagName);
-                updateTagToProduct($tagId, $tagName, $isCreate);
-            },
-            onAdd: function(row) {
-                // // convert DOM object to jQuery object
-                // var $row = $(row).closest('tr');
-                // $tagName = $row.find('.tag-name').html();
-                // console.log($tagName);
-                // // updateTag($tagId, $tagName);
-            },
-
-
-        });
-        editableTable.init();
-
-        function updateTagToProduct(tagId, tagName, isCreate){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-             $.ajax({
-                    type: "post",
-                    url: "/admin/tags/ajax-update",
-                    data: {id:tagId, name:tagName, isCreate:isCreate},
-                    dataType: "json",
-                    success: function (response) {
-                        if(response.message){
-                        toastr.success(response.message);
-                        };
-                    }
-                });
-        }
-    </script> --}}
 
     <script>
         var engine = new Bloodhound({
@@ -301,5 +388,61 @@
                         }
             }
         });
+        // before attach tag
+        $('.typeahead').on('beforeItemAdd', function(event) {
+
+            var newTag = event.item;
+            var productId = $(this).closest('tr').find('.productId').html();
+            // Do some processing here
+            if (!event.options || !event.options.preventPost) {
+
+                $.ajax({
+                        type: "get",
+                        url: "/admin/tags/add-to-product",
+                        data: {productId:productId, newTag:newTag},
+                        dataType: "json",
+                        success: function (response) {
+                            displayNotification(response.message,response.alert_type);
+                        },
+                        error: function (err) {
+                            if (err.status == 422) { // when status code is 422, it's a validation issue
+                                $('.typeahead').tagsinput('remove', newTag, {preventPost: true});
+                                displayNotification(err.responseJSON.message,'error');
+                            }
+                        }
+                    });
+            }
+
+        });
+        // before detach tag
+        $('.typeahead').on('beforeItemRemove', function(event) {
+            var $tag = event.item;
+            var $productId = $(this).closest('tr').find('.productId').html();
+            if (!event.options || !event.options.preventPost) {
+            if(!confirm('ban muon xoa khong')){
+            event.cancel = true;
+            }else{
+                $.ajax({
+                    type: "get",
+                    url: "/admin/tags/detach-to-product",
+                    data: {productId:$productId, tag:$tag},
+                    dataType: "json",
+                    success: function (response) {
+                        // console.log(response.message);
+                        displayNotification(response.message,'success');
+                    }
+                });
+            }
+            }
+        });
+
     </script>
+
+
+    {{-- end for tag to product page  --}}
+
+     {{-- other function  --}}
+
+     {{-- end other function  --}}
+
 @endpush

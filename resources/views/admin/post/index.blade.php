@@ -90,17 +90,7 @@
 @endsection
 @push('scripts')
 
-<script>
 
-// $(document).ready( function () {
-    var $dataTable = $('#datatable').DataTable({
-
-        });
-    var $table = $('#datatable');
-
-// } );
-
-</script>
  <!-- Magnific Popup-->
  <script src="{{asset('backend/assets/libs/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
 

@@ -124,7 +124,7 @@
                 @elseif (isset($tag)&&$productTag->id==$tag->id)
                     active
                 @endif
-                " title="Vest" href="{{ route('tags.products.show', $productTag) }}">{{ $productTag->name }}</a>
+                " title="Vest" href="{{ route('tags.products.show', $productTag) }}">{{ json_decode($productTag->name, true)['vi-VN'] }}</a>
                 @endforeach
 
             </div><!-- /.tag-list -->

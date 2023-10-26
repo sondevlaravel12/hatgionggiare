@@ -19,12 +19,14 @@ use Gloudemans\Shoppingcart\Contracts\Buyable;
 // ------------End Buyable interface use for cart
 use Spatie\Image\Manipulations;
 use App\Traits\HasMediaConversions;
+// for spatie tag
+use Spatie\Tags\HasTags;
 
 
 
 class Product extends Model implements HasMedia, Buyable
 {
-    use HasFactory, InteractsWithMedia, HasSlug, HasMediaConversions;
+    use HasFactory, InteractsWithMedia, HasSlug, HasMediaConversions, HasTags;
 
 
     protected $guarded =[];
@@ -137,7 +139,7 @@ class Product extends Model implements HasMedia, Buyable
         return $this->belongsTo(Category::class);
     }
     public function tags(){
-        return $this->belongsToMany(Tag::class);
+        return $this->morphToMany(Tag::class, 'taggable');
     }
      // ------------------- End Relationship ---------------------------//
 

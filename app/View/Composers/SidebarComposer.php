@@ -7,6 +7,7 @@ namespace App\View\Composers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
+// use Spatie\Tags\Tag;
 use Illuminate\View\View;
 
 class SidebarComposer
@@ -34,6 +35,10 @@ class SidebarComposer
         $this->categories = Category::latest()->limit(3)->get();
         $this->hotDeals = Product::hotDeals();
         $this->productTags = Tag::has('products')->with('products')->take(5)->get();
+        // $this->productTags = Tag::has('products')->take(5)->get();
+        // $this->productTags = Tag::has('products')->take(5)->get();
+        // $this->productTags = Tag::ordered()->take(5)->get();
+
     }
 
     /**

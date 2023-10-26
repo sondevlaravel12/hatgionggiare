@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
+// use Spatie\Tags\Tag;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller

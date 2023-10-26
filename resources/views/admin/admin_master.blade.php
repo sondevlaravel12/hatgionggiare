@@ -154,6 +154,45 @@
          <!-- Taginput -->
          <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
          <script src="{{asset('backend/assets/js/typeahead.bundle.js')}}"></script>
+         {{-- setup ajax header  --}}
+         <script>
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+         </script>
+        {{--datatable innitialize  --}}
+        <script>
+        var $dataTable =
+        $('#datatable').DataTable({
+            order: [[0, 'desc']]
+        });
+        var $table = $('#datatable');
+
+
+        </script>
+
+         {{-- displayNotification  --}}
+         <script>
+            function displayNotification(message, type="info"){
+             switch(type){
+                case 'info':
+                toastr.info(message);
+                break;
+                case 'success':
+                toastr.success(message);
+                break;
+                case 'warning':
+                toastr.warning(message);
+                break;
+                case 'error':
+                toastr.error(message);
+                break;
+             }
+
+            }
+        </script>
         @stack('scripts')
     </body>
 

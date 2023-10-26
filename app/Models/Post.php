@@ -15,10 +15,11 @@ use Spatie\Image\Manipulations;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 // ------------end spatie laravel-sluggable
+use Spatie\Tags\HasTags;
 
 class Post extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, HasSlug;
+    use HasFactory, InteractsWithMedia, HasSlug, HasTags;
     protected $guared =[];
 
      // ------------------- Spatie Media ---------------------------//
@@ -84,10 +85,10 @@ class Post extends Model implements HasMedia
     public function User(){
         return $this->belongsTo(User::class);
     }
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
+    // public function tags()
+    // {
+    //     return $this->belongsToMany(Tag::class);
+    // }
     // end of relationship
 
     //---- other function --------

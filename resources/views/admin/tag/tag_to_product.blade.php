@@ -26,7 +26,7 @@
                         <th>Hình</th>
                         <th>Tên</th>
                         <th>Tag</th>
-                        <th></th>
+                        {{-- <th></th> --}}
 
 
                     </tr>
@@ -37,7 +37,7 @@
                         @foreach ($products as $product)
 
                         <tr>
-                            <td>{{$product->id}}</td>
+                            <td class="productId">{{$product->id}}</td>
 
                             <td><img src="{{$product->getFirstImageUrl('medium')}}" class="img-thumbnail" alt="300x300" width="300" data-holder-rendered="true"></td>
                             <td>{{$product->name}}</td>
@@ -45,7 +45,7 @@
                                 {{-- <div class="rowEdit"> --}}
                                     <select multiple data-role="tagsinput" name="keyword[]" class="typeahead">
                                         @foreach ($product->tags as $tag)
-                                            <option value="{{$tag->name}}"></option>
+                                            <option value="{{json_decode($tag->name,true)['vi-VN']}}"></option>
                                             {{-- <option value="hat giong gia re"></option>
                                             <option value="hat hoa "></option> --}}
                                         @endforeach
@@ -53,11 +53,17 @@
                                 {{-- </div> --}}
 
                             </td>
-                            <td>
-                                <button id="bEdit" type="button" class="btn btn-sm btn-default" style="">
+                            {{-- <td>
+                                <button id="bEdit" type="button" onclick="editTagProduct(this)" class="btn btn-sm btn-default" style="">
                                     <span class="fa fa-edit"> </span>
                                 </button>
-                        </td>
+                                <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display: none;">
+                                    <span class="fa fa-check-circle"> </span>
+                                </button>
+                                <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display: none;">
+                                    <span class="fa fa-times-circle"> </span>
+                                </button>
+                            </td> --}}
 
 
                         </tr>
