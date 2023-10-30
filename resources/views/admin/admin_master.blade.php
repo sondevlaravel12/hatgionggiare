@@ -164,12 +164,11 @@
          </script>
         {{--datatable innitialize  --}}
         <script>
-        var $dataTable =
-        $('#datatable').DataTable({
-            order: [[0, 'desc']]
+        var $table = $('table');
+        var $dataTable = $('#datatable').DataTable({
+            order: [[0, 'desc']],
+            paging: !1,
         });
-        var $table = $('#datatable');
-
 
         </script>
 

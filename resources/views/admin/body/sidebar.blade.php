@@ -66,6 +66,7 @@
                         <li><a href="{{ route('admin.tags.index') }}">Danh sách tag</a></li>
                         {{-- <li><a href="{{ route('admin.posts.create') }}">Tag bài viết</a></li> --}}
                         <li><a href="{{ route('admin.tags.tag-to-product') }}">Tag Sản Phẩm</a></li>
+                        <li><a href="{{ route('admin.tags.tag-to-post') }}">Tag Bài Viết</a></li>
                     </ul>
                 </li>
                 <li>

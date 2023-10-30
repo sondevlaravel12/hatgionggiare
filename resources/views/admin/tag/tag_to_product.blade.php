@@ -17,7 +17,7 @@
 
                 <h4 class="card-title">Danh sách sản phẩm</h4>
 
-                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer dtr-inline" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable" class="table table-bordered dt-responsive dataTable no-footer dtr-inline" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                     <tr>
 
@@ -45,7 +45,7 @@
                                 {{-- <div class="rowEdit"> --}}
                                     <select multiple data-role="tagsinput" name="keyword[]" class="typeahead">
                                         @foreach ($product->tags as $tag)
-                                            <option value="{{json_decode($tag->name,true)['vi-VN']}}"></option>
+                                            <option value="{{ $tag->name }}"></option>
                                             {{-- <option value="hat giong gia re"></option>
                                             <option value="hat hoa "></option> --}}
                                         @endforeach

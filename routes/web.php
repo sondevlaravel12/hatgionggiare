@@ -92,11 +92,15 @@ Route::prefix('admin')->group(function(){
         Route::post('/tags/ajax-update','ajaxUpdate')->name('admin.tag.ajax-update');
         Route::delete('/tags/ajax-destroy', 'ajaxDestroy')->name('admin.tag.ajax-destroy');
         Route::get('/tags/tag-to-product','tagToProduct')->name('admin.tags.tag-to-product');
+        Route::get('/tags/tag-to-post','tagToPost')->name('admin.tags.tag-to-post');
 
         Route::get('tags/search/{term}', 'tagSearch')->name('admin.tags.search');
         // add tag to product
         Route::get('tags/add-to-product', 'ajaxAddToProduct')->name('admin.tags.addToProduct');
         Route::get('tags/detach-to-product', 'ajaxDetachToProduct')->name('admin.tags.detachToProduct');
+        // add tag to post
+        Route::get('tags/add-to-post', 'ajaxAddToPost')->name('admin.tags.addToPost');
+        Route::get('tags/detach-to-post', 'ajaxDetachToPost')->name('admin.tags.detachToPost');
         // get tag infor to fill in modal in edit list tag page
         Route::get('tags/ajax-get-tag-info', 'ajaxGetTagInfo')->name('admin.tags.ajaxGetTagInfo');
         Route::get('tags/ajax-update-tag-info', 'ajaxUpdateTagInfo')->name('admin.tags.ajaxUpdateTagInfo');

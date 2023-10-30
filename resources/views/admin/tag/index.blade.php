@@ -43,9 +43,14 @@
                                     <td class="tag-name">{{ $tag->name }}</td>
                                     <td>
                                         {{-- {{$tag->type}} --}}
-                                        <span class="badge {{$tag->type=='product'?'bg-info':'bg-success'}} ">{{$tag->type}}</span>
+                                        @if ($tag->products->count()>0)
+                                            <span class="badge bg-info ">sản phẩm</span>
+                                        @endif
+                                        @if ($tag->posts->count()>0)
+                                            <span class="badge bg-success ">bài viết</span>
+                                        @endif
                                     </td>
-                                    <td>{{ $tag->products?$tag->products->count():$tag->posts->count() }}</td>
+                                    <td>{{ $tag->products->count() + $tag->posts->count() }}</td>
                                     <td>
                                         <input class="tag-id" type="hidden" id="{{ $tag->id }}" value="{{ $tag->id }}">
                                         <!-- Button trigger modal -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -18,6 +19,12 @@ class TagController extends Controller
         $products = Product::all();
         // $tags = Tag::all();
         return view('admin.tag.tag_to_product', compact('products'));
+    }
+    public function tagToPost(){
+        // $products = Product::with('tags')->latest()->get();
+        $posts = Post::all();
+        // $tags = Tag::all();
+        return view('admin.tag.tag_to_post', compact('posts'));
     }
 
     public function edit(Tag $tag){
@@ -89,10 +96,31 @@ class TagController extends Controller
         }
 
     }
+    public function ajaxAddToPost(Request $request){
+        $validated = $request->validate([
+            'postId' => 'required',
+            'newTag' => 'required|min:2|max:255',
+        ]);
+        $post = Post::find($request->postId);
+        $tag = \Spatie\Tags\Tag::findOrCreate($request->newTag);
+        if($post->attachTag($tag)){
+            return response()->json(['message'=>'tag bài viết thành công','alert_type'=>'success']);
+        }else{
+            return response()->json(['message'=>'tag bài viết thất bại','alert_type'=>'error']);
+        }
+
+    }
     public function ajaxDetachToProduct(Request $request){
         $product = Product::find($request->productId);
         $tag = \Spatie\Tags\Tag::findOrCreate($request->tag);
         if($product->detachTag($tag)){
+            return response()->json(['message'=>'bỏ liên kết tag thành công']);
+        }
+    }
+    public function ajaxDetachToPost(Request $request){
+        $post = Post::find($request->postId);
+        $tag = \Spatie\Tags\Tag::findOrCreate($request->tag);
+        if($post->detachTag($tag)){
             return response()->json(['message'=>'bỏ liên kết tag thành công']);
         }
     }

@@ -110,13 +110,16 @@
     {{-- https://www.jqueryscript.net/table/crud-bstable.html  --}}
     <script src="{{ asset('backend/assets/libs/crud-bstable/bstable.js') }}"></script>
     {{-- some global variable  --}}
-    <script>
-        var $modal = $('#edittagmodal');
-        var $modalcontent = $modal.find('.modal-content');
-        var $modalTagName = $modalcontent.find('input.tagname');
-        var $modalTagId = $modalcontent.find('input.tag-id-in-modal');
+        <script>
+            var $modal = $('#edittagmodal');
+            var $modalcontent = $modal.find('.modal-content');
+            var $modalTagName = $modalcontent.find('input.tagname');
+            var $modalTagId = $modalcontent.find('input.tag-id-in-modal');
+            var $pageTitle = document.getElementsByTagName("title")[0].innerHTML;
 
-    </script>
+        </script>
+    {{-- end some global variable  --}}
+
     {{-- for list tags page  --}}
         {{-- using event binding with jQuery   --}}
         {{-- This is nice because now all the JS code is in one place and can be updated (in my opinion) more easily --}}
@@ -259,111 +262,110 @@
         </script>
     {{-- end for list tags page  --}}
 
-
-
-    <script>
-    </script>
-    <script>
-        var editableTable = new BSTable("bstable",{
-            editableColumns:"1",
-            $addButton: $('#new-row-button'),
-            advanced: {
-                columnLabel:'Sửa'
-            },
-            onEdit: function(row) {
-                // convert DOM object to jQuery object
-                var $row = $(row).closest('tr');
-                $tagId = $row.find('.tag-id').html();
-                if($tagId){
-                    $isCreate = 'no';
-                }else{
-                    $isCreate = 'yes';
-                }
-                $tagName = $row.find('.tag-name').html();
-                // console.log($tagId +' has name: ' +$tagName);
-                updateTag($tagId, $tagName, $isCreate);
-            },
-            onBeforeDelete: function(row) {
-                Swal.fire({
-                    title: 'Bạn có chắc muốn?',
-                    text: "Xóa xóa tag này không?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Vâng, xóa tag!'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        // convert DOM object to jQuery object
-                        var $row = $(row).closest('tr');
-                        $tagId = $row.find('.tag-id').html();
-                        deleteTag($tagId);
-                        // need check if delete tag complete or not before removing this row
-                        $row.remove();
-
-                        // console.log($row);
+    {{-- bootstrap table   --}}
+        {{-- <script>
+            var editableTable = new BSTable("bstable",{
+                editableColumns:"1",
+                $addButton: $('#new-row-button'),
+                advanced: {
+                    columnLabel:'Sửa'
+                },
+                onEdit: function(row) {
+                    // convert DOM object to jQuery object
+                    var $row = $(row).closest('tr');
+                    $tagId = $row.find('.tag-id').html();
+                    if($tagId){
+                        $isCreate = 'no';
+                    }else{
+                        $isCreate = 'yes';
                     }
+                    $tagName = $row.find('.tag-name').html();
+                    // console.log($tagId +' has name: ' +$tagName);
+                    updateTag($tagId, $tagName, $isCreate);
+                },
+                onBeforeDelete: function(row) {
+                    Swal.fire({
+                        title: 'Bạn có chắc muốn?',
+                        text: "Xóa xóa tag này không?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Vâng, xóa tag!'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            // convert DOM object to jQuery object
+                            var $row = $(row).closest('tr');
+                            $tagId = $row.find('.tag-id').html();
+                            deleteTag($tagId);
+                            // need check if delete tag complete or not before removing this row
+                            $row.remove();
 
-                })
-            },
-            onDelete: function(event) {
-            },
-            onAdd: function(row) {
-                // // convert DOM object to jQuery object
-                // var $row = $(row).closest('tr');
-                // $tagName = $row.find('.tag-name').html();
-                // console.log($tagName);
-                // // updateTag($tagId, $tagName);
-            },
+                            // console.log($row);
+                        }
+
+                    })
+                },
+                onDelete: function(event) {
+                },
+                onAdd: function(row) {
+                    // // convert DOM object to jQuery object
+                    // var $row = $(row).closest('tr');
+                    // $tagName = $row.find('.tag-name').html();
+                    // console.log($tagName);
+                    // // updateTag($tagId, $tagName);
+                },
 
 
-        });
-        editableTable.init();
-
-        function updateTag(tagId, tagName, isCreate){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
             });
-             $.ajax({
-                    type: "post",
-                    url: "/admin/tags/ajax-update",
-                    data: {id:tagId, name:tagName, isCreate:isCreate},
-                    dataType: "json",
-                    success: function (response) {
-                        if(response.message){
-                        displayNotification(response.message,'success');
-                        };
-                    }
-                });
-        }
-        function deleteTag(tagId){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-             $.ajax({
-                    type: "DELETE",
-                    url: "/admin/tags/ajax-destroy",
-                    data: {id:tagId},
-                    dataType: "json",
-                    success: function (response) {
-                        if(response.message){
-                        displayNotification(response.message,'info');
-                        console.log('xoa roi ne');
-                        };
-                    }
-                });
-        }
-    </script>
-    {{-- end for list tags page  --}}
+            editableTable.init();
 
-    {{-- for tag to product page  --}}
+            function updateTag(tagId, tagName, isCreate){
+                // $.ajaxSetup({
+                //     headers: {
+                //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                //     }
+                // });
+                $.ajax({
+                        type: "post",
+                        url: "/admin/tags/ajax-update",
+                        data: {id:tagId, name:tagName, isCreate:isCreate},
+                        dataType: "json",
+                        success: function (response) {
+                            if(response.message){
+                            displayNotification(response.message,'success');
+                            };
+                        }
+                    });
+            }
+            function deleteTag(tagId){
+                // $.ajaxSetup({
+                //     headers: {
+                //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                //     }
+                // });
+                $.ajax({
+                        type: "DELETE",
+                        url: "/admin/tags/ajax-destroy",
+                        data: {id:tagId},
+                        dataType: "json",
+                        success: function (response) {
+                            if(response.message){
+                            displayNotification(response.message,'info');
+                            console.log('xoa roi ne');
+                            };
+                        }
+                    });
+            }
+        </script> --}}
+    {{-- end bootstrap table   --}}
 
-    <script>
-        var engine = new Bloodhound({
+
+    {{-- for tag to product & tag to post page  --}}
+        <script>
+
+            // initialize Taginput With Typeahead
+            var engine = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.whitespace,
                 //datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -373,73 +375,129 @@
                 }
             });
 
-        $('.typeahead').tagsinput({
-            typeaheadjs: {
-                hint: true,
-                highlight: true,
-                minLength: 2,
-                source: engine,
-                templates: {
-                            empty: [
-                                '<div class="noitems">',
-                                'No Items Found',
-                                '</div>'
-                            ].join('\n')
-                        }
+            $('.typeahead').tagsinput({
+                typeaheadjs: {
+                    hint: true,
+                    highlight: true,
+                    minLength: 2,
+                    source: engine,
+                    templates: {
+                                empty: [
+                                    '<div class="noitems">',
+                                    'No Items Found',
+                                    '</div>'
+                                ].join('\n')
+                                    }
+                                }
+                            });
+            // before adding tag
+            // use of delegated events with jQuery's on method, https://datatables.net/examples/advanced_init/events_live.html
+            // it is still not work in pagination page or table
+            $table.on('beforeItemAdd','.typeahead', function(event){
+                var newTag = event.item;
+                var productId = $(this).closest('tr').find('.productId').html();
+                var postId = $(this).closest('tr').find('.postId').html();
+                console.log("hihi");
+
+                // Do some processing here
+                if (!event.options || !event.options.preventPost) {
+                    if(productId){
+                    // add tag to product
+                    addTagToProduct(productId, newTag);
+                    }
+                    if(postId){
+                    // add tag to post
+                    addTagToPost(postId, newTag)
+                    }
+                }
+            })
+            // $('.typeahead').on('beforeItemAdd', function(event) {
+
+
+
+            // });
+            function addTagToProduct(productId, newTag){
+                return $.ajax({
+                            type: "get",
+                            url: "/admin/tags/add-to-product",
+                            data: {productId:productId, newTag:newTag},
+                            dataType: "json",
+                            success: function (response) {
+                                displayNotification(response.message,response.alert_type);
+                            },
+                            error: function (err) {
+                                if (err.status == 422) { // when status code is 422, it's a validation issue
+                                    $('.typeahead').tagsinput('remove', newTag, {preventPost: true});
+                                    displayNotification(err.responseJSON.message,'error');
+                                }
+                            }
+                        });
             }
-        });
-        // before attach tag
-        $('.typeahead').on('beforeItemAdd', function(event) {
+            function addTagToPost(postId, newTag){
+                return $.ajax({
+                            type: "get",
+                            url: "/admin/tags/add-to-post",
+                            data: {postId:postId, newTag:newTag},
+                            dataType: "json",
+                            success: function (response) {
+                                displayNotification(response.message,response.alert_type);
+                            },
+                            error: function (err) {
+                                if (err.status == 422) { // when status code is 422, it's a validation issue
+                                    $('.typeahead').tagsinput('remove', newTag, {preventPost: true});
+                                    displayNotification(err.responseJSON.message,'error');
+                                }
+                            }
+                        });
+            }
+            // before detach tag
+            $('.typeahead').on('beforeItemRemove', function(event) {
+                var $tag = event.item;
+                var $productId = $(this).closest('tr').find('.productId').html();
+                var $postId = $(this).closest('tr').find('.postId').html();
+                var $tagId = $(this).closest('tr').find('.tagId').html();
+                if (!event.options || !event.options.preventPost) {
+                if(!confirm('ban muon xoa khong')){
+                event.cancel = true;
+                }else{
+                    // if productId not null, then detach tag from product
+                    if($productId){
+                        detachTagFromProduct($productId, $tag);
+                    }else if($postId){
+                        detachTagFromPost($postId, $tag);
+                    }
 
-            var newTag = event.item;
-            var productId = $(this).closest('tr').find('.productId').html();
-            // Do some processing here
-            if (!event.options || !event.options.preventPost) {
-
-                $.ajax({
+                    // else if postId not null, then detach tag from post
+                }
+                }
+            });
+            function detachTagFromProduct(productId, tag){
+                return $.ajax({
                         type: "get",
-                        url: "/admin/tags/add-to-product",
-                        data: {productId:productId, newTag:newTag},
+                        url: "/admin/tags/detach-to-product",
+                        data: {productId:productId, tag:tag},
                         dataType: "json",
                         success: function (response) {
-                            displayNotification(response.message,response.alert_type);
-                        },
-                        error: function (err) {
-                            if (err.status == 422) { // when status code is 422, it's a validation issue
-                                $('.typeahead').tagsinput('remove', newTag, {preventPost: true});
-                                displayNotification(err.responseJSON.message,'error');
-                            }
+                            // console.log(response.message);
+                            displayNotification(response.message,'success');
                         }
                     });
             }
-
-        });
-        // before detach tag
-        $('.typeahead').on('beforeItemRemove', function(event) {
-            var $tag = event.item;
-            var $productId = $(this).closest('tr').find('.productId').html();
-            if (!event.options || !event.options.preventPost) {
-            if(!confirm('ban muon xoa khong')){
-            event.cancel = true;
-            }else{
-                $.ajax({
-                    type: "get",
-                    url: "/admin/tags/detach-to-product",
-                    data: {productId:$productId, tag:$tag},
-                    dataType: "json",
-                    success: function (response) {
-                        // console.log(response.message);
-                        displayNotification(response.message,'success');
-                    }
-                });
+            function detachTagFromPost(postId, tag){
+                return $.ajax({
+                        type: "get",
+                        url: "/admin/tags/detach-to-post",
+                        data: {postId:postId, tag:tag},
+                        dataType: "json",
+                        success: function (response) {
+                            // console.log(response.message);
+                            displayNotification(response.message,'success');
+                        }
+                    });
             }
-            }
-        });
+        </script>
+    {{-- end for tag to product  & tag to post page  --}}
 
-    </script>
-
-
-    {{-- end for tag to product page  --}}
 
      {{-- other function  --}}
 
