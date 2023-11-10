@@ -4,7 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController as BackendAboutController;
 use App\Http\Controllers\Backend\CategoryController as BackendCategoryController;
 use App\Http\Controllers\Backend\CouponController;
-use App\Http\Controllers\backend\PostController as BackendPostController;
+use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\ProductController as BackendProductController;
 use App\Http\Controllers\Backend\TagController as BackendTagController;
 use App\Http\Controllers\CartController;
