@@ -115,14 +115,14 @@ Route::prefix('admin')->group(function(){
 
 
     // Post
-    Route::controller(BackendPostController::class)->group(function(){
-        Route::get('/posts','index')->name('admin.posts.index');
-        Route::get('/posts/create','create')->name('admin.posts.create');
-        Route::post('/posts/store', 'store')->name('admin.posts.store');
+    // Route::controller(BackendPostController::class)->group(function(){
+        Route::get('/posts',[BackendPostController::class,'index'])->name('admin.posts.index');
+        Route::get('/posts/create',[BackendPostController::class,'create'])->name('admin.posts.create');
+        Route::post('/posts/store', [BackendPostController::class,'store'])->name('admin.posts.store');
         // Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
-        Route::delete('/posts/ajax-delete', 'ajaxDelete');
+        Route::delete('/posts/ajax-delete', [BackendPostController::class,'ajaxDelete']);
         // Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
-    });
+    // });
 
     // category
     Route::controller(BackendCategoryController::class)->group(function(){
