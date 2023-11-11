@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Donegal One
+- Font Author: Copyright (c) 2012, Sorkin Type Co (www.sorkintype.com) with Reserved Font Name 'Donegal'
+- Font Source: http://fonts.gstatic.com/s/donegalone/v21/m8JWjfRYea-ZnFz6fsK9FZRFRG-K3Mud.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

@@ -10,7 +10,10 @@
 <meta name="robots" content="all">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>@yield('title')</title>
+<title>
+    {{-- @yield('title') --}}
+    {{ !empty($title)? $title : config('constants.BRAND')}}
+</title>
 @yield('breadcrumb')
 
 <!-- Bootstrap Core CSS -->
@@ -28,7 +31,13 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/custome.css')}}">
 <link href="{{ asset('frontend/assets/css/lightbox.css') }}" rel="stylesheet">
 
+{{-- website favicon  --}}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/favicon/apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/favicon/favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/favicon/favicon-16x16.png') }}">
+<link rel="manifest" href="/favicon/site.webmanifest">
 <!-- Icons/Glyphs -->
+
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/font-awesome.css')}}">
 
 <!-- Fonts -->

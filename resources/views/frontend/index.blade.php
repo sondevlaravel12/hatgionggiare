@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
-@section('title')
-Trang chủ Softviet
-@endsection
+{{-- @section('title')
+{{ !empty($title)? $title : 'no title'}}
+@endsection --}}
 @section('content')
 
 {{-- <div class="container"> --}}
