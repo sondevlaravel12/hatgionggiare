@@ -1,7 +1,7 @@
 <header class="header-style-1">
 
     <!-- ============================================== TOP MENU ============================================== -->
-    <div class="top-bar animate-dropdown">
+    <div class="top-bar animate-dropdown hidden-xs">
       <div class="container">
         <div class="header-top-inner">
           <div class="cnt-account">

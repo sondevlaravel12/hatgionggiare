@@ -27,7 +27,7 @@
         <!-- ========================================= SECTION – HERO : END ========================================= -->
 
         <!-- ============================================== INFO BOXES ============================================== -->
-        <div class="info-boxes wow fadeInUp">
+        <div class="info-boxes wow fadeInUp hidden-xs">
             <div class="info-boxes-inner">
             <div class="row">
                 <div class="col-md-6 col-sm-4 col-lg-4">
