@@ -146,7 +146,7 @@
 
         <script src="{{ asset('backend/assets/js/sweetalert.js') }}"></script>
 
-         <!--tinymce js-->
+         <!--tinymce js 5.3 version-->
          <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
 
          <!-- init js -->

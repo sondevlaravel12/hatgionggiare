@@ -20,7 +20,7 @@ use Spatie\Tags\HasTags;
 class Post extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia, HasSlug, HasTags;
-    protected $guared =[];
+    protected $guarded =['id'];
 
      // ------------------- Spatie Media ---------------------------//
      public function registerMediaCollections(): void

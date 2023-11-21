@@ -25,7 +25,7 @@ Bài viết
                     <span class="author">{{ $post->user?$post->user->name:'' }}</span>
                     <span class="date-time">{{ $post->created_at }}</span>
                     <span class="review">6 Comments</span>
-                    <p>{!! $post->description !!}</p>
+                    <p>{{  $post->excerpt?$post->excerpt : Str::words(strip_tags($post->description),20,'...') }}</p>
                     <a href="{{ route('posts.show',[$post,$post->slug]) }}" class="btn btn-upper btn-primary read-more">xem thêm</a>
                 </div>
                 @endforeach

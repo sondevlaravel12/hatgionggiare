@@ -21,7 +21,7 @@ category
         <div id="product-tabs-slider" class="scroll-tabs wow fadeInUp">
             {{-- tabs --}}
 
-            <div class="more-info-tab clearfix ">
+            <div class="more-info-tab clearfix hidden-xs">
 
                 @include('frontend.category._head_menu')
 

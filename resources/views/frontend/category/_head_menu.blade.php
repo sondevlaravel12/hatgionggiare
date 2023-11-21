@@ -7,7 +7,7 @@
       color:#ac1b05 !important;
     }
 </style>
-<nav class="nav nav-tabs nav-tab-line pull-left" id="category_head_menu">
+<nav class="nav nav-tabs nav-tab-line pull-left hidden-xs" id="category_head_menu">
     <div class="container-fluid">
       <ul class="nav navbar-nav ">
         @if (Route::is('categories.products.index'))

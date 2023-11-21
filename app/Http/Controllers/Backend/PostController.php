@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Pcategory;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -21,39 +22,36 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|min:2|max:255',
             'description' => 'required|min:10',
-            // 'specification'=>'min:10',
-            // 'photos'=> [
-            //     'image',
-            //     'mimes:jpg,jpeg,png,gif',
-            // ]
+            'photos'=>'required|array'
         ]);
-        dd($request->all());
 
-        $input = $request->except(['photos','category_id']);
+        $input = $request->except(['photos','category_id','_token']);
 
 
-        // if($product = Product::create($input)){
-        //     if($request->category_id!='not_selected'){
-        //         $category = Category::findOrFail($request->category_id);
-        //         if($category){
-        //             $category->products()->save($product);
-        //         }
-        //     }
+        if($post = Post::create($input)){
+            // add default excerpt
+            if($post->excerpt==""){
+                $post->setDefaultValueForPostExcerpt();
+                $post->save();
+            }
+            // add relationship with category
+            if(is_numeric($request->category_id)){
+                $pcategory = Pcategory::findOrFail($request->category_id);
+                if($pcategory){
+                    $pcategory->posts()->save($post);
+                }
+            }
+            // add media
+            foreach($request->file('photos') as $photo){
+                $post->addMedia($photo)->toMediaCollection('posts','postFiles');
+            }
+        }
 
-        //         foreach($request->file('photos') as $photo){
-        //             // dd($photo);
-        //             // if($photo->isValid()){
-        //                 $product->addMedia($photo)->toMediaCollection('products','productFiles');
-        //             // }
-        //         }
-        //     }
-
-        //     $notifycation = [
-        //         'message' => 'Product Create successfully',
-        //         'alert-type' =>'success'
-        //     ];
-        //     return redirect()->route('admin.products.index')->with($notifycation);
-        // }
+        $notifycation = [
+            'message' => 'post Create successfully',
+            'alert-type' =>'success'
+        ];
+        return redirect()->route('admin.posts.index')->with($notifycation);
     }
 
     // public function edit(Product $product){

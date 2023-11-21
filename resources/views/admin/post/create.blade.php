@@ -27,6 +27,9 @@
                         <div class="col-sm-10">
                             <div class="mb-3 input-field">
                                 <div class="input-images-1" style="padding-top: .5rem;"></div>
+                                @error('photos')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -153,9 +156,14 @@ $('.input-images-1').imageUploader({
 });
 </Script>
 <script>
-    tinymce.init({
-    selector: 'textarea#short_description',
-  });
+//     tinymce.init({
+//     selector: 'textarea#short_description',
+//     image_dimensions: false,
+//          image_class_list: [
+//             {title: 'Responsive', value: 'img-responsive'}
+//         ]
+
+//   });
 </script>
 
 <!--end Image-Uploader -->
