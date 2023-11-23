@@ -192,6 +192,22 @@
 
             }
         </script>
+        {{-- characters count live function  --}}
+        <script>
+            function titleCharCountLive(str, range='50-100'){
+                $length = str.length;
+                document.getElementById("title-char-count").innerHTML = $length + ' out of range ' + range + ' characters';
+            }
+            function excerptCharCountLive(str, range='20-50'){
+                $length = str.length;
+                document.getElementById("excerpt-count").innerHTML = $length + ' out of range ' + range + ' characters';
+            }
+            // call on tinymce init keyup event
+            function descriptionCharCountLive(currentLength,range='110-110000'){
+                document.getElementById("description-char-count").innerHTML = currentLength + ' out of range ' + range + ' characters';
+            }
+        </script>
+        {{--end characters count live function  --}}
         @stack('scripts')
     </body>
 

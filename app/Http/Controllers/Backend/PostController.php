@@ -20,8 +20,9 @@ class PostController extends Controller
     }
     public function store(Request $request){
         $validated = $request->validate([
-            'title' => 'required|min:2|max:255',
-            'description' => 'required|min:10',
+            'title' => 'required|min:50|max:100',
+            'description' => 'required|min:110|max:110000',
+            'excerpt'=>'min:20|max:50',
             'photos'=>'required|array'
         ]);
 

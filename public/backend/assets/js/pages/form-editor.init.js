@@ -1,6 +1,13 @@
 var description_config = {
     path_absolute : "/",
     selector: 'textarea.myeditorinstance',
+    setup: function(editor) {
+        editor.on('keyup', function(e) {
+        var wordcount = tinymce.activeEditor.plugins.wordcount;
+        var $characterCount = wordcount.body.getCharacterCount();
+        descriptionCharCountLive($characterCount);
+        });
+    },
     height:500,
 
     entity_encoding : "raw",
@@ -65,5 +72,10 @@ var description_config = {
 };
 
 tinymce.init(short_description_config);
+
+function characterCount(num){
+    $spanToShow = $('#description-char-count');
+    $spanToShow.val(num);
+}
 
 

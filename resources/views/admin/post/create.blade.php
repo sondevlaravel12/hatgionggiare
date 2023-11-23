@@ -13,10 +13,11 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Tên bài viết</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="title" value="{{old('title')}}"  >
+                            <input class="form-control" onkeyup="titleCharCountLive(this.value)" type="text" name="title" value="{{old('title')}}"  >
                             @error('title')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
+                            <span id="title-char-count"></span>
                         </div>
 
 
@@ -52,17 +53,19 @@
                             <textarea class="myeditorinstance" name="description">{!! old('description') !!}</textarea>
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                            @enderror
+                            <span id="description-char-count"></span>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Trích dẫn</label>
                         <div class="col-sm-10">
-                            <textarea name="excerpt" class="form-control">{!! old('excerpt') !!}</textarea>
+                            <textarea onkeyup="excerptCharCountLive(this.value)" name="excerpt" class="form-control">{!! old('excerpt') !!}</textarea>
                             @error('excerpt')
                             <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                            @enderror
+                            <span id="excerpt-count"></span>
                         </div>
                     </div>
                     <!-- end row -->
@@ -164,6 +167,7 @@ $('.input-images-1').imageUploader({
 //         ]
 
 //   });
+
 </script>
 
 <!--end Image-Uploader -->
