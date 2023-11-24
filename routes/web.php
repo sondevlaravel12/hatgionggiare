@@ -119,9 +119,9 @@ Route::prefix('admin')->group(function(){
         Route::get('/posts',[BackendPostController::class,'index'])->name('admin.posts.index');
         Route::get('/posts/create',[BackendPostController::class,'create'])->name('admin.posts.create');
         Route::post('/posts/store', [BackendPostController::class,'store'])->name('admin.posts.store');
-        // Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
+        Route::get('/posts/{post}/edit',[BackendPostController::class,'edit'])->name('admin.posts.edit');
         Route::delete('/posts/ajax-delete', [BackendPostController::class,'ajaxDelete']);
-        // Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
+        Route::put('/posts/{post}/update',[BackendPostController::class,'update'])->name('admin.posts.update');
     // });
 
     // category

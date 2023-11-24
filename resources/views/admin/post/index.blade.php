@@ -67,7 +67,7 @@
                                     @method('DELETE') --}}
                                     {{-- <a href="{{route('post.detail', $post)}}" class="popup-youtube btn btn-link mb-2"><i class="fas fa-eye"></i> Preview</a> --}}
                                     {{-- <a target="_blank" href="{{route('post.detail', $post)}}" class="btn btn-sm btn-link"><i class="fas fa-link"></i> link</a> --}}
-                                    {{-- <a href="{{route('admin.posts.edit',  $post)}}" class="btn btn-sm btn-link"><i class="far fa-edit"></i> Sửa</a> --}}
+                                    <a href="{{route('admin.posts.edit',  $post)}}" class="btn btn-sm btn-link"><i class="far fa-edit"></i> Sửa</a>
                                     <button type="submit" class="btn btn-sm btn_post_delete" data-postid="{{$post->id}}"><i class="far fa-trash-alt"></i> Xóa</button>
                                     {{-- @csrf --}}
                                 {{-- </form> --}}

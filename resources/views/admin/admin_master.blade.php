@@ -198,9 +198,9 @@
                 $length = str.length;
                 document.getElementById("title-char-count").innerHTML = $length + ' out of range ' + range + ' characters';
             }
-            function excerptCharCountLive(str, range='20-50'){
+            function excerptCharCountLive(str, range='300-500'){
                 $length = str.length;
-                document.getElementById("excerpt-count").innerHTML = $length + ' out of range ' + range + ' characters';
+                document.getElementById("excerpt-count").innerHTML ='should be ' + $length + ' out of range ' + range + ' characters';
             }
             // call on tinymce init keyup event
             function descriptionCharCountLive(currentLength,range='110-110000'){
