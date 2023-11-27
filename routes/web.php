@@ -122,6 +122,8 @@ Route::prefix('admin')->group(function(){
         Route::get('/posts/{post}/edit',[BackendPostController::class,'edit'])->name('admin.posts.edit');
         Route::delete('/posts/ajax-delete', [BackendPostController::class,'ajaxDelete']);
         Route::put('/posts/{post}/update',[BackendPostController::class,'update'])->name('admin.posts.update');
+        Route::post('/posts/ajax-setpublished',[BackendPostController::class,'ajaxSetPublished'])->name('admin.posts.published');
+
     // });
 
     // category

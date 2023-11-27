@@ -79,7 +79,7 @@ class Post extends Model implements HasMedia
         }
     }
     public function setDefaultValueForPostExcerpt(){
-        $this->excerpt = Str::words(strip_tags($this->description),20,'...');
+        $this->excerpt = Str::words(strip_tags($this->description),100,'...');
     }
     // relationship
     public function User(){

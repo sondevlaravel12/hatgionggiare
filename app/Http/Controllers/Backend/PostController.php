@@ -22,7 +22,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|min:50|max:100',
             'description' => 'required|min:110|max:110000',
-            'excerpt'=>'min:80|max:600',
+            'excerpt'=>'nullable|min:80|max:600',
             'photos'=>'required|array'
         ]);
 
@@ -71,7 +71,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|min:50|max:100',
             'description' => 'required|min:110|max:110000',
-            'excerpt'=>'min:80|max:600',
+            'excerpt'=>'nullable|min:80|max:600',
             // 'photos'=>'required|array'
         ]);
         // dd($request->all());
@@ -131,6 +131,23 @@ class PostController extends Controller
             return response()->json(['message'=>'xóa bài viết thành công']);
         }
         return response()->json(['error'=>'some errors']);
+
+    }
+    public function ajaxSetPublished(Request $request){
+        $post = Post::whereId($request->post_id)->first();
+        $status = $request->status;
+        if($post){
+            // change status
+            $post->status = $status;
+            $post->save();
+            if($status==1){
+                return response()->json(['message'=>'xuất bản bài viết thành công']);
+            }else{
+                return response()->json(['message'=>'ngừng xuất bản bài viết thành công']);
+            }
+        }else{
+            return response()->json(['error'=>'some errors']);
+        }
 
     }
 }

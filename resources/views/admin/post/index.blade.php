@@ -58,7 +58,7 @@
                                     <label for="square-switch1" data-on-label="On" data-off-label="Off"></label>
                                 </div> --}}
                                 <div class="square-switch">
-                                    <input type="checkbox" id="{{$post->id}}" data-post-id="{{$post->id}}" switch="none" {{$post->status=='published'?'checked':''}}>
+                                    <input type="checkbox" id="{{$post->id}}" data-post-id="{{$post->id}}" switch="none" {{$post->status==1?'checked':''}}>
                                     <label for="{{$post->id}}" data-on-label="On" data-off-label="Off"></label>
                                 </div>
                             </td>
@@ -96,46 +96,39 @@
 
  <!-- lightbox init js-->
  <script src="{{asset('backend/assets/js/pages/lightbox.init.js')}}"></script>
+ {{-- publish post --}}
  <script>
     $("input[type=checkbox]").change(function (e) {
-        toastr.options = {
-          "closeButton": true,
-          "newestOnTop": true,
-          "positionClass": "toast-bottom-full-width"
-        };
         var $status;
         var $post_id = $(this).attr('id');
         if (e.target.checked) { //If the checkbox is checked
-            $status = 'published';
+            $status = 1;
 
         } else {
-            $status = 'draft';
+            $status = 0;
         }
-
-        // csrf token
-        var $headers = {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') };
-        //passing data to laravel controller
-        var $data = {
-            'post_id': $post_id,
-            "status": $status
-        };
-        $.ajax({
-            headers:$headers,
-            type:'POST',
-            dataType: "json",
-            url:'/admin/posts/ajax-setpublished',
-            data:$data,
-            success:function(response) {
-                toastr.success(response.success);
-            }
-
+        togglePublishPost($post_id,$status ).done(function(response){
+            if(response.message){
+            toastr.success(response.message);
+            };
         });
 
     });
+    function togglePublishPost($post_id, $status){
+        return $.ajax({
+            type:'POST',
+            dataType: "json",
+            url:'/admin/posts/ajax-setpublished',
+            data:{
+                'post_id': $post_id,
+                "status": $status
+                }
+        });
+    };
 
  </script>
 
-
+{{-- delete post  --}}
  <script>
     // sweetalert before deleting
     // var $dataTable = $table.DataTable({});
@@ -153,7 +146,6 @@
             if (result.isConfirmed) {
                 var $row = $dataTable.row($(this).parents('tr'));
                 var $postId = $(this).attr('data-postid');
-                // console.log($postId);
                 deletePost($postId, $row)
             }
 
@@ -162,11 +154,6 @@
     });
 
     function deletePost($postId, $row){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
         $.ajax({
             type: "DELETE",
             url: "/admin/posts/ajax-delete",
