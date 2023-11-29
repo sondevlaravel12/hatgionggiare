@@ -7,7 +7,7 @@
         <meta name="author" content="">
         <link rel="icon" href="{{ asset('panel/assets/images/favicon.png')}}" >
         <!--Page title-->
-        <title>Admin easy Learning</title>
+        <title>Admin hatgionggiare</title>
         <!--bootstrap-->
         <link rel="stylesheet" href="{{ asset('panel/assets/css/bootstrap.min.css')}}">
         <!--font awesome-->
@@ -36,7 +36,7 @@
                     <div class="login_page center_container">
                         <div class="center_content">
                             <div class="logo">
-                                <img src="{{ asset('panel/assets/images/logo.png')}}" alt="" class="img-fluid">
+                                <img src="{{ asset(App\Models\Webinfo::first()->logo)}}" alt="" class="img-fluid">
                             </div>
                             @if (Session::has('error'))
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -74,7 +74,7 @@
                                 </div>
                             </form>
                             <div class="footer">
-                               <p>Copyright &copy; 2020 <a href="https://easylearningbd.com/">easy Learning</a>. All rights reserved.</p>
+                            <p>Copyright &copy; 2023 <a href="{{ config('app.url') }}">{{ config('app.name') }}</a>. All rights reserved.</p>
                             </div>
 
                         </div>

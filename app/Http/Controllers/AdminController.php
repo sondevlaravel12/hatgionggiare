@@ -20,6 +20,10 @@ class AdminController extends Controller
     }
     public function login(Request $request){
         if(Auth::guard('admin')->attempt(['email'=>$request->email, 'password'=>$request->password])){
+            if(Auth::guard('admin')->user()->status==0) {
+                Auth::guard('admin')->logout();
+                return back()->with('error','Your account is inactive');
+            }
             return redirect()->route('admin.dashboard')->with('success', 'suceessfully login');
         }else{
             return back()->with('error','Invalid email or password');
