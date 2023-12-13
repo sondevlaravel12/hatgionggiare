@@ -48,7 +48,11 @@
 <style>
     .breadcrumb{
         margin-bottom: 5px !important;
-    };
+    }
+    /* for image align that generated from tinyMce */
+    p>img.img-responsive{
+        display: inline !important;
+    }
     /* img {
     max-width: 100% !important;
     height: auto !important;
