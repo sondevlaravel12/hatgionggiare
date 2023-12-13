@@ -30,6 +30,8 @@ return new class extends Migration
             $table->string('phone_number');
             $table->text('notes')->nullable();
             $table->string('email')->nullable();
+            $table->integer('discount')->unsigned()->nullable();
+
 
 
             $table->timestamps();

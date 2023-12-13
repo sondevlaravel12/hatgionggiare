@@ -85,9 +85,9 @@
                     </div>
 
                     <div class="clearfix cart-total">
-                        <div class="pull-right"> <span class="text">Sub Total :</span><span class='price subtotal' id="price"></span>&nbsp;<span class="price">đ</span> </div>
+                        <div class="pull-right"> <span class="text">Tổng cộng :</span><span class='price subtotal' id="price"></span>&nbsp;<span class="price">đ</span> </div>
                         <div class="clearfix"></div>
-                        <a href="{{ route('cart.index') }}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
+                        <a href="{{ route('cart.index') }}" class="btn btn-upper btn-primary btn-block m-t-20">Thanh toán</a> </div>
                     <!-- /.cart-total-->
 
                 </li>
@@ -119,52 +119,11 @@
             <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
               <div class="nav-outer">
                 <ul class="nav navbar-nav">
-                  <li class="active dropdown yamm-fw"> <a href="{{ route('home') }}">Trang chủ</a> </li>
-                  <li class="active dropdown yamm-fw"> <a href="{{ route('categories.products.index') }}">Danh mục sản phẩm</a> </li>
-                  {{-- <li class="dropdown yamm mega-menu"> <a href="" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Danh mục sản phẩm</a>
-                    <ul class="dropdown-menu container">
-                      <li>
-                        <div class="yamm-content ">
-                          <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                              <h2 class="title">Kaspersky</h2>
-                              <ul class="links">
-                                <li><a href="#">Kaspersky internet security</a></li>
-                                <li><a href="#">Kaspersky Small office </a></li>
-                                <li><a href="#">Kaspersky antivirus</a></li>
-                                <li><a href="#">Kaspersky vpn</a></li>
-                              </ul>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                <h2 class="title">Windows</h2>
-                                <ul class="links">
-                                  <li><a href="#">Window 11</a></li>
-                                  <li><a href="#">Window 10 </a></li>
-                                  <li><a href="#">Window 7</a></li>
-                                </ul>
-                            </div>
-                              <!-- /.col -->
-                            <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                <h2 class="title">Office</h2>
-                                <ul class="links">
-                                  <li><a href="#">Office pro plus 2016</a></li>
-                                  <li><a href="#">Office pro plus 2019 </a></li>
-
-                                </ul>
-                            </div>
-                              <!-- /.col -->
-
-                            <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/top-menu-banner.jpg')}}" alt=""> </div>
-                            <!-- /.yamm-content -->
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </li> --}}
-                  <li class="dropdown hidden-sm"> <a href="{{ route('about') }}">Giới thiệu</a> </li>
-                  <li class="dropdown hidden-sm"> <a href="{{ route('posts.index') }}">Tin tức</a> </li>
-                  <li class="dropdown hidden-sm"> <a href="{{ route('contact') }}">Liên hệ</a> </li>
+                  <li class="dropdown yamm-fw {{ Route::currentRouteName()=='home'?'active':'' }}"> <a href="{{ route('home') }}">Trang chủ</a> </li>
+                  <li class="dropdown yamm-fw {{ Route::currentRouteName()=='categories.products.index'?'active':'' }}"> <a href="{{ route('categories.products.index') }}">Danh mục sản phẩm</a> </li>
+                  <li class="dropdown hidden-sm {{ Route::currentRouteName()=='about'?'active':'' }}"> <a href="{{ route('about') }}">Giới thiệu</a> </li>
+                  <li class="dropdown hidden-sm {{ Route::currentRouteName()=='posts.index'?'active':'' }}"> <a href="{{ route('posts.index') }}">Tin tức</a> </li>
+                  <li class="dropdown hidden-sm {{ Route::currentRouteName()=='contact'?'active':'' }}"> <a href="{{ route('contact') }}">Liên hệ</a> </li>
                   <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
                 </ul>
                 <!-- /.navbar-nav -->

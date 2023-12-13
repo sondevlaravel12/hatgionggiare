@@ -103,7 +103,7 @@
                                     <tr>
                                         <td>
                                             <div class="cart-checkout-btn pull-right">
-                                                <a href="{{ route('cart.checkout') }}" class="btn btn-primary checkout-btn">TIẾN HÀNH THANH TOÁN</a>
+                                                <a href="{{ route('cart.checkout') }}" class="btn btn-primary checkout-btn">TIẾN HÀNH ĐẶT HÀNG</a>
                                             </div>
                                         </td>
                                     </tr>

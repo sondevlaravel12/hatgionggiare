@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController as BackendAboutController;
 use App\Http\Controllers\Backend\CategoryController as BackendCategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\OrderController as BackendOrderController;
 use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\ProductController as BackendProductController;
 use App\Http\Controllers\Backend\TagController as BackendTagController;
@@ -56,14 +57,22 @@ Route::prefix('admin')->group(function(){
     // purchasing policy
     Route::get('/purchasing-policy/edit',[PolicyController::class,'editPurchasingPolicy'])->name('admin.purchasingPolicy.edit');
     Route::put('/purchasing-policy/{purchasingPolicy}/update',[PolicyController::class,'updatePurchasingPolicy'])->name('admin.purchasingPolicy.update');
-// purchasing policy
+    // purchasing policy
     Route::get('/purchasing-policy/edit',[PolicyController::class,'editPurchasingPolicy'])->name('admin.purchasingPolicy.edit');
     Route::put('/purchasing-policy/{purchasingPolicy}/update',[PolicyController::class,'updatePurchasingPolicy'])->name('admin.purchasingPolicy.update');
     // bank account information
     Route::get('/bank-infor/edit',[OtherInforController::class,'editBankInfor'])->name('admin.bankInfor.edit');
     Route::put('/bank-infor/{otherInformation}/update',[OtherInforController::class,'updateBankInfor'])->name('admin.bankInfor.update');
 
+    Route::controller(BackendOrderController::class)->group(function () {
+        Route::get('/order/fromcarts', 'index')->name('admin.order.fromcarts.index');
+        Route::get('/order-fromcarts/{order}', 'show')->name('admin.order.fromcarts.detail');
+        Route::get('/order/fromcarts/{order}/edit', 'edit')->name('admin.order.fromcarts.edit');
+        Route::post('/order/fromcarts/{order}/update', 'update')->name('admin.order.fromcarts.update');
+        Route::get('/order/fromcarts/ajax-get-order-info', 'getOrderInfo')->name('admin.order.fromcarts.getOrderInfo');
 
+
+    });
     // coupon
     Route::get('/coupons',[CouponController::class,'index'])->name('admin.coupons.index');
     Route::get('/coupons/create',[CouponController::class,'create'])->name('admin.coupons.create');

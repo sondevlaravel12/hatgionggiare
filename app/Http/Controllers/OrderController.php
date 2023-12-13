@@ -7,6 +7,7 @@ use App\Models\OrderItem;
 use App\Models\Webinfo;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+// use Illuminate\Contracts\Session\Session;
 
 class OrderController extends Controller
 {
@@ -21,13 +22,21 @@ class OrderController extends Controller
             return redirect()->back()->withErrors(['message' =>'Giỏ hàng không có sản phẩm, vui lòng đặt hàng lại']);
         }
         //validate
-        $validated = $request->validate([
+        $validated = $request->validate(
+            [
             'username' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'dongychinhsach' => 'required',
 
-        ]);
+            ],
+            [
+                'username.required'=>'Họ tên không được để trống',
+                'phone.required'=>'Số điện thoại không được để trống',
+                'address.required'=>'Địa chỉ nhận hàng không được để trống',
+                'dongychinhsach.required'=>'Bạn cần đồng ý với các chính sách và quy định mua hàng tại website',
+            ]
+        );
         $order = $this->storeOrderDetails($request);
         if($order){
             session()->flash('order_status','successful');
@@ -42,20 +51,23 @@ class OrderController extends Controller
 
     }
     public function thankyou(Order $order){
-        if(session('order_status')=='successful'){
+        // if(session('order_status')=='successful'){
             $shipping_fee = Webinfo::first()->shipping_fee;
-            $total =$order->total + $shipping_fee;
+            // $total =$order->total + $shipping_fee;
+            $totalPrice = $order->getRawOriginal('total') + $order->discount;
+            $totalPrice = number_format($totalPrice,0,',','.');
+            $total =$order->getRawOriginal('total')+ $shipping_fee;
             $shipping_fee = number_format($shipping_fee,0,',','.');
             $total = number_format($total,0,',','.');
             $orderItems = $order->items;
             Cart::destroy();
-            return view('cart.thankyou', compact('order','orderItems','shipping_fee','total'));
-        }else{
-            return redirect()->route('home')->with([
-                'message'=>'Bạn không có quyền truy cập trang này',
-                'alert-type'=>'error'
-            ]);
-        }
+            return view('cart.thankyou', compact('order','orderItems','shipping_fee','total','totalPrice'));
+        // }else{
+        //     return redirect()->route('home')->with([
+        //         'message'=>'Bạn không có quyền truy cập trang này',
+        //         'alert-type'=>'error'
+        //     ]);
+        // }
 
 
     }
@@ -73,7 +85,9 @@ class OrderController extends Controller
             'address'           =>  $request['address'],
             'phone_number'      =>  $request['phone'],
             'notes'             =>  $request['note'],
-            'email'             =>  $request['email']
+            'email'             =>  $request['email'],
+            // 'discount'          => Cart::discount()
+            'discount'          => str_replace('.', '', Cart::discount()),
         ]);
         if ($order) {
 

@@ -107,7 +107,7 @@
         <script src="//cdn.datatables.net/plug-ins/1.12.1/sorting/intl.js"></script>
         {{-- <script src="{{asset('backend/assets/js/pages/datatable_sorting_intl.js')}}"></script> --}}
         <!-- Datatable init js -->
-        {{-- <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script> --}}
+        <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script>
         {{-- <script src="{{asset('backend/assets/js/pages/datatables_default_setting.js')}}"></script> --}}
 
 
@@ -208,6 +208,10 @@
             }
         </script>
         {{--end characters count live function  --}}
+        {{-- global variabl and const  --}}
+        <script>
+            const money = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' });
+        </script>
         @stack('scripts')
     </body>
 
