@@ -51,7 +51,7 @@
                             <td>{{$product->id}}</td>
 
                             <td><img src="{{$product->getFirstImageUrl('medium')}}" class="img-thumbnail" alt="300x300" width="300" data-holder-rendered="true"></td>
-                            <td>{{$product->name}}</td>
+                            <td><a href="{{ route('products.show', $product) }}">{{$product->name}}</a></td>
                             <td>
                                 {{-- <div class="square-switch">
                                     <input type="checkbox" id="square-switch1" data-product-id="{{$product->id}}" switch="none" {{$product->status=='published'?'checked':''}}>
