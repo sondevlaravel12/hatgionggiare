@@ -42,7 +42,7 @@ class Product extends Model implements HasMedia, Buyable
         $this
             ->addMediaCollection('products')
             ->acceptsMimeTypes(['image/jpeg','image/png','image/svg'])
-            ->onlyKeepLatest(3)
+            ->onlyKeepLatest(5)
             ;
 
     }

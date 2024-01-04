@@ -99,7 +99,7 @@
                                                             @endif
                                                         @endforeach
                                                     @else
-                                                        <option selected="" value="not_selected">Chọn danh mục</option>
+                                                        <option selected="" value="">Chọn danh mục</option>
                                                         @foreach ($categories as $category)
                                                             <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }} >{{$category->name}}</option>
                                                         @endforeach

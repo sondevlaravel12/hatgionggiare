@@ -116,7 +116,8 @@
          }
 
     @endif
-   </script>
+</script>
+
 
 <!-- Add to Cart Product Modal -->
 @include('cart.modal_option_1')

@@ -89,10 +89,12 @@ class ProductController extends Controller
             //     'image',
             //     'mimes:jpg,jpeg,png,gif',
             // ]
-            'category_id' => 'nullable|exists:categories,id',
+            'category_id' => "nullable|exists:categories,id"
         ]);
 
         $input = $request->except(['photos','category_id','preloadedImages','deletedImages']);
+        // dd($input);
+        // dd($request->all());
         // update some text, num inputs
         $product->update($input);
 
@@ -118,7 +120,7 @@ class ProductController extends Controller
         // update category
         // Check if a new category is selected by the user
         $selectedCategoryId = $request->input('category_id');
-        if ($selectedCategoryId && $selectedCategoryId !== 'not_selected' && $selectedCategoryId !== $product->category_id){
+        if ($selectedCategoryId && $selectedCategoryId !== $product->category_id){
             $category = Category::findOrFail($selectedCategoryId);
             // Update product category
             $product->category()->associate($category)->save();

@@ -221,7 +221,7 @@ jQuery(".brand-slider").owlCarousel({
     pagination: false,
     paginationSpeed : 400,
     navigationText: ["", ""]
-});    
+});
 jQuery("#advertisement").owlCarousel({
     items : 1,
     itemsDesktopSmall :[979,2],
@@ -231,7 +231,7 @@ jQuery("#advertisement").owlCarousel({
     pagination: true,
     paginationSpeed : 400,
     navigationText: ["", ""]
-});    
+});
 
 
 
@@ -283,17 +283,22 @@ if (jQuery('.price-slider').length > 0) {
 jQuery(function(){
     jQuery('#owl-single-product').owlCarousel({
         items:1,
-        itemsTablet:[768,2],
-        itemsDesktop : [1199,1]
+        itemsDesktop : [1199,1],
+        itemsDesktopSmall : [980,1],
+        itemsTablet: [768,1],
+        itemsMobile : [479,1]
 
     });
 
     jQuery('#owl-single-product-thumbnails').owlCarousel({
-        items: 4,
+        items: 3,
         pagination: true,
         rewindNav: true,
-        itemsTablet : [768, 4],
-        itemsDesktop : [1199,3]
+        responsive: false,
+        // itemsDesktop : [1199,3],
+        // itemsDesktopSmall : [980,3],
+        // itemsTablet: [768,3],
+        // itemsMobile : [479,3]
     });
 
     jQuery('#owl-single-product2-thumbnails').owlCarousel({
@@ -311,7 +316,7 @@ jQuery(function(){
         pagination: true
     });
 
-  
+
 });
 
 
@@ -319,7 +324,7 @@ jQuery(function(){
 
 
 /*===================================================================================*/
-/*  WOW 
+/*  WOW
 /*===================================================================================*/
 
 jQuery(function () {
@@ -328,9 +333,9 @@ jQuery(function () {
 
 
 /*===================================================================================*/
-/*  TOOLTIP 
+/*  TOOLTIP
 /*===================================================================================*/
-jQuery("[data-toggle='tooltip']").tooltip(); 
+jQuery("[data-toggle='tooltip']").tooltip();
 
 
 
