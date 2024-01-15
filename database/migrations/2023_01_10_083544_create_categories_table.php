@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('slug')->nullable();
             $table->text('description')->nullable();
             $table->integer('parent_id')->default(0);
+            $table->integer('in_infor_tab')->default(1)->nullable();
+            $table->integer('in_sidebar_widget')->default(null)->nullable();
             $table->tinyInteger('order')->default(0);
             $table->timestamps();
         });
