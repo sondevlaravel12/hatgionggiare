@@ -17,10 +17,18 @@ class CategoryController extends Controller
         ]);
     }
     public function show(Category $category){
-        $products = $category->products->toQuery()->paginate(12);
-        return view('frontend.category.detail')->with([
-            'products'=>$products,
-            'category'=>$category
-        ]);
+        if($category->products->count()>0){
+            $products = $category->products->toQuery()->paginate(12);
+            return view('frontend.category.detail')->with([
+                'products'=>$products,
+                'category'=>$category
+            ]);
+        }else{
+            // return back()->withErrors('Danh Mục Này Không Có Sản Phẩm');
+            return view('frontend.category.detail')->with([
+                'error'=>'Danh Mục Này Không Có Sản Phẩm',
+                'category'=>$category
+            ]);
+        }
     }
 }

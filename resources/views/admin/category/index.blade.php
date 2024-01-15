@@ -22,7 +22,7 @@
 
                     <div class="table-responsive">
 
-                        <table  id="datatable" class="table mb-0">
+                        <table  id="datatable-default" class="table mb-0">
 
                             <thead>
                                 <tr>
@@ -71,21 +71,19 @@
 @endsection
 @push('scripts')
 
-<script>
-    var $dataTable = $('#datatable').DataTable({
-        });
-    var $table = $('#datatable');
-</script>
+
  <!-- Magnific Popup-->
  <script src="{{asset('backend/assets/libs/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
 
 
 
  <script>
+    // var $defaultTable = $("#datatable-default");
+    // var $defaultDatatable = $defaultTable.DataTable({
+    //     order: [[0, 'desc']],
+    // });
     // sweetalert before deleting
-    // var $dataTable = $table.DataTable({});
     $table.on('click','.btn_category_delete', function(){
-        // event.preventDefault();
         Swal.fire({
             title: 'Bạn có chắc muốn?',
             text: "Xóa xóa danh mục sản phẩm này không?",
@@ -96,7 +94,7 @@
             confirmButtonText: 'Vâng, xóa danh mục sản phẩm!'
             }).then((result) => {
             if (result.isConfirmed) {
-                var $row = $dataTable.row($(this).parents('tr'));
+                var $row = $defaultDatatable.row($(this).parents('tr'));
                 var $categoryId = $(this).attr('data-categoryid');
                 // console.log($productId);
                 deleteCategory($categoryId, $row)
@@ -107,11 +105,11 @@
     });
 
     function deleteCategory($categoryId, $row){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
         $.ajax({
             type: "DELETE",
             url: "/admin/categories/ajax-delete",

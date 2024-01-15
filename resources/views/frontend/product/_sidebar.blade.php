@@ -4,6 +4,9 @@
         <h3 class="section-title">Danh Mục</h3>
         <div class="sidebar-widget-body m-t-10">
             <div class="accordion">
+                @php
+                    $categoriesInSidebar = App\Models\Category::whereNotNull('in_sidebar_widget')->get();
+                @endphp
                 @foreach ($parentCategories as $parentCategory)
                 @php
                     $selectedCategory = false;

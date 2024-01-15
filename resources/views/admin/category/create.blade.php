@@ -49,7 +49,7 @@
                         <label for="example-text-input" class="col-sm-2 col-form-label">Danh mục cha</label>
                         <div class="col-sm-10">
                             <select class="form-select" aria-label="Default select example" name="category_id">
-                                <option selected="" value="not_selected">Lựa chọn danh mục cha</option>
+                                <option selected="" value="0">Lựa chọn danh mục cha</option>
                                 @php
                                     $categories = App\Models\Category::where('parent_id',0)->get();
                                 @endphp

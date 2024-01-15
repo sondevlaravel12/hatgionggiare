@@ -124,7 +124,8 @@ class ProductController extends Controller
             $category = Category::findOrFail($selectedCategoryId);
             // Update product category
             $product->category()->associate($category)->save();
-        } elseif (!$product->category) {
+        }
+        elseif (!$product->category) {
             // If no category is selected by the user and the product has no category by default, set category to null
             $product->category()->dissociate()->save();
         }

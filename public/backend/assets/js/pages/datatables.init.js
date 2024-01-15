@@ -1,5 +1,10 @@
+var $defaultTable, $defaultDatatable; // make it global scope
 $(document).ready(function () {
-    $("#datatable-default").DataTable({
+    $defaultTable = $("#datatable-default");
+    $defaultDatatable = $defaultTable.DataTable({
+        order: [[0, 'desc']],
+    });
+    // $("#datatable-default").DataTable({
         // language: { paginate: { previous: "<i class='mdi mdi-chevron-left'>", next: "<i class='mdi mdi-chevron-right'>" } },
         //     "order": [0,'desc'],
         //     paginate: true,
@@ -7,8 +12,8 @@ $(document).ready(function () {
         // drawCallback: function () {
         //     $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
         // },
-        order: [[0, 'desc']],
-    });
+
+    // });
     // var a = $("#datatable-buttons").DataTable({
     //     lengthChange: !1,
     //     language: { paginate: { previous: "<i class='mdi mdi-chevron-left'>", next: "<i class='mdi mdi-chevron-right'>" } },

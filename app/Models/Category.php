@@ -72,6 +72,16 @@ class Category extends Model implements HasMedia
     // }
      // ------------------- End Relationship ---------------------------//
 
+     ////  ------------------ Accessor--------------------------------- ////
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => mb_convert_case($value, MB_CASE_TITLE, "UTF-8"),
+        );
+    }
+     ////  ------------------ End Accessor--------------------------------- ////
+
+
      public function getFirstImageUrl($size='thumb'){
         if($this->getFirstMedia('categories')){
             return $this->getFirstMedia('categories')->getUrl($size);

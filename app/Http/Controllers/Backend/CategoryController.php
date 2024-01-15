@@ -34,7 +34,8 @@ class CategoryController extends Controller
                 $category->addMediaFromRequest('image')->toMediaCollection('categories','categoryFiles');
             }
             // add parent category
-            if($request->category_id!='not_selected'){
+            if($request->category_id){
+                // dd($request->category_id);
                 $parentCategory = Category::findOrFail($request->category_id);
                 if($parentCategory){
                     // save chilren to parent

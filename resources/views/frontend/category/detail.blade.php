@@ -59,7 +59,9 @@ category
                             </div>
                             <div class="col col-sm-6 col-md-4 text-right pull-right">
                                 <div class="pagination-container">
-                                    {{ $products->links('frontend.partial.custom_paginate')  }}
+                                    @if (!isset($error))
+                                    {{ $products->links('frontend.partial.custom_paginate') }}
+                                    @endif
                                 </div>
                                 <!-- /.pagination-container -->
                             </div>
@@ -74,37 +76,44 @@ category
                             <div class="tab-pane active " id="grid-container">
                                 <div class="category-product">
                                     <div class="row">
-                                        @foreach ($products as $product)
-                                        <div class="col-xs-6 col-md-4 wow fadeInUp">
-                                            <div class="products">
-                                            <div class="product">
-                                                <div class="product-image">
-                                                <div class="image"> <a href="{{ route('products.show', [$product, $product->slug]) }}"><img  src="{{ $product->getFirstImageUrl('medium') }}" alt=""></a> </div>
-                                                <!-- /.image -->
-                                                </div>
-                                                <!-- /.product-image -->
-
-                                                <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
-                                                <div class="product-price"> <span class="price"> {{ $product->discount_price }} </span> <span class="price-before-discount">{{ $product->base_price }}</span> </div>
-                                                <!-- /.product-price -->
-
-                                                </div>
-                                                <!-- /.product-info -->
-                                                <div class="cart clearfix animate-effect">
-                                                    @include("frontend.category._action")
-                                                <!-- /.action -->
-                                                </div>
-                                                <!-- /.cart -->
-                                            </div>
-                                            <!-- /.product -->
-
-                                            </div>
-                                            <!-- /.products -->
+                                        @if(isset($error))
+                                        <div class="alert alert-danger">
+                                            {{ $error }}
                                         </div>
-                                        @endforeach
+                                        @else
+                                            @foreach ($products as $product)
+                                            <div class="col-xs-6 col-md-4 wow fadeInUp">
+                                                <div class="products">
+                                                <div class="product">
+                                                    <div class="product-image">
+                                                    <div class="image"> <a href="{{ route('products.show', [$product, $product->slug]) }}"><img  src="{{ $product->getFirstImageUrl('medium') }}" alt=""></a> </div>
+                                                    <!-- /.image -->
+                                                    </div>
+                                                    <!-- /.product-image -->
+
+                                                    <div class="product-info text-left">
+                                                    <h3 class="name"><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></h3>
+                                                    <div class="rating rateit-small"></div>
+                                                    <div class="description"></div>
+                                                    <div class="product-price"> <span class="price"> {{ $product->discount_price }} </span> <span class="price-before-discount">{{ $product->base_price }}</span> </div>
+                                                    <!-- /.product-price -->
+
+                                                    </div>
+                                                    <!-- /.product-info -->
+                                                    <div class="cart clearfix animate-effect">
+                                                        @include("frontend.category._action")
+                                                    <!-- /.action -->
+                                                    </div>
+                                                    <!-- /.cart -->
+                                                </div>
+                                                <!-- /.product -->
+
+                                                </div>
+                                                <!-- /.products -->
+                                            </div>
+                                            @endforeach
+                                        @endif
+
 
 
                                     </div>
@@ -119,9 +128,15 @@ category
                             {{-- filter as list --}}
                             <div class="tab-pane "  id="list-container">
                                 <div class="category-product">
-                                    @foreach ($products as $product)
-                                @include("frontend.category._product_multy_row_in_category")
-                                    @endforeach
+                                    @if(isset($error))
+                                        <div class="alert alert-danger">
+                                            {{ $error }}
+                                        </div>
+                                    @else
+                                        @foreach ($products as $product)
+                                        @include("frontend.category._product_multy_row_in_category")
+                                        @endforeach
+                                    @endif
 
 
                                 </div>
@@ -133,7 +148,10 @@ category
                         <div class="clearfix filters-container">
                             <div class="text-right">
                             <div class="pagination-container">
-                                {{ $products->links('frontend.partial.custom_paginate')  }}
+                                @if (!isset($error))
+                                {{ $products->links('frontend.partial.custom_paginate') }}
+                                @endif
+
                             </div>
                             <!-- /.pagination-container --> </div>
                             <!-- /.text-right -->
@@ -151,3 +169,4 @@ category
 </div>
 @include('frontend.body.brands')
 @endsection
+

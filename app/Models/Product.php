@@ -98,6 +98,12 @@ class Product extends Model implements HasMedia, Buyable
     // ------------------- end Spatie laravel-sluggable ---------------------------//
 
     ////  ------------------ Accessor--------------------------------- ////
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => mb_convert_case($value, MB_CASE_TITLE, "UTF-8"),
+        );
+    }
     protected function price(): Attribute
     {
         return Attribute::make(

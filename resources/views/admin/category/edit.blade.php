@@ -56,7 +56,9 @@
                                     $categoryParentId = $category->parent?$category->parent->id:0;
                                 @endphp
                                 @foreach ($categories as $cat)
-                                <option value="{{$cat->id}}" {{$cat->id==$categoryParentId? 'selected':''}} >{{$cat->name}}</option>
+                                    @if ($cat->id != $category->id)
+                                    <option value="{{$cat->id}}" {{$cat->id==$categoryParentId? 'selected':''}} >{{$cat->name}}</option>
+                                    @endif
                                 @endforeach
                                 </select>
                         </div>
