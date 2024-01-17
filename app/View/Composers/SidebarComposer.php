@@ -29,7 +29,8 @@ class SidebarComposer
      */
     public function __construct()
     {
-        $this->parentCategories = Category::where('parent_id',0)->whereNotNull('in_sidebar_widget')->has('children')->get();
+        // $this->parentCategories = Category::where('parent_id',0)->whereNotNull('in_sidebar_widget')->has('children')->get();
+        $this->parentCategories = Category::where('parent_id',0)->whereNotNull('in_sidebar_widget')->get();
         $this->populerProducts = Product::populer();
         $this->recentProducts = Product::latest()->limit(2)->get();
         $this->categories = Category::latest()->limit(3)->get();

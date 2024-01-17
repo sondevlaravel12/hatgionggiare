@@ -15,7 +15,7 @@
                 <div class="rating rateit-small"></div>
                 <div class="product-price"> <span class="price"> {{ $product->discount_price }} </span> <span class="price-before-discount">{{ $product->base_price }}</span> </div>
                 <!-- /.product-price -->
-                <div class="description m-t-10">{{ $product->short_description }}</div>
+                <div class="description m-t-10">{!! $product->short_description !!}</div>
                 <div class="cart clearfix animate-effect">
                 <div class="action">
                     <ul class="list-unstyled">

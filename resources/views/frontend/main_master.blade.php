@@ -118,6 +118,12 @@
     @endif
 </script>
 
+<style>
+    .filters-container .nav-tabs.nav-tab-box{
+        font-size: 13px !important;
+    }
+</style>
+
 
 <!-- Add to Cart Product Modal -->
 @include('cart.modal_option_1')
