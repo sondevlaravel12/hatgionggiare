@@ -82,6 +82,21 @@
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
+                        <span>Tùy Chỉnh Giao Diện</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('interfacecustomize.category') }}">Cấu Hình Hiển Thị Danh Mục</a></li>
+
+                        <li><a href="#">Cấu Hình Chung</a></li>
+                        <li><a href="#">Cấu Hình Header</a></li>
+                        <li><a href="#">Cấu Hình Footer</a></li>
+                        <li><a href="#">Cấu Hình Sidebar</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
                         <span>Khác</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -93,6 +108,7 @@
                         <li><a href="#">Add New Slider</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>

@@ -13,10 +13,10 @@
       <div class="col-xs-12 col-sm-12 col-md-12 homebanner-holder">
 
         <!-- ============================================== NEW PRODUCTS ============================================== -->
-        <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
+        <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp ">
           <div class="more-info-tab clearfix ">
             <h3 class="new-product-title pull-left">Sản phẩm mới</h3>
-            <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
+            <ul class="nav nav-tabs nav-tab-line pull-right hidden-xs" id="new-products-1">
               <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">Tất cả</a></li>
               @foreach ($categories as $categorie)
               <li><a data-transition-type="backSlide" href="#category{{ $categorie->id }}" data-toggle="tab">{{ $categorie->name }}</a></li>

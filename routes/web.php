@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutController as BackendAboutController;
 use App\Http\Controllers\Backend\CategoryController as BackendCategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\InterfaceCustomizeController;
 use App\Http\Controllers\Backend\OrderController as BackendOrderController;
 use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\ProductController as BackendProductController;
@@ -44,6 +45,12 @@ Route::prefix('admin')->group(function(){
     Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout')->middleware('admin');
     Route::get('/register',[AdminController::class,'register'])->name('admin.register');
     Route::post('/store',[AdminController::class,'store'])->name('admin.register_store');
+
+    // customize website interface
+    Route::get('/interface_customize/category',[InterfaceCustomizeController::class,'categoryDisplay'])->name('interfacecustomize.category');
+    Route::get('/interface_customize/category/ajax_changed_infor_tab',[InterfaceCustomizeController::class,'ajaxChangedInforTab'])->name('interfacecustomize.ChangedInforTab');
+    Route::get('/interface_customize/category/ajax_changed_sidebar_widget',[InterfaceCustomizeController::class,'ajaxChangedSidebarWidget'])->name('interfacecustomize.ChangedInSidebarWidget');
+
 
     // about
     Route::get('/about/edit',[BackendAboutController::class,'edit'])->name('admin.about.edit');
