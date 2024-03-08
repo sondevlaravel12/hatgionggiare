@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class admin
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,13 @@ class admin
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(!Auth::guard('admin')->check()){
-        //     return redirect()->route('login-form')->with('error','please login first');
+        if(!Auth::guard('admin')->check()){
+            return redirect()->route('login-form')->with('error','please login first');
+        }// not work do not know why???
+        // if(Auth::guard('admin')->check()){
+        //     return redirect()->route('home');
         // }
         return $next($request);
-        // return route('admin.bankInfor.edit');
+
     }
 }

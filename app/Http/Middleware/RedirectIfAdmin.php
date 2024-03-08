@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class admin
+class RedirectIfAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,9 @@ class admin
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(!Auth::guard('admin')->check()){
-        //     return redirect()->route('login-form')->with('error','please login first');
-        // }
-        return $next($request);
-        // return route('admin.bankInfor.edit');
+        if(Auth::guard('admin')->check()){
+            return redirect()->route('admin.dashboard');
+        }
+        return $next($request);// do what make in controller
     }
 }

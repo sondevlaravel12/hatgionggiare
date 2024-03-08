@@ -37,12 +37,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* --------------------- Admin route  --------------------------- */
-Route::prefix('admin')->group(function(){
+/// middleware name = name in Kernel.php file
+// goadminlogin middleware: if already login then redirect to dashboard else do the login process by AdminController
+// load login page
+Route::get('admin/login',[AdminController::class,'index'])->name('login-form')->middleware('goadminlogin');
+Route::post('/login/owner',[AdminController::class,'login'])->name('admin.login');
 
-    Route::get('/login',[AdminController::class,'index'])->name('login-form');
-    Route::post('/login/owner',[AdminController::class,'login'])->name('admin.login');
-    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard')->middleware('admin');
-    Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout')->middleware('admin');
+
+
+Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
+
+    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/logout',[AdminController::class,'logout'])->name('admin.logout');
     Route::get('/register',[AdminController::class,'register'])->name('admin.register');
     Route::post('/store',[AdminController::class,'store'])->name('admin.register_store');
 
@@ -167,7 +173,7 @@ Route::prefix('admin')->group(function(){
 
 /* --------------------- Backend route  --------------------------- */
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
@@ -253,14 +259,23 @@ Route::get('danh-muc/{category}/san-pham', [CategoryController::class,'show'])->
 
 
 /* --------------------- End User route  --------------------------- */
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+/* --------------------- User Auth and Profile  --------------------------- */
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
+
+    require __DIR__.'/auth.php';
+/* --------------------- End User and Profile   --------------------------- */
+
+/* --------------------- Admin Profile  --------------------------- */
+    Route::middleware('adminmiddleware')->group((function(){
+        Route::get('/admin/profile', [AdminController::class,'profile'])->name('admin.profile.index');
+    }));
+/* --------------------- End Admin Profile  --------------------------- */
