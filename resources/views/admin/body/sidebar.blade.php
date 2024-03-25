@@ -119,6 +119,15 @@
                         <li><a target="_blank"  href="{{ asset('project_theme/backend_theme/ui-cards.html') }}">Backend</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Super admin only</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a target="_blank"  href="{{ route('superadmin.sample.index') }}">only text product multiple version</a></li>
+                    </ul>
+                </li>
 
                 {{-- <li>
                     <a href="#" class="has-arrow waves-effect">

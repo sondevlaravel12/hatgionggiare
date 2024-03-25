@@ -21,6 +21,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OtherInforController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SampleController;
 use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\WishlistController;
 use Illuminate\Support\Facades\Route;
@@ -279,3 +280,22 @@ Route::get('danh-muc/{category}/san-pham', [CategoryController::class,'show'])->
         Route::get('/admin/profile', [AdminController::class,'profile'])->name('admin.profile.index');
     }));
 /* --------------------- End Admin Profile  --------------------------- */
+
+/* --------------------- Super Admin --------------------------- */
+Route::middleware('adminmiddleware')->group((function(){
+    Route::get('/superadmin/sample/index', [SampleController::class,'index'])->name('superadmin.sample.index');
+    Route::get('/superadmin/sample/create', [SampleController::class,'create'])->name('superadmin.sample.create');
+    Route::post('/superadmin/sample/store', [SampleController::class,'store'])->name('superadmin.sample.store');
+
+    Route::get('/superadmin/ajax-get-sample-info', [SampleController::class,'ajaxGetSampleInfo'])->name('superadmin.ajaxGetSampleInfo');
+    Route::get('/superadmin/ajax-update-sample-info', [SampleController::class,'ajaxUpdateSampleInfo'])->name('superadmin.ajaxUpdateSampleInfo');
+    Route::get('/superadmin/ajax-remove-sample', [SampleController::class,'ajaxRemoveSample'])->name('superadmin.ajaxRemoveSample');
+
+
+
+
+}));
+/* --------------------- End Super Admin --------------------------- */
+
+
+
