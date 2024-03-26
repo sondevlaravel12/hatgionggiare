@@ -61,9 +61,10 @@
 
                                     <span class="icon_soon_bottom_right"><i class="fas fa-unlock"></i></span>
                                 </div>
+                                <!-- Remember Me -->
                                 <div class="form-group">
                                     <label class="chech_container">Remember me
-                                        <input type="checkbox" name="remember" id="remember" >
+                                        <input type="checkbox" name="remember" id="remember_me" >
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>

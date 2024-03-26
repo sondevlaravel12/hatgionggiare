@@ -24,12 +24,13 @@ class AdminController extends Controller
     }
     public function login(Request $request){
         // guard admin defined in auth.php, guard is relatived with database table, middleware is used to filter or inspect incoming requests.
-        $attemp = Auth::guard('admin')->attempt(['email'=>$request->email, 'password'=>$request->password]);
+        $attemp = Auth::guard('admin')->attempt(['email'=>$request->email, 'password'=>$request->password],$request->remember );
         if($attemp){
             if(Auth::guard('admin')->user()->status==0) {
                 Auth::guard('admin')->logout();
                 return back()->with('error','Your account is inactive');
             }
+            // Auth::login($user, $request->get('remember'));
             return redirect()->route('admin.dashboard')->with('success', 'suceessfully login');
         }else{
             /// reload login form
