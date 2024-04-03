@@ -109,6 +109,7 @@
                     </ul>
                 </li>
 
+                @haspermission('can-view-themes','admin')
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
@@ -119,6 +120,9 @@
                         <li><a target="_blank"  href="{{ asset('project_theme/backend_theme/ui-cards.html') }}">Backend</a></li>
                     </ul>
                 </li>
+                @endhaspermission
+                @role('superadmin', 'admin')
+
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
@@ -128,6 +132,9 @@
                         <li><a target="_blank"  href="{{ route('superadmin.sample.index') }}">only text product multiple version</a></li>
                     </ul>
                 </li>
+                @endrole
+
+
 
                 {{-- <li>
                     <a href="#" class="has-arrow waves-effect">

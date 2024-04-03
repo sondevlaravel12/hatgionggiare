@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    // The User model requires this trait
+    use HasRoles;
+    //Forcing Use Of A Single Guard: https://spatie.be/docs/laravel-permission/v6/basic-usage/multiple-guards
+    protected function getDefaultGuardName(): string { return 'admin'; }
     /**
      * The attributes that are mass assignable.
      *
