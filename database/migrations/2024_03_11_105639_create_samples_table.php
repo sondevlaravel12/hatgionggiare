@@ -20,7 +20,7 @@ return new class extends Migration
 
             $table->text('short_description')->nullable();
             $table->mediumText('description')->nullable();
-            $table->string('relativemodel')->nullable();
+            $table->integer('oproduct_id')->unsigned()->nullable();
 
             $table->text('note')->nullable();
             $table->string('status')->nullable()->default('not yet in use');

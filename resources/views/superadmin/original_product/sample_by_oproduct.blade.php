@@ -23,7 +23,7 @@
 <div class="row">
     <div class="col-lg-12 ">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for...">
+        <input type="text" id="autocomplete" class="form-control" placeholder="Search for...">
         <button type="button" class="btn btn-outline-secondary waves-effect">
              <i class="fas fa-search-plus"></i>
         </button>
@@ -76,6 +76,18 @@
 
 </script>
 {{-- end some global variable  --}}
+{{-- searching --}}
+<script>
+    var tags = [ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ];
+    $( "#autocomplete" ).autocomplete({
+        source: function( request, response ) {
+                var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+                response( $.grep( tags, function( item ){
+                    return matcher.test( item );
+                }) );
+            }
+    });
+</script>
 
 {{-- using event binding with jQuery   --}}
 <script>

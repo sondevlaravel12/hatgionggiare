@@ -130,7 +130,11 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a target="_blank"  href="{{ route('superadmin.sample.index') }}">only text product multiple version</a></li>
+                        <li><a target="_blank"  href="{{ route('superadmin.originalproduct.index') }}">Original product</a></li>
+                        <li><a target="_blank"  href="{{ route('superadmin.Oproduct.sampleByOproduct') }}">Sample by original product</a></li>
                     </ul>
+
+
                 </li>
                 @endrole
 

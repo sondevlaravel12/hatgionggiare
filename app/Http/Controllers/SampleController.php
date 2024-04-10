@@ -112,9 +112,10 @@ class SampleController extends Controller
         ]);
         $sample = Sample::find($request->id);
         $sampleTitle = $request->title;
+        $sampleShortDescription = $request->short_description;
         $sampleDescription = $request->description;
 
-        if($sample->update(['name'=>$sampleTitle, 'description'=>$sampleDescription])){
+        if($sample->update(['name'=>$sampleTitle, 'short_description'=>$sampleShortDescription, 'description'=>$sampleDescription])){
             $response = [
                 'message'=>'cập nhật sample thành công',
                 'alert-type'=>'success',

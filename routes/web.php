@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AboutController as BackendAboutController;
 use App\Http\Controllers\Backend\CategoryController as BackendCategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\InterfaceCustomizeController;
+use App\Http\Controllers\Backend\OproductController;
 use App\Http\Controllers\Backend\OrderController as BackendOrderController;
 use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\ProductController as BackendProductController;
@@ -288,9 +289,16 @@ Route::middleware('adminmiddleware')->group((function(){
     Route::post('/superadmin/sample/store', [SampleController::class,'store'])->name('superadmin.sample.store');
 
     Route::get('/superadmin/ajax-get-sample-info', [SampleController::class,'ajaxGetSampleInfo'])->name('superadmin.ajaxGetSampleInfo');
-    Route::get('/superadmin/ajax-update-sample-info', [SampleController::class,'ajaxUpdateSampleInfo'])->name('superadmin.ajaxUpdateSampleInfo');
+    Route::post('/superadmin/ajax-update-sample-info', [SampleController::class,'ajaxUpdateSampleInfo'])->name('superadmin.ajaxUpdateSampleInfo');
     Route::get('/superadmin/ajax-remove-sample', [SampleController::class,'ajaxRemoveSample'])->name('superadmin.ajaxRemoveSample');
 
+    Route::get('/superadmin/original-product/index', [OproductController::class,'index'])->name('superadmin.originalproduct.index');
+    Route::get('/superadmin/oproduct/ajax-get-oproduct-info', [OproductController::class,'ajaxGetOproductInfo'])->name('superadmin.oproduct.ajaxGetOproductInfo');
+    Route::get('/supperadmin/oproduct/ajax-update-oproduct-info', [OproductController::class,'ajaxUpdateOproductInfo'])->name('superadmin.oproduct.ajaxUpdateOproductInfo');
+    Route::get('/supperadmin/oproduct/ajax-remove-oproduct', [OproductController::class,'ajaxRemoveOproduct'])->name('superadmin.oproduct.ajaxRemoveOproduct');
+    Route::get('/asuperdmin/oproduct/ajax-addnew-oproduct', [OproductController::class,'ajaxAddnewOproduct'])->name('superadmin.oproduct.ajaxAddnewOproduct');
+
+    Route::get('/superadmin/original-product/sample', [OproductController::class,'sampleByOproduct'])->name('superadmin.Oproduct.sampleByOproduct');
 
 
 

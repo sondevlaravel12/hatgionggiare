@@ -9,6 +9,11 @@
             <div class="modal-body">
                 {{-- <input type="hidden" class="tag-id-in-modal"> --}}
                 <div class="card">
+                    <div class="card-body sample-short-description">
+
+                    </div>
+                </div>
+                <div class="card">
                     <div class="card-body sample-description">
 
                     </div>
@@ -32,12 +37,9 @@
                     {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                 </div>
                 <div class="modal-body">
-                    {{-- <div class="card"> --}}
-                        {{-- <div class="card-body"> --}}
-                            <textarea class="form-control myeditorinstance sample-description" name="" id="" cols="30" rows="60"></textarea>
+                    <textarea class="form-control short-description-editor sample-short-description" name="" id="" cols="30" rows="20"></textarea>
 
-                        {{-- </div> --}}
-                    {{-- </div> --}}
+                    <textarea class="form-control myeditorinstance sample-description" name="" id="" cols="30" rows="60"></textarea>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="sampleId" id="">

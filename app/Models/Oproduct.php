@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sample extends Model
+class Oproduct extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    public function oproduct()
+    public function samples()
     {
-        return $this->belongsTo(Oproduct::class);
+        return $this->hasMany(Sample::class);
     }
-
 }
