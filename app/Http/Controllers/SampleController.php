@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Oproduct;
 use App\Models\Sample;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class SampleController extends Controller
     public function index()
     {
         $samples = Sample::latest()->get();
-        return view('superadmin.index', compact('samples'));
+        $oproducts = Oproduct::latest()->get();
+        return view('superadmin.index', compact('samples', 'oproducts'));
     }
 
     /**
@@ -100,7 +102,10 @@ class SampleController extends Controller
     }
 
     public function ajaxGetSampleInfo(Request $request){
-        $sample = sample::find($request->id);
+        // two line of code work the same
+        // $sample = sample::where('id','=',$request->id)->with('oproduct')->first();
+        $sample = sample::with('oproduct:id,name')->find($request->id);
+
 
         return response()->json($sample);
 
@@ -114,11 +119,17 @@ class SampleController extends Controller
         $sampleTitle = $request->title;
         $sampleShortDescription = $request->short_description;
         $sampleDescription = $request->description;
+        $oproductId = $request->oproductId;
+        $oproductName = Oproduct::find($oproductId)->name;
 
-        if($sample->update(['name'=>$sampleTitle, 'short_description'=>$sampleShortDescription, 'description'=>$sampleDescription])){
+        if($sample->update(['name'=>$sampleTitle, 'short_description'=>$sampleShortDescription, 'description'=>$sampleDescription,
+        'oproduct_id'=>$oproductId])){
             $response = [
                 'message'=>'cập nhật sample thành công',
                 'alert-type'=>'success',
+                'oproduct_name'=> $oproductName,
+                'oproduct_id'=> $oproductId,
+                'sample'=>$sample,
             ];
             return response()->json($response);
         }

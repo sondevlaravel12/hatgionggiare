@@ -135,6 +135,7 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
 
 
 
+
     });
 
 
@@ -298,7 +299,16 @@ Route::middleware('adminmiddleware')->group((function(){
     Route::get('/supperadmin/oproduct/ajax-remove-oproduct', [OproductController::class,'ajaxRemoveOproduct'])->name('superadmin.oproduct.ajaxRemoveOproduct');
     Route::get('/asuperdmin/oproduct/ajax-addnew-oproduct', [OproductController::class,'ajaxAddnewOproduct'])->name('superadmin.oproduct.ajaxAddnewOproduct');
 
-    Route::get('/superadmin/original-product/sample', [OproductController::class,'sampleByOproduct'])->name('superadmin.Oproduct.sampleByOproduct');
+    Route::get('/superadmin/oproduct/search/{term}', [OproductController::class,'search'])->name('superadmin.oproduct.search');
+    Route::get('/superadmin/oproduct/select2-search', [OproductController::class,'select2SearchByName'])->name('superadmin.oproduct.select2Search');
+
+
+
+    Route::get('/superadmin/oproduct/ajax-search-relative-samples', [OproductController::class,'ajaxSearchRelativeSamples'])->name('superadmin.oproduct.ajaxSearchRelativeSamples');
+    Route::get('/superadmin/oproduct/ajax-search-by-name', [OproductController::class,'ajaxSearchByName'])->name('superadmin.oproduct.ajaxSearchByName');
+
+
+
 
 
 

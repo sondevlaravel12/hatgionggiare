@@ -13,4 +13,22 @@ class Oproduct extends Model
     {
         return $this->hasMany(Sample::class);
     }
+    //  other functions
+    public static function search($term){
+        $term = mb_strtolower(trim($term));
+        //$term = json_encode($term, JSON_UNESCAPED_UNICODE);
+        $results = Oproduct::where('name', 'like', '%'.$term.'%')->get();
+        // $arrResut = array();
+        // if($results->count()>0){
+        //     foreach($results as $result){
+        //         $name= $result->name;
+        //         $arrResut[] = $name;
+        //     }
+        // }
+
+        // return $arrResut;
+        return $results;
+    }
+
+    // end other functions
 }

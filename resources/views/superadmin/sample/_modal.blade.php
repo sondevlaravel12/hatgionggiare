@@ -19,6 +19,7 @@
                     </div>
                 </div>
 
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light waves-effect " data-bs-dismiss="modal">Đóng</button>
@@ -40,6 +41,19 @@
                     <textarea class="form-control short-description-editor sample-short-description" name="" id="" cols="30" rows="20"></textarea>
 
                     <textarea class="form-control myeditorinstance sample-description" name="" id="" cols="30" rows="60"></textarea>
+                    <br>
+
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Sản phẩm gốc</label>
+
+                        <div class="col-10">
+                            <select style="width: 100% !important"  name="oproduct_id" id="oproduct-dropdown" class="form-control select2">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="sampleId" id="">
@@ -50,13 +64,4 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<script>
-    // $('#edit-sample-modal').on('click','#btn-save-edit-sample', function () {
-    //     // get sample id
-    //     // $sampleId = $(this).siblings('input.sample_id').val();
-    //     // call ajax to get all tag info and fill in modal with infos just get
-    //     alert('hi');
 
-    // });
-
-</script>

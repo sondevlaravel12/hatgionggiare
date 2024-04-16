@@ -64,8 +64,33 @@ class OproductController extends Controller
             return response()->json($response);
         }
     }
-    public function sampleByOproduct(Request $request){
-        $samples = Sample::all();
-        return view('superadmin.original_product.sample_by_oproduct', compact('samples'));
+    public function search(Request $request){
+        $term = $request->term;
+        $results = Oproduct::search($term );
+        // do i need product id in json array?
+        return response()->json($results);
+    }
+    public function ajaxSearchRelativeSamples(Request $request){
+        $arrayOproductId = $request->arrayOproductId;
+        $samples = Sample::whereIn('oproduct_id',$arrayOproductId)->with('oproduct')->latest()->get();
+        return response()->json($samples);
+    }
+    // public function ajaxSearchByName(Request $request){
+    //     $oproductName = $request->oproductName;
+    //     $oproduct = Oproduct::where('name','=',$oproductName)->first();
+    //     if($oproduct){
+    //         return response()->json($oproduct);
+    //     }else{
+    //         $response = [
+    //             'message'=>'search failed',
+    //             'alert-type'=>'success'
+    //         ];
+    //         return response()->json($response);
+    //     }
+    // }
+    public function select2SearchByName(Request $request){
+        $oproductName = $request->input('term', '');
+        $oproducts = Oproduct::where('name','like', '%'.$oproductName .'%')->get(['id','name as text']);
+        return ['results' => $oproducts];
     }
 }
