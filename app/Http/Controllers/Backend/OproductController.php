@@ -75,6 +75,32 @@ class OproductController extends Controller
         $samples = Sample::whereIn('oproduct_id',$arrayOproductId)->with('oproduct')->latest()->get();
         return response()->json($samples);
     }
+    public function importFromScv()
+    {
+        $path = public_path('file');
+        $fileName = 'test.csv';
+
+        // $file = public_path('file/test.csv');
+        $file = $path .'/' . $fileName;
+        // dd($file);
+        // dd($file);
+
+        $oproductArr = csvToArray($file);
+        // split csv column, only chose columns needed
+        $data = [];
+        for ($i = 0; $i < count($oproductArr); $i ++)
+        {
+            $data[] = [
+                'name' => $oproductArr[$i]['name'],
+            ];
+        }
+        // insert data into database
+        foreach($data as $key=>$value){
+            Oproduct::firstOrCreate($value);
+        }
+
+        return 'import oproduct thanh cong';
+    }
     // public function ajaxSearchByName(Request $request){
     //     $oproductName = $request->oproductName;
     //     $oproduct = Oproduct::where('name','=',$oproductName)->first();

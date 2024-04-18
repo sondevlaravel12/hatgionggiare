@@ -193,6 +193,7 @@
 {{-- some initialize needed --}}
 <script>
     // initialize Taginput With Typeahead
+    //https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/
     var engine = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         //datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
@@ -303,6 +304,9 @@
             if(data.oproduct){
                 $selectedOption = '<option selected value="'+ data.oproduct.id +'">'+ data.oproduct.name +'</option>';
                 $selectInput.html($selectedOption);
+            }else{
+                // clear old value when edit other oproduct
+                $selectInput.html('');
             }
             // oproduct-dropdown
             // console.log(data);

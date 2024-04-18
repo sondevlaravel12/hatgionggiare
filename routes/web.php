@@ -289,6 +289,7 @@ Route::middleware('adminmiddleware')->group((function(){
     Route::get('/superadmin/sample/create', [SampleController::class,'create'])->name('superadmin.sample.create');
     Route::post('/superadmin/sample/store', [SampleController::class,'store'])->name('superadmin.sample.store');
 
+
     Route::get('/superadmin/ajax-get-sample-info', [SampleController::class,'ajaxGetSampleInfo'])->name('superadmin.ajaxGetSampleInfo');
     Route::post('/superadmin/ajax-update-sample-info', [SampleController::class,'ajaxUpdateSampleInfo'])->name('superadmin.ajaxUpdateSampleInfo');
     Route::get('/superadmin/ajax-remove-sample', [SampleController::class,'ajaxRemoveSample'])->name('superadmin.ajaxRemoveSample');
@@ -307,6 +308,7 @@ Route::middleware('adminmiddleware')->group((function(){
     Route::get('/superadmin/oproduct/ajax-search-relative-samples', [OproductController::class,'ajaxSearchRelativeSamples'])->name('superadmin.oproduct.ajaxSearchRelativeSamples');
     Route::get('/superadmin/oproduct/ajax-search-by-name', [OproductController::class,'ajaxSearchByName'])->name('superadmin.oproduct.ajaxSearchByName');
 
+    Route::get('/superadmin/oproduct/import', [OproductController::class,'importFromScv'])->name('superadmin.oproduct.import');
 
 
 
