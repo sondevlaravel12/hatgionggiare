@@ -15,7 +15,7 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Tên</label>
                         <div class="col-sm-10">
-                            <input class="form-control" onkeyup="titleCharCountLive(this.value)" type="text" name="name" value="{{old('name')}}"  >
+                            <input class="form-control" onkeyup="titleCharCountLiveOproduct(this.value)" type="text" name="name" value="{{old('name')}}"  >
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -127,6 +127,12 @@
 
 </script>
 {{-- end select2 --}}
+<script>
+    function titleCharCountLiveOproduct(str, range='10-100'){
+        $length = str.length;
+        document.getElementById("title-char-count").innerHTML = $length + ' out of range ' + range + ' characters';
+    }
+</script>
 
 
 

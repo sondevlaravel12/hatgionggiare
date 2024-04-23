@@ -39,7 +39,7 @@ class SampleController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|min:50|max:100',
+            'name' => 'required|min:10|max:100',
             'description' => 'required|min:110|max:110000',
         ]);
         // dd($request->all());

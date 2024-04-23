@@ -10,7 +10,7 @@
                 <input type="hidden" class="oproduct-id-in-modal">
                 <div class="mb-3">
                     <label>Tên oproduct</label>
-                    <input class="oproductname" type="text" class="form-control" >
+                    <input class="oproductname form-control" type="text" class="form-control" >
                 </div>
             </div>
             <div class="modal-footer">
