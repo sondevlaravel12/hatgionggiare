@@ -51,7 +51,7 @@
                             <td>{{$post->id}}</td>
 
                             <td><img src="{{$post->getFirstImageUrl('medium')}}" class="img-thumbnail" alt="300x300" width="300" data-holder-rendered="true"></td>
-                            <td>{{$post->title}}</td>
+                            <td><a href="{{ route('posts.show',$post ) }}">{{$post->title}}</a></td>
                             <td>
                                 {{-- <div class="square-switch">
                                     <input type="checkbox" id="square-switch1" data-post-id="{{$post->id}}" switch="none" {{$post->status=='published'?'checked':''}}>

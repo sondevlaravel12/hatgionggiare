@@ -21,6 +21,8 @@ return new class extends Migration
             $table->text('short_description')->nullable();
             $table->mediumText('description')->nullable();
             $table->integer('oproduct_id')->unsigned()->nullable();
+            $table->integer('sampleable_id')->unsigned()->nullable();
+            $table->string('sampleable_type')->nullable();
 
             $table->text('note')->nullable();
             $table->string('status')->nullable()->default('not yet in use');

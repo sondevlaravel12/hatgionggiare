@@ -310,6 +310,9 @@ Route::middleware('adminmiddleware')->group((function(){
 
     Route::get('/superadmin/oproduct/import', [OproductController::class,'importFromScv'])->name('superadmin.oproduct.import');
 
+    Route::get('/superadmin/products/create-from-sample/{sampleid}',[SampleController::class,'createProductFromSample'])->name('superadmin.products.createfromsample');
+    Route::get('/superadmin/posts/create-from-sample/{sampleid}',[SampleController::class,'createPostFromSample'])->name('superadmin.posts.createfromsample');
+
 
 
 

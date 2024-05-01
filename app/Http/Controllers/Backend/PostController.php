@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Pcategory;
 use App\Models\Post;
+use App\Models\Sample;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -20,7 +21,7 @@ class PostController extends Controller
     }
     public function store(Request $request){
         $validated = $request->validate([
-            'title' => 'required|min:50|max:100',
+            'title' => 'required|min:10|max:100',
             'description' => 'required|min:110|max:110000',
             'excerpt'=>'nullable|min:80|max:600',
             'photos'=>'required|array'
@@ -42,10 +43,18 @@ class PostController extends Controller
                     $pcategory->posts()->save($post);
                 }
             }
+            // add relationship with sample
+            if($request->sample_id){
+                $sample = Sample::findOrFail($request->sample_id);
+                if($sample){
+                    $post->sample()->save($sample);
+                }
+            }
             // add media
             foreach($request->file('photos') as $photo){
                 $post->addMedia($photo)->toMediaCollection('posts','postFiles');
             }
+
         }
 
         $notifycation = [

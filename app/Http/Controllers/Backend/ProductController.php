@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Sample;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -32,7 +33,7 @@ class ProductController extends Controller
         ]);
         // dd($request->file('photos'));
 
-        $input = $request->except(['photos','category_id']);
+        $input = $request->except(['photos','category_id','sample_id']);
 
 
         if($product = Product::create($input)){
@@ -49,6 +50,13 @@ class ProductController extends Controller
                     // if($photo->isValid()){
                         $product->addMedia($photo)->toMediaCollection('products','productFiles');
                     // }
+                }
+            }
+            // add relationship with sample
+            if($request->sample_id){
+                $sample = Sample::findOrFail($request->sample_id);
+                if($sample){
+                    $product->sample()->save($sample);
                 }
             }
 

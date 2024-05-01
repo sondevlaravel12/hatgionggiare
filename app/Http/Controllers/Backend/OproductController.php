@@ -119,4 +119,5 @@ class OproductController extends Controller
         $oproducts = Oproduct::where('name','like', '%'.$oproductName .'%')->get(['id','name as text']);
         return ['results' => $oproducts];
     }
+
 }

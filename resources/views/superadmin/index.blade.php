@@ -148,9 +148,23 @@
                 <span class="badge {{ $sample->type=="product"?"bg-info":"bg-warning" }} ">{{ $sample->type }}</span>
                 {{-- <span class="badge bg-success">{{ $sample->oproduct?$sample->oproduct->name:'' }}</span> --}}
                 @if ($sample->oproduct)
-                <button class="btn btn-success btn-sm btn-rounded waves-effect waves-light js-addtag-byclick" value="{{ $sample->oproduct->id }}">{{ $sample->oproduct->name }}</button>
+                    <button class="btn btn-success btn-sm btn-rounded waves-effect waves-light js-addtag-byclick" value="{{ $sample->oproduct->id }}">{{ $sample->oproduct->name }}</button>
                 @else
-                <button style="display: none" class="btn btn-success btn-sm btn-rounded waves-effect waves-light js-addtag-byclick"></button>
+                    <button style="display: none" class="btn btn-success btn-sm btn-rounded waves-effect waves-light js-addtag-byclick"></button>
+                @endif
+                @if ($sample->sampleable)
+                    @if ($sample->type=='product')
+                        <a type="button" href="{{ route('products.show', $sample->sampleable->id ) }}" class="btn btn-sm btn-link js-generate" >{{ $sample->sampleable->id  }}</a>
+                    @elseif ($sample->type=='post')
+                        <a type="button" href="{{ route('posts.show', $sample->sampleable->id) }}" class="btn btn-sm btn-link js-generate" >{{ $sample->sampleable->id  }}</a>
+                    @endif
+                    {{-- {{ $sample->sampleable->id }} --}}
+                @else
+                    @if ($sample->type=='product')
+                        <a type="button" href="{{ route('superadmin.products.createfromsample', $sample->id) }}" class="btn btn-sm btn-link js-generate" >generate</a>
+                    @elseif ($sample->type=='post')
+                        <a type="button" href="{{ route('superadmin.posts.createfromsample', $sample->id) }}" class="btn btn-sm btn-link js-generate" >generate</a>
+                    @endif
                 @endif
             </div>
 

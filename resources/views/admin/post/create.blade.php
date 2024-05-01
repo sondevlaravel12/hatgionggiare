@@ -10,10 +10,17 @@
                 <h4 class="card-title mb-4">Thêm mới bài viết</h4>
                 <form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @if (isset($sample))
+                        <input type="hidden" name="sample_id" value="{{ $sample->id }}">
+                    @endif
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Tên bài viết</label>
                         <div class="col-sm-10">
-                            <input class="form-control" onkeyup="titleCharCountLive(this.value)" type="text" name="title" value="{{old('title')}}"  >
+                            @if (isset($sample))
+                                <input class="form-control" onkeyup="titleCharCountLive(this.value)" type="text" name="title" value="{{old('title')??$sample->name}}"  >
+                            @else
+                                <input class="form-control" onkeyup="titleCharCountLive(this.value)" type="text" name="title" value="{{old('title')}}"  >
+                            @endif
                             @error('title')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -50,7 +57,11 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Nội dung bài viết</label>
                         <div class="col-sm-10">
-                            <textarea class="myeditorinstance" name="description">{!! old('description') !!}</textarea>
+                            @if (isset($sample))
+                                <textarea class="myeditorinstance" name="description">{!!old('description')??$sample->description!!}</textarea>
+                            @else
+                                <textarea class="myeditorinstance" name="description">{!!old('description')!!}</textarea>
+                            @endif
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

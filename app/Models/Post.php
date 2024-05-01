@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Str;
 // ------------spatie media
 use Spatie\MediaLibrary\HasMedia;
@@ -89,6 +90,11 @@ class Post extends Model implements HasMedia
     {
         return $this->belongsTo(Pcategory::class);
     }
+    public function sample(): MorphOne
+    {
+        return $this->morphOne(Sample::class, 'sampleable');
+    }
+
     // public function tags()
     // {
     //     return $this->belongsToMany(Tag::class);

@@ -47,6 +47,9 @@
                     </div>
                     <form action="{{route('admin.products.store')}}" method="POST"  enctype="multipart/form-data">
                         @csrf
+                        @if (isset($sample))
+                            <input type="hidden" name="sample_id" value="{{ $sample->id }}">
+                        @endif
                         <div class="tab-content twitter-bs-wizard-tab-content">
                             <div class="tab-pane" id="step1">
 
@@ -54,7 +57,11 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="form-label">Tên Sản Phẩm</label>
+                                                @if (isset($sample))
+                                                <input class="form-control" type="text" name="name" value="{{old('name')??$sample->name}}"  >
+                                                @else
                                                 <input class="form-control" type="text" name="name" value="{{old('name')}}"  >
+                                                @endif
                                                 @error('name')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
@@ -65,7 +72,7 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="form-label">Giá sản phẩm</label>
-                                                <input class="form-control" type="number" name="base_price" value="{{old('base_price')}}"  >
+                                                <input class="form-control" type="number" name="base_price" value="{{old('base_price')??39000}}"  >
                                                 @error('base_price')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
@@ -74,7 +81,7 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="form-label">Giá khuyến mãi</label>
-                                                <input class="form-control" type="number" name="discount_price" value="{{old('discount_price')}}"  >
+                                                <input class="form-control" type="number" name="discount_price" value="{{old('discount_price')??20000}}"  >
                                                 @error('discount_price')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
@@ -120,7 +127,13 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Mô tả ngắn</label>
+                                                @if (isset($sample))
+                                                <textarea  id="short_description" name="short_description" class="form-control">{!!old('short_description')??$sample->short_description!!}</textarea>
+
+                                                @else
                                                 <textarea  id="short_description" name="short_description" class="form-control">{!!old('short_description')!!}</textarea>
+
+                                                @endif
                                                 @error('short_description')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
@@ -132,7 +145,13 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Nội dung</label>
+                                                @if (isset($sample))
+                                                <textarea class="myeditorinstance" name="description">{!!old('description')??$sample->description!!}</textarea>
+
+                                                @else
                                                 <textarea class="myeditorinstance" name="description">{!!old('description')!!}</textarea>
+
+                                                @endif
                                                 @error('description')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Oproduct;
+use App\Models\Pcategory;
 use App\Models\Sample;
 use Illuminate\Http\Request;
 
@@ -144,4 +146,18 @@ class SampleController extends Controller
             return response()->json($response);
         }
     }
+
+    public function createProductFromSample(Request $request){
+        $sample = Sample::findOrFail($request->sampleid);
+        // dd($sample);
+        $categories = Category::latest()->get();
+        return view('admin.product.create', compact('categories','sample'));
+    }
+    public function createPostFromSample(Request $request){
+        $sample = Sample::findOrFail($request->sampleid);
+        // dd($sample->name);
+        $categories = Pcategory::latest()->get();
+        return view('admin.post.create', compact('categories','sample'));
+    }
+
 }
