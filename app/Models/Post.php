@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -82,6 +83,16 @@ class Post extends Model implements HasMedia
     public function setDefaultValueForPostExcerpt(){
         $this->excerpt = Str::words(strip_tags($this->description),100,'...');
     }
+    ////  ------------------ Accessor--------------------------------- ////
+    protected function title(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => mb_convert_case($value, MB_CASE_TITLE, "UTF-8"),
+            set: fn ($value) => mb_strtolower($value, 'UTF-8'),
+        );
+    }
+    ////  ------------------end Accessor--------------------------------- ////
+
     // relationship
     public function User(){
         return $this->belongsTo(User::class);

@@ -103,6 +103,7 @@ class Product extends Model implements HasMedia, Buyable
     {
         return Attribute::make(
             get: fn ($value) => mb_convert_case($value, MB_CASE_TITLE, "UTF-8"),
+            set: fn ($value) => mb_strtolower($value, 'UTF-8'),
         );
     }
     protected function price(): Attribute
