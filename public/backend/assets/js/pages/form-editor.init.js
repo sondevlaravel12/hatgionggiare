@@ -1,11 +1,17 @@
 var description_config = {
     path_absolute : "/",
     selector: 'textarea.myeditorinstance',
+
     setup: function(editor) {
         editor.on('keyup', function(e) {
         var wordcount = tinymce.activeEditor.plugins.wordcount;
         var $characterCount = wordcount.body.getCharacterCount();
         descriptionCharCountLive($characterCount);
+        console.log(tinymce.activeEditor.getContent());
+        ajaxLoadImageByDirectory($( "select[name*='directories'] ").val(), getImagesLoaded());
+        // editor.on('input NodeChange', function() {
+        //     console.log('content updated');
+        //  });
         });
     },
     height:500,

@@ -8,6 +8,7 @@ use App\Models\Pcategory;
 use App\Models\Post;
 use App\Models\Sample;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -74,11 +75,25 @@ class PostController extends Controller
                  'src' => $media->getUrl(),
              ];
          }
-        return view('admin.post.edit',compact('categories','post','preloaded'));
+         // get images from specific directory
+        //  $files = Storage::files(url('storage/posts/137'));
+        // $files = Storage::disk('public')->allFiles('photos/cuc-nut-ao');
+        // $images = [];
+
+        // foreach ($files as $file) {
+        //     $images[] = basename($file);
+        // }
+        $fullNameDirectories = Storage::disk('public')->directories('photos');
+        $directories =[];
+        foreach ($fullNameDirectories as $fullNameDirectorie) {
+            $directories[] = basename($fullNameDirectorie);
+        }
+        // dd($directories);
+        return view('admin.post.edit',compact('categories','post','preloaded','directories'));
     }
     public function update(Post $post, Request $request){
         $validated = $request->validate([
-            'title' => 'required|min:50|max:100',
+            'title' => 'required|min:10|max:100',
             'description' => 'required|min:110|max:110000',
             'excerpt'=>'nullable|min:80|max:600',
             // 'photos'=>'required|array'
@@ -158,5 +173,18 @@ class PostController extends Controller
             return response()->json(['error'=>'some errors']);
         }
 
+    }
+    public function ajaxGetImagesFromDir(Request $request){
+        $directory = $request->directory;
+        $files = Storage::disk('public')->files('photos/' .$directory);
+        $images = [];
+
+        foreach ($files as $file) {
+            $images[] = basename($file);
+        }
+        // dd($files);
+
+        return response()->json($files);
+        // return $images;
     }
 }

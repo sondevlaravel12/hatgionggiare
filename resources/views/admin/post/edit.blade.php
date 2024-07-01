@@ -61,11 +61,39 @@
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Nội dung bài viết</label>
                         <div class="col-sm-10">
-                            <textarea class="myeditorinstance" name="description">{!!old('description')??$post->description!!}</textarea>
+                            <textarea id="post-content" class="myeditorinstance" name="description">{!!old('description')??$post->description!!}</textarea>
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <span id="description-char-count"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Thu mục hình ảnh</label>
+                        <div class="col-sm-10">
+                            <select name="directories" id="">
+                                <option selected="">Lựa chọn thu mục</option>
+                                @foreach ($directories as $directorie)
+                                <option value="{{ $directorie }}">{{ $directorie }}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3" >
+                        <div class="col-sm-12" style="display: flex;justify-content: center;align-items: center;">
+                            <table id="imgTable" >
+                                <tr id="imagesHolder">
+
+                                    {{-- @foreach ($images as $image)
+                                        <td>
+                                            <img src="{{ asset('photos/cuc-nut-ao/'.$image) }}" alt="" height="42" width="42">
+                                        </td>
+                                    @endforeach --}}
+                                </tr>
+                            </table>
                         </div>
                     </div>
 
@@ -172,18 +200,86 @@ $('.input-images-1').imageUploader({
 });
 </Script>
 <script>
-//     tinymce.init({
-//     selector: 'textarea#short_description',
-//     image_dimensions: false,
-//          image_class_list: [
-//             {title: 'Responsive', value: 'img-responsive'}
-//         ]
 
-//   });
-
+    $('#imgTable tr').on('click', 'td', function () {
+        var sr = $('img', this).attr('src');
+        //  tinyMCE.execCommand('mceInsertContent', false, '<img alt="Smiley face" height="42" width="42" src="' + sr + '"/>');
+        tinymce.activeEditor.insertContent('<img alt="" class="img-responsive" src="' + sr + '"/>');
+        // if image just selected so hide it in the box holder
+        // ajaxLoadImageByDirectory($( "select[name*='directories'] ").val());
+    });
 </script>
 
 <!--end Image-Uploader -->
+<script>
+    // get all image already used
+    // $usedImages = $('textarea.myeditorinstance').find('img').attr('src');
+    // var $imgNameArr=[];
+    function getImagesLoaded(){
+        $holder = $("<div></div>");
+        // $usedImages = $('.myeditorinstance').val();
+        $usedImages = tinymce.activeEditor.getContent();
+        $holder.html($usedImages);
 
+        $imgPathArr = [];
+        $holder.find('p img').each(function(){
+            $imgPathArr.push($(this).attr('src'));
+        });
+        $imgOnlyName = [];
+        $imgPathArr.forEach(function(item, index){
+            $pathParts = item.split("/");
+            $imgOnlyName[index]= $pathParts[$pathParts.length - 1];
+        });
+        return $imgOnlyName;
+    }
+    // $imgNameArr = getImagesLoaded();
+
+    // console.log($imgNameArr);
+    // console.log($test.children('p img').attr('src'));
+    // console.log($test.find('p').val());
+    // select directories -> load images in this directory
+    $( "select[name*='directories'] ")
+        .on( "change", function() {
+            var $directoryName = $(this).val();
+            // call ajax inorder get all images in this directory
+            ajaxLoadImageByDirectory($directoryName, getImagesLoaded());
+        } );
+
+    function ajaxLoadImageByDirectory(directoryName,imgNameArr ){
+        return $.ajax({
+                type: "get",
+                url: "/admin/posts/edit/directory/ajaxgetimages",
+                data: {directory:directoryName},
+                dataType: "json",
+                success: function (response) {
+                    $imagesdisplay ='';
+                    $.each( response, function(i,l ){
+                        // $imagesdisplay += `<td>
+                        //                         <img src="/storage/photos/`+ $directoryName +`/` + l + `" alt="" height="42" width="42">
+                        //                     </td>`;
+                        $pathParts =  l.split('/');
+                        $imgName = $pathParts[$pathParts.length - 1];
+                        if(imgNameArr.includes($imgName)){
+                            // do not show this image
+                            // console.log('already has it');
+                        }else{
+                            $imagesdisplay += `<td>
+                                                <img src="/` + l + `" alt="" height="42" width="42">
+                                            </td>`;
+                        }
+                    });
+
+
+                    $('#imagesHolder').html($imagesdisplay);
+                }
+            });
+    }
+
+</script>
+
+<script>
+
+
+</script>
 
 @endpush
