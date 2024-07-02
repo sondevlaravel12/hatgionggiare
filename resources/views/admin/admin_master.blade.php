@@ -115,7 +115,7 @@
         {{-- <script src="{{asset('backend/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script> --}}
         {{-- <script src="{{asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script> --}}
 
-        <script src="{{asset('backend/assets/js/pages/dashboard.init.js')}}"></script>
+        {{-- <script src="{{asset('backend/assets/js/pages/dashboard.init.js')}}"></script> --}}
 
         <!-- App js -->
         <script src="{{asset('backend/assets/js/app.js')}}"></script>
@@ -150,7 +150,7 @@
          <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
 
          <!-- init js -->
-         <script src="{{ asset('backend/assets/js/pages/form-editor.init.js?122233') }}"></script>
+         <script src="{{ asset('backend/assets/js/pages/form-editor.init.js?233') }}"></script>
          <!-- Taginput -->
          <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
          <script src="{{asset('backend/assets/js/typeahead.bundle.js')}}"></script>

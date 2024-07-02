@@ -35,7 +35,7 @@ class PostController extends Controller
             'photos'=>'required|array'
         ]);
 
-        $input = $request->except(['photos','category_id','_token']);
+        $input = $request->except(['photos','category_id','_token','directories']);
 
 
         if($post = Post::create($input)){
@@ -107,7 +107,7 @@ class PostController extends Controller
         ]);
         // dd($request->all());
 
-        $input = $request->except(['photos','category_id','preloadedImages','deletedImages']);
+        $input = $request->except(['photos','category_id','preloadedImages','deletedImages','directories']);
         // update some text, num inputs
         $post->update($input);
 

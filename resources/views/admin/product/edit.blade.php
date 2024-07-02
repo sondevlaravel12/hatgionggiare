@@ -148,13 +148,37 @@
 
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-10">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Nội dung</label>
                                                 <textarea class="myeditorinstance" name="description">{!!old('description')??$product->description!!}</textarea>
                                                 @error('description')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
+                                            </div>
+                                            <span id="description-char-count"></span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="mb-3">
+                                                <label class="col-form-label" for="example-text-input" >Thu mục hình ảnh</label>
+                                                <select name="directories" id="">
+                                                    <option selected="">Lựa chọn thu mục</option>
+                                                    @if(isset($directories))
+                                                        @foreach ($directories as $directorie)
+                                                        <option value="{{ $directorie }}">{{ $directorie }}</option>
+                                                        @endforeach
+                                                    @endif
+
+                                                </select>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="popup-gallery" id="imagesHolder" style="height:450px;
+                                                        overflow-y: scroll;">
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -276,6 +300,6 @@ $('.input-images-1').imageUploader({
 </Script>
 
 <!--end Image-Uploader -->
-
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/product_page.js') }}"></script>
 
 @endpush

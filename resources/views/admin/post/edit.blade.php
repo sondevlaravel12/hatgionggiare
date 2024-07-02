@@ -76,10 +76,12 @@
                             <div class="mb-3">
                                 <label class="col-form-label" for="example-text-input" >Thu mục hình ảnh</label>
                                 <select name="directories" id="">
+                                    @if(isset($directories))
                                     <option selected="">Lựa chọn thu mục</option>
                                     @foreach ($directories as $directorie)
                                     <option value="{{ $directorie }}">{{ $directorie }}</option>
                                     @endforeach
+                                    @endif
 
                                 </select>
                                 <div class="card">

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Sample;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -16,7 +17,12 @@ class ProductController extends Controller
     }
     public function create(){
         $categories = Category::latest()->get();
-        return view('admin.product.create', compact('categories'));
+        $fullNameDirectories = Storage::disk('public')->directories('photos');
+        $directories =[];
+        foreach ($fullNameDirectories as $fullNameDirectorie) {
+            $directories[] = basename($fullNameDirectorie);
+        }
+        return view('admin.product.create', compact('categories','directories'));
     }
     public function store(Request $request){
         $validated = $request->validate([
@@ -33,7 +39,7 @@ class ProductController extends Controller
         ]);
         // dd($request->file('photos'));
 
-        $input = $request->except(['photos','category_id','sample_id']);
+        $input = $request->except(['photos','category_id','sample_id','directories']);
 
 
         if($product = Product::create($input)){
@@ -78,11 +84,17 @@ class ProductController extends Controller
                  'src' => $media->getUrl(),
              ];
          }
+        $fullNameDirectories = Storage::disk('public')->directories('photos');
+        $directories =[];
+        foreach ($fullNameDirectories as $fullNameDirectorie) {
+            $directories[] = basename($fullNameDirectorie);
+        }
          // Render the edit product view with the product data and media IDs
         return view('admin.product.edit', [
             'product'=>$product,
             'categories'=>$categories,
             'preloaded'=>$preloaded,
+            'directories'=>$directories,
         ]);
     }
     public function update(product $product, Request $request){
@@ -100,7 +112,7 @@ class ProductController extends Controller
             'category_id' => "nullable|exists:categories,id"
         ]);
 
-        $input = $request->except(['photos','category_id','preloadedImages','deletedImages']);
+        $input = $request->except(['photos','category_id','preloadedImages','deletedImages','directories']);
         // dd($input);
         // dd($request->all());
         // update some text, num inputs

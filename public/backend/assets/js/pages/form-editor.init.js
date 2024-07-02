@@ -5,7 +5,10 @@ var description_config = {
     setup: function(editor) {
         editor.on('keyup NodeChange', function(e) {
         var wordcount = tinymce.activeEditor.plugins.wordcount;
-        var $characterCount = wordcount.body.getCharacterCount();
+        var $characterCount='';
+        if(wordcount){
+            $characterCount = wordcount.body.getCharacterCount();
+        }
         descriptionCharCountLive($characterCount);
         // console.log(tinymce.activeEditor.getContent());
         ajaxLoadImageByDirectory($( "select[name*='directories'] ").val(), getImagesLoaded());
@@ -31,7 +34,8 @@ var description_config = {
       "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
       "insertdatetime media nonbreaking save table directionality",
       "emoticons template paste textpattern",
-      "save table contextmenu directionality emoticons template paste textcolor"
+    //   "save table contextmenu directionality emoticons template paste textcolor"
+      "save table directionality emoticons template paste "
     ],
     toolbar:" insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
     file_picker_callback : function(callback, value, meta) {
