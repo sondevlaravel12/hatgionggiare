@@ -3,11 +3,11 @@ var description_config = {
     selector: 'textarea.myeditorinstance',
 
     setup: function(editor) {
-        editor.on('keyup', function(e) {
+        editor.on('keyup NodeChange', function(e) {
         var wordcount = tinymce.activeEditor.plugins.wordcount;
         var $characterCount = wordcount.body.getCharacterCount();
         descriptionCharCountLive($characterCount);
-        console.log(tinymce.activeEditor.getContent());
+        // console.log(tinymce.activeEditor.getContent());
         ajaxLoadImageByDirectory($( "select[name*='directories'] ").val(), getImagesLoaded());
         // editor.on('input NodeChange', function() {
         //     console.log('content updated');

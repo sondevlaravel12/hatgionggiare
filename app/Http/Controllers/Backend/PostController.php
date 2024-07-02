@@ -14,11 +14,18 @@ class PostController extends Controller
 {
     public function index(){
         $posts = Post::latest()->get();
+
         return view('admin.post.index', compact('posts'));
     }
     public function create(){
         $categories = Pcategory::latest()->get();
-        return view('admin.post.create', compact('categories'));
+
+        $fullNameDirectories = Storage::disk('public')->directories('photos');
+        $directories =[];
+        foreach ($fullNameDirectories as $fullNameDirectorie) {
+            $directories[] = basename($fullNameDirectorie);
+        }
+        return view('admin.post.create', compact('categories','directories'));
     }
     public function store(Request $request){
         $validated = $request->validate([

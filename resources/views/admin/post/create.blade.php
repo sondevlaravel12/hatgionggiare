@@ -13,9 +13,10 @@
                     @if (isset($sample))
                         <input type="hidden" name="sample_id" value="{{ $sample->id }}">
                     @endif
-                    <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên bài viết</label>
-                        <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Tên bài viết</label>
+
                             @if (isset($sample))
                                 <input class="form-control" onkeyup="titleCharCountLive(this.value)" type="text" name="title" value="{{old('title')??$sample->name}}"  >
                             @else
@@ -31,8 +32,8 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Hình ảnh</label>
-                        <div class="col-sm-10">
+                        <div class="col-lg-12">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Hình ảnh</label>
                             <div class="mb-3 input-field">
                                 <div class="input-images-1" style="padding-top: .5rem;"></div>
                                 @error('photos')
@@ -43,35 +44,64 @@
                     </div>
 
 
-                    <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Danh mục</label>
-                        <div class="col-sm-10">
+                    <div class="row ">
+                        <div class="col-lg-12 mb-3">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Danh mục</label>
                             <select class="form-select" aria-label="Default select example" name="category_id">
                                 <option selected="">Chose category</option>
                                 @foreach ($categories as $category)
                                 <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
                                 @endforeach
-                                </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Nội dung bài viết</label>
-                        <div class="col-sm-10">
-                            @if (isset($sample))
-                                <textarea class="myeditorinstance" name="description">{!!old('description')??$sample->description!!}</textarea>
-                            @else
-                                <textarea class="myeditorinstance" name="description">{!!old('description')!!}</textarea>
-                            @endif
-                            @error('description')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                            <span id="description-char-count"></span>
+                            </select>
                         </div>
                     </div>
 
-                    <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Trích dẫn</label>
+                    <div class="row">
                         <div class="col-sm-10">
+                            <div class="mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Nội dung bài viết</label>
+                                @if (isset($sample))
+                                <textarea class="myeditorinstance" name="description">{!!old('description')??$sample->description!!}</textarea>
+                                @else
+                                    <textarea class="myeditorinstance" name="description">{!!old('description')!!}</textarea>
+                                @endif
+                                @error('description')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <span id="description-char-count"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="mb-3">
+                                <label class="col-form-label" for="example-text-input" >Thu mục hình ảnh</label>
+                                <select name="directories" id="">
+                                    <option selected="">Lựa chọn thu mục</option>
+                                    @foreach ($directories as $directorie)
+                                    <option value="{{ $directorie }}">{{ $directorie }}</option>
+                                    @endforeach
+
+                                </select>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="popup-gallery" id="imagesHolder" style="height:450px;
+                                        overflow-y: scroll;">
+                                            {{-- <a class="float-start" href="assets/images/small/img-1.jpg" title="Project 1">
+                                                <div class="img-fluid">
+                                                    <img src="assets/images/small/img-1.jpg" alt="img-1" width="120">
+                                                </div>
+                                            </a> --}}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-lg-12 mb-3">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Trích dẫn</label>
+
                             <textarea onkeyup="excerptCharCountLive(this.value)" name="excerpt" class="form-control">{!! old('excerpt') !!}</textarea>
                             @error('excerpt')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -169,19 +199,9 @@ $('.input-images-1').imageUploader({
 
 });
 </Script>
-<script>
-//     tinymce.init({
-//     selector: 'textarea#short_description',
-//     image_dimensions: false,
-//          image_class_list: [
-//             {title: 'Responsive', value: 'img-responsive'}
-//         ]
-
-//   });
-
-</script>
 
 <!--end Image-Uploader -->
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js') }}"></script>
 
 
 @endpush
