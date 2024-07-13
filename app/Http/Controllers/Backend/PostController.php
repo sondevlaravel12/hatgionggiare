@@ -20,10 +20,12 @@ class PostController extends Controller
     public function create(){
         $categories = Pcategory::latest()->get();
 
+        // $fullNameDirectories = Storage::disk('public')->directories('photos');
         $fullNameDirectories = Storage::disk('public')->directories('photos');
         $directories =[];
         foreach ($fullNameDirectories as $fullNameDirectorie) {
-            $directories[] = basename($fullNameDirectorie);
+            // $directories[] = pathinfo($fullNameDirectorie, PATHINFO_DIRNAME);
+            $directories[] = explode('/',$fullNameDirectorie)[1];
         }
         return view('admin.post.create', compact('categories','directories'));
     }
@@ -36,6 +38,7 @@ class PostController extends Controller
         ]);
 
         $input = $request->except(['photos','category_id','_token','directories']);
+        dd($input);
 
 
         if($post = Post::create($input)){
@@ -107,8 +110,9 @@ class PostController extends Controller
         ]);
         // dd($request->all());
 
-        $input = $request->except(['photos','category_id','preloadedImages','deletedImages','directories']);
+        $input = $request->except(['photos','category_id','preloadedImages','deletedImages']);
         // update some text, num inputs
+        // dd($input);
         $post->update($input);
 
         // delete the images that were in $mediaCollection but not in  $preloadedIds
@@ -181,7 +185,30 @@ class PostController extends Controller
         }
 
     }
+    public function ajaxGetAllPhotoDirs(){
+
+        $fullNameDirectories = Storage::disk('public')->directories('photos');
+        $directories =[];
+        foreach ($fullNameDirectories as $fullNameDirectorie) {
+            $directories[] = explode('/',$fullNameDirectorie)[1];
+        }
+        // $directories = ['hạt giống bí đĩa bay trắng', 'cây hoa mua hè', 'Hạt Giống Bầu Hồ Lô', 'Hạt Giống Bắp Cải Tí Hon Tím', 'hat giong test choi', 'shares'];
+
+        // $fullNameDirectories = Storage::disk('public')->directories('photos');
+        // $directories =[];
+        // $i = 1;
+        // foreach ($fullNameDirectories as $fullNameDirectorie) {
+        //     $directorie = [
+        //         'id'=>$i,
+        //         'text'=>basename($fullNameDirectorie)
+        //     ];
+        //     $directories[] = $directorie;
+        //     $i++;
+        // }
+        return response()->json($directories);
+    }
     public function ajaxGetImagesFromDir(Request $request){
+
         $directory = $request->directory;
         $files = Storage::disk('public')->files('photos/' .$directory);
         $images = [];
@@ -190,6 +217,7 @@ class PostController extends Controller
             $images[] = basename($file);
         }
         // dd($files);
+        // File::glob('public/photos-textarea/*')
 
         return response()->json($files);
         // return $images;

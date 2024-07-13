@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('admin.post.post_master')
 @push('stylesheets')
         <link rel="stylesheet" href="{{asset('asset/admin/stylesheets/image-uploader.min.css')}}">
 @endpush
@@ -44,7 +44,7 @@
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label for="example-text-input" class="form-label">Danh mục</label>
-                                <select class="form-select" aria-label="Default select example" name="category_id">
+                                <select class="form-select select2" aria-label="Default select example" name="category_id">
                                     <option selected="">Chose category</option>
                                     @php
                                         $currentPostCategoryId = false;
@@ -75,15 +75,22 @@
                         <div class="col-sm-2">
                             <div class="mb-3">
                                 <label class="col-form-label" for="example-text-input" >Thu mục hình ảnh</label>
-                                <select name="directories" id="">
+                                <select class="form-select select2" name="image_directory" id="">
                                     @if(isset($directories))
                                     <option selected="">Lựa chọn thu mục</option>
                                     @foreach ($directories as $directorie)
-                                    <option value="{{ $directorie }}">{{ $directorie }}</option>
+                                    <option value="{{ $directorie }}" {{ old('image_directory') == $post->image_directory || $directorie==$post->image_directory? 'selected' : '' }} >{{ $directorie }}</option>
                                     @endforeach
                                     @endif
 
                                 </select>
+                                {{-- <select multiple data-role="tagsinput" name="keyword[]" class="typeahead">
+
+                                </select> --}}
+                                {{-- <div id="prefetch">
+                                    <input class="typeahead form-control" type="text" placeholder="Countries">
+                                </div> --}}
+
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="popup-gallery" id="imagesHolder" style="height:450px;
@@ -252,10 +259,12 @@ $('.input-images-1').imageUploader({
 </script>
 
 <!--end Image-Uploader -->
-<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?7235') }}"></script>
 
 <script>
-
+   $('.select2').select2({
+            // data: response,
+        });
 
 </script>
 

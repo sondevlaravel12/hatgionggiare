@@ -85,6 +85,8 @@ class ProductController extends Controller
              ];
          }
         $fullNameDirectories = Storage::disk('public')->directories('photos');
+        // $fullNameDirectories = storage_path('app/public');
+
         $directories =[];
         foreach ($fullNameDirectories as $fullNameDirectorie) {
             $directories[] = basename($fullNameDirectorie);

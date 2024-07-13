@@ -145,6 +145,7 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
         Route::get('/posts/create',[BackendPostController::class,'create'])->name('admin.posts.create');
         Route::post('/posts/store', [BackendPostController::class,'store'])->name('admin.posts.store');
         Route::get('/posts/{post}/edit',[BackendPostController::class,'edit'])->name('admin.posts.edit');
+        Route::get('/directory/get-all-photo-dirs.json',[BackendPostController::class,'ajaxGetAllPhotoDirs']);
         Route::get('posts/edit/directory/ajaxgetimages',[BackendPostController::class,'ajaxGetImagesFromDir']);
 
         Route::delete('/posts/ajax-delete', [BackendPostController::class,'ajaxDelete']);

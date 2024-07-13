@@ -97,6 +97,21 @@
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
+                        <span>File manager</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('unisharp.lfm.show','type=image') }}">index</a></li>
+
+                        {{-- <li><a href="#">Cấu Hình Chung</a></li>
+                        <li><a href="#">Cấu Hình Header</a></li>
+                        <li><a href="#">Cấu Hình Footer</a></li>
+                        <li><a href="#">Cấu Hình Sidebar</a></li> --}}
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
                         <span>Khác</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">

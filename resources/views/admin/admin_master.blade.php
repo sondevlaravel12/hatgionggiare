@@ -34,6 +34,9 @@
         <!-- App Css-->
         <link href="{{asset('backend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+        <!-- select2 for dropdown search -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
         @stack('stylesheets')
     </head>
 
@@ -150,7 +153,7 @@
          <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
 
          <!-- init js -->
-         <script src="{{ asset('backend/assets/js/pages/form-editor.init.js?233') }}"></script>
+         <script src="{{ asset('backend/assets/js/pages/form-editor.init.js?2233') }}"></script>
          <!-- Taginput -->
          <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
          <script src="{{asset('backend/assets/js/typeahead.bundle.js')}}"></script>
@@ -212,6 +215,28 @@
         <script>
             const money = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' });
         </script>
+        <!-- select2 for dropdown search -->
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            // function getImageDir(){
+            //     return $.ajax({
+            //             type: "get",
+            //             url: "/admin/directory/get-all-photo-dirs.json",
+            //             dataType: "json",
+            //         });
+            // }
+            // getImageDir().done(function(response){
+            //     $('.select2').select2({
+            //         data: response,
+            //     });
+
+            // });
+            $('.select2').select2({
+            });
+        </script>
+        <!-- end select2 for dropdown search -->
+
+
         @stack('scripts')
     </body>
 

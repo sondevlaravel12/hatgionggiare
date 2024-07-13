@@ -161,7 +161,7 @@
                                         <div class="col-sm-2">
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="example-text-input" >Thu mục hình ảnh</label>
-                                                <select name="directories" id="">
+                                                <select class="form-select" name="directories" id="">
                                                     <option selected="">Lựa chọn thu mục</option>
                                                     @if(isset($directories))
                                                         @foreach ($directories as $directorie)
