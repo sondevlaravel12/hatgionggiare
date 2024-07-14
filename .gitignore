@@ -2,6 +2,12 @@
 /public/build
 /public/hot
 /public/storage
+/public/categories
+/public/generals
+/public/posts
+/public/postscategories
+/public/products
+/public/sliders
 /storage/*.key
 /vendor
 .env
