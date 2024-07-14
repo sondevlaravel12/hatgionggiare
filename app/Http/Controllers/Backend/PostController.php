@@ -107,6 +107,7 @@ class PostController extends Controller
             'description' => 'required|min:110|max:110000',
             'excerpt'=>'nullable|min:80|max:600',
             // 'photos'=>'required|array'
+            // test new
         ]);
         // dd($request->all());
 
