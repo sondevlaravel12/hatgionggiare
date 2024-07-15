@@ -50,39 +50,39 @@ return [
         'postFiles' => [
             'driver' => 'local',
             'root'   => storage_path('app/public/posts'),
-            'url'        => env('APP_URL') . '/posts',
+            'url'        => env('APP_URL') . '/storage/posts',
             'visibility' => 'public'
         ],
 
         'productFiles' => [
             'driver' => 'local',
             'root'   => storage_path('app/public/products'),
-            'url'        => env('APP_URL') . 'storage/products',
+            'url'        => env('APP_URL') . '/storage/products',
             'visibility' => 'public'
         ],
         'sliderFiles' => [
             'driver' => 'local',
             'root'   => storage_path('app/public/sliders'),
-            'url'        => env('APP_URL') . '/sliders',
+            'url'        => env('APP_URL') . '/storage/sliders',
             'visibility' => 'public'
         ],
         'categoryFiles' => [
             'driver' => 'local',
             'root'   => storage_path('app/public/categories'),
-            'url'        => env('APP_URL') . '/categories',
+            'url'        => env('APP_URL') . '/storage/categories',
             'visibility' => 'public'
         ],
         'postCategoryFiles' => [
             'driver' => 'local',
             'root'   => storage_path('app/public/postscategories'),
-            'url'        => env('APP_URL') . '/post-categories',
+            'url'        => env('APP_URL') . '/storage/post-categories',
             'visibility' => 'public'
         ],
 
         'general' => [
             'driver' => 'local',
             'root' => storage_path('app/public/generals'),
-            'url' => env('APP_URL').'/generals',
+            'url' => env('APP_URL').'/storage/generals',
             'visibility' => 'public',
             'throw' => false,
         ],
