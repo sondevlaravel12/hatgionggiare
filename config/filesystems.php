@@ -57,7 +57,7 @@ return [
         'productFiles' => [
             'driver' => 'local',
             'root'   => storage_path('app/public/products'),
-            'url'        => env('APP_URL') . '/products',
+            'url'        => env('APP_URL') . 'storage/products',
             'visibility' => 'public'
         ],
         'sliderFiles' => [
