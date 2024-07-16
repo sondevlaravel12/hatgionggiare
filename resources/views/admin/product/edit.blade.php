@@ -161,7 +161,7 @@
                                         <div class="col-sm-2">
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="example-text-input" >Thu mục hình ảnh</label>
-                                                <select class="form-select" name="directories" id="">
+                                                <select class="form-select select2" name="image_directory" id="">
                                                     <option selected="">Lựa chọn thu mục</option>
                                                     @if(isset($directories))
                                                         @foreach ($directories as $directorie)
@@ -300,6 +300,6 @@ $('.input-images-1').imageUploader({
 </Script>
 
 <!--end Image-Uploader -->
-<script type="text/javascript" src="{{ asset('backend/assets/js/custom/product_page.js') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/product_page.js?3') }}"></script>
 
 @endpush

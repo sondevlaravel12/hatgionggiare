@@ -1,5 +1,5 @@
  /* ---------------------------------------------
-load images directory inorder to insert into post
+load images directory inorder to insert into post/ product, use in post/product create and edit page
 --------------------------------------------- */
     // get all image already used
     function getImagesLoaded(){

@@ -218,19 +218,7 @@
         <!-- select2 for dropdown search -->
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
-            // function getImageDir(){
-            //     return $.ajax({
-            //             type: "get",
-            //             url: "/admin/directory/get-all-photo-dirs.json",
-            //             dataType: "json",
-            //         });
-            // }
-            // getImageDir().done(function(response){
-            //     $('.select2').select2({
-            //         data: response,
-            //     });
 
-            // });
             $('.select2').select2({
             });
         </script>

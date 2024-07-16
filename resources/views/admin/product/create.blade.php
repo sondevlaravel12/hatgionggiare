@@ -162,7 +162,7 @@
                                         <div class="col-sm-2">
                                             <div class="mb-3">
                                                 <label class="col-form-label" for="example-text-input" >Thu mục hình ảnh</label>
-                                                <select class="form-select" name="directories" id="">
+                                                <select class="form-select select2" name="image_directory" id="">
                                                     <option selected="">Lựa chọn thu mục</option>
                                                     @if(isset($directories))
                                                         @foreach ($directories as $directorie)
@@ -171,6 +171,15 @@
                                                     @endif
 
                                                 </select>
+                                                {{-- <select class="form-select select2" name="image_directory" id="">
+                                                    @if(isset($directories))
+                                                    <option selected="">Chose category</option>
+                                                    @foreach ($directories as $directorie)
+                                                    <option >{{ $directorie }}</option>
+                                                    @endforeach
+                                                    @endif
+
+                                                </select> --}}
                                                 <div class="card">
                                                     <div class="card-body">
                                                         <div class="popup-gallery" id="imagesHolder" style="height:450px;
@@ -304,7 +313,7 @@ $('.input-images-1').imageUploader({
 </script>
 
 <!--end Image-Uploader -->
-<script type="text/javascript" src="{{ asset('backend/assets/js/custom/product_page.js') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/product_page.js?1') }}"></script>
 
 
 @endpush

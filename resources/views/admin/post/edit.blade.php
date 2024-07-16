@@ -261,11 +261,4 @@ $('.input-images-1').imageUploader({
 <!--end Image-Uploader -->
 <script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?723') }}"></script>
 
-<script>
-   $('.select2').select2({
-            // data: response,
-        });
-
-</script>
-
 @endpush
