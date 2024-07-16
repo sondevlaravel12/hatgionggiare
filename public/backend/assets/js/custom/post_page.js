@@ -55,7 +55,7 @@ load images directory inorder to insert into post
                         }else{
                             $imagesdisplay += `<a class='float-start'>
                                                 <div class ='img-fluid'>
-                                                <img src="/` + l + `" alt="" width="120">
+                                                <img src="` + l + `" alt="" width="120">
                                                 </div>
                                             </a>`;
                         }

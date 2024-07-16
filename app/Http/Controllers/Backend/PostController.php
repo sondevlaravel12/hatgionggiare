@@ -215,12 +215,12 @@ class PostController extends Controller
         $images = [];
 
         foreach ($files as $file) {
-            $images[] = basename($file);
+            $images[] = asset('storage/' .$file);
         }
         // dd($files);
         // File::glob('public/photos-textarea/*')
 
-        return response()->json($files);
+        return response()->json($images);
         // return $images;
     }
 }
