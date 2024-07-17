@@ -23,7 +23,7 @@ class Slider extends Model implements HasMedia
         $this
             ->addMediaCollection('sliders')
             ->acceptsMimeTypes(['image/jpeg','image/png','image/svg'])
-            ->onlyKeepLatest(3)
+            ->onlyKeepLatest(1)
             ;
 
     }

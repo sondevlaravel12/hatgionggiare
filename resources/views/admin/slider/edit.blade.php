@@ -22,26 +22,7 @@
 
                 <form action="{{route('admin.sliders.update', $slider)}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="title" value="{{old('title') ?? $slider->title}}"  >
-                            @error('title')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-
-                    </div>
-                    <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Order</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="number" name="order" value="{{old('order') ?? $slider->order}}"  >
-                            @error('order')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
+                    @method('PUT')
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
                         <div class="col-sm-10">
@@ -55,6 +36,51 @@
                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
                             <img id="imagePreview" class="img-thumbnail" alt="300x300" width="300" src="{{$slider->getFirstImageUrl()}}" data-holder-rendered="true">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Header</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="header" value="{{old('header') ?? $slider->header}}"  >
+                            @error('header')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Big text</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="big_text" value="{{old('big_text')?? $slider->big_text}}"  >
+                            @error('big_text')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Call to action</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="call_to_action" value="{{old('call_to_action')?? $slider->call_to_action}}"  >
+                            @error('call_to_action')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Short description</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="short_description" value="{{old('short_description')?? $slider->short_description}}"  >
+                            @error('short_description')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Order</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" name="order" value="{{old('order') ?? $slider->order}}"  >
+                            @error('order')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-3">

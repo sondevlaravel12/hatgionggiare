@@ -26,7 +26,9 @@ class SliderController extends Controller
     }
     public function store(Request $request){
         $validated = $request->validate([
-            'title' => 'nullable|min:2|max:255',
+            'header' => 'nullable|min:2|max:255',
+            'big_text' => 'nullable|min:2|max:255',
+            'call_to_action' => 'nullable|min:2|max:255',
             'order' => 'nullable|integer|between:1,5',
             'image'=> [
                 'required',
@@ -35,7 +37,9 @@ class SliderController extends Controller
             ],
             'link' => 'nullable|min:10|max:255'
         ]);
+
         $input = $request->except('image');
+        // dd($input);
         $slider = Slider::create($input);
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
@@ -46,7 +50,7 @@ class SliderController extends Controller
             'message' => 'Slider Create successfully',
             'alert-type' =>'success'
         ];
-        return redirect()->route('admin.slider.index')->with($notifycation);
+        return redirect()->route('admin.sliders.index')->with($notifycation);
     }
     public function edit(Slider $slider){
         return view('admin.slider.edit', compact('slider'));
@@ -66,14 +70,14 @@ class SliderController extends Controller
         $slider->update($input);
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
-            $slider->addMediaFromRequest('image')->toMediaCollection('slider');
+            $slider->addMediaFromRequest('image')->toMediaCollection('sliders');
         }
 
         $notifycation = [
             'message' => 'Slider Updated successfully',
             'alert-type' =>'success'
         ];
-        return redirect()->route('admin.slider.index')->with($notifycation);
+        return redirect()->route('admin.sliders.index')->with($notifycation);
        //return $request->file('image');
     }
     public function destroy(Slider $slider, Request $request){

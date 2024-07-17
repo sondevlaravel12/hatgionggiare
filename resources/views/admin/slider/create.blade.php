@@ -22,26 +22,7 @@
 
                 <form action="{{route('admin.sliders.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="title" value="{{old('title')}}"  >
-                            @error('title')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
 
-
-                    </div>
-                    <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Order</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="number" name="order" value="{{old('order')}}"  >
-                            @error('order')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
                         <div class="col-sm-10">
@@ -58,7 +39,60 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Link</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Header</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="header" value="{{old('header')}}"  >
+                            @error('header')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Big text</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="big_text" value="{{old('big_text')}}"  >
+                            @error('big_text')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Call to action</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="call_to_action" value="{{old('call_to_action')}}"  >
+                            @error('call_to_action')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Short description</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="short_description" value="{{old('short_description')}}"  >
+                            @error('short_description')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Order</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" name="order" value="{{old('order')}}"  >
+                            @error('order')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">LinkTo when clicking</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="link" value="{{old('link')}}"  >
                             @error('link')
