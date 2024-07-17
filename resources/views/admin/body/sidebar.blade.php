@@ -97,6 +97,16 @@
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
+                        <span>Slider</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('admin.sliders.index')}}">All Sliders</a></li>
+                        <li><a href="{{route('admin.sliders.create')}}">Add New Slider</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
                         <span>File manager</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">

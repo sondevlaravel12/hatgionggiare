@@ -24,6 +24,7 @@ return new class extends Migration
             $table->enum('type', ['post', 'page', 'news', 'faq'])->default('post');
             $table->integer('pcategory_id')->nullable();
             $table->integer('hot')->default(0);
+            $table->string('image_directory')->nullable();
             $table->timestamps();
         });
     }

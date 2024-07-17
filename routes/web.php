@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\OproductController;
 use App\Http\Controllers\Backend\OrderController as BackendOrderController;
 use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\ProductController as BackendProductController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\TagController as BackendTagController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
@@ -96,6 +97,16 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
     Route::put('/coupons/{coupon}/update',[CouponController::class,'update'])->name('admin.coupons.update');
 
     Route::delete('/coupons/{coupon}/delete',[CouponController::class,'destroy'])->name('admin.coupons.destroy');
+
+    // slider
+    Route::get('/sliders',[SliderController::class,'index'])->name('admin.sliders.index');
+    Route::get('/sliders/{slider}/show',[SliderController::class,'show'])->name('admin.sliders.detail');
+    Route::get('/sliders/create',[SliderController::class,'create'])->name('admin.sliders.create');
+    Route::post('/sliders/store',[SliderController::class,'store'])->name('admin.sliders.store');
+    Route::get('/sliders/{slider}/edit',[SliderController::class,'edit'])->name('admin.sliders.edit');
+    Route::put('/sliders/{slider}/update',[SliderController::class,'update'])->name('admin.sliders.update');
+
+    Route::delete('/coupons/{coupon}/delete',[CouponController::class,'destroy'])->name('admin.sliders.destroy');
 
     // product
     Route::controller(BackendProductController::class)->group(function(){

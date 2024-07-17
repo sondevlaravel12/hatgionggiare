@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('call_to_action')->nullable();
             $table->string('link')->nullable();
             $table->text('type')->nullable();
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }
