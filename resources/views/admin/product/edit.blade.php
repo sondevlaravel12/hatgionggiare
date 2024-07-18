@@ -108,7 +108,17 @@
                                                 </select>
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label for="example-text-input" class="form-label">Quy cách đóng gói</label>
+                                                <input class="form-control" type="text" name="packing" value="{{old('packing')??$product->packing}}"  >
+                                                @error('packing')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
 
 
