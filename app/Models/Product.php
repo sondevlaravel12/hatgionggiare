@@ -19,6 +19,7 @@ use Gloudemans\Shoppingcart\Contracts\Buyable;
 // ------------End Buyable interface use for cart
 use Spatie\Image\Manipulations;
 use App\Traits\HasMediaConversions;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 // for spatie tag
 use Spatie\Tags\HasTags;
@@ -152,6 +153,10 @@ class Product extends Model implements HasMedia, Buyable
     public function sample(): MorphOne
     {
         return $this->morphOne(Sample::class, 'sampleable');
+    }
+    public function variants(): HasMany
+    {
+        return $this->hasMany(Variant::class);
     }
      // ------------------- End Relationship ---------------------------//
 

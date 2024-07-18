@@ -95,6 +95,10 @@ sản phẩm: {{ $product->name }}
 
 							<div class="description-container m-t-20">
 								{!!$product->short_description!!}
+                                <br>
+                                @if ($product->packing)
+                                <p>Quy cách đóng gói: {{ $product->packing }}</p>
+                                @endif
 							</div><!-- /.description-container -->
 
 							<div class="price-container info-container m-t-20">

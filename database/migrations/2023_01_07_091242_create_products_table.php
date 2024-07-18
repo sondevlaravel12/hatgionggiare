@@ -46,6 +46,7 @@ return new class extends Migration
             $table->integer('category_id')->nullable();
             $table->tinyInteger('best_selling')->nullable()->default(0);
             $table->string('image_directory')->nullable();
+            $table->string('packing')->nullable();
             $table->timestamps();
         });
     }
