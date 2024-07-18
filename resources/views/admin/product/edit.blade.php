@@ -165,7 +165,7 @@
                                                     <option selected="">Lựa chọn thu mục</option>
                                                     @if(isset($directories))
                                                         @foreach ($directories as $directorie)
-                                                        <option value="{{ $directorie }}">{{ $directorie }}</option>
+                                                        <option value="{{ $directorie }}" {{ old('image_directory') == $product->image_directory || $directorie==$product->image_directory? 'selected' : '' }}>{{ $directorie }}</option>
                                                         @endforeach
                                                     @endif
 

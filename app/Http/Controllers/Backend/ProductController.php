@@ -40,7 +40,7 @@ class ProductController extends Controller
         // dd($request->file('photos'));
 
         $input = $request->except(['photos','category_id','sample_id','directories']);
-
+        // dd($input);
 
         if($product = Product::create($input)){
             if($request->category_id!='not_selected'){
