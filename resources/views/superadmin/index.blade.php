@@ -153,10 +153,17 @@
                     <button style="display: none" class="btn btn-success btn-sm btn-rounded waves-effect waves-light js-addtag-byclick"></button>
                 @endif
                 @if ($sample->sampleable)
+
                     @if ($sample->type=='product')
-                        <a type="button" href="{{ route('products.show', $sample->sampleable->id ) }}" class="btn btn-sm btn-link js-generate" >{{ $sample->sampleable->id  }}</a>
+                    @php
+                        $product = App\Models\Product::find($sample->sampleable->id);
+                    @endphp
+                        <a type="button" href="{{ route('products.show', $product ) }}" class="btn btn-sm btn-link js-generate" >{{ $sample->sampleable->id  }}</a>
                     @elseif ($sample->type=='post')
-                        <a type="button" href="{{ route('posts.show', $sample->sampleable->id) }}" class="btn btn-sm btn-link js-generate" >{{ $sample->sampleable->id  }}</a>
+                    @php
+                        $post = App\Models\Post::find($sample->sampleable->id);
+                    @endphp
+                        <a type="button" href="{{ route('posts.show', $post) }}" class="btn btn-sm btn-link js-generate" >{{ $sample->sampleable->id  }}</a>
                     @endif
                     {{-- {{ $sample->sampleable->id }} --}}
                 @else

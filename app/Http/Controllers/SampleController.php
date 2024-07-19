@@ -7,6 +7,7 @@ use App\Models\Oproduct;
 use App\Models\Pcategory;
 use App\Models\Sample;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SampleController extends Controller
 {
@@ -151,7 +152,13 @@ class SampleController extends Controller
         $sample = Sample::findOrFail($request->sampleid);
         // dd($sample);
         $categories = Category::latest()->get();
-        return view('admin.product.create', compact('categories','sample'));
+        $fullNameDirectories = Storage::disk('public')->directories('photos');
+        $directories =[];
+        foreach ($fullNameDirectories as $fullNameDirectorie) {
+            $directories[] = basename($fullNameDirectorie);
+        }
+        return view('admin.product.create', compact('categories','directories','sample'));
+        // return view('admin.product.create', compact('categories','sample'));
     }
     public function createPostFromSample(Request $request){
         $sample = Sample::findOrFail($request->sampleid);
