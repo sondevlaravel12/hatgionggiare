@@ -20,8 +20,10 @@ Bài viết
 
                 @foreach ($posts as $post )
                 <div class="blog-post {{ $loop->iteration!=1?'outer-top-bd':'' }} wow fadeInUp">
-                    <a href="{{ route('posts.show',[$post,$post->slug]) }}"><img class="img-responsive" src="{{ asset($post->getFirstImageUrl('large')) }}" alt="{{ $post->title }}"></a>
-                    <h1><a href="{{ route('posts.show',[$post,$post->slug]) }}">{{ $post->title }}</a></h1>
+                    {{-- <a href="{{ route('posts.show',[$post,$post->slug]) }}"><img class="img-responsive" src="{{ asset($post->getFirstImageUrl('large')) }}" alt="{{ $post->title }}"></a>
+                    <h1><a href="{{ route('posts.show',[$post,$post->slug]) }}">{{ $post->title }}</a></h1> --}}
+                    <a href="{{ route('posts.show',$post) }}"><img class="img-responsive" src="{{ asset($post->getFirstImageUrl('large')) }}" alt="{{ $post->title }}"></a>
+                    <h1><a href="{{ route('posts.show',$post) }}">{{ $post->title }}</a></h1>
                     <span class="author">{{ $post->user?$post->user->name:'' }}</span>
                     <span class="date-time">{{ $post->created_at }}</span>
                     <span class="review">6 Comments</span>

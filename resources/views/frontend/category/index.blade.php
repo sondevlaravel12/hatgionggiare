@@ -65,7 +65,8 @@ category
                                             <div class="products">
                                             <div class="product">
                                                 <div class="product-image">
-                                                <div class="image"> <a href="{{ route('products.show', [$product, $product->slug]) }}"><img  src="{{ $product->getFirstImageUrl('medium') }}" alt=""></a> </div>
+                                                {{-- <div class="image"> <a href="{{ route('products.show', [$product, $product->slug]) }}"><img  src="{{ $product->getFirstImageUrl('medium') }}" alt=""></a> </div> --}}
+                                                <div class="image"> <a href="{{ route('products.show', $product) }}"><img  src="{{ $product->getFirstImageUrl('medium') }}" alt=""></a> </div>
                                                 <!-- /.image -->
                                                 </div>
                                                 <!-- /.product-image -->

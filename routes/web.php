@@ -211,12 +211,13 @@ Route::get('thong-tin-chuyen-khoan', [FrontendIndexController::class,'showBankIn
 
 
 // product controller
-Route::get('san-pham/{product}/{slug?}', [ProductController::class,'show'])->name('products.show');
+Route::get('san-pham/{product:slug}', [ProductController::class,'show'])->name('products.show');
 Route::get('san-pham/modal/show/{id}', [ProductController::class,'ajaxModalShow'])->name('products.modal.show');
 
 // post controller
 Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
-Route::get('bai-viet/{post}/{slug?}', [PostController::class,'show'])->name('posts.show');
+// Route::get('bai-viet/{post}/{slug?}', [PostController::class,'show'])->name('posts.show');
+Route::get('bai-viet/{post:slug?}', [PostController::class,'show'])->name('posts.show');
 Route::get('danh-muc/{category_id}/bai-viet', [PostController::class,'group'])->name('posts.category.group');
 
 // tag controller

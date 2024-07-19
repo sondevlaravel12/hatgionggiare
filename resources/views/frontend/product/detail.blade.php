@@ -72,7 +72,7 @@ sản phẩm: {{ $product->name }}
 									</div>
 									<div class="col-sm-8">
 										<div class="reviews">
-											<a href="#" class="lnk">(13 Reviews)</a>
+											<a href="#" class="lnk">(13 Đánh giá)</a>
 										</div>
 									</div>
 								</div><!-- /.row -->
@@ -82,12 +82,12 @@ sản phẩm: {{ $product->name }}
 								<div class="row">
 									<div class="col-sm-2">
 										<div class="stock-box">
-											<span class="label">Availability :</span>
+											<span class="label">Tình trạng :</span>
 										</div>
 									</div>
 									<div class="col-sm-9">
 										<div class="stock-box">
-											<span class="value">In Stock</span>
+											<span class="value">Còn hàng</span>
 										</div>
 									</div>
 								</div><!-- /.row -->
