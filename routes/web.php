@@ -213,6 +213,8 @@ Route::get('thong-tin-chuyen-khoan', [FrontendIndexController::class,'showBankIn
 // product controller
 Route::get('san-pham/{product:slug}', [ProductController::class,'show'])->name('products.show');
 Route::get('san-pham/modal/show/{id}', [ProductController::class,'ajaxModalShow'])->name('products.modal.show');
+Route::get('san-pham/tim-kiem/sp/',[ProductController::class,'search'])->name('product.search');
+Route::get('san-pham/ajax-tim-kiem/sp',[ProductController::class,'ajaxSearch'])->name('product.ajaxsearch');
 
 // post controller
 Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');

@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css')}}">
 
 <!-- Customizable CSS -->
+{{-- <link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.13.3.custom/jquery-ui.min.css') }}"></link> --}}
+<link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.11.4/jquery-ui.css') }}"></link>
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/blue.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.carousel.css')}}">
@@ -28,7 +30,7 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/rateit.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap-select.min.css')}}">
-<link rel="stylesheet" href="{{ asset('frontend/assets/css/custome.css')}}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/custome.css?1')}}">
 <link href="{{ asset('frontend/assets/css/lightbox.css') }}" rel="stylesheet">
 
 {{-- website favicon  --}}
@@ -82,6 +84,8 @@
 
 <!-- JavaScripts placed at the end of the document so the pages load faster -->
 <script src="{{ asset('frontend/assets/js/jquery-1.11.1.min.js')}}"></script>
+{{-- <script src="{{ asset('backend/assets/jquery-ui-1.13.3.custom/jquery-ui.min.js') }}" ></script> --}}
+<script src="{{ asset('backend/assets/jquery-ui-1.11.4/jquery-ui.js') }}" ></script>
 <script src="{{ asset('frontend/assets/js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('frontend/assets/js/bootstrap-hover-dropdown.min.js')}}"></script>
 <script src="{{ asset('frontend/assets/js/owl.carousel.min.js')}}"></script>
@@ -147,6 +151,36 @@
         }
     });
 
+</script>
+<script>
+    /* ---------------------------------------------
+     Autocomplete search
+     --------------------------------------------- */
+    //  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+$(function(){
+    $("#autosearch").length > 0 && ($("#autosearch").autocomplete({
+        // autoFocus: true,
+        source: function (request, response) {
+            $.ajax({
+                url: "/san-pham/ajax-tim-kiem/sp",
+                data: {term: request.term, maxResults: 10},
+                dataType: "json",
+                success: function (request) {
+                    response($.map(request, function (request) {
+                        return request
+                    }))
+                }
+            })
+        }, select: function (event, ul) {
+            // window.location.href = ul.item.url;
+            // console.log(ul.item.id);
+        }
+    }).data("ui-autocomplete")._renderItem = function (request, response) {
+        var n = '<a href="' + response.url + '"><div class="list_item_container"><div class="image"><img src="' + response.avatar + '"></div><div class="description">' + response.label + '</div></div></a><hr class="search-hr"/>';
+        return $("<li></li>").data("ui-autocomplete-item", response).append(n).appendTo(request)
+    })
+})
 </script>
 {{-- End setup --}}
 

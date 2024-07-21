@@ -52,10 +52,26 @@
             <!-- /.contact-row -->
             <!-- ============================================================= SEARCH AREA ============================================================= -->
             <div class="search-area">
-              <form>
+                {{-- <form class="form-inline" method="GET" action="http://ccls3.test/san-pham/tim-kiem">
+
+
+                    <div class="form-group input-serach">
+
+                        <input type="text" name="q"  placeholder="Tìm kiếm..." id="autosearch">
+
+                    </div>
+
+                    <button type="submit" class="pull-right btn-search">
+
+                        <!--                        <i class="fa fa-search"></i>-->
+
+                    </button>
+
+                </form> --}}
+              <form method="GET" action="{{route('product.search')}}">
                 <div class="control-group">
-                  <input class="search-field" placeholder="tìm sản phẩm..." />
-                  <a class="search-button" href="#" ></a> </div>
+                  <input name="q" class="search-field" placeholder="tìm sản phẩm..." id="autosearch"/>
+                  <button class="search-button" ></button> </div>
               </form>
             </div>
             <!-- /.search-area -->

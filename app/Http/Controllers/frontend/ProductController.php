@@ -33,4 +33,48 @@ class ProductController extends Controller
 
         return response()->json(['product'=> $product, 'imageUrl'=>$imageUrl]);
     }
+    public function search(Request $request){
+        // OpenGraph::setTitle('Tìm kiếm sản phẩm');
+        // OpenGraph::setUrl(url()->current());
+        // OpenGraph::addProperty('type', 'product');
+        // OpenGraph::addProperty('locale', 'vi_VN');
+
+
+        // JsonLd::setTitle('Tìm kiếm sản phẩm');
+        // JsonLd::setType('Product');
+
+        $validated = $request->validate([
+            'q' => 'required|max:20',
+        ]);
+        $key = $request['q'];
+        $products = Product::where('name','like','%' .$key .'%')->orderBy('id', 'DESC')->paginate(24)->withQueryString();
+
+        return view('frontend.product.search', compact('key','products' ));
+
+    }
+    public function ajaxSearch(Request $request){
+        if( empty($request['term']) ){
+            return false;
+        }
+
+        $key = $request['term'];
+
+        $products = Product::where('name','like','%' .$key .'%')->limit(10)->get();
+        if( $products->count()<1 ){
+            exit;
+        }
+
+        foreach($products as $product){
+            $result[] =
+                array(
+                    'label' => $product->name,
+                    'url'=>route('products.show', $product),
+                    'price'=> $product->price,
+                    'avatar'=> $product->getFirstImageUrl()
+                );
+        }
+
+        return response()->json($result);
+    }
+
 }
