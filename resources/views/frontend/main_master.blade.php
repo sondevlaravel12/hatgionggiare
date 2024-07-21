@@ -3,17 +3,19 @@
 <head>
 <!-- Meta -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+{{-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="keywords" content="MediaCenter, Template, eCommerce">
-<meta name="robots" content="all">
+<meta name="robots" content="all"> --}}
+{!! SEO::generate() !!}
+{{-- json --}}
+{{-- {!! SEOMeta::generate() !!}
+{!! OpenGraph::generate() !!}
+{!! Twitter::generate() !!}
+{!! JsonLd::generate() !!} --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>
-    {{-- @yield('title') --}}
-    {{ !empty($title)? $title : config('constants.BRAND')}}
-</title>
 @yield('breadcrumb')
 
 <!-- Bootstrap Core CSS -->

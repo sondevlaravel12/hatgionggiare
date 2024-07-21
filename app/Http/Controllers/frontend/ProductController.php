@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 // use Spatie\Tags\Tag;
 use Illuminate\Http\Request;
 
@@ -34,14 +38,17 @@ class ProductController extends Controller
         return response()->json(['product'=> $product, 'imageUrl'=>$imageUrl]);
     }
     public function search(Request $request){
-        // OpenGraph::setTitle('Tìm kiếm sản phẩm');
-        // OpenGraph::setUrl(url()->current());
-        // OpenGraph::addProperty('type', 'product');
-        // OpenGraph::addProperty('locale', 'vi_VN');
+        SEOMeta::setTitle('Trang Tìm Kiếm');
+        // SEOTools::setTitle('Home');
+        SEOTools::setDescription('This is my page description');
+        OpenGraph::setTitle('Tìm kiếm sản phẩm');
+        OpenGraph::setUrl(url()->current());
+        OpenGraph::addProperty('type', 'product');
+        OpenGraph::addProperty('locale', 'vi_VN');
 
 
-        // JsonLd::setTitle('Tìm kiếm sản phẩm');
-        // JsonLd::setType('Product');
+        JsonLd::setTitle('Tìm kiếm sản phẩm');
+        JsonLd::setType('Product');
 
         $validated = $request->validate([
             'q' => 'required|max:20',
