@@ -6,7 +6,7 @@
         <!--Material Design Iconic Font-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         {{-- http://dragdropimage.test/ --}}
-        <link rel="stylesheet" href="{{asset('asset/admin/stylesheets/image-uploader.min.css?1')}}">
+        <link rel="stylesheet" href="{{asset('backend/assets/image-uploader.min.css?1')}}">
         {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> --}}
 
@@ -302,7 +302,7 @@ triggerTabList.forEach(function (triggerEl) {
 
 <!-- Image-Uploader -->
 {{-- https://christianbayer.github.io/image-uploader/ --}}
-<script type="text/javascript" src="{{asset('asset/admin/javascripts/image-uploader.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/assets/image-uploader.min.js')}}"></script>
 
 <Script>
 
