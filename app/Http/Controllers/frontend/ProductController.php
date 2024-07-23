@@ -40,7 +40,7 @@ class ProductController extends Controller
     public function search(Request $request){
         SEOMeta::setTitle('Trang Tìm Kiếm');
         // SEOTools::setTitle('Home');
-        SEOTools::setDescription('This is my page description');
+        SEOTools::setDescription('Ket qua tim kiem san pham voi tu khoa: ' . $request['q']);
         OpenGraph::setTitle('Tìm kiếm sản phẩm');
         OpenGraph::setUrl(url()->current());
         OpenGraph::addProperty('type', 'product');
