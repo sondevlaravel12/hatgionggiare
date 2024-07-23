@@ -291,7 +291,7 @@ triggerTabList.forEach(function (triggerEl) {
 
 <!-- Image-Uploader -->
 {{-- https://christianbayer.github.io/image-uploader/ --}}
-<script type="text/javascript" src="{{asset('backend/assets/image-uploader.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/assets/image-uploader/image-uploader.min.js')}}"></script>
 
 <Script>
 
