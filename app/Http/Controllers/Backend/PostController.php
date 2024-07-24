@@ -38,7 +38,7 @@ class PostController extends Controller
         ]);
 
         $input = $request->except(['photos','category_id','_token','directories']);
-        dd($input);
+        // dd($input);
 
 
         if($post = Post::create($input)){

@@ -162,9 +162,13 @@ class SampleController extends Controller
     }
     public function createPostFromSample(Request $request){
         $sample = Sample::findOrFail($request->sampleid);
-        // dd($sample->name);
-        $categories = Pcategory::latest()->get();
-        return view('admin.post.create', compact('categories','sample'));
+        $categories = Category::latest()->get();
+        $fullNameDirectories = Storage::disk('public')->directories('photos');
+        $directories =[];
+        foreach ($fullNameDirectories as $fullNameDirectorie) {
+            $directories[] = basename($fullNameDirectorie);
+        }
+        return view('admin.post.create', compact('categories','sample','directories'));
     }
 
 }
