@@ -28,6 +28,7 @@
 
                         <th>Id</th>
                         <th>Image</th>
+                        <th>Type</th>
                         <th>Action</th>
                         <th>Order</th>
                         <th>Create at</th>
@@ -54,6 +55,7 @@
                                     @csrf
                                 </form>
                             </td>
+                            <td>{{ $slider->type }}</td>
                             <td>{{$slider->order}}</td>
                             <td>{{$slider->created_at ? \Carbon\Carbon::parse($slider->created_at)->diffForHumans() : ''}}</td>
                             <td>{{$slider->updated_at ? \Carbon\Carbon::parse($slider->updated_at)->diffForHumans() : ''}}</td>

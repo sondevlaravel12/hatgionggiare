@@ -1,18 +1,13 @@
 <div class="row">
-    <div class="col-md-7 col-sm-7">
+    @foreach (App\Models\Slider::where('type','=','middle_banner')->orderBy('order', 'ASC')->limit(2)->get() as $banner)
+
+    <div class="col-md-6 col-sm-7">
       <div class="wide-banner cnt-strip">
-        <div class="image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/home-banner1.jpg') }}" alt="">
+        <div class="image"> <img class="img-responsive" src="{{$banner->getFirstImageUrl()}}" alt="">
         </div>
       </div>
       <!-- /.wide-banner -->
     </div>
-    <!-- /.col -->
-    <div class="col-md-5 col-sm-5">
-      <div class="wide-banner cnt-strip">
-        <div class="image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/home-banner2.jpg') }}" alt="">
-        </div>
-      </div>
-      <!-- /.wide-banner -->
-    </div>
-    <!-- /.col -->
-  </div>
+    @endforeach
+
+</div>

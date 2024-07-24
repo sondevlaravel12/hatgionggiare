@@ -43,7 +43,7 @@ class SliderController extends Controller
         $slider = Slider::create($input);
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
-            $slider->addMediaFromRequest('image')->toMediaCollection('slider');
+            $slider->addMediaFromRequest('image')->toMediaCollection('sliders');
         }
 
         $notifycation = [

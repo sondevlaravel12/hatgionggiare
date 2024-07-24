@@ -4,7 +4,7 @@
 
         <div id="hero">
             <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
-                @foreach (App\Models\Slider::orderBy('order', 'ASC')->get() as $slider)
+                @foreach (App\Models\Slider::where('type','=','top_slider')->orderBy('order', 'ASC')->get() as $slider)
                     <div class="item" style="background-image: url({{ $slider->getFirstImageUrl() }});">
                         <div class="container-fluid">
                         <div class="caption bg-color vertical-center text-left">
