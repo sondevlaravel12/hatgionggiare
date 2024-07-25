@@ -204,6 +204,25 @@
                                         </div>
 
                                     </div>
+                                    <div class="row ">
+                                        <div class="col-lg-12 ">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <div class="square-switch mt-2">
+                                                    <input type="checkbox" id="square-switch1" switch="none" checked="">
+                                                    <label for="square-switch1" data-on-label="SP" data-off-label="BV"></label>
+                                                </div>
+                                                <label class="col-sm-4 col-form-label ">link liên kết Sản Phẩm | Bài Viết</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-6">
+                                            <input class="form-control" id="autosearch" type="text">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input class="form-control"  type="text" id="url">
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">

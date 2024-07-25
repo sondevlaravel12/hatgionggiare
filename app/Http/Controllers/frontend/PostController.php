@@ -61,4 +61,26 @@ class PostController extends Controller
         }
 
     }
+    public function ajaxSearch(Request $request){
+        if( empty($request['term']) ){
+            return false;
+        }
+
+        $key = $request['term'];
+
+        $posts = Post::where('title','like','%' .$key .'%')->limit(10)->get();
+        if( $posts->count()<1 ){
+            exit;
+        }
+
+        foreach($posts as $post){
+            $result[] =
+                array(
+                    'label' => $post->title,
+                    'url'=>route('posts.show', $post),
+                );
+        }
+
+        return response()->json($result);
+    }
 }

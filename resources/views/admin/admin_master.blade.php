@@ -37,6 +37,12 @@
         <!-- select2 for dropdown search -->
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+        <!-- Jquery ui mostly used autocomplete for search product,post... -->
+        {{-- <link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.11.4/jquery-ui.css') }}"></link> --}}
+        <link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.14.0-beta2/jquery-ui.min.css') }}"></link>
+        <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/custome.css') }}" >
+
+
         @stack('stylesheets')
     </head>
 
@@ -88,11 +94,17 @@
 
         <!-- JAVASCRIPT -->
 
-        <script src="{{asset('backend/assets/libs/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('backend/assets/libs/jquery/jquery.min.js?3.6.')}}"></script>
         <script src="{{asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('backend/assets/libs/metismenu/metisMenu.min.js')}}"></script>
         <script src="{{asset('backend/assets/libs/simplebar/simplebar.min.js')}}"></script>
         <script src="{{asset('backend/assets/libs/node-waves/waves.min.js')}}"></script>
+
+        <!-- Jquery ui mostly used autocomplete for search product,post... -->
+        {{-- <script src="{{ asset('frontend/assets/js/jquery-1.11.1.min.js')}}"></script> --}}
+
+        {{-- <script src="{{ asset('backend/assets/jquery-ui-1.11.4/jquery-ui.js') }}" ></script> --}}
+        <script src="{{ asset('backend/assets/jquery-ui-1.14.0-beta2/jquery-ui.min.js') }}" ></script>
 
 
         <!-- apexcharts -->
@@ -223,6 +235,74 @@
             });
         </script>
         <!-- end select2 for dropdown search -->
+
+        <!-- autocomple search using for search url product or post -->
+        <script>
+            $("#autosearch").length > 0 && ($("#autosearch").autocomplete({
+                // autoFocus: true,
+                source: function (request, response) {
+                        if($('#square-switch1').is(':checked')){
+                            $.ajax({
+                                url: "/san-pham/ajax-tim-kiem/sp",
+                                data: {term: request.term, maxResults: 10},
+                                dataType: "json",
+                                success: function (data) {
+                                    // response($.map(request, function (request) {
+                                    //     return request
+                                    // }))
+                                    return response(data);
+                                }
+                            })
+                        }else{
+                            $.ajax({
+                                url: "/bai-viet/ajax-tim-kiem/bv",
+                                data: {term: request.term, maxResults: 10},
+                                dataType: "json",
+                                success: function (data) {
+                                    // response($.map(request, function (request) {
+                                    //     return request
+                                    // }))
+                                    return response(data);
+                                }
+                            })
+
+                        }
+
+                    }
+
+            }));
+            $("#autosearch" ).on( "autocompleteselect", function( event, ui ) {
+                // event.preventDefault();
+                $("#url").val(ui.item.url);
+                // copyToClipboard('url');
+            } );
+            $("#url").on('click', function(){copyToClipboard('url')});
+            function copyToClipboard(textFieldId) {
+                // Get the text field
+                var copyText = document.getElementById(textFieldId);
+                // Select the text field
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+                // Copy the text inside the text field using the Clipboard API if available
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(copyText.value).then(() => {
+                        displayNotification('coppied to clipboar');
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
+                } else {
+                    // Fallback method using document.execCommand('copy')
+                    try {
+                        document.execCommand('copy');
+                        displayNotification('coppied to clipboar: ' + copyText.value,'success');
+                    } catch (err) {
+                        console.error('Fallback: Oops, unable to copy', err);
+                    }
+                }
+            }
+        </script>
+        <!-- end autocomple search using for search url product or post -->
+
 
 
         @stack('scripts')

@@ -221,6 +221,8 @@ Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
 // Route::get('bai-viet/{post}/{slug?}', [PostController::class,'show'])->name('posts.show');
 Route::get('bai-viet/{post:slug?}', [PostController::class,'show'])->name('posts.show');
 Route::get('danh-muc/{category_id}/bai-viet', [PostController::class,'group'])->name('posts.category.group');
+Route::get('bai-viet/ajax-tim-kiem/bv',[PostController::class,'ajaxSearch'])->name('post.ajaxsearch');
+
 
 // tag controller
 Route::get('tag/{tag}/san-pham', [ProductController::class,'productsByTag'])->name('tags.products.show');
