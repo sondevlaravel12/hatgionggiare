@@ -1,6 +1,6 @@
 @extends('admin.post.post_master')
 @push('stylesheets')
-        <link rel="stylesheet" href="{{asset('asset/admin/stylesheets/image-uploader.min.css')}}">
+        <link rel="stylesheet" href="{{asset('backend/assets/image-uploader/image-uploader.min.css')}}">
 @endpush
 @section('content')
 <div class="row">
@@ -242,7 +242,7 @@ triggerTabList.forEach(function (triggerEl) {
 
 <!-- Image-Uploader -->
 {{-- https://christianbayer.github.io/image-uploader/ --}}
-<script type="text/javascript" src="{{asset('asset/admin/javascripts/image-uploader.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/assets/image-uploader/image-uploader.min.js')}}"></script>
 
 <Script>
 
