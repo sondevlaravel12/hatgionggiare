@@ -30,7 +30,7 @@ class Post extends Model implements HasMedia
          $this
              ->addMediaCollection('posts')
              ->acceptsMimeTypes(['image/jpeg','image/png','image/svg'])
-             ->onlyKeepLatest(3)
+             ->onlyKeepLatest(1)
              ;
 
      }
