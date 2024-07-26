@@ -8,18 +8,17 @@
             </div>
             <div class="modal-body">
                 {{-- <input type="hidden" class="tag-id-in-modal"> --}}
-                <div class="card">
-                    <div class="card-body sample-short-description">
 
-                    </div>
-                </div>
                 <div class="card">
                     <div class="card-body sample-description">
 
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-body sample-short-description">
 
-
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light waves-effect " data-bs-dismiss="modal">Đóng</button>
@@ -31,18 +30,25 @@
 <div id="edit-sample-modal" class="modal bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <form action="">
+            <form action="" id="update-sample-modal-form">
                 <div class="modal-header">
-                    <input class="form-control modal-title" type="text">
+                    <input class="form-control modal-title" type="text" name="name">
                     {{-- <h5 class="modal-title">ten o day</h5> --}}
                     {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                 </div>
                 <div class="modal-body">
-                    <textarea class="form-control short-description-editor sample-short-description" name="" id="" cols="30" rows="20"></textarea>
-
-                    <textarea class="form-control myeditorinstance sample-description" name="" id="" cols="30" rows="60"></textarea>
+                    <textarea class="form-control myeditorinstance sample-description" name="description" id="" cols="30" rows="60"></textarea>
+                    <textarea class="form-control short-description-editor sample-short-description" name="short_description" id="" cols="30" rows="20"></textarea>
                     <br>
-
+                    <div class="row mb-3" id="sampletype-holder">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Loại</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="type" id="" disabled>
+                                <option value="product">Product</option>
+                                <option value="post">Post</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Sản phẩm gốc</label>
 

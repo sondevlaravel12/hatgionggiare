@@ -311,6 +311,8 @@ Route::middleware('adminmiddleware')->group((function(){
 
     Route::get('/superadmin/ajax-get-sample-info', [SampleController::class,'ajaxGetSampleInfo'])->name('superadmin.ajaxGetSampleInfo');
     Route::post('/superadmin/ajax-update-sample-info', [SampleController::class,'ajaxUpdateSampleInfo'])->name('superadmin.ajaxUpdateSampleInfo');
+    Route::post('/superadmin/ajax-update-sample-info-with-formdata', [SampleController::class,'ajaxUpdateSampleInfoWithFormdata'])->name('superadmin.ajaxUpdateSampleInfoWithFormdata');
+
     Route::get('/superadmin/ajax-remove-sample', [SampleController::class,'ajaxRemoveSample'])->name('superadmin.ajaxRemoveSample');
 
     Route::get('/superadmin/original-product/index', [OproductController::class,'index'])->name('superadmin.originalproduct.index');

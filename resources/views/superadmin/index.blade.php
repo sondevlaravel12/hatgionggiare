@@ -145,7 +145,7 @@
                 <button style="color:#0097a7" type="button" class="btn btn-sm btn-link js-edit-sample"><i class="fas fa-edit"></i>Sửa</button>
                 {{-- <a href="#" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light">delete</a> --}}
                 <button style="color: #f32f53" type="button" class="btn btn-sm btn-link js-remove-sample" data-productid="56"><i class="far fa-trash-alt"></i> Xóa</button>
-                <span class="badge {{ $sample->type=="product"?"bg-info":"bg-warning" }} ">{{ $sample->type }}</span>
+                <span class="sample-type badge {{ $sample->type=="product"?"bg-info":"bg-warning" }} ">{{ $sample->type }}</span>
                 {{-- <span class="badge bg-success">{{ $sample->oproduct?$sample->oproduct->name:'' }}</span> --}}
                 @if ($sample->oproduct)
                     <button class="btn btn-success btn-sm btn-rounded waves-effect waves-light js-addtag-byclick" value="{{ $sample->oproduct->id }}">{{ $sample->oproduct->name }}</button>
@@ -329,6 +329,19 @@
                 // clear old value when edit other oproduct
                 $selectInput.html('');
             }
+            // type selected: product or post
+            if(data.type=='post'){
+                $("select[name=type] option[value=post]").attr('selected','selected');
+            }else if(data.type=='product'){
+                $("select[name=type] option[value=product]").attr('selected','selected');
+            }
+            // if this sample already generated product/post, do not allow to change it's type
+            if(data.sampleable_id){
+                $("select[name=type]").prop('disabled', true);
+            }else{
+                $("select[name=type]").prop('disabled', false);
+
+            }
             // oproduct-dropdown
             // console.log(data);
             tinymce.init({ selector:'textarea.short-description-editor', height:300 });
@@ -367,22 +380,48 @@
         //     $oproductId = '';
         // }
         // call ajax to process the update sample work
-        updateSampe($sampleId,$sampleTitle,$sampleShortDescriptionVal, $sampleDescriptionVal, $oproductId).done(function(data){
+        // updateSampe($sampleId,$sampleTitle,$sampleShortDescriptionVal, $sampleDescriptionVal, $oproductId).done(function(data){
+        //     // update sample info in view
+        //     $sampleHolder = $('.sample-items').find('div#'+ $sampleId);
+        //     $sampleHolder.find('.card-title').html($sampleTitle);
+        //     $sampleHolder.find('.sample-content').html($sampleShortDescriptionVal);
+        //     $sampleHolder.find('.js-addtag-byclick').html(data.oproduct_name);
+        //     $sampleHolder.find('.js-addtag-byclick').val(data.oproduct_id)
+        //     $sampleHolder.find('.js-addtag-byclick').show();
+        //     $modalEditSample.modal('hide');
+        //     // resorting sample by oproduct
+        //     if($("select#search-bar").val().length>0){
+        //         searchRelativeSample($("select#search-bar").val());
+        //     }
+        //     displayNotification(data['message']);
+
+        // })
+        updateSampeUsingFormData().done(function(data){
             // update sample info in view
-            $sampleHolder = $('.sample-items').find('div#'+ $sampleId);
-            $sampleHolder.find('.card-title').html($sampleTitle);
-            $sampleHolder.find('.sample-content').html($sampleShortDescriptionVal);
+            $sampleHolder = $('.sample-items').find('div#'+ data.sample.id);
+            $sampleHolder.find('.card-title').html(data.sample.name);
+            $sampleHolder.find('.sample-content').html(data.sample.discription);
+            $badge = $sampleHolder.find('.sample-type');
+            $badge.html(data.sample.type);
+            // change color badge
+            if(data.sample.type=='product'){
+                $badge.addClass('bg-info');
+                $badge.removeClass('bg-warning');
+            }else{
+                $badge.removeClass('bg-info');
+                $badge.addClass('bg-warning');
+            }
             $sampleHolder.find('.js-addtag-byclick').html(data.oproduct_name);
             $sampleHolder.find('.js-addtag-byclick').val(data.oproduct_id)
             $sampleHolder.find('.js-addtag-byclick').show();
             $modalEditSample.modal('hide');
+            // console.log($sampleHolder.find('.sample-type').html());
             // resorting sample by oproduct
             if($("select#search-bar").val().length>0){
                 searchRelativeSample($("select#search-bar").val());
             }
             displayNotification(data['message']);
-
-        })
+        });
     });
     $('.sample-items').on('click','.js-remove-sample', function () {
         if(confirm('bạn có chắc muốn xóa mẫu này không?')){
@@ -448,6 +487,14 @@
             dataType: "json",
         });
     }
+    function updateSampeUsingFormData(){
+        return $.ajax({
+            type: "post",
+            url: "/superadmin/ajax-update-sample-info-with-formdata",
+            data: $('#update-sample-modal-form').serialize(),
+            dataType: "json",
+        });
+    }
     function removeSample(sampleId){
         // return the ajax promise
         return $.ajax({
@@ -502,7 +549,7 @@
                 <button style="color:#0097a7" type="button" class="btn btn-sm btn-link js-edit-sample"><i class="fas fa-edit"></i>Sửa</button>
                 {{-- <a href="#" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light">delete</a> --}}
                 <button style="color: #f32f53" type="button" class="btn btn-sm btn-link js-remove-sample" data-productid="56"><i class="far fa-trash-alt"></i> Xóa</button>
-                <span class="badge `+ color +` ">`+ value['type'] +`</span>
+                <span class="badge `+ color +` sample-type">`+ value['type'] +`</span>
                 <button class="btn btn-success btn-sm btn-rounded waves-effect waves-light js-addtag-byclick" value="`+ value['oproduct']['id'] +`" >`+ value['oproduct']['name'] +`</button>
             </div>
 

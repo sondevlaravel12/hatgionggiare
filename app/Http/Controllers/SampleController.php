@@ -113,20 +113,37 @@ class SampleController extends Controller
         return response()->json($sample);
 
     }
-    public function ajaxUpdateSampleInfo(Request $request){
-        $validated = $request->validate([
-            'id' => 'required',
-            // 'name' => 'required|min:2|max:255',
-        ]);
-        $sample = Sample::find($request->id);
-        $sampleTitle = $request->title;
-        $sampleShortDescription = $request->short_description;
-        $sampleDescription = $request->description;
-        $oproductId = $request->oproductId;
+    // public function ajaxUpdateSampleInfo(Request $request){
+    //     $validated = $request->validate([
+    //         'id' => 'required',
+    //         // 'name' => 'required|min:2|max:255',
+    //     ]);
+    //     $sample = Sample::find($request->id);
+    //     $sampleTitle = $request->title;
+    //     $sampleShortDescription = $request->short_description;
+    //     $sampleDescription = $request->description;
+    //     $sampleType = $request->type;
+    //     $oproductId = $request->oproductId;
+    //     $oproductName = Oproduct::find($oproductId)->name;
+
+    //     if($sample->update(['name'=>$sampleTitle,'type'=> $sampleType , 'short_description'=>$sampleShortDescription, 'description'=>$sampleDescription,
+    //     'oproduct_id'=>$oproductId])){
+    //         $response = [
+    //             'message'=>'cập nhật sample thành công',
+    //             'alert-type'=>'success',
+    //             'oproduct_name'=> $oproductName,
+    //             'oproduct_id'=> $oproductId,
+    //             'sample'=>$sample,
+    //         ];
+    //         return response()->json($response);
+    //     }
+    // }
+    public function ajaxUpdateSampleInfoWithFormdata(Request $request){
+        $sample = Sample::find($request->sampleId);
+        $oproductId = $request->oproduct_id;
         $oproductName = Oproduct::find($oproductId)->name;
 
-        if($sample->update(['name'=>$sampleTitle, 'short_description'=>$sampleShortDescription, 'description'=>$sampleDescription,
-        'oproduct_id'=>$oproductId])){
+        if($sample->update($request->all())){
             $response = [
                 'message'=>'cập nhật sample thành công',
                 'alert-type'=>'success',
