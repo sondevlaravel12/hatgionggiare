@@ -43,22 +43,34 @@ class Post extends Model implements HasMedia
             $constraint->upsize();
         })
         ->background('fff')
-        ->format('png');
+        ->format('png')
+        ->optimize();  ;
     $this
         ->addMediaConversion('medium')
         ->fit(Manipulations::FIT_FILL, 390, 217, function ($constraint) {
             $constraint->upsize();
         })
         ->background('fff')
-        ->format('png');
+        ->format('png')
+        ->optimize();  ;
     $this
         ->addMediaConversion('large')
         ->fit(Manipulations::FIT_FILL, 780, 433, function ($constraint) {
             $constraint->upsize();
         })
         ->background('fff')
-        ->format('png');
+        ->format('png')
+        ->optimize();  ;
+    $this
+        ->addMediaConversion('og-image')
+        ->fit(Manipulations::FIT_FILL, 1200, 630, function ($constraint) {
+            $constraint->upsize();
+        })
+        ->background('fff')
+        ->format('png')
+        ->optimize();  ;
      }
+
      // -------------------End Spatie Media ---------------------------//
 
      // ------------------- Spatie laravel-sluggable ---------------------------//
