@@ -7,7 +7,7 @@
         <div class="strip strip-text">
           <div class="strip-inner">
             <h2 class="text-right">{{ $bigMiddelbanner->big_text }}<br>
-              <span class="shopping-needs">{{ $bigMiddelbanner->call_to_action }}</span>
+              <a href="{{ $bigMiddelbanner->link }}"><span class="shopping-needs">{{ $bigMiddelbanner->call_to_action }}</span></a>
             </h2>
           </div>
         </div>

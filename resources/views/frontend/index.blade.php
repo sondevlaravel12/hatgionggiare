@@ -87,7 +87,7 @@
 
         <!-- ============================================== BANNER ============================================== -->
         <div class="wide-banners wow fadeInUp outer-bottom-xs">
-          @include('frontend.body.top_middel_banner')
+          @include('frontend.body.big_middel_banner')
           <!-- /.row -->
         </div>
         <!-- /.wide-banners -->
