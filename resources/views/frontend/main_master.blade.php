@@ -25,7 +25,7 @@
 <!-- Customizable CSS -->
 {{-- <link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.13.3.custom/jquery-ui.min.css') }}"></link> --}}
 <link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.11.4/jquery-ui.css') }}"></link>
-<link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css')}}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css?1')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/blue.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.carousel.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.transitions.css')}}">

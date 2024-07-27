@@ -4808,11 +4808,13 @@ age-container #owl-main .owl-next {
 .blog-page .blog-post span {
   padding-right: 20px;
   color: #aaa;
-  font-size: 13px;
+  /* font-size: 13px; */
+  font-size: 16px;
 }
 .blog-page .blog-post p {
   padding-top: 16px;
-  font-size: 13px;
+  /* font-size: 13px; */
+  font-size: 16px;
   color: #666666;
   margin-bottom: 0px;
 }
@@ -4829,7 +4831,8 @@ age-container #owl-main .owl-next {
   margin-bottom: 30px;
 }
 .blog-page .blog-post .social-media span {
-  font-size: 13px;
+  /* font-size: 13px; */
+  font-size: 16px;
    color: #434343;
 }
 .blog-page .blog-post .social-media a {
