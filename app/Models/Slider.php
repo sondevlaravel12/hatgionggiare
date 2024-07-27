@@ -51,6 +51,13 @@ class Slider extends Model implements HasMedia
             })
             ->background('fff')
             ->format('png');
+        $this
+            ->addMediaConversion('wider')
+            ->fit(Manipulations::FIT_FILL, 1140, 370, function ($constraint) {
+                $constraint->upsize();
+            })
+            ->background('fff')
+            ->format('png');
     }
     // -------------------End Spatie Media ---------------------------//
 

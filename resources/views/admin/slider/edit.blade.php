@@ -31,6 +31,7 @@
                                 {{-- @foreach ($categories as $category) --}}
                                 <option value="top_slider" {{ $slider->type == 'top_slider' ? 'selected' : '' }}>Top Slider</option>
                                 <option value="middle_banner" {{ $slider->type == 'middle_banner' ? 'selected' : '' }}>Middle Banner</option>
+                                <option value="big_middle_banner" {{ $slider->type == 'big_middle_banner' ? 'selected' : '' }}>Big Middle Banner</option>
                                 {{-- @endforeach --}}
                             </select>
                         </div>

@@ -30,6 +30,7 @@
                                 {{-- @foreach ($categories as $category) --}}
                                 <option value="top_slider" {{ old('type') == 'top_slider' ? 'selected' : '' }}>Top Slider</option>
                                 <option value="middle_banner" {{ old('type') == 'middle_banner' ? 'selected' : '' }}>Middle Banner</option>
+                                <option value="big_middle_banner" {{ old('type') == 'big_middle_banner' ? 'selected' : '' }}>Top Middle Banner</option>
                                 {{-- @endforeach --}}
                             </select>
                         </div>
