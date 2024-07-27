@@ -7,13 +7,13 @@ sản phẩm: {{ $product->name }}
 @endsection
 @section('content')
 <div class="breadcrumb">
-	<div class="container">
+	{{-- <div class="container"> --}}
         {{ Breadcrumbs::render('products.show', $product) }}
 
-	</div><!-- /.container -->
+	{{-- </div><!-- /.container --> --}}
 </div><!-- /.breadcrumb -->
 
-<div class='container'>
+{{-- <div class='container'> --}}
 	<div class='row single-product'>
 
 		<div class='col-md-9'>
@@ -430,5 +430,5 @@ sản phẩm: {{ $product->name }}
 		<div class="clearfix"></div>
 	</div>
     @include('frontend.body.brands')
-</div>
+{{-- </div> --}}
 @endsection
