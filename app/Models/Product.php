@@ -160,7 +160,7 @@ class Product extends Model implements HasMedia, Buyable
     }
     public function metatag()
     {
-        return $this->morphOne(MetaTag::class, 'model');
+        return $this->morphOne(Metatag::class, 'model');
     }
 
      // ------------------- End Relationship ---------------------------//

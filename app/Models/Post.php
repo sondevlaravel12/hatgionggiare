@@ -119,7 +119,7 @@ class Post extends Model implements HasMedia
     }
     public function metatag()
     {
-        return $this->morphOne(MetaTag::class, 'model');
+        return $this->morphOne(Metatag::class, 'model');
     }
 
     // public function tags()
