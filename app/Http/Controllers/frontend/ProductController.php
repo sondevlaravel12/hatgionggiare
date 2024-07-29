@@ -83,5 +83,28 @@ class ProductController extends Controller
 
         return response()->json($result);
     }
+    public function ajaxSearchNothaveMetatag(Request $request){
+        if( empty($request['term']) ){
+            return false;
+        }
+
+        $key = $request['term'];
+
+        $products = Product::where('name','like','%' .$key .'%')->doesntHave('metatag')->limit(10)->get();
+        if( $products->count()<1 ){
+            exit;
+        }
+
+        foreach($products as $product){
+            $result[] =
+                array(
+                    'label' => $product->name,
+                    'model_id'=>$product->id,
+                    'model_type'=>'App\Models\Product',
+                );
+        }
+
+        return response()->json($result);
+    }
 
 }

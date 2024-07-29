@@ -158,6 +158,11 @@ class Product extends Model implements HasMedia, Buyable
     {
         return $this->hasMany(Variant::class);
     }
+    public function metatag()
+    {
+        return $this->morphOne(MetaTag::class, 'model');
+    }
+
      // ------------------- End Relationship ---------------------------//
 
      // ---------------Buyable  interface.------------------------/////

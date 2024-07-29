@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AboutController as BackendAboutController;
 use App\Http\Controllers\Backend\CategoryController as BackendCategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\InterfaceCustomizeController;
+use App\Http\Controllers\Backend\MetatagController;
 use App\Http\Controllers\Backend\OproductController;
 use App\Http\Controllers\Backend\OrderController as BackendOrderController;
 use App\Http\Controllers\Backend\PostController as BackendPostController;
@@ -142,12 +143,19 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
         Route::get('tags/ajax-remove-tag', 'ajaxRemoveTag')->name('admin.tags.ajaxRemoveTag');
         Route::get('tags/ajax-addnew-tag', 'ajaxAddNewTag')->name('admin.tags.ajaxAddNewTag');
 
-
-
-
-
-
     });
+    // Meta tag
+        Route::get('/metatags',[MetatagController::class,'index'])->name('admin.metatags.index');
+        // get metatag infor to fill in modal
+        Route::get('metatags/ajax-get-metatag-info', [MetatagController::class,'ajaxGetMetatagInfo'])->name('admin.metatags.ajaxGetmetaTagInfo');
+        Route::get('metatags/update-metatag', [MetatagController::class,'ajaxUpdateMetatag'])->name('admin.metatags.ajaxUpdateMetatag');
+        // attatch metatag for product or post
+        Route::get('/metatags/attatch',[MetatagController::class,'attatch'])->name('admin.metatags.attatch');
+        Route::post('metatags/store',[MetatagController::class,'store'])->name('admin.metatags.store');
+
+
+
+
 
 
     // Post
@@ -215,6 +223,7 @@ Route::get('san-pham/{product:slug}', [ProductController::class,'show'])->name('
 Route::get('san-pham/modal/show/{id}', [ProductController::class,'ajaxModalShow'])->name('products.modal.show');
 Route::get('san-pham/tim-kiem/sp/',[ProductController::class,'search'])->name('product.search');
 Route::get('san-pham/ajax-tim-kiem/sp',[ProductController::class,'ajaxSearch'])->name('product.ajaxsearch');
+Route::get('san-pham/ajax-tim-kiem/sp-doesnthave-metatag',[ProductController::class,'ajaxSearchNothaveMetatag'])->name('product.ajaxSearchNothaveMetatag');
 
 // post controller
 Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
@@ -222,6 +231,7 @@ Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
 Route::get('bai-viet/{post:slug?}', [PostController::class,'show'])->name('posts.show');
 Route::get('danh-muc/{category_id}/bai-viet', [PostController::class,'group'])->name('posts.category.group');
 Route::get('bai-viet/ajax-tim-kiem/bv',[PostController::class,'ajaxSearch'])->name('post.ajaxsearch');
+Route::get('bai-viet/ajax-tim-kiem/bv-doesnthave-metatag',[PostController::class,'ajaxSearchNothaveMetatag'])->name('post.ajaxsearchNothaveMetatag');
 
 
 // tag controller

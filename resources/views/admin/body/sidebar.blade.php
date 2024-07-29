@@ -82,6 +82,19 @@
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
+                        <span>Meta Tag</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.metatags.index') }}">Danh sách Meta tag</a></li>
+                        <li><a href="{{ route('admin.metatags.attatch') }}">Attatch meta tag</a></li>
+                        {{-- <li><a href="{{ route('admin.posts.create') }}">Tag bài viết</a></li> --}}
+                        {{-- <li><a href="{{ route('admin.tags.tag-to-product') }}">Tag Sản Phẩm</a></li>
+                        <li><a href="{{ route('admin.tags.tag-to-post') }}">Tag Bài Viết</a></li> --}}
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
                         <span>Tùy Chỉnh Giao Diện</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">

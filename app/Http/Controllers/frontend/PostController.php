@@ -83,4 +83,28 @@ class PostController extends Controller
 
         return response()->json($result);
     }
+    public function ajaxSearchNothaveMetatag(Request $request){
+        if( empty($request['term']) ){
+            return false;
+        }
+
+        $key = $request['term'];
+
+        $posts = Post::where('title','like','%' .$key .'%')->doesnthave('metatag')->limit(10)->get();
+        if( $posts->count()<1 ){
+            exit;
+        }
+
+        foreach($posts as $post){
+            $result[] =
+                array(
+                    'label' => $post->title,
+                    'model_id'=>$post->id,
+                    'model_type'=>'App\Models\Post',
+
+                );
+        }
+
+        return response()->json($result);
+    }
 }

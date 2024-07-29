@@ -117,6 +117,10 @@ class Post extends Model implements HasMedia
     {
         return $this->morphOne(Sample::class, 'sampleable');
     }
+    public function metatag()
+    {
+        return $this->morphOne(MetaTag::class, 'model');
+    }
 
     // public function tags()
     // {
