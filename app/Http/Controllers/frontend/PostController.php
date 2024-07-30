@@ -32,6 +32,7 @@ class PostController extends Controller
     }
     public function show(Post $post){
         $this->fetchSideBar();
+        $this->setupSeoWithModel($post);
         return view('frontend.post.detail')->with([
             'posts'=>$this->posts,
             'parentCategories'=>$this->parentCategories,
