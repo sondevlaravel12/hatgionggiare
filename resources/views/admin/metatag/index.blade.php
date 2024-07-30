@@ -45,9 +45,9 @@
                                     <td class="metatag-id">{{$metatag->id}}</td>
                                     <td class="metatag-title">{{ $metatag->title }}</td>
                                     <td>
-                                        @if ($metatag->model_type=='App\Models\Product')
+                                        @if ($metatag->model_type=='App\Models\Product' && $metatag->model)
                                         Product | <a href="{{ route('products.show',$metatag->model) }}">{{ $metatag->model->name }}</a>
-                                        @elseif ($metatag->model_type=='App\Models\Post')
+                                        @elseif ($metatag->model_type=='App\Models\Post' && $metatag->model)
                                         Post | <a href="{{ route('posts.show',$metatag->model ) }}">{{ $metatag->model->title }}</a>
                                         @endif
                                     </td>
