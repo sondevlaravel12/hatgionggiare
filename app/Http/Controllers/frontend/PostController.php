@@ -8,9 +8,11 @@ use App\Models\Pcategory;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use App\Traits\SeoCustomize;
 
 class PostController extends Controller
 {
+    use SeoCustomize;
     private $posts,$parentCategories,$populerPosts,$recentPosts,$postTags;
     private function fetchSideBar(){
         $this->posts = Post::latest()->paginate(3);
