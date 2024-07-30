@@ -35,5 +35,14 @@ trait HasMediaConversions
             ->background('fff')
             // ->border('000', 10)
             ->format('png');
+        $this
+            ->addMediaConversion('og-image')
+            ->fit(Manipulations::FIT_FILL, 1200, 630, function ($constraint) {
+                $constraint->upsize();
+            })
+            ->background('fff')
+            ->format('png')
+            ->optimize();  ;
+
     }
 }

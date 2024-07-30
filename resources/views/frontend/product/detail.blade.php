@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
-@section('title')
+{{-- @section('title')
 sản phẩm: {{ $product->name }}
-@endsection
+@endsection --}}
 @section('breadcrumb')
 {{ Breadcrumbs::view('breadcrumbs::json-ld', 'products.show', $product) }}
 @endsection

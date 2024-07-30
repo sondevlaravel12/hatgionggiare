@@ -10,12 +10,16 @@ use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\SEOTools;
+use App\Traits\SeoCustomize;
 // use Spatie\Tags\Tag;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    use SeoCustomize;
     public function show(Product $product){
+        $this->setupSeoWithModel($product);
+        // SEOMeta::setDescription($product->metatag->description);
         // $this->fetchSideBar();
         $bestSellings = Product::where('best_selling',1)->limit(6)->get();
         return view('frontend.product.detail')->with([
