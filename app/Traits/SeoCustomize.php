@@ -40,34 +40,50 @@ trait SeoCustomize{
         $modelType ='';
         $seoType='';
         $metatag='';
+        $imageCollection='*';
         $listImageUrl= '';
         switch (get_class($model)) {
             case 'App\Models\Post':
                 $modelType ='post';
                 $seoType ='articles';
+                $imageCollection ='posts';
                 break;
             case 'App\Models\Product':
                 $modelType ='product';
                 $seoType ='product';
+                $imageCollection ='products';
                 break;
             default:
                 $modelType ='';
                 $seoType='';
           }
         if($metatag = $model->metatag){
-            if($modelType=='product'){
-                $thumbUrl = $model->getFirstMedia()?$model->getFirstMedia()->getUrl('thumb'):'';
-            }else{
-                $thumbUrl = $model->getFirstMedia($modelType)?$model->getFirstMedia($modelType)->getUrl('thumb'):'';
-            }
+            // if($modelType=='product'){
+            //     $thumbUrl = $model->getFirstMedia()?$model->getFirstMedia()->getUrl('thumb'):'';
+            // }else{
+            //     $thumbUrl = $model->getFirstMedia($modelType)?$model->getFirstMedia($modelType)->getUrl('thumb'):'';
+            // }
+            SEOMeta::setTitle($metatag->title??$metatag->name);
+            SEOMeta::setDescription($metatag->description);
+            SEOMeta::setKeywords($metatag->keyword);
+
+            OpenGraph::setDescription($metatag->description);
+            OpenGraph::setTitle($metatag->title);
+
+            TwitterCard::setTitle($metatag->title);
+
+            JsonLd::setTitle($metatag->title);
+            JsonLd::setDescription($metatag->description);
+
+
         }
-        SEOMeta::setTitle($metatag->title??$metatag->name);
-        SEOMeta::setDescription($metatag->description);
-        SEOMeta::setKeywords($metatag->keyword);
+        // SEOMeta::setTitle($metatag->title??$metatag->name);
+        // SEOMeta::setDescription($metatag->description);
+        // SEOMeta::setKeywords($metatag->keyword);
         SEOMeta::setCanonical(url()->current());
 
-        OpenGraph::setDescription($metatag->description);
-        OpenGraph::setTitle($metatag->title);
+        // OpenGraph::setDescription($metatag->description);
+        // OpenGraph::setTitle($metatag->title);
         OpenGraph::setUrl(url()->current());
         OpenGraph::addProperty('type', $seoType);
         OpenGraph::addProperty('locale', 'vi_VN');
@@ -77,21 +93,21 @@ trait SeoCustomize{
         // if($listImageUrl!=''){
         //     OpenGraph::addImage($listImageUrl);
         // }
-        $images = $model->getMedia('og-image');
+        $images = $model->getMedia($imageCollection);
         foreach ($images as $image) {
-            $imageUrl = $image->getUrl();
+            $imageUrl = $image->getUrl('og-image');
             OpenGraph::addImage($imageUrl);
         }
         // OpenGraph::addImage(['url' => "{{$product->getFirstMedia()->getUrl('medium')}}", 'size' => 300]);
         // OpenGraph::addImage("{{$product->getFirstMedia()->getUrl('large')}}", ['height' => 400, 'width' => 400]);
 
-        TwitterCard::setTitle($metatag->title);
+        // TwitterCard::setTitle($metatag->title);
         TwitterCard::setSite(route('home'));
         // Twitter usualy take only one first image
         TwitterCard::setImage($model->getFirstImageUrl('og-image'));
 
-        JsonLd::setTitle($metatag->title);
-        JsonLd::setDescription($metatag->description);
+        // JsonLd::setTitle($metatag->title);
+        // JsonLd::setDescription($metatag->description);
         JsonLd::setType($seoType);
         if($thumbUrl){
             JsonLd::addImage($thumbUrl);
