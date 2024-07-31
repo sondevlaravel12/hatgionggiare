@@ -59,9 +59,10 @@ category
                             {{-- filter as grid --}}
                             <div class="tab-pane active " id="grid-container">
                                 <div class="category-product">
+                                    @foreach($products->chunk(4) as $items)
                                     <div class="row">
-                                        @foreach ($products as $product)
-                                        <div class="col-xs-6 col-md-4 wow fadeInUp">
+                                        @foreach ($items as $product)
+                                        <div class="col-xs-12 col-lg-3 col-md-6 wow fadeInUp">
                                             <div class="products">
                                             <div class="product">
                                                 <div class="product-image">
@@ -96,6 +97,7 @@ category
 
                                     </div>
                                     <!-- /.row -->
+                                    @endforeach
 
                                 </div>
                                 <!-- /.category-product -->
