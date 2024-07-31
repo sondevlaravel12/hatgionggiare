@@ -43,7 +43,7 @@ category
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col col-sm-6 col-md-4 text-right pull-right">
+                            <div class="col col-sm-12 col-md-8 text-right pull-right">
                                 <div class="pagination-container">
                                     {{ $products->links('frontend.partial.custom_paginate')  }}
                                 </div>
