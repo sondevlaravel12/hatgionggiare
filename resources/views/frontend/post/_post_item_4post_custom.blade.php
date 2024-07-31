@@ -3,9 +3,10 @@
 @endphp
 <section class="section latest-blog outer-bottom-vs wow fadeInUp">
     <h3 class="section-title">Bài viết được yêu thích nhất</h3>
+    @foreach ($posts->chunk(4) as $items )
     <div class="row" style="padding-left: 20px; margin-top: 20px;">
 
-        @foreach ($posts as $post)
+        @foreach ($items as $post)
         <div class="col-sm-6 col-md-3" style="margin-bottom: 6px;">
             <div class="item">
                 <div class="blog-post">
@@ -29,5 +30,6 @@
         </div>
         @endforeach
     </div>
+    @endforeach
 </section>
 
