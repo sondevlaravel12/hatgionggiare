@@ -40,6 +40,7 @@
         <!-- Jquery ui mostly used autocomplete for search product,post... -->
         {{-- <link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.11.4/jquery-ui.css') }}"></link> --}}
         <link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.14.0-beta2/jquery-ui.min.css') }}"></link>
+        <link rel="stylesheet" href="{{asset('backend/assets/image-uploader/image-uploader.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/custome.css') }}" >
 
 
@@ -169,182 +170,13 @@
          <!-- Taginput -->
          <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
          <script src="{{asset('backend/assets/js/typeahead.bundle.js')}}"></script>
-         {{-- setup ajax header  --}}
-         <script>
-            $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-         </script>
-        {{--datatable innitialize  --}}
-        <script>
-        var $table = $('table');
-        var $dataTable = $('#datatable').DataTable({
-            order: [[0, 'desc']],
-            paging: !1,
-        });
 
-        </script>
-
-         {{-- displayNotification  --}}
-         <script>
-            function displayNotification(message, type="info"){
-             switch(type){
-                case 'info':
-                toastr.info(message);
-                break;
-                case 'success':
-                toastr.success(message);
-                break;
-                case 'warning':
-                toastr.warning(message);
-                break;
-                case 'error':
-                toastr.error(message);
-                break;
-             }
-
-            }
-        </script>
-        {{-- characters count live function  --}}
-        <script>
-            function titleCharCountLive(str, range='50-100'){
-                $length = str.length;
-                document.getElementById("title-char-count").innerHTML = $length + ' out of range ' + range + ' characters';
-            }
-            function excerptCharCountLive(str, range='300-500'){
-                $length = str.length;
-                document.getElementById("excerpt-count").innerHTML ='should be ' + $length + ' out of range ' + range + ' characters';
-            }
-            // call on tinymce init keyup event
-            function descriptionCharCountLive(currentLength,range='110-110000'){
-                document.getElementById("description-char-count").innerHTML = currentLength + ' out of range ' + range + ' characters';
-            }
-        </script>
-        {{--end characters count live function  --}}
-        {{-- global variabl and const  --}}
-        <script>
-            const money = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' });
-        </script>
-        <!-- select2 for dropdown search -->
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-        <script>
+        <!-- Image-Uploader -->
+        {{-- https://christianbayer.github.io/image-uploader/ --}}
+        <script type="text/javascript" src="{{asset('backend/assets/image-uploader/image-uploader.min.js')}}"></script>
 
-            $('.select2').select2({
-            });
-        </script>
-        <!-- end select2 for dropdown search -->
-
-        <!-- autocomple search using for search url product or post -->
-        <script>
-            $("#autosearch").length > 0 && ($("#autosearch").autocomplete({
-                // autoFocus: true,
-                source: function (request, response) {
-                        if($('#square-switch1').is(':checked')){
-                            $.ajax({
-                                url: "/san-pham/ajax-tim-kiem/sp",
-                                data: {term: request.term, maxResults: 10},
-                                dataType: "json",
-                                success: function (data) {
-                                    // response($.map(request, function (request) {
-                                    //     return request
-                                    // }))
-                                    return response(data);
-                                }
-                            })
-                        }else{
-                            $.ajax({
-                                url: "/bai-viet/ajax-tim-kiem/bv",
-                                data: {term: request.term, maxResults: 10},
-                                dataType: "json",
-                                success: function (data) {
-                                    // response($.map(request, function (request) {
-                                    //     return request
-                                    // }))
-                                    return response(data);
-                                }
-                            })
-
-                        }
-
-                    }
-
-            }));
-            $("#autosearch" ).on( "autocompleteselect", function( event, ui ) {
-                // event.preventDefault();
-                $("#url").val(ui.item.url);
-                // copyToClipboard('url');
-            } );
-            $("#url").on('click', function(){copyToClipboard('url')});
-            function copyToClipboard(textFieldId) {
-                // Get the text field
-                var copyText = document.getElementById(textFieldId);
-                // Select the text field
-                copyText.select();
-                copyText.setSelectionRange(0, 99999); // For mobile devices
-                // Copy the text inside the text field using the Clipboard API if available
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(copyText.value).then(() => {
-                        displayNotification('coppied to clipboar');
-                    }).catch(err => {
-                        console.error('Failed to copy: ', err);
-                    });
-                } else {
-                    // Fallback method using document.execCommand('copy')
-                    try {
-                        document.execCommand('copy');
-                        displayNotification('coppied to clipboar: ' + copyText.value,'success');
-                    } catch (err) {
-                        console.error('Fallback: Oops, unable to copy', err);
-                    }
-                }
-            }
-        </script>
-        <!-- end autocomple search using for search url product or post -->
-
-        <!-- autocomple search using for search product or post doesnt have metatag -->
-        <script>
-            $("#autosearch_without_relationship").length > 0 && ($("#autosearch_without_relationship").autocomplete({
-                // autoFocus: true,
-                source: function (request, response) {
-                        if($('#square-switch1').is(':checked')){
-                            $.ajax({
-                                url: "/san-pham/ajax-tim-kiem/sp-doesnthave-metatag",
-                                data: {term: request.term, maxResults: 10},
-                                dataType: "json",
-                                success: function (data) {
-                                    return response(data);
-                                }
-                            })
-                        }else{
-                            $.ajax({
-                                url: "/bai-viet/ajax-tim-kiem/bv-doesnthave-metatag",
-                                data: {term: request.term, maxResults: 10},
-                                dataType: "json",
-                                success: function (data) {
-                                    // response($.map(request, function (request) {
-                                    //     return request
-                                    // }))
-                                    return response(data);
-                                }
-                            })
-
-                        }
-
-                    }
-
-            }));
-            $("#autosearch_without_relationship" ).on( "autocompleteselect", function( event, ui ) {
-                // event.preventDefault();
-                $("input[name='model_id']").val(ui.item.model_id);
-                $("input[name='model_type']").val(ui.item.model_type);
-                // copyToClipboard('url');
-            } );
-
-        </script>
-        <!-- end autocomple search using for search product or post doesnt have metatag -->
-
+        <script src="{{ asset('backend/assets/js/custom/admin_master_page.js') }}"></script>
 
         @stack('scripts')
     </body>

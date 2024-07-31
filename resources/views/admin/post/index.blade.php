@@ -34,6 +34,7 @@
                         <th>Id</th>
                         <th>Hình</th>
                         <th>Tên</th>
+                        <th>Metatag</th>
                         <th>Xuất bản</th>
                         <th>Chỉnh sửa</th>
                         <th>Ngày tạo</th>
@@ -52,6 +53,7 @@
 
                             <td><img src="{{$post->getFirstImageUrl('medium')}}" class="img-thumbnail" alt="300x300" width="300" data-holder-rendered="true"></td>
                             <td><a href="{{ route('posts.show',$post ) }}">{{$post->title}}</a></td>
+                            <td><a class="a-post-metag">{{ $post->metatag?$post->metatag->id:''}}</a></td>
                             <td>
                                 {{-- <div class="square-switch">
                                     <input type="checkbox" id="square-switch1" data-post-id="{{$post->id}}" switch="none" {{$post->status=='published'?'checked':''}}>
@@ -86,6 +88,7 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
+@include('admin.metatag.modal')
 
 @endsection
 @push('scripts')
@@ -96,79 +99,25 @@
 
  <!-- lightbox init js-->
  <script src="{{asset('backend/assets/js/pages/lightbox.init.js')}}"></script>
- {{-- publish post --}}
- <script>
-    $("input[type=checkbox]").change(function (e) {
-        var $status;
-        var $post_id = $(this).attr('id');
-        if (e.target.checked) { //If the checkbox is checked
-            $status = 1;
 
-        } else {
-            $status = 0;
-        }
-        togglePublishPost($post_id,$status ).done(function(response){
-            if(response.message){
-            toastr.success(response.message);
-            };
-        });
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?723') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/metatag_page.js') }}"></script>
 
-    });
-    function togglePublishPost($post_id, $status){
-        return $.ajax({
-            type:'POST',
-            dataType: "json",
-            url:'/admin/posts/ajax-setpublished',
-            data:{
-                'post_id': $post_id,
-                "status": $status
-                }
-        });
-    };
 
- </script>
+{{-- event and method that need combine more than 1 js file  --}}
+<script>
+    $('.table').on('click','.a-post-metag', function () {
+    // -----fill in modal -----//
+    // get metatag id
+    $metatagId = $(this).html();
+    // call ajax to get all tag info and fill in modal with infos just get
+    getMetatagInfo($metatagId).done(function(data){
+        fillModalMetatagEdit(data);
+        $('#editmetatagmodal').modal('show');
+    })
+});
+</script>
+{{-- end event and method that need combine more than 1 js file  --}}
 
-{{-- delete post  --}}
- <script>
-    // sweetalert before deleting
-    // var $dataTable = $table.DataTable({});
-    $table.on('click','.btn_post_delete', function(){
-        // event.preventDefault();
-        Swal.fire({
-            title: 'Bạn có chắc muốn?',
-            text: "Xóa xóa bài viết này không?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Vâng, xóa bài viết!'
-            }).then((result) => {
-            if (result.isConfirmed) {
-                var $row = $dataTable.row($(this).parents('tr'));
-                var $postId = $(this).attr('data-postid');
-                deletePost($postId, $row)
-            }
-
-        })
-
-    });
-
-    function deletePost($postId, $row){
-        $.ajax({
-            type: "DELETE",
-            url: "/admin/posts/ajax-delete",
-            data: {postID:$postId},
-            dataType: "json",
-            success: function (response) {
-                if(response.message){
-                $row.remove().draw(false);
-                toastr.success(response.message);
-                return true;
-                };
-            }
-        });
-    };
-
- </script>
 @endpush
 

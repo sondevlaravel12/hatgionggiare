@@ -176,4 +176,22 @@ class ProductController extends Controller
         return response()->json(['error'=>'some errors']);
 
     }
+    public function ajaxSetPublished(Request $request){
+        $product = Product::whereId($request->product_id)->first();
+        // dd($request->status);
+        $status = $request->status;
+        if($product){
+            // change status
+            $product->status = $status;
+            $product->save();
+            if($status==1){
+                return response()->json(['message'=>'xuất bản bài viết thành công']);
+            }else{
+                return response()->json(['message'=>'ngừng xuất bản bài viết thành công']);
+            }
+        }else{
+            return response()->json(['error'=>'some errors']);
+        }
+
+    }
 }

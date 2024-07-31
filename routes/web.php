@@ -117,6 +117,8 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
         Route::get('/products/{product}/edit',[BackendProductController::class,'edit'])->name('admin.products.edit');
         Route::delete('/products/ajax-delete', [BackendProductController::class,'ajaxDelete']);
         Route::put('/products/{product}/update',[BackendProductController::class,'update'])->name('admin.products.update');
+        Route::post('/products/ajax-setpublished',[BackendProductController::class,'ajaxSetPublished'])->name('admin.products.published');
+
     });
      // tag
      Route::controller(BackendTagController::class)->group(function(){

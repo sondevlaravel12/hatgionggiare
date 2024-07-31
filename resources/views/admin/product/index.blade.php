@@ -35,10 +35,10 @@
                         <th>Hình</th>
                         <th>Tên</th>
                         <th>Xuất bản</th>
+                        <th>Metatag</th>
                         <th>Chỉnh sửa</th>
                         <th>Ngày tạo</th>
                         <th>Ngày cập nhật</th>
-
 
                     </tr>
                     </thead>
@@ -58,10 +58,11 @@
                                     <label for="square-switch1" data-on-label="On" data-off-label="Off"></label>
                                 </div> --}}
                                 <div class="square-switch">
-                                    <input type="checkbox" id="{{$product->id}}" data-product-id="{{$product->id}}" switch="none" {{$product->status=='published'?'checked':''}}>
+                                    <input type="checkbox" id="{{$product->id}}" data-product-id="{{$product->id}}" switch="none" {{$product->status==1?'checked':''}}>
                                     <label for="{{$product->id}}" data-on-label="On" data-off-label="Off"></label>
                                 </div>
                             </td>
+                            <td><a class="a-product-metag">{{ $product->metatag?$product->metatag->id:''}}</a></td>
                             <td>
                                 {{-- <form action="{{route('admin.products.destroy', $product)}}" method="POST" id="confirm_delete">
                                     @method('DELETE') --}}
@@ -86,6 +87,7 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
+@include('admin.metatag.modal')
 
 @endsection
 @push('scripts')
@@ -96,92 +98,23 @@
 
  <!-- lightbox init js-->
  <script src="{{asset('backend/assets/js/pages/lightbox.init.js')}}"></script>
- <script>
-    $("input[type=checkbox]").change(function (e) {
-        toastr.options = {
-          "closeButton": true,
-          "newestOnTop": true,
-          "positionClass": "toast-bottom-full-width"
-        };
-        var $status;
-        var $product_id = $(this).attr('id');
-        if (e.target.checked) { //If the checkbox is checked
-            $status = 'published';
-
-        } else {
-            $status = 'draft';
-        }
-
-        // csrf token
-        var $headers = {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') };
-        //passing data to laravel controller
-        var $data = {
-            'product_id': $product_id,
-            "status": $status
-        };
-        $.ajax({
-            headers:$headers,
-            type:'POST',
-            dataType: "json",
-            url:'/admin/products/ajax-setpublished',
-            data:$data,
-            success:function(response) {
-                toastr.success(response.success);
-            }
-
-        });
-
-    });
-
- </script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/product_page.js?3') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/metatag_page.js') }}"></script>
+{{-- event and method that need combine more than 1 js file  --}}
+<script>
+    $('.table').on('click','.a-product-metag', function () {
+    // -----fill in modal -----//
+    // get metatag id
+    $metatagId = $(this).html();
+    // call ajax to get all tag info and fill in modal with infos just get
+    getMetatagInfo($metatagId).done(function(data){
+        fillModalMetatagEdit(data);
+        $('#editmetatagmodal').modal('show');
+    })
+});
+</script>
+{{-- end event and method that need combine more than 1 js file  --}}
 
 
- <script>
-    // sweetalert before deleting
-    // var $dataTable = $table.DataTable({});
-    $table.on('click','.btn_product_delete', function(){
-        // event.preventDefault();
-        Swal.fire({
-            title: 'Bạn có chắc muốn?',
-            text: "Xóa xóa sản phẩm này không?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Vâng, xóa sản phẩm!'
-            }).then((result) => {
-            if (result.isConfirmed) {
-                var $row = $dataTable.row($(this).parents('tr'));
-                var $productId = $(this).attr('data-productid');
-                // console.log($productId);
-                deleteProduct($productId, $row)
-            }
-
-        })
-
-    });
-
-    function deleteProduct($productId, $row){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            type: "DELETE",
-            url: "/admin/products/ajax-delete",
-            data: {productID:$productId},
-            dataType: "json",
-            success: function (response) {
-                if(response.message){
-                $row.remove().draw(false);
-                toastr.success(response.message);
-                return true;
-                };
-            }
-        });
-    };
-
- </script>
 @endpush
 

@@ -6,7 +6,6 @@
         <!--Material Design Iconic Font-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         {{-- http://dragdropimage.test/ --}}
-        <link rel="stylesheet" href="{{asset('backend/assets/image-uploader/image-uploader.min.css')}}">
         {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> --}}
 
@@ -124,7 +123,7 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3 input-field">
                                                 <label class="active">Photos</label>
-                                                <div class="input-images-1" style="padding-top: .5rem;"></div>
+                                                <div class="input-images-2" style="padding-top: .5rem;"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -319,23 +318,8 @@ triggerTabList.forEach(function (triggerEl) {
 
 </script>
 
-<!-- Image-Uploader -->
-{{-- https://christianbayer.github.io/image-uploader/ --}}
-<script type="text/javascript" src="{{asset('backend/assets/image-uploader/image-uploader.min.js')}}"></script>
-
-<Script>
-
-$('.input-images-1').imageUploader({
-    imagesInputName: 'photos',
-    label: 'Kéo thả hình vào đây, hoặc bấm vào để tải hình',
-    extensions: ['.jpg','.jpeg','.png','.gif','.svg'],
-    mimes: ['image/jpeg','image/png','image/gif','image/svg+xml'],
-    maxSize: 5 * 1024 * 1024,
-    maxFiles: 10,
 
 
-});
-</Script>
 <script>
     tinymce.init({
     selector: 'textarea#short_description',

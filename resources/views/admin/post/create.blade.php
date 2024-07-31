@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 @push('stylesheets')
-        <link rel="stylesheet" href="{{asset('backend/assets/image-uploader/image-uploader.min.css')}}">
+        {{-- <link rel="stylesheet" href="{{asset('backend/assets/image-uploader/image-uploader.min.css')}}"> --}}
 @endpush
 @section('content')
 <div class="row">
@@ -35,7 +35,7 @@
                         <div class="col-lg-12">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Hình ảnh</label>
                             <div class="mb-3 input-field">
-                                <div class="input-images-1" style="padding-top: .5rem;"></div>
+                                <div class="input-images-2" style="padding-top: .5rem;"></div>
                                 @error('photos')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -208,24 +208,24 @@ triggerTabList.forEach(function (triggerEl) {
 
 <!-- Image-Uploader -->
 {{-- https://christianbayer.github.io/image-uploader/ --}}
-<script type="text/javascript" src="{{asset('backend/assets/image-uploader/image-uploader.min.js')}}"></script>
+{{-- <script type="text/javascript" src="{{asset('backend/assets/image-uploader/image-uploader.min.js')}}"></script> --}}
 
 <Script>
 
-$('.input-images-1').imageUploader({
-    imagesInputName: 'photos',
-    label: 'Kéo thả hình vào đây, hoặc bấm vào để tải hình',
-    extensions: ['.jpg','.jpeg','.png','.gif','.svg'],
-    mimes: ['image/jpeg','image/png','image/gif','image/svg+xml'],
-    maxSize: 5 * 1024 * 1024,
-    maxFiles: 10,
+// $('.input-images-1').imageUploader({
+//     imagesInputName: 'photos',
+//     label: 'Kéo thả hình vào đây, hoặc bấm vào để tải hình',
+//     extensions: ['.jpg','.jpeg','.png','.gif','.svg'],
+//     mimes: ['image/jpeg','image/png','image/gif','image/svg+xml'],
+//     maxSize: 5 * 1024 * 1024,
+//     maxFiles: 10,
 
 
-});
+// });
 </Script>
 
 <!--end Image-Uploader -->
-<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?1') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?12') }}"></script>
 
 
 

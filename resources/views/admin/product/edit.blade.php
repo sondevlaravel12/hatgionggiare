@@ -6,7 +6,7 @@
         <!--Material Design Iconic Font-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         {{-- http://dragdropimage.test/ --}}
-        <link rel="stylesheet" href="{{asset('backend/assets/image-uploader/image-uploader.min.css')}}">
+        {{-- <link rel="stylesheet" href="{{asset('backend/assets/image-uploader/image-uploader.min.css')}}"> --}}
         {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> --}}
 
@@ -310,23 +310,7 @@ triggerTabList.forEach(function (triggerEl) {
 
 <!-- Image-Uploader -->
 {{-- https://christianbayer.github.io/image-uploader/ --}}
-<script type="text/javascript" src="{{asset('backend/assets/image-uploader/image-uploader.min.js')}}"></script>
-
-<Script>
-
-$('.input-images-1').imageUploader({
-    preloaded: JSON.parse($('#preloaded').attr('data-preloaded')),
-    preloadedInputName: 'preloadedImages[]', // set the name of the preloaded images input field
-    imagesInputName: 'photos',
-    label: 'Kéo thả hình vào đây, hoặc bấm vào để tải hình',
-    extensions: ['.jpg','.jpeg','.png','.gif','.svg'],
-    mimes: ['image/jpeg','image/png','image/gif','image/svg+xml'],
-    maxSize: 5 * 1024 * 1024,
-    maxFiles: 10,
-
-
-});
-</Script>
+{{-- <script type="text/javascript" src="{{asset('backend/assets/image-uploader/image-uploader.min.js')}}"></script> --}}
 
 <!--end Image-Uploader -->
 <script type="text/javascript" src="{{ asset('backend/assets/js/custom/product_page.js?3') }}"></script>

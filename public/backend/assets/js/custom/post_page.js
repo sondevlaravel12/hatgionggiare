@@ -77,3 +77,69 @@ load images directory inorder to insert into post/ product, use in post/product 
  /* ---------------------------------------------
 end load images directory inorder to insert into post
 --------------------------------------------- */
+
+// publish post
+$("input[type=checkbox]").change(function (e) {
+    var $status;
+    var $post_id = $(this).attr('id');
+    if (e.target.checked) { //If the checkbox is checked
+        $status = 1;
+
+    } else {
+        $status = 0;
+    }
+    togglePublishPost($post_id,$status ).done(function(response){
+        if(response.message){
+        toastr.success(response.message);
+        };
+    });
+
+});
+function togglePublishPost($post_id, $status){
+    return $.ajax({
+        type:'POST',
+        dataType: "json",
+        url:'/admin/posts/ajax-setpublished',
+        data:{
+            'post_id': $post_id,
+            "status": $status
+            }
+    });
+};
+// delete post
+$table.on('click','.btn_post_delete', function(){
+    // event.preventDefault();
+    Swal.fire({
+        title: 'Bạn có chắc muốn?',
+        text: "Xóa xóa bài viết này không?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Vâng, xóa bài viết!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            var $row = $dataTable.row($(this).parents('tr'));
+            var $postId = $(this).attr('data-postid');
+            deletePost($postId, $row)
+        }
+
+    })
+
+});
+
+function deletePost($postId, $row){
+    $.ajax({
+        type: "DELETE",
+        url: "/admin/posts/ajax-delete",
+        data: {postID:$postId},
+        dataType: "json",
+        success: function (response) {
+            if(response.message){
+            $row.remove().draw(false);
+            toastr.success(response.message);
+            return true;
+            };
+        }
+    });
+};
