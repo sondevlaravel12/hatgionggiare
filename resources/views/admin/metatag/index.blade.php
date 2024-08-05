@@ -31,10 +31,11 @@
                                     <th>Id</th>
                                     <th>Title</th>
                                     <th>Model</th>
-                                    <th>Description</th>
+                                    <th>Name</th>
+                                    {{-- <th>Description</th>
                                     <th>Author</th>
                                     <th>Keyword</th>
-                                    <th>Robots</th>
+                                    <th>Robots</th> --}}
                                     <th>Chỉnh Sửa</th>
                                 </tr>
                             </thead>
@@ -45,16 +46,25 @@
                                     <td class="metatag-id">{{$metatag->id}}</td>
                                     <td class="metatag-title">{{ $metatag->title }}</td>
                                     <td>
-                                        @if ($metatag->model_type=='App\Models\Product' && $metatag->model)
-                                        Product | <a href="{{ route('products.show',$metatag->model) }}">{{ $metatag->model->name }}</a>
-                                        @elseif ($metatag->model_type=='App\Models\Post' && $metatag->model)
-                                        Post | <a href="{{ route('posts.show',$metatag->model ) }}">{{ $metatag->model->title }}</a>
+                                        @php
+                                        $type=strtolower(explode("\\",$metatag->model_type)[2]);
+
+                                        @endphp
+
+                                        {{ $type }}
+                                    </td>
+                                    <td>
+
+                                        @if ($metatag->model && $type=="product"||$type=="post")
+                                        <a href="{{route($type ."s.show",$metatag->model ) }}">{{ $metatag->model->name??$metatag->model->title }}</a>
+                                        @elseif ($metatag->model && $type=="category")
+                                        <a href="{{route("categories.products.show",$metatag->model ) }}">{{ $metatag->model->name??$metatag->model->title }}</a>
                                         @endif
                                     </td>
-                                    <td class="metatag-description">{{ $metatag->description }}</td>
+                                    {{-- <td class="metatag-description">{{ $metatag->description }}</td>
                                     <td class="metatag-author">{{ $metatag->author }}</td>
                                     <td class="metatag-keyword">{{ $metatag->keyword }}</td>
-                                    <td class="metatag-robots">{{ $metatag->robots }}</td>
+                                    <td class="metatag-robots">{{ $metatag->robots }}</td> --}}
                                     <td>
                                         <input class="metatag-id" type="hidden" id="{{ $metatag->id }}" value="{{ $metatag->id }}">
                                         <!-- Button trigger modal -->

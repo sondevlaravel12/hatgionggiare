@@ -2,6 +2,10 @@
 
 // Note: Laravel will automatically resolve `Breadcrumbs::` without
 // this import. This is nice for IDE syntax and refactoring.
+
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Webinfo;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
 // This import is also not required, and you could replace `BreadcrumbTrail $trail`
@@ -10,13 +14,24 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 // Home
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
-    $trail->push('Trang chủ', route('home'));
+    $trail->push('Trang chủ', route('home'), ['image' => asset(Webinfo::first()->logo)]);
 });
 // about
 Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Giới thiệu', route('about'));
 });
+// contact
+Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Liên hệ', route('contact'));
+});
+// contact-> send message
+Breadcrumbs::for('contact.sentmessage', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Gửi tin nhắn', route('contact.sentmessage'));
+});
+
 // return policy
 Breadcrumbs::for('returnPolicy', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
@@ -27,34 +42,37 @@ Breadcrumbs::for('purchasingPolicy', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Chính sách mua hàng', route('purchasingPolicy'));
 });
-// contact
-Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
-    $trail->parent('home');
-    $trail->push('Liên hệ', route('contact'));
-});
+
 // bank infor
 Breadcrumbs::for('bankinfor', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Thông tin chuyển khoản', route('bankinfor.show'));
 });
 
-// Home >  Danh mục sản phẩm
-Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
+// Home >  Sản Phẩm
+Breadcrumbs::for('products.index', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Danh Mục Sản phẩm', route('categories.products.index'));
+    $trail->push('Sản Phẩm', route('products.index'));
 });
-// Home >  Danh mục sản phẩm > tên danh mục
-Breadcrumbs::for('productCategory', function (BreadcrumbTrail $trail, $category) {
-    $trail->parent('products');
-    $trail->push($category->name, route('categories.products.show', $category));
+// Home >  Sản phẩm > tên danh mục> all san pham
+Breadcrumbs::for('products.category.index', function (BreadcrumbTrail $trail, Category $category) {
+    if ($category->parent) {
+        $trail->parent('products.category.show', $category->parent);
+    } else {
+        $trail->parent('products.index');
+    }
+    $trail->push($category->name, route('products.category.index', $category->slug), ['image' => $category->getFirstImageUrl()]);
+    // $trail->parent('products');
+    // $trail->push($category->name, route('categories.products.show', $category));
 });
 
-// Home >  Danh mục sản phẩm > Chi tiết sản phẩm
+// Home >  Sản phẩm > tên danh mục > tên sản phẩm
 
-Breadcrumbs::for('products.show', function (BreadcrumbTrail $trail, $product) {
-    $trail->parent('products');
-    $trail->push($product->name, route('products.show', $product));
-});
+// Breadcrumbs::for('products.category.show', function (BreadcrumbTrail $trail, $category, Product $product) {
+//     $trail->parent('products.category.index',$product->$category);
+//     // $category = $product->category;
+//     $trail->push($product->name, route('products.category.show', [$category, $product]));
+// });
 
 // Home > Bài viết
 Breadcrumbs::for('posts', function (BreadcrumbTrail $trail){

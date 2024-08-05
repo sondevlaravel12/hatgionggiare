@@ -20,7 +20,9 @@
 {!! JsonLd::generate() !!} --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-@yield('breadcrumb')
+{{-- @yield('breadcrumb') --}}
+{{-- render breadcrumbs as JSON-LD structured data (usually for SEO reasons)  --}}
+{{Breadcrumbs::view('breadcrumbs::json-ld')}}
 
 <!-- Bootstrap Core CSS -->
 
@@ -76,6 +78,11 @@
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
     <div class="container">
+        @if (!isset($hideBreadcrumb))
+        <div class="breadcrumb">
+            {{ Breadcrumbs::render() }}
+        </div>
+        @endif
         @yield('content')
     </div>
 </div>

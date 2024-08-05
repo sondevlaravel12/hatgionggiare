@@ -11,7 +11,11 @@
             <!-- /.col -->
             <div class="col col-sm-8 col-lg-8">
             <div class="product-info">
-                <h3 class="name"><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></h3>
+                @if ($product->category)
+                <h3 class="name"><a href="{{ route('products.category.show', [$product->category, $product]) }}">{{ $product->name }}</a></h3>
+                @else
+                <h3 class="name"><a href="{{ route('products.show', [ $product]) }}">{{ $product->name }}</a></h3>
+                @endif
                 <div class="rating rateit-small"></div>
                 <div class="product-price"> <span class="price"> {{ $product->discount_price }} </span> <span class="price-before-discount">{{ $product->base_price }}</span> </div>
                 <!-- /.product-price -->

@@ -5,16 +5,9 @@ category
 @section('css')
 
 @endsection
-@section('breadcrumb')
-{{ Breadcrumbs::view('breadcrumbs::json-ld', 'products') }}
-@endsection
-@section('content')
-<div class="breadcrumb">
-	<div class="container">
-        {{ Breadcrumbs::render('products') }}
 
-	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+@section('content')
+
 <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
@@ -67,13 +60,27 @@ category
                                             <div class="product">
                                                 <div class="product-image">
                                                 {{-- <div class="image"> <a href="{{ route('products.show', [$product, $product->slug]) }}"><img  src="{{ $product->getFirstImageUrl('medium') }}" alt=""></a> </div> --}}
-                                                <div class="image"> <a href="{{ route('products.show', $product) }}"><img  src="{{ $product->getFirstImageUrl('medium') }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    @if ($product->category)
+                                                        <a href="{{ route('products.category.show', [$product->category, $product]) }}">
+                                                    @else
+                                                        <a href="{{ route('products.show', [$product]) }}">
+                                                    @endif
+                                                        <img  src="{{ $product->getFirstImageUrl('medium') }}" alt=""
+                                                        ></a>
+                                                    </div>
                                                 <!-- /.image -->
                                                 </div>
                                                 <!-- /.product-image -->
 
                                                 <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></h3>
+                                                <h3 class="name">
+                                                    @if ($product->category)
+                                                    <a href="{{ route('products.category.show', [$product->category, $product]) }}">{{ $product->name }}</a>
+                                                    @else
+                                                    <a href="{{ route('products.show', [ $product]) }}">{{ $product->name }}</a>
+                                                    @endif
+                                                </h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
                                                 <div class="product-price"> <span class="price"> {{ $product->discount_price }} </span> <span class="price-before-discount">{{ $product->base_price }}</span> </div>

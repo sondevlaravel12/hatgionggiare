@@ -18,8 +18,8 @@ class IndexController extends Controller
         $posts = Post::latest()->limit(6)->get();
         $bestSellings = Product::where('best_selling',1)->limit(6)->get();
         $mostDiscountedProducts = Product::getDiscountProducts(8);
-
-        return view('frontend.index', compact(['products', 'categories','mostDiscountedProducts','bestSellings','posts','title']));
+        $hideBreadcrumb=true;
+        return view('frontend.index', compact(['hideBreadcrumb','products', 'categories','mostDiscountedProducts','bestSellings','posts','title']));
     }
     public function show($id){
         // $product = Product::findOrFail($id);

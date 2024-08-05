@@ -1,17 +1,7 @@
 @extends('frontend.main_master')
-{{-- @section('title')
-sản phẩm: {{ $product->name }}
-@endsection --}}
-@section('breadcrumb')
-{{ Breadcrumbs::view('breadcrumbs::json-ld', 'products.show', $product) }}
-@endsection
-@section('content')
-<div class="breadcrumb">
-	{{-- <div class="container"> --}}
-        {{ Breadcrumbs::render('products.show', $product) }}
 
-	{{-- </div><!-- /.container --> --}}
-</div><!-- /.breadcrumb -->
+@section('content')
+
 
 {{-- <div class='container'> --}}
 	<div class='row single-product'>

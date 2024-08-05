@@ -75,7 +75,13 @@
                 @endphp
                 @if (isset($footerProducts) && $footerProducts->count()>0)
                     @foreach ($footerProducts as $footerProduct)
-                    <li class="first"><a href="{{ route('products.show',$footerProduct) }}">{{ $footerProduct->name }}</a></li>
+                    <li class="first">
+                        @if ($footerProduct->category)
+                        <a href="{{ route('products.category.show',[$footerProduct->category,$footerProduct]) }}">{{ $footerProduct->name }}</a>
+                        @else
+                        <a href="{{ route('products.show',[$footerProduct]) }}">{{ $footerProduct->name }}</a>
+                        @endif
+                    </li>
                     @endforeach
                 @endif
               </ul>

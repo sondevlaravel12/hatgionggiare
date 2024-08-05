@@ -4,8 +4,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Attatch </h4>
-                <form action="{{route('admin.metatags.store')}}" method="POST" enctype="multipart/form-data">
+                <h4 class="card-title mb-4">Attatch other</h4>
+                <form action="{{route('admin.metatags.storeOther')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-lg-12 mb-3">
@@ -43,27 +43,23 @@
                             <textarea class="form-control" name="robots" id="" cols="30" rows="2">{{ old('robots') }}</textarea>
                         </div>
                     </div>
-                    <div class="row ">
-                        <div class="col-lg-12 ">
-                            <div class="d-flex flex-wrap gap-2">
-                                <div class="square-switch mt-2">
-                                    <input type="checkbox" id="square-switch1"  switch="none" value="on" name="model_type_switch"
-                                    @if(!old() || old('model_type_switch') == 'on') checked="checked" @endif >
-                                    <label for="square-switch1" data-on-label="SP" data-off-label="BV"></label>
-                                </div>
-                                <label class="col-sm-4 col-form-label ">Sản Phẩm | Bài Viết</label>
-                            </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <label class="col-sm-2 col-form-label">Loại</label>
+                            <select class="form-select" aria-label="Default select example" id="model-type" name="model_type">
+                                <option selected="">Chọn loại metatag</option>
+                                <option value="App\Models\Category">Product Category</option>
+                                <option value="App\Models\Pcategory">Post Category</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-lg-12">
-                            <input class="form-control" id="autosearch_without_relationship" type="text" name="model_title" value="{{ old('model_title') }}">
-                            <input type="hidden" name="model_id" value="{{ old('model_id') }}">
-                            @error('model_id')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                            <input type="hidden" name="model_type" value="{{ old('model_type') }}">
-                        </div>
+                    <div class="col-sm-12 mb-3">
+                        <label class="form-label">Tên loại</label>
+                        <select class="form-control select2-search-disable" name="model_id">
+                            <option>Chọn Tên Loại</option>
+
+                        </select>
                     </div>
                     <!-- end row -->
                     <div class="button-items">
@@ -79,5 +75,35 @@
 </div>
 @endsection
 @push('scripts')
-<script type="text/javascript" src="{{ asset('backend/assets/js/custom/metatag_page.js') }}"></script>
+<script>
+    // $('.select2-search-disable').select2({
+
+    // });
+</script>
+<script>
+    $('#model-type').on('change',function(){
+        $model_type = $(this).val();
+        $.ajax({
+            type: "get",
+            url: "/admin/metatags/ajax-get-allitems-of-model",
+            data: {model_type:$model_type},
+            dataType: "json",
+            success: function (response) {
+                var $select = $('.select2-search-disable');
+                $select.find('option').remove();
+                $.each(response,function(key, value)
+                {
+                    $select.append('<option value=' + value.id + '>' + value.name + '</option>'); // return empty
+                });
+            }
+        });
+    });
+    // $('.select2-search-disable123').on('change', function(){
+    //     $text = $(this).children(':selected').text();
+    // })
+
+
+</script>
+
 @endpush
+

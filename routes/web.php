@@ -27,6 +27,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\WishlistController;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -154,6 +156,12 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
         // attatch metatag for product or post
         Route::get('/metatags/attatch',[MetatagController::class,'attatch'])->name('admin.metatags.attatch');
         Route::post('metatags/store',[MetatagController::class,'store'])->name('admin.metatags.store');
+        // attatch metatag for other model
+        Route::get('/metatags/attatch-other',[MetatagController::class,'attatchOther'])->name('admin.metatags.attatchOther');
+        Route::post('metatags/store-other',[MetatagController::class,'storeOther'])->name('admin.metatags.storeOther');
+
+        Route::get('/metatags/ajax-search-model',[MetatagController::class,'ajaxSearchModel'])->name('admin.metatags.ajaxSearchModel');
+        Route::get('/metatags/ajax-get-allitems-of-model',[MetatagController::class,'ajaxGetAllItemsOfModel'])->name('admin.metatags.ajaxGetAllItemsOfModel');
 
 
 
@@ -218,14 +226,22 @@ Route::get('chinh-sach-mua-hang/', [PolicyController::class,'showPurchasingPolic
 // payment information
 Route::get('thong-tin-chuyen-khoan', [FrontendIndexController::class,'showBankInfor'])->name('bankinfor.show');
 
-
-
 // product controller
-Route::get('san-pham/{product:slug}', [ProductController::class,'show'])->name('products.show');
-Route::get('san-pham/modal/show/{id}', [ProductController::class,'ajaxModalShow'])->name('products.modal.show');
-Route::get('san-pham/tim-kiem/sp/',[ProductController::class,'search'])->name('product.search');
-Route::get('san-pham/ajax-tim-kiem/sp',[ProductController::class,'ajaxSearch'])->name('product.ajaxsearch');
-Route::get('san-pham/ajax-tim-kiem/sp-doesnthave-metatag',[ProductController::class,'ajaxSearchNothaveMetatag'])->name('product.ajaxSearchNothaveMetatag');
+// Place the more specific routes above
+Route::get('san-pham/ajax-tim-kiem/sp', [ProductController::class, 'ajaxSearch'])->name('product.ajaxsearch');
+Route::get('san-pham/tim-kiem/sp', [ProductController::class, 'search'])->name('product.search');
+Route::get('san-pham/ajax-tim-kiem/sp-doesnthave-metatag', [ProductController::class, 'ajaxSearchNothaveMetatag'])->name('product.ajaxSearchNothaveMetatag');
+Route::get('san-pham/modal/show/{id}', [ProductController::class, 'ajaxModalShow'])->name('products.modal.show');
+
+// Route with category and product
+Route::get('san-pham/{category:slug}/{product:slug}', [ProductController::class,'show'])
+->name('products.category.show')
+->where(['category' => '[a-zA-Z0-9-]+', 'product' => '[a-zA-Z0-9-]+']);
+// Route with only product
+Route::get('san-pham/{product:slug}', [ProductController::class,'showWithoutCategory'])
+->name('products.show')
+->where('product', '[a-zA-Z0-9-]+');
+
 
 // post controller
 Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
@@ -287,8 +303,10 @@ route::group(['prefix'=>'user'], function(){
 
 // Route::get('bai-viet/{post}/{slug?}', [PostController::class,'show'])->name('post.show');
 
-Route::get('danh-muc/tat-ca/san-pham', [CategoryController::class,'index'])->name('categories.products.index');
-Route::get('danh-muc/{category}/san-pham', [CategoryController::class,'show'])->name('categories.products.show');
+// Route::get('danh-muc/tat-ca/san-pham', [CategoryController::class,'index'])->name('categories.products.index');
+// Route::get('danh-muc/{category}/san-pham', [CategoryController::class,'show'])->name('categories.products.show');
+Route::get('san-pham', [CategoryController::class,'index'])->name('products.index');
+Route::get('danh-muc-san-pham/{category:slug}', [CategoryController::class,'show'])->name('products.category.index');
 
 
 

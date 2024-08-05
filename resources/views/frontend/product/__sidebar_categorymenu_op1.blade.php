@@ -9,6 +9,6 @@
         $selectedCategory = false;
         if(isset($category) && !is_null($category->parent) && $category->parent->id==$parentCategory->id)$selectedCategory=true;
     @endphp
-    <a href="{{ route('categories.products.show', $parentCategory) }}" class="list-group-item {{ isset($category) && $category->id==$parentCategory->id?'active':'' }}">{{ $parentCategory->name }}</a>
+    <a href="{{ route('products.category.index', $parentCategory) }}" class="list-group-item {{ isset($category) && $category->id==$parentCategory->id?'active':'' }}">{{ $parentCategory->name }}</a>
     @endforeach
 </div>

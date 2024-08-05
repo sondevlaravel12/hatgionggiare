@@ -143,7 +143,7 @@ class Product extends Model implements HasMedia, Buyable
     ////  ------------------End Accessor--------------------------------- ////
 
      // ------------------- Relationship ---------------------------//
-     public function Category()
+     public function category()
     {
         return $this->belongsTo(Category::class);
     }

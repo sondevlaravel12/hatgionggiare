@@ -87,6 +87,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.metatags.index') }}">Danh sách Meta tag</a></li>
                         <li><a href="{{ route('admin.metatags.attatch') }}">Attatch meta tag</a></li>
+                        <li><a href="{{ route('admin.metatags.attatchOther') }}">Other meta tag</a></li>
                         {{-- <li><a href="{{ route('admin.posts.create') }}">Tag bài viết</a></li> --}}
                         {{-- <li><a href="{{ route('admin.tags.tag-to-product') }}">Tag Sản Phẩm</a></li>
                         <li><a href="{{ route('admin.tags.tag-to-post') }}">Tag Bài Viết</a></li> --}}

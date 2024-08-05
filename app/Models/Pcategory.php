@@ -64,6 +64,10 @@ class Pcategory extends Model implements HasMedia
     {
        return $this->hasMany($this, 'parent_id');
     }
+    public function metatag()
+    {
+        return $this->morphOne(Metatag::class, 'model');
+    }
      // ------------------- End Relationship ---------------------------//
 
      public function getFirstImageUrl($size='thumb'){

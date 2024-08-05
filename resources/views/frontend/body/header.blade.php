@@ -136,9 +136,9 @@
               <div class="nav-outer">
                 <ul class="nav navbar-nav">
                   <li class="dropdown yamm-fw {{ Route::currentRouteName()=='home'?'active':'' }}"> <a href="{{ route('home') }}">Trang chủ</a> </li>
-                  <li class="dropdown yamm-fw {{ Route::currentRouteName()=='categories.products.index'?'active':'' }}"> <a href="{{ route('categories.products.index') }}">Danh mục sản phẩm</a> </li>
+                  <li class="dropdown yamm-fw {{ Route::currentRouteName()=='products.index'?'active':'' }}"> <a href="{{ route('products.index') }}">Sản phẩm</a> </li>
                   <li class="dropdown hidden-sm {{ Route::currentRouteName()=='about'?'active':'' }}"> <a href="{{ route('about') }}">Giới thiệu</a> </li>
-                  <li class="dropdown hidden-sm {{ Route::currentRouteName()=='posts.index'?'active':'' }}"> <a href="{{ route('posts.index') }}">Tin tức</a> </li>
+                  <li class="dropdown hidden-sm {{ Route::currentRouteName()=='posts.index'?'active':'' }}"> <a href="{{ route('posts.index') }}">Bài viết</a> </li>
                   <li class="dropdown hidden-sm {{ Route::currentRouteName()=='contact'?'active':'' }}"> <a href="{{ route('contact') }}">Liên hệ</a> </li>
                   <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
                 </ul>

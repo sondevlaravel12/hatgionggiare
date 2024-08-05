@@ -13,16 +13,16 @@
         @php
             $categoriesInTab = App\Models\Category::whereNotNull('in_infor_tab')->get();
         @endphp
-        @if (Route::is('categories.products.index'))
-            <li class="active" ><a href="{{ route('categories.products.index') }}">Tat ca san pham</a></li>
+        @if (Route::is('products.index'))
+            <li class="active" ><a href="{{ route('products.index') }}">Tat ca san pham</a></li>
             @foreach ($categoriesInTab as $cat)
-            <li class=""><a href="{{ route('categories.products.show',$cat) }}">{{ $cat->name }}</a></li>
+            <li class=""><a href="{{ route('products.category.index',$cat) }}">{{ $cat->name }}</a></li>
             @endforeach
 
         @else
-            <li class="" ><a href="{{ route('categories.products.index') }}">Tat ca san pham</a></li>
+            <li class="" ><a href="{{ route('products.index') }}">Tat ca san pham</a></li>
             @foreach ($categoriesInTab as $cat)
-            <li class="{{isset($category) && $cat->id==$category->id?'active':'' }}"><a href="{{ route('categories.products.show',$cat) }}">{{ $cat->name }}</a></li>
+            <li class="{{isset($category) && $cat->id==$category->id?'active':'' }}"><a href="{{ route('products.category.index',$cat) }}">{{ $cat->name }}</a></li>
             @endforeach
 
         @endif

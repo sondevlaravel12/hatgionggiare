@@ -98,48 +98,7 @@ autocomple search using for search url product or post
 end autocomple search using for search url product or post
 --------------------------------------------- */
 
-/* ---------------------------------------------
-autocomple search using for search product or post doesnt have metatag
---------------------------------------------- */
-    $("#autosearch_without_relationship").length > 0 && ($("#autosearch_without_relationship").autocomplete({
-        // autoFocus: true,
-        source: function (request, response) {
-                if($('#square-switch1').is(':checked')){
-                    $.ajax({
-                        url: "/san-pham/ajax-tim-kiem/sp-doesnthave-metatag",
-                        data: {term: request.term, maxResults: 10},
-                        dataType: "json",
-                        success: function (data) {
-                            return response(data);
-                        }
-                    })
-                }else{
-                    $.ajax({
-                        url: "/bai-viet/ajax-tim-kiem/bv-doesnthave-metatag",
-                        data: {term: request.term, maxResults: 10},
-                        dataType: "json",
-                        success: function (data) {
-                            // response($.map(request, function (request) {
-                            //     return request
-                            // }))
-                            return response(data);
-                        }
-                    })
 
-                }
-
-            }
-
-    }));
-    $("#autosearch_without_relationship" ).on( "autocompleteselect", function( event, ui ) {
-        // event.preventDefault();
-        $("input[name='model_id']").val(ui.item.model_id);
-        $("input[name='model_type']").val(ui.item.model_type);
-        // copyToClipboard('url');
-    } );
-/* ---------------------------------------------
-end autocomple search using for search product or post doesnt have metatag
---------------------------------------------- */
 
 /* ---------------------------------------------
 characters count live
