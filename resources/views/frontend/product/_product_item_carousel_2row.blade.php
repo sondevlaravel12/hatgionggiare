@@ -6,8 +6,14 @@
           <div class="row product-micro-row">
             <div class="col col-xs-5">
               <div class="product-image">
+                @if ($product->category)
                 <div class="image"> <a href="{{ route('products.category.show', [$product->category, $product]) }}"> <img src="{{ $product->getFirstImageUrl('medium') }}" alt="{{ $product->name}}"> </a>
                 </div>
+                @else
+                <div class="image"> <a href="{{ route('products.show', [$product]) }}"> <img src="{{ $product->getFirstImageUrl('medium') }}" alt="{{ $product->name}}"> </a>
+                </div>
+                @endif
+
                 <!-- /.image -->
 
               </div>
