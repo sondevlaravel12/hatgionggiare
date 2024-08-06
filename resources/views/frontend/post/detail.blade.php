@@ -1,17 +1,7 @@
 @extends('frontend.main_master')
-@section('title')
-bài viết: {{ $post->name }}
-@endsection
-@section('breadcrumb')
-{{ Breadcrumbs::view('breadcrumbs::json-ld', 'posts.show', $post) }}
-@endsection
-@section('content')
-<div class="breadcrumb">
-	<div class="container">
-        {{ Breadcrumbs::render('posts.show', $post) }}
 
-	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+
+@section('content')
 
 <div class='container'>
 	<div class="row">

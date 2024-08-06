@@ -32,7 +32,22 @@ class PostController extends Controller
 
         ]);
     }
-    public function show(Post $post){
+    // public function show($categories = 'danh-muc', Post $post){
+
+    //     $this->fetchSideBar();
+    //     $this->setupSeoWithModel($post);
+    //     $categorySlugs = $categories ? explode('/', trim($categories, '/')) : [];
+    //     return view('frontend.post.detail')->with([
+    //         'posts'=>$this->posts,
+    //         'parentCategories'=>$this->parentCategories,
+    //         'populerPosts'=>$this->populerPosts,
+    //         'recentPosts'=>$this->recentPosts,
+    //         'postTags'=>$this->postTags,
+    //         'post'=>$post
+    //     ]);
+    // }
+    public function showWithCategory($categories, Post $post)
+    {
         $this->fetchSideBar();
         $this->setupSeoWithModel($post);
         return view('frontend.post.detail')->with([
@@ -44,6 +59,36 @@ class PostController extends Controller
             'post'=>$post
         ]);
     }
+    public function showWithoutCategory(Post $post){
+        $this->fetchSideBar();
+        $this->setupSeoWithModel($post);
+        return view('frontend.post.detail')->with([
+            'posts'=>$this->posts,
+            'parentCategories'=>$this->parentCategories,
+            'populerPosts'=>$this->populerPosts,
+            'recentPosts'=>$this->recentPosts,
+            'postTags'=>$this->postTags,
+            'post'=>$post
+        ]);
+    }
+
+    public function postsByPcategory($category){
+        if($category->posts->count()>0){
+            $posts = $category->posts->toQuery()->paginate(12);
+            return view('frontend.category.detail')->with([
+                'products'=>$posts,
+                'category'=>$category
+            ]);
+        }else{
+            // return back()->withErrors('Danh Mục Này Không Có Sản Phẩm');
+            return view('frontend.category.detail')->with([
+                'error'=>'Danh Mục Này Không Có Sản Phẩm',
+                'category'=>$category
+            ]);
+        }
+    }
+
+
     // like show function in CategoryController, in this cate i do not create PcategoryController so that i write the function here and name it like that, does it make sense
     public function group (Request $request){
         if($request->category_id){
@@ -52,7 +97,7 @@ class PostController extends Controller
             if($category->posts->count()>0){
                 $posts = $category->posts->toQuery()->paginate(3);
                 return view('frontend.post.post_by_cat')->with([
-                    'posts'=>$this->posts,
+                    'posts'=>$posts,
                     'parentCategories'=>$this->parentCategories,
                     'populerPosts'=>$this->populerPosts,
                     'recentPosts'=>$this->recentPosts,

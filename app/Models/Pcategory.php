@@ -64,6 +64,20 @@ class Pcategory extends Model implements HasMedia
     {
        return $this->hasMany($this, 'parent_id');
     }
+    // Define the method to get ancestors
+    public function ancestors()
+    {
+        $ancestors = [];
+        $parent = $this->parent;
+
+        // Traverse up the hierarchy until no parent is found
+        while ($parent) {
+            $ancestors[] = $parent;
+            $parent = $parent->parent;
+        }
+
+        return collect($ancestors); // Return a collection for easy manipulation
+    }
     public function metatag()
     {
         return $this->morphOne(Metatag::class, 'model');

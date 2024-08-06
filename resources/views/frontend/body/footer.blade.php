@@ -53,7 +53,19 @@
                 @endphp
                 @if (isset($footerPosts) && $footerPosts->count()>0)
                     @foreach ($footerPosts as $footerPost)
-                    <li class="first"><a href="{{ route('posts.show',$footerPost) }}">{{ $footerPost->title }}</a></li>
+                    @if ($footerPost->pcategory)
+                        @php
+                            $categorySlugs = $footerPost->pcategory->ancestors()->pluck('slug')->implode('/'). '/' . $footerPost->pcategory->slug;
+                        @endphp
+                        <li class="first"><a href="{{ route('posts.withCategory.show',[
+                            'categories' =>$categorySlugs,
+                            'post' => $footerPost
+                            ]) }}">{{ $footerPost->title }}</a>
+                        </li>
+                    @else
+                    <li class="first"><a href="{{ route('posts.withoutCategory.show',[
+                        'post'=> $footerPost]) }}">{{ $footerPost->title }}</a></li>
+                    @endif
                     @endforeach
                 @endif
               </ul>

@@ -29,19 +29,19 @@ class ProductController extends Controller
         ]);
     }
     public function showWithoutCategory(Product $product){
-        // if ($product->category) {
-        //     // Redirect to the URL with category
-        //     return redirect()->route('products.category.show', [
-        //         $product->category, $product
-        //     ], 301); // 301 Permanent Redirect
-        // }else{
+        if ($product->category) {
+            // Redirect to the URL with category
+            return redirect()->route('products.category.show', [
+                $product->category, $product
+            ], 301); // 301 Permanent Redirect
+        }else{
             $this->setupSeoWithModel($product);
             $bestSellings = Product::where('best_selling',1)->limit(6)->get();
             return view('frontend.product.detail')->with([
                 'product'=>$product,
                 'bestSellings'=>$bestSellings
             ]);
-        // }
+        }
     }
     public function productsByTag(Tag $tag){
         // $this->fetchSideBar();

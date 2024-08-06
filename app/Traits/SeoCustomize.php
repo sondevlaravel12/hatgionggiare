@@ -156,7 +156,7 @@ trait SeoCustomize{
     {
         $type = $this->determineSeoType($model);
 
-        JsonLd::setTitle($metaTag->title ?? $model->name);
+        JsonLd::setTitle($metaTag->title ?? $model->name??$model->title);
         JsonLd::setDescription($metaTag->description ?? $model->short_description);
         JsonLd::setType($type); // Set appropriate JSON-LD type
         JsonLd::addValue('url', $this->getCanonicalUrl($model));
@@ -170,12 +170,19 @@ trait SeoCustomize{
      // Get the canonical URL for the given model.
      protected function getCanonicalUrl($model)
      {
-         // Kiểm tra nếu model có category
-         if (method_exists($model, 'category') && $model->category) {
-             return route('products.category.show', [$model->category->slug, $model->slug]);
-         }
-         // Trường hợp không có category
-         return route('products.show', [$model->slug]);
+        if ($model instanceof \App\Models\Product) {
+            if ($model->category) {
+                return route('products.category.show', [$model->category, $model]);
+            }
+            return route('products.show', [$model->slug]);
+        }
+        // elseif ($model instanceof \App\Models\Post) {
+        //     if ($model->pcategory) {
+        //         return route('posts.pcategory.show', [$model->pcategory, $model]);
+        //     }
+        //     return route('posts.show', [$model]);
+        // }
+        return url()->current();
      }
     /**
      * Determine the SEO type for the given model.
@@ -239,6 +246,10 @@ trait SeoCustomize{
 
         // If the product has a category and the current route is not the category route
         if ($model->category && $routeName !== 'products.category.show') {
+            return true; // This is a supplementary URL
+        }
+        // If the post has a category and the current route is not the category route
+        if ($model->pcategory && $routeName !== 'products.pcategory.show') {
             return true; // This is a supplementary URL
         }
 

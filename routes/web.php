@@ -27,6 +27,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\WishlistController;
+use App\Models\Pcategory;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -228,6 +229,7 @@ Route::get('thong-tin-chuyen-khoan', [FrontendIndexController::class,'showBankIn
 
 // product controller
 // Place the more specific routes above
+Route::get('san-pham', [CategoryController::class,'index'])->name('products.index');
 Route::get('san-pham/ajax-tim-kiem/sp', [ProductController::class, 'ajaxSearch'])->name('product.ajaxsearch');
 Route::get('san-pham/tim-kiem/sp', [ProductController::class, 'search'])->name('product.search');
 Route::get('san-pham/ajax-tim-kiem/sp-doesnthave-metatag', [ProductController::class, 'ajaxSearchNothaveMetatag'])->name('product.ajaxSearchNothaveMetatag');
@@ -242,15 +244,26 @@ Route::get('san-pham/{product:slug}', [ProductController::class,'showWithoutCate
 ->name('products.show')
 ->where('product', '[a-zA-Z0-9-]+');
 
+Route::get('san-pham-danh-muc/{category:slug}', [CategoryController::class,'show'])->name('products.category.index');
+
 
 // post controller
 Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
-// Route::get('bai-viet/{post}/{slug?}', [PostController::class,'show'])->name('posts.show');
-Route::get('bai-viet/{post:slug?}', [PostController::class,'show'])->name('posts.show');
-Route::get('danh-muc/{category_id}/bai-viet', [PostController::class,'group'])->name('posts.category.group');
+
 Route::get('bai-viet/ajax-tim-kiem/bv',[PostController::class,'ajaxSearch'])->name('post.ajaxsearch');
 Route::get('bai-viet/ajax-tim-kiem/bv-doesnthave-metatag',[PostController::class,'ajaxSearchNothaveMetatag'])->name('post.ajaxsearchNothaveMetatag');
+// post with category
+Route::get('bai-viet/{categories}/{post:slug}', [PostController::class, 'showWithCategory'])
+    ->where('categories', '.*') // Adjust if needed
+    ->name('posts.withCategory.show');
+// post without category
+Route::get('bai-viet/{post:slug}', [PostController::class, 'showWithoutCategory'])
+    ->name('posts.withoutCategory.show');
 
+
+Route::get('danh-muc/{category_id}/bai-viet', [PostController::class,'group'])->name('posts.category.group');
+
+Route::get('bai-viet-danh-muc/{pcategory:slug}', [PostController::class,'postsByPcategory'])->name('posts.category.index');
 
 // tag controller
 Route::get('tag/{tag}/san-pham', [ProductController::class,'productsByTag'])->name('tags.products.show');
@@ -305,8 +318,6 @@ route::group(['prefix'=>'user'], function(){
 
 // Route::get('danh-muc/tat-ca/san-pham', [CategoryController::class,'index'])->name('categories.products.index');
 // Route::get('danh-muc/{category}/san-pham', [CategoryController::class,'show'])->name('categories.products.show');
-Route::get('san-pham', [CategoryController::class,'index'])->name('products.index');
-Route::get('danh-muc-san-pham/{category:slug}', [CategoryController::class,'show'])->name('products.category.index');
 
 
 

@@ -1,7 +1,4 @@
 @extends('frontend.main_master')
-@section('title')
-tim kiem san pham
-@endsection
 @section('css')
 <style>
 .page-heading-title {
@@ -17,16 +14,9 @@ tim kiem san pham
 }
 </style>
 @endsection
-@section('breadcrumb')
-{{ Breadcrumbs::view('breadcrumbs::json-ld', 'products') }}
-@endsection
-@section('content')
-<div class="breadcrumb">
-	<div class="container">
-        {{ Breadcrumbs::render('products') }}
 
-	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+@section('content')
+
 <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">

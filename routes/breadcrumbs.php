@@ -4,6 +4,7 @@
 // this import. This is nice for IDE syntax and refactoring.
 
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\Webinfo;
 use Diglactic\Breadcrumbs\Breadcrumbs;
@@ -62,29 +63,64 @@ Breadcrumbs::for('products.category.index', function (BreadcrumbTrail $trail, Ca
         $trail->parent('products.index');
     }
     $trail->push($category->name, route('products.category.index', $category->slug), ['image' => $category->getFirstImageUrl()]);
-    // $trail->parent('products');
-    // $trail->push($category->name, route('categories.products.show', $category));
 });
 
 // Home >  Sản phẩm > tên danh mục > tên sản phẩm
+Breadcrumbs::for('products.category.show', function (BreadcrumbTrail $trail,Category $category, Product $product) {
+    $trail->parent('products.category.index',$category);
+    // $category = $product->category;
+    $trail->push($product->name, route('products.category.show', [$category, $product]));
+});
 
-// Breadcrumbs::for('products.category.show', function (BreadcrumbTrail $trail, $category, Product $product) {
-//     $trail->parent('products.category.index',$product->$category);
-//     // $category = $product->category;
-//     $trail->push($product->name, route('products.category.show', [$category, $product]));
-// });
+// Home >  Sản phẩm > tên sản phẩm: for product not have category yet
+Breadcrumbs::for('products.show', function (BreadcrumbTrail $trail, Product $product) {
+    $trail->parent('products.index');
+    // $category = $product->category;
+    $trail->push($product->name, route('products.show', [ $product]));
+});
 
 // Home > Bài viết
-Breadcrumbs::for('posts', function (BreadcrumbTrail $trail){
+Breadcrumbs::for('posts.index', function (BreadcrumbTrail $trail){
     $trail->parent('home');
     $trail->push('Bài viết', route('posts.index'));
 
 });
-// Home > Bài viết > tên bài
-Breadcrumbs::for('posts.show', function (BreadcrumbTrail $trail, $post) {
-    $trail->parent('posts');
-    $trail->push($post->title, route('posts.show', $post));
+// Home >  Bài Viết > tên danh mục> all bài viết
+// Breadcrumbs::for('posts.category.index', function (BreadcrumbTrail $trail, Category $category) {
+//     if ($category->parent) {
+//         $trail->parent('products.category.show', $category->parent);
+//     } else {
+//         $trail->parent('products.index');
+//     }
+//     $trail->push($category->name, route('products.category.index', $category->slug), ['image' => $category->getFirstImageUrl()]);
+// });
+// Home > Bài viết > tên danh mục > tên bài viet
+// Breadcrumbs::for('posts.pcategory.show', function (BreadcrumbTrail $trail, $category, $post) {
+//     $trail->parent('home');
+//     // Fetch ancestors and reverse them
+//     $categories = $category->ancestors()->reverse();
+
+//     foreach ($categories as $ancestor) {
+//         $trail->push($ancestor->name, route('posts.pcategory.show', [$ancestor, $post]));
+//     }
+
+//     $trail->push($category->name, route('posts.pcategory.show', [$category, $post]));
+//     // $trail->push($post, route('posts.show', [$category, $post]));
+// });
+// Breadcrumb for showing a post with optional categories
+// Post without Category
+Breadcrumbs::for('posts.withoutCategory.show', function (BreadcrumbTrail $trail, $post) {
+    $trail->parent('posts.index');
+
+    // Add the post
+    $trail->push($post->title, route('posts.withoutCategory.show', $post->slug));
 });
+// Home > Bài viết > tên bài
+// Breadcrumbs::for('posts.show', function (BreadcrumbTrail $trail, $post) {
+//     $trail->parent('posts.index');
+//     $trail->push($post->title, route('posts.show', $post));
+// });
+
 // Home >  Bài viết > tên Tag
 Breadcrumbs::for('postsByTag', function (BreadcrumbTrail $trail, $tag) {
     $trail->parent('posts');
@@ -92,7 +128,7 @@ Breadcrumbs::for('postsByTag', function (BreadcrumbTrail $trail, $tag) {
 });
 // Home >  Bài viết > tên Category
 Breadcrumbs::for('postsByCat', function (BreadcrumbTrail $trail, $category) {
-    $trail->parent('posts');
+    $trail->parent('posts.index');
     $trail->push($category->name, route('posts.category.group',$category));
 });
 
