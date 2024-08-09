@@ -58,7 +58,7 @@
 
 <style>
     .breadcrumb{
-        margin-bottom: 5px !important;
+        margin: 5px !important;
     }
     /* for image align that generated from tinyMce */
     p>img.img-responsive{
@@ -76,13 +76,22 @@
 <!-- ============================================== HEADER ============================================== -->
 @include('frontend.body.header')
 <!-- ============================================== HEADER : END ============================================== -->
+<!-- ============================================== BreadCrumb ============================================== -->
+<div class="breadcrumb">
+	<div class="container">
+		<div class="breadcrumb-inner">
+			@if (!isset($hideBreadcrumb))
+            <div class="breadcrumb">
+                {{ Breadcrumbs::render() }}
+            </div>
+            @endif
+		</div><!-- /.breadcrumb-inner -->
+	</div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+<!-- ============================================== BreadCrumb: END ============================================== -->
+
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
     <div class="container">
-        @if (!isset($hideBreadcrumb))
-        <div class="breadcrumb">
-            {{ Breadcrumbs::render() }}
-        </div>
-        @endif
         @yield('content')
     </div>
 </div>

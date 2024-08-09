@@ -1,18 +1,5 @@
 @extends('frontend.main_master')
-@section('title')
-{{ isset($title)?$title:'Chính sách trả hàng' }}
-@endsection
-@section('breadcrumb')
-{{ Breadcrumbs::view('breadcrumbs::json-ld', 'returnPolicy') }}
-@endsection
 @section('content')
-<div class="breadcrumb">
-	<div class="container">
-        {{ Breadcrumbs::render('returnPolicy') }}
-
-	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
-
 <div class='container'>
 	<div class="row">
         <div class="blog-page">

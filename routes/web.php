@@ -250,20 +250,31 @@ Route::get('san-pham-danh-muc/{category:slug}', [CategoryController::class,'show
 // post controller
 Route::get('bai-viet', [PostController::class,'index'])->name('posts.index');
 
+// Route for Displaying Posts by Category
+Route::get('danh-muc-bai-viet/{categories}', [PostController::class, 'postsByCategory'])
+    ->name('pcategories.show')
+    ->where('categories', '.*'); // Regex to match nested categories
+
+
+
 Route::get('bai-viet/ajax-tim-kiem/bv',[PostController::class,'ajaxSearch'])->name('post.ajaxsearch');
 Route::get('bai-viet/ajax-tim-kiem/bv-doesnthave-metatag',[PostController::class,'ajaxSearchNothaveMetatag'])->name('post.ajaxsearchNothaveMetatag');
-// post with category
+
+//Route to display a specific post with category
 Route::get('bai-viet/{categories}/{post:slug}', [PostController::class, 'showWithCategory'])
     ->where('categories', '.*') // Adjust if needed
+    ->where('post', '[a-zA-Z0-9-]+') // Match post slug
     ->name('posts.withCategory.show');
-// post without category
+// Route to display a specific post without category
 Route::get('bai-viet/{post:slug}', [PostController::class, 'showWithoutCategory'])
     ->name('posts.withoutCategory.show');
 
 
-Route::get('danh-muc/{category_id}/bai-viet', [PostController::class,'group'])->name('posts.category.group');
 
-Route::get('bai-viet-danh-muc/{pcategory:slug}', [PostController::class,'postsByPcategory'])->name('posts.category.index');
+
+// Route::get('danh-muc-bai-viet/{pcategory:slug}', [PostController::class,'group'])->name('posts.category.group');
+
+// Route::get('bai-viet-danh-muc/{pcategory:slug}', [PostController::class,'postsByPcategory'])->name('posts.category.index');
 
 // tag controller
 Route::get('tag/{tag}/san-pham', [ProductController::class,'productsByTag'])->name('tags.products.show');

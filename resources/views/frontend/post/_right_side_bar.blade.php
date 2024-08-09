@@ -16,7 +16,7 @@
                             <ul>
                                 @foreach ($parentCategory->children as $child)
                                 @if ($child->posts->count()>0)
-                                <li ><a style="{{ isset($category) && $category->id==$child->id?'color:#0f6cb2;':'' }}" href="{{ route('posts.category.group', $child->id) }}">{{ $child->name }} </a></li>
+                                <li ><a style="{{ isset($category) && $category->id==$child->id?'color:#0f6cb2;':'' }}" href="{{ route('pcategories.show', ['categories'=>$child->posts()->first()->getCategorySlugs()]) }}">{{ $child->name }} </a></li>
                                 @endif
                                 @endforeach
 

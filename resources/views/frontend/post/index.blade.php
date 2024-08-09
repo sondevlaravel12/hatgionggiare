@@ -12,9 +12,8 @@
                         <h1><a href="{{ route('posts.show',[$post,$post->slug]) }}">{{ $post->title }}</a></h1> --}}
                         @if ($pcategory = $post->pcategory)
                             @php
-                                $categorySlugs = $pcategory->ancestors()->pluck('slug')->implode('/'). '/' . $pcategory->slug;
                                 $urlWithCat = route('posts.withCategory.show',[
-                                            'categories' =>$categorySlugs,
+                                            'categories' =>$post->getCategorySlugs(),
                                             'post' => $post
                                 ]);
                             @endphp

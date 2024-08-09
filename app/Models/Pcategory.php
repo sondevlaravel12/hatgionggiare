@@ -57,6 +57,19 @@ class Pcategory extends Model implements HasMedia
     {
         return $this->hasMany(Post::class);
     }
+    // Phương thức trả về tất cả các bài viết thuộc danh mục này hoặc các danh mục con của nó
+    public function allPosts()
+    {
+        // Lấy tất cả các danh mục con
+        $descendants = $this->descendants()->pluck('id');
+
+        // Thêm danh mục hiện tại vào danh sách danh mục
+        $categories = $descendants->push($this->id);
+
+        // Lấy tất cả các bài viết thuộc các danh mục
+        return Post::whereIn('pcategory_id', $categories)->get();
+    }
+
     public function parent(){
         return $this->belongsTo($this,'parent_id','id');
     }
@@ -77,6 +90,17 @@ class Pcategory extends Model implements HasMedia
         }
 
         return collect($ancestors); // Return a collection for easy manipulation
+    }
+    // Get all descendants (children)
+    public function descendants()
+    {
+        $descendants = collect();
+        $children = $this->children;
+        foreach ($children as $child) {
+            $descendants->push($child);
+            $descendants = $descendants->merge($child->descendants());
+        }
+        return $descendants;
     }
     public function metatag()
     {

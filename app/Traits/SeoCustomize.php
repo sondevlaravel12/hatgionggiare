@@ -176,6 +176,19 @@ trait SeoCustomize{
             }
             return route('products.show', [$model->slug]);
         }
+        if ($model instanceof \App\Models\Post) {
+            if ($model->pcategory) {
+                // Generate URL for post with categories
+                return route('posts.withCategory.show', [
+                    $this->getCategorySlugs($model->pcategory),
+                    $model->slug
+                ]);
+            } else {
+                // Generate URL for post without categories
+                return route('posts.withoutCategory.show', [$model->slug]);
+            }
+        }
+
         // elseif ($model instanceof \App\Models\Post) {
         //     if ($model->pcategory) {
         //         return route('posts.pcategory.show', [$model->pcategory, $model]);
@@ -217,6 +230,14 @@ trait SeoCustomize{
 
         // Default
         return 'WebPage';
+    }
+    protected function getCategorySlugs($category)
+    {
+        // Get slugs of all ancestor categories and join them with '/'
+        $ancestorSlugs = $category->ancestors()->pluck('slug')->implode('/');
+
+        // Include the current category slug
+        return $ancestorSlugs ? $ancestorSlugs . '/' . $category->slug : $category->slug;
     }
     protected function getImageCollection($model){
         if ($model instanceof \App\Models\Product) {

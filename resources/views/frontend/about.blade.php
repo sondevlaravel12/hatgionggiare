@@ -1,19 +1,8 @@
 @extends('frontend.main_master')
-@section('title')
-Giới thiệu
-@endsection
-@section('breadcrumb')
-{{ Breadcrumbs::view('breadcrumbs::json-ld', 'posts') }}
-@endsection
+
 @section('content')
-<div class="breadcrumb">
-	<div class="container">
-        {{ Breadcrumbs::render('about') }}
 
-	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
-
-<div class="container">
+{{-- <div class="container"> --}}
     <div class="terms-conditions-page">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 homebanner-holder">
@@ -72,6 +61,6 @@ Giới thiệu
       <!-- ============================================== BEST SELLER : END ============================================== -->
 
     @include('frontend.body.brands')
-</div>
+{{-- </div> --}}
 
 @endsection

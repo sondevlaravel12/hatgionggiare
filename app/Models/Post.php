@@ -133,6 +133,24 @@ class Post extends Model implements HasMedia
     public static function populer($num =2){
         return Post::inRandomOrder()->limit($num)->get();
     }
+    public function getCategorySlugs()
+    {
+        // Kiểm tra nếu bài viết có danh mục
+        if ($this->pcategory) {
+            // Lấy tất cả các danh mục cha của bài viết
+        $ancestors = $this->pcategory->ancestors()->pluck('slug')->toArray();
+
+        // Thêm slug của danh mục hiện tại
+        $ancestors[] = $this->pcategory->slug;
+
+        // Nối các slug với nhau bằng dấu '/'
+        return implode('/', $ancestors);
+        }
+
+        // Trả về chuỗi rỗng nếu bài viết không có danh mục
+        return '';
+    }
+
     //---- end of other function
 
 }

@@ -1,18 +1,5 @@
 @extends('frontend.main_master')
-@section('title')
-{{ isset($title)?$title:''}}
-@endsection
-@section('breadcrumb')
-{{ Breadcrumbs::view('breadcrumbs::json-ld', 'contact') }}
-@endsection
 @section('content')
-<div class="breadcrumb">
-	<div class="container">
-        {{ Breadcrumbs::render('contact') }}
-
-	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
-
 	<div class="container">
         <div class="contact-page">
             <div class="row">

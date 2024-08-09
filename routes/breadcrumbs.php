@@ -85,6 +85,58 @@ Breadcrumbs::for('posts.index', function (BreadcrumbTrail $trail){
     $trail->push('Bài viết', route('posts.index'));
 
 });
+
+// Breadcrumbs for Route with Category and Post
+Breadcrumbs::for('posts.withCategory.show', function (BreadcrumbTrail $trail, $categories, $post) {
+    $trail->parent('posts.index');
+
+    // Break categories into an array
+    $categorySlugs = explode('/', $categories);
+
+    // Iterate over categories to create breadcrumb links
+    foreach ($categorySlugs as $index => $slug) {
+        $category = App\Models\Pcategory::where('slug', $slug)->first();
+
+        // Create a breadcrumb for each category
+        if ($category) {
+            if ($index == count($categorySlugs) - 1) {
+                // Last category does not link
+                $trail->push(ucfirst($category->slug), route('pcategories.show', $categories));
+            } else {
+                $trail->push(ucfirst($category->slug), route('pcategories.show', $slug));
+            }
+        }
+    }
+
+    // Finally, push the post as the last breadcrumb without link
+    $trail->push(ucfirst($post->title));
+});
+
+// Breadcrumb for viewing posts under a specific category
+Breadcrumbs::for('pcategories.show', function (BreadcrumbTrail $trail, $categories) {
+    $trail->parent('posts.index');
+
+    // Check if categories are provided
+    if (!empty($categories)) {
+        // Split the categories string into an array
+        $categorySlugs = explode('/', $categories);
+
+        // Initialize the path to create breadcrumbs
+        $path = '';
+
+        foreach ($categorySlugs as $index => $slug) {
+            $path .= $slug . '/';
+            // Add each category breadcrumb except the last one
+            if ($index < count($categorySlugs) - 1) {
+                $trail->push(ucfirst($slug), route('pcategories.show', ['categories' => rtrim($path, '/')]));
+            }
+        }
+         // Add the final category breadcrumb without a link
+        $trail->push(ucfirst(end($categorySlugs)));
+    }
+});
+
+
 // Home >  Bài Viết > tên danh mục> all bài viết
 // Breadcrumbs::for('posts.category.index', function (BreadcrumbTrail $trail, Category $category) {
 //     if ($category->parent) {

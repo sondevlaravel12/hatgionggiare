@@ -1,9 +1,6 @@
 @extends('frontend.main_master')
-@section('title')
-category
-@endsection
-@section('css')
 
+@section('css')
 @endsection
 
 @section('content')
