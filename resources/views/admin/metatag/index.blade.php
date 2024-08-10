@@ -55,10 +55,14 @@
                                     </td>
                                     <td>
 
-                                        @if ($metatag->model && $type=="product"||$type=="post")
-                                        <a href="{{route($type ."s.show",$metatag->model ) }}">{{ $metatag->model->name??$metatag->model->title }}</a>
-                                        @elseif ($metatag->model && $type=="category")
-                                        <a href="{{route("categories.products.show",$metatag->model ) }}">{{ $metatag->model->name??$metatag->model->title }}</a>
+                                        @if ($metatag->model)
+                                            @if ($type=="product")
+                                            <a href="{{route("products.show",$metatag->model ) }}">{{ $metatag->model->name??$metatag->model->title }}</a>
+                                            @elseif ($type=="post")
+                                            <a href="{{route("posts.withoutCategory.show",$metatag->model ) }}">{{ $metatag->model->name??$metatag->model->title }}</a>
+                                            @elseif ($type=="category")
+                                            <a href="{{route("products.category.index",$metatag->model ) }}">{{ $metatag->model->name??$metatag->model->title }}</a>
+                                            @endif
                                         @endif
                                     </td>
                                     {{-- <td class="metatag-description">{{ $metatag->description }}</td>
