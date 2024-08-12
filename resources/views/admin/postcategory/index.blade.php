@@ -3,11 +3,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Danh mục bài viết</h4>
+                <h4 class="mb-sm-0">Danh mục sản phẩm</h4>
 
                 <div class="page-title-right">
                     <div >
-                        <a href="{{route('admin.categories.create')}}" class="btn btn-outline-info waves-effect waves-light" ><span ><i class="fas fa-plus"></i> Thêm danh mục sản phẩm</span></a>
+                        <a href="{{route('admin.pcategories.create')}}" class="btn btn-outline-info waves-effect waves-light" ><span ><i class="fas fa-plus"></i> Thêm danh mục sản phẩm</span></a>
                     </div>
                 </div>
 
@@ -22,7 +22,7 @@
 
                     <div class="table-responsive">
 
-                        <table  id="datatable-default" class="table mb-0">
+                        <table  id="datatable-type1" class="table mb-0">
 
                             <thead>
                                 <tr>
@@ -41,7 +41,7 @@
                                     {{-- <th scope="row">1</th> --}}
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->slug }}</td>
-                                    <td><img src="{{$category->getFirstImageUrl('medium')}}" class="img-thumbnail" alt="300x300" width="300" data-holder-rendered="true"></td>
+                                    <td><img src="{{$category->getFirstImageUrl('thumb')}}" class="img-thumbnail" alt="300x300" width="300" data-holder-rendered="true"></td>
 
                                     <td>{!! $category->description !!}</td>
                                     <td>{{ $category->parent?$category->parent->name:'' }}</td>
@@ -53,7 +53,7 @@
                                             <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-sm btn-outline-primary waves-effect waves-light">Sửa</a>
                                             <button type="submit" class="btn btn-sm btn-outline-danger waves-effect waves-light">Xóa</button>
                                         </form> --}}
-                                        <a href="{{route('admin.categories.edit',  $category)}}" class="btn btn-sm btn-link"><i class="far fa-edit"></i> Sửa</a>
+                                        <a href="{{route('admin.pcategories.edit',  $category)}}" class="btn btn-sm btn-link"><i class="far fa-edit"></i> Sửa</a>
                                         {{-- <a href="/admin/categories/invoiceId/edit" class="btn btn-sm btn-link"><i class="far fa-edit"></i>&nbsp;&nbsp;Sửa</a> --}}
                                         <button type="submit" class="btn btn-sm btn_category_delete" data-categoryid="{{$category->id}}"><i class="far fa-trash-alt"></i> Xóa</button>
 
@@ -78,10 +78,11 @@
 
 
  <script>
-    // var $defaultTable = $("#datatable-default");
-    // var $defaultDatatable = $defaultTable.DataTable({
-    //     order: [[0, 'desc']],
-    // });
+    var $type1Table = $("#datatable-type1");
+    var $type1Datable = $type1Table.DataTable({
+        // order: [[0, 'asc']],
+        ordering: false
+    });
     // sweetalert before deleting
     $table.on('click','.btn_category_delete', function(){
         Swal.fire({
@@ -94,7 +95,7 @@
             confirmButtonText: 'Vâng, xóa danh mục sản phẩm!'
             }).then((result) => {
             if (result.isConfirmed) {
-                var $row = $defaultDatatable.row($(this).parents('tr'));
+                var $row = $type1Datable.row($(this).parents('tr'));
                 var $categoryId = $(this).attr('data-categoryid');
                 // console.log($productId);
                 deleteCategory($categoryId, $row)
@@ -112,7 +113,7 @@
         // });
         $.ajax({
             type: "DELETE",
-            url: "/admin/categories/ajax-delete",
+            url: "/admin/pcategories/ajax-delete",
             data: {categoryID:$categoryId},
             dataType: "json",
             success: function (response) {
@@ -126,4 +127,5 @@
     };
 
  </script>
+
 @endpush

@@ -75,7 +75,7 @@ return [
         'postCategoryFiles' => [
             'driver' => 'local',
             'root'   => storage_path('app/public/postscategories'),
-            'url'        => env('APP_URL') . '/storage/post-categories',
+            'url'        => env('APP_URL') . '/storage/postscategories',
             'visibility' => 'public'
         ],
 

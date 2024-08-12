@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\InterfaceCustomizeController;
 use App\Http\Controllers\Backend\MetatagController;
 use App\Http\Controllers\Backend\OproductController;
 use App\Http\Controllers\Backend\OrderController as BackendOrderController;
+use App\Http\Controllers\Backend\PcategoryController;
 use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Http\Controllers\Backend\ProductController as BackendProductController;
 use App\Http\Controllers\Backend\SliderController;
@@ -199,6 +200,13 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
 
 
     });
+    // post category
+    route::get('/pcategories',[PcategoryController::class,'index'])->name('admin.pcategories.index');
+    route::get('/pcategories/create',[PcategoryController::class,'create'])->name('admin.pcategories.create');
+    route::post('/pcategories/store',[PcategoryController::class,'store'])->name('admin.pcategories.store');
+    route::get('/pcategories/{category}/edit',[PcategoryController::class,'edit'])->name('admin.pcategories.edit');
+    route::put('/pcategories/{category}/update',[PcategoryController::class,'update'])->name('admin.pcategories.update');
+    route::delete('/pcategories/ajax-delete',[PcategoryController::class,'ajaxDelete']);
 
 
 

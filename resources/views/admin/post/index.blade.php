@@ -52,7 +52,7 @@
                             <td>{{$post->id}}</td>
 
                             <td><img src="{{$post->getFirstImageUrl('medium')}}" class="img-thumbnail" alt="300x300" width="300" data-holder-rendered="true"></td>
-                            <td><a href="{{ route('posts.show',$post ) }}">{{$post->title}}</a></td>
+                            <td><a href="{{ route('posts.withoutCategory.show',$post ) }}">{{$post->title}}</a></td>
                             <td><a class="a-post-metag">{{ $post->metatag?$post->metatag->id:''}}</a></td>
                             <td>
                                 {{-- <div class="square-switch">

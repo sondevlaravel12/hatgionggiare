@@ -108,8 +108,8 @@ class Pcategory extends Model implements HasMedia
     }
      // ------------------- End Relationship ---------------------------//
 
-     public function getFirstImageUrl($size='thumb'){
-        if($this->getFirstMedia('postscategories')){
+     public function getFirstImageUrl($size='medium'){
+        if($this->getFirstMedia('postcategories')){
             return $this->getFirstMedia('postcategories')->getUrl($size);
         }
         else{

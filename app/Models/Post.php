@@ -142,6 +142,10 @@ class Post extends Model implements HasMedia
 
         // Thêm slug của danh mục hiện tại
         $ancestors[] = $this->pcategory->slug;
+        // Loại bỏ các danh mục không tồn tại
+        $validAncestors = array_filter($ancestors, function($slug) {
+            return Pcategory::where('slug', $slug)->exists();
+        });
 
         // Nối các slug với nhau bằng dấu '/'
         return implode('/', $ancestors);

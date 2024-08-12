@@ -64,7 +64,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.posts.index') }}">Danh Sách Bài Viết</a></li>
                         <li><a href="{{ route('admin.posts.create') }}">Thêm Mới Bài Viết</a></li>
-                        <li><a href="#">Danh Mục Bài Viết</a></li>
+                        <li><a href="{{ route('admin.pcategories.index') }}">Danh Mục Bài Viết</a></li>
                     </ul>
                 </li>
                 <li>

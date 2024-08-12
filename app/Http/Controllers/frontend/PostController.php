@@ -119,9 +119,17 @@ class PostController extends Controller
     }
     private function getCanonicalUrl(Post $post)
     {
-        // Trả về URL chính duy nhất cho bài viết
-        $categorySlugs = $post->getCategorySlugs(); // Phương thức lấy slug danh mục nếu có
-        return route('posts.withCategory.show', [$categorySlugs, $post->slug]);
+         // Lấy slug danh mục
+    $categorySlugs = $post->getCategorySlugs();
+
+    // Kiểm tra nếu danh mục rỗng
+    if (empty($categorySlugs)) {
+        // Trường hợp bài viết không có danh mục
+        return route('posts.withoutCategory.show', [$post->slug]);
+    }
+
+    // Trả về URL chính duy nhất cho bài viết với danh mục
+    return route('posts.withCategory.show', [$categorySlugs, $post->slug]);
     }
     private function getCanonicaUrlPostByCat( $categories){
         // Split categories
