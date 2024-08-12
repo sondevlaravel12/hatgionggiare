@@ -192,7 +192,7 @@ Breadcrumbs::for('posts.withoutCategory.show', function (BreadcrumbTrail $trail,
 
 // Home >  Bài viết > tên Tag
 Breadcrumbs::for('postsByTag', function (BreadcrumbTrail $trail, $tag) {
-    $trail->parent('posts');
+    $trail->parent('posts.index');
     $trail->push($tag->name, route('tags.posts.show',$tag));
 });
 // Home >  Bài viết > tên Category
@@ -215,7 +215,7 @@ Breadcrumbs::for('checkout', function (BreadcrumbTrail $trail){
 });
 // cart > thankyou => since there can go backwalk so we need different parent
 Breadcrumbs::for('thankyou', function (BreadcrumbTrail $trail, $order){
-    $trail->parent('products');
+    $trail->parent('products.index');
     $trail->push('Đặt hàng thành công', route('order.thankyou',$order));
 
 });

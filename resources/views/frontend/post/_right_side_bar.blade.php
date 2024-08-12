@@ -2,34 +2,10 @@
     <!-- ==============================================CATEGORY============================================== -->
     <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
         <h3 class="section-title">Danh Mục</h3>
-        <div class="sidebar-widget-body m-t-10">
-            <div class="accordion">
-                @foreach ($parentCategories as $parentCategory)
-                <div class="accordion-group ">
-                    <div class="accordion-heading">
-                        <a href="#{{ $parentCategory->id }}" data-toggle="collapse" class="accordion-toggle {{ isset($category) && $category->parent->id==$parentCategory->id?'':'collapsed' }}">
-                           {{ $parentCategory->name }}
-                        </a>
-                    </div><!-- /.accordion-heading -->
-                    <div class="accordion-body collapse {{ isset($category) && $category->parent->id==$parentCategory->id?'in':'' }}" id="{{ $parentCategory->id }}" style="{{ isset($category) && $category->parent->id==$parentCategory->id?'':'height: 0px;' }}">
-                        <div class="accordion-inner">
-                            <ul>
-                                @foreach ($parentCategory->children as $child)
-                                @if ($child->posts->count()>0)
-                                <li ><a style="{{ isset($category) && $category->id==$child->id?'color:#0f6cb2;':'' }}" href="{{ route('pcategories.show', ['categories'=>$child->posts()->first()->getCategorySlugs()]) }}">{{ $child->name }} </a></li>
-                                @endif
-                                @endforeach
-
-                            </ul>
-                        </div><!-- /.accordion-inner -->
-                    </div><!-- /.accordion-body -->
-                </div><!-- /.accordion-group -->
-                @endforeach
-
-
-
-            </div><!-- /.accordion -->
-        </div>
+        @php
+            $categoriesInSidebar = App\Models\Pcategory::orderBy('order', 'asc')->get();
+        @endphp
+        @include('frontend.post.__sidebar_categorymenu_op1')
     </div>
     <!-- ============================================== CATEGORY : END ============================================== -->
     <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
@@ -84,7 +60,7 @@
                 @elseif (isset($tag)&&$postTag->id==$tag->id)
                     active
                 @endif
-                " title="Vest" href="{{ route('tags.posts.show', $postTag) }}">{{ $postTag->name }}</a>
+                " title="Vest" href="{{ route('tags.posts.show', ['tag'=>$postTag]) }}">{{ $postTag->name }}</a>
                 @endforeach
 
             </div><!-- /.tag-list -->

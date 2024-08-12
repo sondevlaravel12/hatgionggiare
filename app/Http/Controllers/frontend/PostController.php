@@ -16,7 +16,8 @@ class PostController extends Controller
     private $posts,$parentCategories,$populerPosts,$recentPosts,$postTags;
     private function fetchSideBar(){
         $this->posts = Post::latest()->paginate(3);
-        $this->parentCategories = Pcategory::where('parent_id',0)->get();
+        // $this->parentCategories = Pcategory::where('parent_id',0)->orderBy('order', 'asc')->get();
+        $this->parentCategories = Pcategory::orderBy('order', 'asc')->get();
         $this->populerPosts = Post::populer();
         $this->recentPosts = Post::latest()->limit(2)->get();
         $this->postTags = Tag::has('posts')->with('posts')->take(5)->get();
@@ -28,7 +29,7 @@ class PostController extends Controller
 
         return view('frontend.post.index')->with([
             'posts'=>$this->posts,
-            'parentCategories'=>$this->parentCategories,
+            // 'categories'=>$this->parentCategories,
             'populerPosts'=>$this->populerPosts,
             'recentPosts'=>$this->recentPosts,
             'postTags'=>$this->postTags,
@@ -60,16 +61,22 @@ class PostController extends Controller
                 $posts = $category->allPosts()->toQuery()->paginate(12);
                 return view('frontend.post.index')->with([
                     'posts'=>$posts,
-                    'parentCategories'=>$this->parentCategories,
+                    'category'=>$category,
+                    // 'parentCategories'=>$this->parentCategories,
                     'populerPosts'=>$this->populerPosts,
                     'recentPosts'=>$this->recentPosts,
                     'postTags'=>$this->postTags,
                 ]);
             }else{
                 // return back()->withErrors('Danh Mục Này Không Có Sản Phẩm');
-                return view('frontend.category.detail')->with([
+                return view('frontend.post.index')->with([
+                    'posts'=>null,
                     'error'=>'Danh Mục Này Không Có Sản Phẩm',
-                    'category'=>$category
+
+                    // 'parentCategories'=>$this->parentCategories,
+                    'populerPosts'=>$this->populerPosts,
+                    'recentPosts'=>$this->recentPosts,
+                    'postTags'=>$this->postTags,
                 ]);
             }
 
