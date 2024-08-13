@@ -11,16 +11,16 @@
             <div class="item">
                 <div class="blog-post">
                 <div class="blog-post-image">
-                    <div class="image"> <a href="blog.html"><img class="img-thumbnail" src="{{ $post->getFirstImageUrl('medium') }}" alt=""></a>
+                    <div class="image"> <a href="{{ route('posts.withoutCategory.show', $post) }}"><img class="img-thumbnail" src="{{ $post->getFirstImageUrl('medium') }}" alt=""></a>
                     </div>
                 </div>
                 <!-- /.blog-post-image -->
 
                 <div class="blog-post-info text-left">
-                    <h4 class="name"><a href="#">{{ $post->title }}</a></h4>
+                    <h4 class="name"><a href="{{ route('posts.withoutCategory.show', $post) }}">{{ $post->title }}</a></h4>
                     <span class="info">{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }} </span>
                     <p class="text">{{ str_limit($post->excerpt, 50,'...') }}</p>
-                    <a href="#" class="lnk btn btn-primary">Xem thêm</a>
+                    <a href="{{ route('posts.withoutCategory.show', $post) }}" class="lnk btn btn-primary">Xem thêm</a>
                 </div>
                 <!-- /.blog-post-info -->
 
