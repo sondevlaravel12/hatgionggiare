@@ -246,18 +246,18 @@ triggerTabList.forEach(function (triggerEl) {
 
 <Script>
 
-$('.input-images-1').imageUploader({
-    preloaded: JSON.parse($('#preloaded').attr('data-preloaded')),
-    preloadedInputName: 'preloadedImages[]', // set the name of the preloaded images input field
-    imagesInputName: 'photos',
-    label: 'Kéo thả hình vào đây, hoặc bấm vào để tải hình',
-    extensions: ['.jpg','.jpeg','.png','.gif','.svg'],
-    mimes: ['image/jpeg','image/png','image/gif','image/svg+xml'],
-    maxSize: 5 * 1024 * 1024,
-    maxFiles: 10,
+// $('.input-images-1').imageUploader({
+//     preloaded: JSON.parse($('#preloaded').attr('data-preloaded')),
+//     preloadedInputName: 'preloadedImages[]', // set the name of the preloaded images input field
+//     imagesInputName: 'photos',
+//     label: 'Kéo thả hình vào đây, hoặc bấm vào để tải hình',
+//     extensions: ['.jpg','.jpeg','.png','.gif','.svg'],
+//     mimes: ['image/jpeg','image/png','image/gif','image/svg+xml'],
+//     maxSize: 5 * 1024 * 1024,
+//     maxFiles: 10,
 
 
-});
+// });
 </Script>
 <script>
 
