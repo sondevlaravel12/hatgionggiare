@@ -23,7 +23,7 @@
                 <div class="products">
                     <div class="hot-deal-wrapper">
                         <div class="image">
-                            <img src="{{ $hotDeal->getFirstImageUrl('medium') }}" alt="">
+                            <a href="{{ route('products.show', $hotDeal) }}"><img src="{{ $hotDeal->getFirstImageUrl('medium') }}" alt=""></a>
                         </div>
                         <div class="sale-offer-tag"><span>{{ $hotDeal->getDiscountPercentageAttribute() }}%<br>off</span></div>
                         <div class="timing-wrapper">
@@ -58,7 +58,7 @@
                     </div><!-- /.hot-deal-wrapper -->
 
                     <div class="product-info text-left m-t-20">
-                        <h3 class="name"><a href="detail.html">{{$hotDeal->name  }}</a></h3>
+                        <h3 class="name"><a href="{{ route('products.show', $hotDeal) }}" >{{ $hotDeal->name  }}</a></h3>
                         <div class="rating rateit-small"></div>
 
                         <div class="product-price">
