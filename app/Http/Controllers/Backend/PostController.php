@@ -211,16 +211,55 @@ class PostController extends Controller
     public function ajaxGetImagesFromDir(Request $request){
 
         $directory = $request->directory;
-        $files = Storage::disk('public')->files('photos/' .$directory);
-        $images = [];
+        // if($request->isPostType){
+        //     $fullNameDirectories = Storage::disk('public')->directories('photos/posts');
+        //     $directories =[];
+        //     foreach ($fullNameDirectories as $fullNameDirectorie) {
+        //         $directories[] = basename($fullNameDirectorie);
+        //     }
+        //     // return json and fill input
 
-        foreach ($files as $file) {
-            $images[] = asset('storage/' .$file);
-        }
+        //     $files = Storage::disk('public')->files('photos/posts/' .$directory);
+        //     $images = [];
+
+        //     foreach ($files as $file) {
+        //         $images[] = asset('storage/' .$file);
+        //     }
+        //     return response()->json($images);
+
+        // }else{
+            $files = Storage::disk('public')->files('photos/' .$directory);
+            $images = [];
+
+            foreach ($files as $file) {
+                $images[] = asset('storage/' .$file);
+            }
+            // return response()->json($images);
+        // }
+
         // dd($files);
         // File::glob('public/photos-textarea/*')
 
         return response()->json($images);
         // return $images;
     }
+
+    public function ajaxGetDiretoryNameFromFileManager(Request $request){
+        $directories =[];
+        $path='';
+        $request->isPostType=='true'?$path='photos/posts':$path='photos';
+        $fullNameDirectories = Storage::disk('public')->directories($path);
+            $i=1;
+            foreach ($fullNameDirectories as $fullNameDirectorie) {
+                $directory['id']=$i;
+                $directory['text']=basename($fullNameDirectorie);
+
+                $directories[] =$directory;
+                $i++;
+            }
+            $result['results']=$directories;
+            // $result['name']=$request->isPostType;
+        return response()->json($result);
+    }
+
 }

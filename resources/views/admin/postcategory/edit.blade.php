@@ -32,6 +32,15 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Slug</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="slug" value="{{old('slug')??$category->slug}}"  >
+                            @error('slug')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Hình ảnh</label>
                         <div class="col-sm-10">
                             <input class="form-control" name="image" type="file" onchange="preview()" id="containImage">

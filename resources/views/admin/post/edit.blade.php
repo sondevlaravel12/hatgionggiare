@@ -15,13 +15,25 @@
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Tên bài viết</label>
-                                <input class="form-control" onkeyup="titleCharCountLive(this.value)" type="text" name="title" value="{{old('title')??$post->title}}"  >
+                                <input class="form-control"  type="text" name="title" value="{{old('title')??$post->title}}"  >
                                 @error('title')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                                <span id="title-char-count"></span>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Slug</label>
+                                <input class="form-control" type="text" name="slug" value="{{old('slug')??$post->slug}}"  >
+                                @error('slug')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -44,7 +56,7 @@
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label for="example-text-input" class="form-label">Danh mục</label>
-                                <select class="form-select select2" aria-label="Default select example" name="category_id">
+                                <select class="form-select select2-123" aria-label="Default select example" name="category_id">
                                     <option selected="">Chose category</option>
                                     @php
                                         $currentPostCategoryId = false;
@@ -75,13 +87,19 @@
                         <div class="col-sm-2">
                             <div class="mb-3">
                                 <label class="col-form-label" for="example-text-input" >Thu mục hình ảnh</label>
-                                <select class="form-select select2" name="image_directory" id="">
-                                    @if(isset($directories))
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="post-type">
+                                    <label class="form-check-label" for="formCheck1">
+                                        Hình ảnh bv
+                                    </label>
+                                </div>
+                                <select class="form-control select2-model-type" name="image_directory" id="">
+                                    {{-- @if(isset($directories))
                                     <option selected="">Lựa chọn thu mục</option>
                                     @foreach ($directories as $directorie)
                                     <option value="{{ $directorie }}" {{ old('image_directory') == $post->image_directory || $directorie==$post->image_directory? 'selected' : '' }} >{{ $directorie }}</option>
                                     @endforeach
-                                    @endif
+                                    @endif --}}
 
                                 </select>
                                 {{-- <select multiple data-role="tagsinput" name="keyword[]" class="typeahead">
@@ -278,6 +296,6 @@ triggerTabList.forEach(function (triggerEl) {
 </script>
 
 <!--end Image-Uploader -->
-<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?723') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?33333') }}"></script>
 
 @endpush

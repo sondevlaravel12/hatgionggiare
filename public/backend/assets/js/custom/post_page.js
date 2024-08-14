@@ -25,14 +25,41 @@ load images directory inorder to insert into post/ product, use in post/product 
     $(document).ready(function(){
         ajaxLoadImageByDirectory($( "select[name*='image_directory'] ").val(), []);
     })
+    // when loading page also loading list of product image directories
+    initializeSelect2ForSearching(false);
     // select directories -> load images in this directory
     $( "select[name*='image_directory'] ")
         .on( "change", function() {
-            var $directoryName = $(this).val();
+            var $directoryName ='';
+            if($('#post-type').is(":checked")==true){
+                $directoryName +='posts/'
+            }
+            $directoryName += $(this).find(":selected").text();
             // call ajax inorder get all images in this directory
             ajaxLoadImageByDirectory($directoryName, getImagesLoaded());
         } );
+    // check box in order to select model type post or product
+    $('#post-type').on('change', function(){
+        $(this).is(":checked")?$isPostType = true:$isPostType = false;
+        initializeSelect2ForSearching($isPostType);
 
+
+    });
+    function initializeSelect2ForSearching($isPostType=false){
+        $('.select2-model-type').select2({
+            ajax: {
+              url: '/admin/posts/edit/directory/ajaxGetDiretoryNameFromFileManager',
+              dataType: 'json',
+              data: function (params) {
+                return {
+                  q: params.term, // search term
+                  isPostType: $isPostType
+                };
+                },
+            }
+          });
+    }
+    // after searching > load image from the text selected
     function ajaxLoadImageByDirectory(directoryName,imgNameArr ){
         // console.log(directoryName);
         if(directoryName){
@@ -79,7 +106,7 @@ end load images directory inorder to insert into post
 --------------------------------------------- */
 
 // publish post
-$("input[type=checkbox]").change(function (e) {
+$("div.square-switch input[type=checkbox]").change(function (e) {
     var $status;
     var $post_id = $(this).attr('id');
     if (e.target.checked) { //If the checkbox is checked

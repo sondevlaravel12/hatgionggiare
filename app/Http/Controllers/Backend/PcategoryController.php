@@ -58,6 +58,7 @@ class PcategoryController extends Controller
         return view('admin.postcategory.edit', compact('category'));
     }
     public function update(Pcategory $category, Request $request){
+        // dd($request->all());
         $validated = $request->validate([
             'name' => 'required|min:2|max:255',
             'image'=> [

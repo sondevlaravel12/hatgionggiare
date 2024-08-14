@@ -63,6 +63,17 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label for="example-text-input" class="form-label">Slug</label>
+                                                <input class="form-control" type="text" name="slug" value="{{old('slug')??$product->slug}}"  >
+                                                @error('slug')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="example-text-input" class="form-label">Giá sản phẩm</label>

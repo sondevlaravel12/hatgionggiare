@@ -74,13 +74,14 @@
                         <div class="col-sm-2">
                             <div class="mb-3">
                                 <label class="col-form-label" for="example-text-input" >Thu mục hình ảnh</label>
-                                <select class="form-select select2" name="image_directory" id="">
-                                    @if(isset($directories))
-                                    <option selected="">Chose category</option>
-                                    @foreach ($directories as $directorie)
-                                    <option >{{ $directorie }}</option>
-                                    @endforeach
-                                    @endif
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="post-type">
+                                    <label class="form-check-label" for="formCheck1">
+                                        Hình ảnh bv
+                                    </label>
+                                </div>
+                                <select class="form-select select2-model-type" name="image_directory" id="">
+
 
                                 </select>
                                 {{-- <select class="form-select" >
@@ -225,7 +226,7 @@ triggerTabList.forEach(function (triggerEl) {
 </Script>
 
 <!--end Image-Uploader -->
-<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?12') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?162') }}"></script>
 
 
 
