@@ -41,6 +41,8 @@ load images directory inorder to insert into post/ product, use in post/product 
     // check box in order to select model type post or product
     $('#post-type').on('change', function(){
         $(this).is(":checked")?$isPostType = true:$isPostType = false;
+        $( ".select2-model-type" ).val('').trigger('change');
+        $( ".select2-model-type" ).html('');
         initializeSelect2ForSearching($isPostType);
 
 
