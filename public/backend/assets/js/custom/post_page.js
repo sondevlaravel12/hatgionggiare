@@ -47,19 +47,35 @@ load images directory inorder to insert into post/ product, use in post/product 
 
 
     });
-    function initializeSelect2ForSearching($isPostType=false){
-        $('.select2-model-type').select2({
-            ajax: {
-              url: '/admin/posts/edit/directory/ajaxGetDiretoryNameFromFileManager',
-              dataType: 'json',
-              data: function (params) {
-                return {
-                  q: params.term, // search term
-                  isPostType: $isPostType
-                };
-                },
-            }
-          });
+    var $dataForSelect2;
+    function initializeSelect2ForSearching($isPostType){
+        //call ajax inorder to get data for select2
+        getDiretoryNameFromFileManager($isPostType).done(function(result){
+            $('.select2-model-type').select2({
+                data:result
+            });
+        });
+        // $('.select2-model-type').select2({
+        //     // ajax: {
+        //     //   url: '/admin/posts/edit/directory/ajaxGetDiretoryNameFromFileManager',
+        //     //   dataType: 'json',
+        //     //   delay: 250,
+        //     //   data: function (params) {
+        //     //     return {
+        //     //       q: params.term, // search term
+        //     //       isPostType: $isPostType
+        //     //     };
+        //     //     },
+        //     // }
+        //   });
+    }
+    function getDiretoryNameFromFileManager(isPostType){
+        return $.ajax({
+            type: "get",
+            url: "/admin/posts/edit/directory/ajaxGetDiretoryNameFromFileManager",
+            data: {isPostType: isPostType},
+            dataType: "json",
+        });
     }
     // after searching > load image from the text selected
     function ajaxLoadImageByDirectory(directoryName,imgNameArr ){

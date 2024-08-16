@@ -248,16 +248,20 @@ class PostController extends Controller
         $directories =[];
         $path='';
         $request->isPostType=='true'?$path='photos/posts':$path='photos';
+        // $term = $request->q;
         $fullNameDirectories = Storage::disk('public')->directories($path);
             $i=1;
             foreach ($fullNameDirectories as $fullNameDirectorie) {
-                $directory['id']=$i;
-                $directory['text']=basename($fullNameDirectorie);
+                // if(strpos($fullNameDirectorie, $term)){
+                    $directory['id']=$i;
+                    $directory['text']=basename($fullNameDirectorie);
 
-                $directories[] =$directory;
-                $i++;
+                    $directories[] =$directory;
+                    $i++;
+                // }
             }
-            $result['results']=$directories;
+            // $result['results']=$directories;
+            $result=$directories;
             // $result['name']=$request->isPostType;
         return response()->json($result);
     }
