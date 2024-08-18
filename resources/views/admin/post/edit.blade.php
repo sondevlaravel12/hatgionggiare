@@ -296,6 +296,6 @@ triggerTabList.forEach(function (triggerEl) {
 </script>
 
 <!--end Image-Uploader -->
-<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?3ee33') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/post_page.js?33') }}"></script>
 
 @endpush

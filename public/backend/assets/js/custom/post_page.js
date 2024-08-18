@@ -21,16 +21,17 @@ load images directory inorder to insert into post/ product, use in post/product 
         return $imgOnlyName;
     }
 
-    // load images when the first time load page and post or product has directory image saved before
-    $(document).ready(function(){
-        ajaxLoadImageByDirectory($( "select[name*='image_directory'] ").val(), []);
-    })
     // when loading page also loading list of product image directories
+
     initializeSelect2ForSearching(false);
+    // load images when the first time load page and post or product has directory image saved before
+    // ajaxLoadImageByDirectory($( "select[name*='image_directory'] option:selected").text(), []);
+    // ajaxLoadImageByDirectory($( "hoa chuong"), []);
+
     // select directories -> load images in this directory
     $( "select[name*='image_directory'] ")
         .on( "change", function() {
-            var $directoryName ='';
+            $directoryName ='';
             if($('#post-type').is(":checked")==true){
                 $directoryName +='posts/'
             }
@@ -41,6 +42,7 @@ load images directory inorder to insert into post/ product, use in post/product 
     // check box in order to select model type post or product
     $('#post-type').on('change', function(){
         $(this).is(":checked")?$isPostType = true:$isPostType = false;
+        // erase select2
         $( ".select2-model-type" ).val('').trigger('change');
         $( ".select2-model-type" ).html('');
         initializeSelect2ForSearching($isPostType);
@@ -55,6 +57,7 @@ load images directory inorder to insert into post/ product, use in post/product 
                 data:result
             });
         });
+
         // $('.select2-model-type').select2({
         //     // ajax: {
         //     //   url: '/admin/posts/edit/directory/ajaxGetDiretoryNameFromFileManager',
@@ -117,7 +120,12 @@ load images directory inorder to insert into post/ product, use in post/product 
         var sr = $('img', this).attr('src');
         tinymce.activeEditor.insertContent('<img class="img-responsive" src="' + sr + '"/>');
         // if image just selected so hide it in the box holder
-        ajaxLoadImageByDirectory($( "select[name*='image_directory']").val(),getImagesLoaded());
+        $directoryName='';
+        if($('#post-type').is(":checked")==true){
+            $directoryName +='posts/'
+        }
+        $directoryName += $( "select[name*='image_directory'] ").find(":selected").text();
+        ajaxLoadImageByDirectory($directoryName,getImagesLoaded());
     });
  /* ---------------------------------------------
 end load images directory inorder to insert into post
