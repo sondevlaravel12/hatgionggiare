@@ -7,11 +7,15 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use App\Traits\SeoCustomize;
+
 
 class CategoryController extends Controller
 {
+    use SeoCustomize;
     public function index(){
         $products = Product::latest()->paginate(12);
+        $this->setupSeoWithoutModel('allProducts');
         return view('frontend.category.index')->with([
             'products'=>$products,
         ]);

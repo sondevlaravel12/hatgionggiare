@@ -24,6 +24,7 @@ class PostController extends Controller
     }
     public function index($categories = null){
         $this->fetchSideBar();
+        $this->setupSeoWithoutModel('allPosts');
         $posts = Post::all();
 
 
