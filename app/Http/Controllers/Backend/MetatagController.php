@@ -100,7 +100,8 @@ class MetatagController extends Controller
             $result =array();
             if(Metatag::where('model_type','like','%Allposts%')->count()<1){
                 $result[] =['id'=>1,'name'=>'All Posts'];
-            }elseif(Metatag::where('model_type','like','%Allproducts%')->count()<1){
+            }
+            if(Metatag::where('model_type','like','%Allproducts%')->count()<1){
                 $result[] =['id'=>2,'name'=>'All Products'];
             }
             // $result = [
