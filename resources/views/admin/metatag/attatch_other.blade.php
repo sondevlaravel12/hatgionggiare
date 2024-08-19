@@ -51,11 +51,17 @@
                                 <option selected="">Chọn loại metatag</option>
                                 <option value="App\Models\Category">Product Category</option>
                                 <option value="App\Models\Pcategory">Post Category</option>
+                                <option value="App\Models\About">About</option>
+                                <option value="App\Models\Contact">Contact</option>
+                                <option value="Others">Others</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-12 mb-3">
                         <label class="form-label">Tên loại</label>
+                        @error('model_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         <select class="form-control select2-search-disable" name="model_id">
                             <option>Chọn Tên Loại</option>
 

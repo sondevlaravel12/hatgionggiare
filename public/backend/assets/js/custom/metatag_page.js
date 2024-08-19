@@ -79,6 +79,8 @@ function fillModalMetatagEdit(data){
     $modalMetatagEdit.find('textarea[name=robots]').val(data.robots);
     if(data.model){
         $modalMetatagEdit.find('input[name=model_name]').val(data.model.name??data.model.title);
+    }else{
+        $modalMetatagEdit.find('input[name=model_name]').val('');
     }
 }
 function refetchTable(response){

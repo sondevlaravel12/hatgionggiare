@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Metatag;
 use App\Models\Pcategory;
 use App\Models\Product;
@@ -42,9 +44,18 @@ class MetatagController extends Controller
             'title' => 'required|min:2|max:255',
             'model_id' => 'required',
         ]);
-        // dd($request->all());
         $input = $request->except([]);
+        if($input['model_type']=='Others'){
+            if($input['model_id']==1){
+                $input['model_type'] .='\type\Allposts';
+                $input['model_id'] =null;
+            }elseif($input['model_id']==2){
+                $input['model_type'] .='\type\Allproducts';
+                $input['model_id'] =null;
+            };
+        };
         if($input['author']==null)$input['author']='hatgionggiare';
+        // dd($input);
         if($metatag = Metatag::create($input)){
             // attatch to model
             // if($request->model_type=='product_category'){
@@ -71,12 +82,40 @@ class MetatagController extends Controller
             $result = Category::doesntHave('metatag')->get(['id','name']);
         }elseif($request->model_type=='App\Models\Pcategory'){
             $result = Pcategory::doesntHave('metatag')->get(['id','name']);
+        }elseif($request->model_type=='App\Models\About'){
+            // hide select
+            // $result = About::doesntHave('metatag')->get(['id','name']);
+            $about = About::first();
+            if($about::doesntHave('metatag')->get()->count()>0){
+                $result=[['id'=>$about->id,'name'=>'About']];
+            }
+        }elseif($request->model_type=='App\Models\Contact'){
+            // hide select
+            $contact = Contact::first();
+            if($contact::doesntHave('metatag')->get()->count()>0){
+                $result=[['id'=>$contact->id,'name'=>'Contact']];
+            }
 
+        }elseif($request->model_type=='Others'){
+            $result =array();
+            if(Metatag::where('model_type','like','%Allposts%')->count()<1){
+                $result[] =['id'=>1,'name'=>'All Posts'];
+            }elseif(Metatag::where('model_type','like','%Allproducts%')->count()<1){
+                $result[] =['id'=>2,'name'=>'All Products'];
+            }
+            // $result = [
+            //     ['id'=>1,'name'=>'All Posts'],
+            //     ['id'=>2,'name'=>'All Products'],
+            // ];
         }
         return response()->json($result);
     }
     public function ajaxGetMetatagInfo(Request $request){
-        $metatag = Metatag::find($request->id)->load('model');
+        // $metatag = Metatag::find($request->id)->load('model');
+        $metatag = Metatag::find($request->id);
+        if($metatag->model_id && $metatag->model){
+            $metatag->load('model');
+        }
         // $data=[];
         // if($metatag){
         //     // $response = [

@@ -9,4 +9,8 @@ class Contact extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    public function metatag()
+    {
+        return $this->morphOne(Metatag::class, 'model');
+    }
 }

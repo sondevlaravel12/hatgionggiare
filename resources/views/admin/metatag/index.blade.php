@@ -55,7 +55,7 @@
                                     </td>
                                     <td>
 
-                                        @if ($metatag->model)
+                                        @if ($metatag->model_id && $metatag->model)
                                             @if ($type=="product")
                                             <a href="{{route("products.show",$metatag->model ) }}">{{ $metatag->model->name??$metatag->model->title }}</a>
                                             @elseif ($type=="post")
@@ -94,7 +94,7 @@
 
 @endsection
 @push('scripts')
-<script type="text/javascript" src="{{ asset('backend/assets/js/custom/metatag_page.js') }}"></script>
+<script type="text/javascript" src="{{ asset('backend/assets/js/custom/metatag_page.js?23') }}"></script>
 @endpush
 
 
