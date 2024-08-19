@@ -58,6 +58,7 @@ class PostController extends Controller
                 abort(404); // Không tìm thấy danh mục
             }
             if($category->allPosts()->count()>0){
+                $this->setupSeoWithModel($category);
                 $posts = $category->allPosts()->toQuery()->paginate(12);
                 return view('frontend.post.index')->with([
                     'posts'=>$posts,
@@ -88,7 +89,7 @@ class PostController extends Controller
 
     public function showWithCategory($categories, Post $post)
     {
-        $canonicalUrl = $this->getCanonicalUrl($post);
+        $canonicalUrl = $this->getPostCanonicalUrl($post);
         // Redirect nếu URL không phải là URL chính
         if (request()->url() !== $canonicalUrl) {
             return redirect($canonicalUrl, 301);
@@ -107,7 +108,7 @@ class PostController extends Controller
         }
     }
     public function showWithoutCategory(Post $post){
-        $canonicalUrl = $this->getCanonicalUrl($post);
+        $canonicalUrl = $this->getPostCanonicalUrl($post);
         // Redirect nếu URL không phải là URL chính
         if (request()->url() !== $canonicalUrl) {
             return redirect($canonicalUrl, 301);
@@ -124,19 +125,19 @@ class PostController extends Controller
             ]);
         }
     }
-    private function getCanonicalUrl(Post $post)
+    private function getPostCanonicalUrl(Post $post)
     {
          // Lấy slug danh mục
-    $categorySlugs = $post->getCategorySlugs();
+        $categorySlugs = $post->getCategorySlugs();
 
-    // Kiểm tra nếu danh mục rỗng
-    if (empty($categorySlugs)) {
-        // Trường hợp bài viết không có danh mục
-        return route('posts.withoutCategory.show', [$post->slug]);
-    }
+        // Kiểm tra nếu danh mục rỗng
+        if (empty($categorySlugs)) {
+            // Trường hợp bài viết không có danh mục
+            return route('posts.withoutCategory.show', [$post->slug]);
+        }
 
-    // Trả về URL chính duy nhất cho bài viết với danh mục
-    return route('posts.withCategory.show', [$categorySlugs, $post->slug]);
+        // Trả về URL chính duy nhất cho bài viết với danh mục
+        return route('posts.withCategory.show', [$categorySlugs, $post->slug]);
     }
     private function getCanonicaUrlPostByCat( $categories){
         // Split categories
