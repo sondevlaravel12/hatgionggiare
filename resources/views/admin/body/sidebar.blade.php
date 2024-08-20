@@ -45,6 +45,7 @@
                         <li><a href="#">Đơn hàng form chat</a></li>
                     </ul>
                 </li>
+                @role('superadmin', 'admin')
                 <li>
                     <a href="#" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
@@ -147,6 +148,7 @@
                         <li><a href="#">Add New Slider</a></li>
                     </ul>
                 </li>
+                @endrole
 
                 @haspermission('can-view-themes','admin')
                 <li>

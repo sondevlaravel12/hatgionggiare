@@ -129,15 +129,8 @@
                     $rows += `<tr>
                                         <td class="col-md-2"><img class="img-fluid img-responsive" src="${cartItem.options.image}" alt="imga" ></td>
                                         <td class="col-md-2">
-                                            <div class="product-name"><a href="/san-pham/`+ cartItem.id +`">${cartItem.name }</a></div>
-                                            <div class="rating">
-                                                <i class="fa fa-star rate"></i>
-                                                <i class="fa fa-star rate"></i>
-                                                <i class="fa fa-star rate"></i>
-                                                <i class="fa fa-star rate"></i>
-                                                <i class="fa fa-star non-rate"></i>
-                                                <span class="review">( 06 Reviews )</span>
-                                            </div>
+                                            <div class="product-name "><a href="/san-pham/redirect/id/`+ cartItem.id +`">${cartItem.name }</a></div>
+
                                             <div class="price">
                                                 ${FORMATTER.format(cartItem.price)}
                                             </div>

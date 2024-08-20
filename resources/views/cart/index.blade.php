@@ -3,16 +3,16 @@
 @isset($title)
 {{ $title }}
 @endisset
-@endsection
+{{-- @endsection
 @section('breadcrumb')
 {{ Breadcrumbs::view('breadcrumbs::json-ld', 'cart') }}
-@endsection
+@endsection --}}
 @section('content')
-    <div class="breadcrumb">
+    {{-- <div class="breadcrumb">
         <div class="container">
             {{ Breadcrumbs::render('cart') }}
         </div>
-    </div>
+    </div> --}}
 
     <div class="body-content">
         <div class="container">
