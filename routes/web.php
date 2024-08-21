@@ -252,10 +252,7 @@ Route::get('san-pham/{category:slug}/{product:slug}', [ProductController::class,
 Route::get('san-pham/{product:slug}', [ProductController::class,'showWithoutCategory'])
 ->name('products.show')
 ->where('product', '[a-zA-Z0-9-]+');
-// for product can get id like cart js
-Route::get('san-pham/redirect/id/{id}', [ProductController::class, 'redirectById'])
-    ->name('products.redirectById')
-    ->where('id', '[0-9]+');
+
 
 Route::get('san-pham-danh-muc/{category:slug}', [CategoryController::class,'show'])->name('products.category.index');
 

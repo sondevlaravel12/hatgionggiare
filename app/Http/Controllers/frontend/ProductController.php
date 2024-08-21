@@ -126,16 +126,5 @@ class ProductController extends Controller
 
         return response()->json($result);
     }
-    public function redirectById($id)
-    {
-        // Tìm sản phẩm bằng ID
-        $product = Product::findOrFail($id);
-
-        // Tạo URL từ slug
-        $url = route('products.show', ['product' => $product->slug]);
-
-        // Thực hiện chuyển hướng 301
-        return redirect($url, 301);
-    }
 
 }

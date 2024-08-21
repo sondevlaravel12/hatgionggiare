@@ -56,7 +56,7 @@ class WishlistController extends Controller
         $wishlist = Wishlist::where('user_id',Auth::id())->where('id',$wishlistId)->first();
         if($product = $wishlist->product){
             $quantity = 1;
-            Cart::add($product, $quantity,['image'=>$product->getFirstImageUrl('medium')]);
+            Cart::add($product, $quantity,['image'=>$product->getFirstImageUrl('medium'),'slug'=>$product->slug]);
             $wishlist->delete();
             return response()->json(['success'=>'di chuyển sản phẩm vào giỏ hàng thành công']);
         }

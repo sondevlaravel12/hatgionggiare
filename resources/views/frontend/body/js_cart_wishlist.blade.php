@@ -56,10 +56,10 @@
                 $miniCart += `<div class="cart-item product-summary">
                     <div class="row">
                     <div class="col-xs-4">
-                        <div class="image"> <a href="/san-pham/`+ cartItem.id +`"><img src="${cartItem.options.image}" alt=""></a> </div>
+                        <div class="image"> <a href="/san-pham/`+ cartItem.options.slug +`"><img src="${cartItem.options.image}" alt=""></a> </div>
                     </div>
                     <div class="col-xs-7">
-                        <h3 class="name"><a href="/san-pham/`+ cartItem.id +`">${cartItem.name}</a></h3>
+                        <h3 class="name"><a href="/san-pham/`+ cartItem.options.slug +`">${cartItem.name}</a></h3>
                         <div class="price">${FORMATTER.format(cartItem.price)} x ${cartItem.qty}</div>
                     </div>
                     <div class="col-xs-1 action">
@@ -127,9 +127,9 @@
                 var $rows = "";
                 $.each(response.contents, function(key, cartItem){
                     $rows += `<tr>
-                                        <td class="col-md-2"><img class="img-fluid img-responsive" src="${cartItem.options.image}" alt="imga" ></td>
+                                        <td class="col-md-2"><a  href="/san-pham/`+ cartItem.options.slug +`"><img class="img-fluid img-responsive" src="${cartItem.options.image}" alt="imga" ></a></td>
                                         <td class="col-md-2">
-                                            <div class="product-name "><a href="/san-pham/redirect/id/`+ cartItem.id +`">${cartItem.name }</a></div>
+                                            <div class="product-name "><a href="/san-pham/`+ cartItem.options.slug +`">${cartItem.name }</a></div>
 
                                             <div class="price">
                                                 ${FORMATTER.format(cartItem.price)}
@@ -359,7 +359,7 @@
                     $rows += `<tr>
                                         <td class="col-md-2"><img src="${response.images[key]}" alt="imga" ></td>
                                         <td class="col-md-7">
-                                            <div class="product-name"><a href="#">${$product.name }</a></div>
+                                            <div class="product-name"><a href="/san-pham/`+ wishlistItem.product.slug +`">${$product.name }</a></div>
                                             <div class="rating">
                                                 <i class="fa fa-star rate"></i>
                                                 <i class="fa fa-star rate"></i>

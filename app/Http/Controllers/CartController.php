@@ -12,7 +12,7 @@ class CartController extends Controller
 
         $product = Product::findOrFail($request->product_id);
         $quantity = $request->quantity;
-        Cart::add($product, $quantity,['image'=>$product->getFirstImageUrl('medium')]);
+        Cart::add($product, $quantity,['image'=>$product->getFirstImageUrl('medium'),'slug'=>$product->slug]);
         return response()->json(['success'=>"Thêm sản phẩm vào giỏ hàng thành công"]);
     }
     public function ajaxFillinMiniCart(){
