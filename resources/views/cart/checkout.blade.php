@@ -34,21 +34,8 @@
 
     </style>
 @endsection
-@section('title')
-    @isset($title)
-        {{ $title }}
-    @endisset
-@endsection
-@section('breadcrumb')
-    {{ Breadcrumbs::view('breadcrumbs::json-ld', 'checkout') }}
-@endsection
-@section('content')
-    <div class="breadcrumb">
-        <div class="container">
-            {{ Breadcrumbs::render('checkout') }}
 
-        </div><!-- /.container -->
-    </div>
+@section('content')
 
     <div class="body-content">
         <div class="container order-summery">

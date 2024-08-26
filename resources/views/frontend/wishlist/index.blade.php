@@ -20,8 +20,9 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        @if ($wishlistItems->count()<1)
-                                        <th colspan="4" class="heading-title">Không có sản phẩm yêu thích | hoặc bạn chưa đăng nhập</th>
+                                        @if (count($wishlistItems)<1)
+                                        {{-- <th colspan="4" class="heading-title">Không có sản phẩm yêu thích | hoặc bạn chưa đăng nhập</th> --}}
+                                        <th colspan="4" class="heading-title">Không có sản phẩm yêu thích</th>
                                         @else
                                         <th colspan="4" class="heading-title">Danh sách yêu thích</th>
                                         @endif
@@ -31,12 +32,12 @@
 
                                     {{-- @foreach ($wishlistItems as $wishlistItem)
                                     @php
-                                        $product = $wishlistItem->product;
+                                        $product = $wishlistItem->model;
                                     @endphp
                                     <tr>
                                         <td class="col-md-2"><img src="{{ $product->getFirstImageUrl() }}" alt="imga"></td>
                                         <td class="col-md-7">
-                                            <div class="product-name"><a href="#">{{ $product->name }}</a></div>
+                                            <div class="product-name"><a href="{{ route('products.show', $product) }}">{{ $wishlistItem->name }}</a></div>
                                             <div class="rating">
                                                 <i class="fa fa-star rate"></i>
                                                 <i class="fa fa-star rate"></i>
@@ -57,10 +58,10 @@
                                             </div>
                                         </td>
                                         <td class="col-md-2">
-                                            <a href="#" class="btn-upper btn btn-primary">Chuyển vào giỏ hàng</a>
+                                            <button id="{{$wishlistItem->rowId }}" onclick="moveToCart(this.id)" class="btn-upper btn btn-primary">Chuyển vào giỏ hàng</a>
                                         </td>
                                         <td class="col-md-1 close-btn">
-                                            <button id="{{ $wishlistItem->id }}" onclick="moveToCart(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                            <button id="{{ $wishlistItem->rowId }}" onclick="removeWishlistItem(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
                                         </td>
                                     </tr>
 
@@ -78,3 +79,15 @@
         </div><!-- /.container -->
     </div>
 @endsection
+@section('javascript')
+<script>
+        // sessionStorage.clear();
+        // sessionStorage.clear();
+        // sessionStorage.removeItem('wishlist_identifier');
+        // console.log('hi');
+
+// wishlist();
+
+</script>
+@endsection
+

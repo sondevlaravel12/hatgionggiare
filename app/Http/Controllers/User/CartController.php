@@ -4,16 +4,23 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
+use App\Models\Product;
 use App\Models\Webinfo;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
+    // private $shoppingCart= Cart::instance('default');
     public function index(){
-        return view('cart.index');
+        $contents = Cart::content();
+        // dd($contents);
+    	$quantity = Cart::count();
+    	$subtotal = Cart::subtotal();
+
+        return view('cart.index', compact(['contents','quantity','subtotal']));
     }
     public function checkout(){
         $shipping_fee = Webinfo::first()->shipping_fee;
@@ -38,8 +45,43 @@ class CartController extends Controller
 
     	));
     }
+    public function ajaxAddtoCart(Request $request){
+
+        $product = Product::findOrFail($request->product_id);
+        $quantity = $request->quantity;
+        Cart::add($product, $quantity,['image'=>$product->getFirstImageUrl('medium'),'slug'=>$product->slug]);
+        if (Auth::check()) {
+            // Lưu lại wishlist vào database
+            $this->updateCartDb(Auth::id());
+        }
+        return response()->json(['success'=>"Thêm sản phẩm vào giỏ hàng thành công"]);
+    }
+    public function ajaxFillinMiniCart(){
+        $contents = Cart::content();
+    	$quantity = Cart::count();
+    	$priceTotal = Cart::priceTotal();
+
+    	return response()->json(array(
+    		'contents' => $contents,
+    		'quantity' => $quantity,
+    		'priceTotal' => $priceTotal,
+
+    	));
+    }
+    public function ajaxRemoveMiniCartItem($rowId){
+        Cart::remove($rowId);
+        if (Auth::check()) {
+            // Lưu lại wishlist vào database
+            $this->updateCartDb(Auth::id());
+        }
+    	return response()->json(['success' => 'xóa sản phẩm trong giỏ hàng thành công']);
+    }
     public function removeCartItem($itemId){
         Cart::remove($itemId);
+        if (Auth::check()) {
+            // Lưu lại wishlist vào database
+            $this->updateCartDb(Auth::id());
+        }
         if(Cart::count()==0){
             Session::forget('coupon');
         }
@@ -48,12 +90,20 @@ class CartController extends Controller
     public function increaseQuantity($rowId){
         $cartItem = Cart::get($rowId);
         $updated = Cart::update($rowId, $cartItem->qty+1 );
+        if (Auth::check()) {
+            // Lưu lại wishlist vào database
+            $this->updateCartDb(Auth::id());
+        }
         return response()->json(['increasement'=>'']);
     }
 
     public function decreaseQuantity($rowId){
         $cartItem = Cart::get($rowId);
         $updated = Cart::update($rowId, $cartItem->qty-1);
+        if (Auth::check()) {
+            // Lưu lại wishlist vào database
+            $this->updateCartDb(Auth::id());
+        }
         return response()->json(['decreasement'=>'']);
     }
     public function calculateTotal(){
@@ -104,5 +154,41 @@ class CartController extends Controller
         Session::forget('coupon');
         Cart::setGlobalDiscount(0);
         return response()->json(['success'=>'Đã xóa mã giảm giá']);
+    }
+    private function updateCartDb($identifier){
+        Cart::instance('default')->erase($identifier);
+        Cart::instance('default')->store($identifier);
+    }
+    public function synceCartFromSessionToUser($userId)
+    {
+        // Lấy dữ liệu cart từ session
+        $sessionCart = Cart::instance('default')->content();
+
+        // Khôi phục dữ liệu cart từ database
+        Cart::instance('default')->restore($userId);
+        $dbCart = Cart::instance('default')->content();
+
+        // Hợp nhất dữ liệu cart từ session và database
+        foreach ($sessionCart as $item) {
+            // Nếu sản phẩm đã tồn tại trong database, cập nhật số lượng
+            if ($dbCart->has($item->rowId)) {
+                // $existingItem = $dbCart->get($item->rowId);
+                // $newQty = $existingItem->qty + $item->qty;
+                // Cart::instance('default')->update($item->rowId, $newQty);
+            } else {
+                // Nếu sản phẩm chưa có, thêm vào database
+                // $product, $quantity,['image'=>$product->getFirstImageUrl('medium'),'slug'=>$product->slug]
+                Cart::instance('default')->add($item->product, $item->quantity, $item->options);
+            }
+        }
+
+        // Xóa nội dung hiện tại trong cơ sở dữ liệu
+        Cart::instance('default')->erase($userId);
+
+        // Lưu lại nội dung wishlist mới hợp nhất vào cơ sở dữ liệu
+        Cart::instance('default')->store($userId);
+
+        // Xóa session wishlist vì giờ đã được lưu trong database
+        // Cart::instance('wishlist')->destroy();
     }
 }

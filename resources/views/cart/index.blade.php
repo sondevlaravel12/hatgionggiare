@@ -30,7 +30,9 @@
                 </div>
                 @endif
                 <div class="shopping-cart">
-                    <div class="shopping-cart-table">
+                    <div id="shopping-cart-bs" class="" ></div>
+
+                    {{-- <div class="shopping-cart-table">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -48,7 +50,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- <div class="col-md-4 col-sm-12 estimate-ship-tax">
 
                     </div><!-- /.estimate-ship-tax --> --}}
@@ -108,6 +110,7 @@
                                         </td>
                                     </tr>
                             </tbody><!-- /tbody -->
+
                         </table><!-- /table -->
                     </div><!-- /.cart-shopping-total -->
                 </div><!-- /.row -->

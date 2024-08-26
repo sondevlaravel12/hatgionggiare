@@ -62,21 +62,10 @@
         }
 </style>
 @endsection
-@section('title')
-@isset($title)
-{{ $title }}
-@endisset
-@endsection
-@section('breadcrumb')
-{{ Breadcrumbs::view('breadcrumbs::json-ld', 'thankyou', $order) }}
-@endsection
-@section('content')
-    <div class="breadcrumb">
-        <div class="container">
-            {{ Breadcrumbs::render('thankyou', $order) }}
 
-        </div><!-- /.container -->
-    </div>
+
+@section('content')
+
 
     <div class="body-content">
         <div class="container">

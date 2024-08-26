@@ -125,6 +125,10 @@
             dataType: "json",
             success: function (response) {
                 var $rows = "";
+                var $newrows ="";
+                var $newrows2 ="";
+                var $newrows3 ="";
+
                 $.each(response.contents, function(key, cartItem){
                     $rows += `<tr>
                                         <td class="col-md-2"><a  href="/san-pham/`+ cartItem.options.slug +`"><img class="img-fluid img-responsive" src="${cartItem.options.image}" alt="imga" ></a></td>
@@ -153,8 +157,39 @@
                                             <button id="${ cartItem.rowId }" onclick="removeCartItem(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
                                         </td>
                                     </tr>`
+
+                    $newrows3 +=`<div class="row" style="padding-bottom:10px ">
+                        <div class="col-md-2 col-xs-12 "><a  href="/san-pham/`+ cartItem.options.slug +`"><img class="img-fluid img-responsive" src="${cartItem.options.image}" alt="imga" ></a></div>
+                        <div class="col-md-6 col-xs-12 text-center" style="padding-top:25px " >
+                            <div class="product-name "><a href="/san-pham/`+ cartItem.options.slug +`">${cartItem.name }</a></div>
+                            <div class=" price">
+                                ${FORMATTER.format(cartItem.price)}
+                            </div>
+                            <div class="">
+                                ${cartItem.qty >1
+                                ?
+                                `<button type="submit" id="${cartItem.rowId}" class="btn btn-danger btn-sm" onclick="decreaseQuantity(this.id)">-</button>`
+                                :
+                                `<button type="submit" id="${cartItem.rowId}" class="btn btn-danger btn-sm" disabled>-</button>`
+                                }
+
+                                <input type="text" value="${cartItem.qty}" min="1" max="100" disabled="" style="width:25px;" >
+                                <button type="submit" id="${cartItem.rowId}" class="btn btn-success btn-sm" onclick="increaseQuantity(this.id)">+</button>
+                            </div>
+                            <div class="" >
+                                <strong>${FORMATTER.format(cartItem.qty*cartItem.price)} </strong>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4 col-xs-12 text-center" style="padding-top:30px">
+                            <button id="${ cartItem.rowId }" onclick="removeCartItem(this.id)" class="btn "><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>`
+
                 })
-                $('#cartTableBody').html($rows);
+                // $('#cartTableBody').html($rows);
+                $('#shopping-cart-bs').html($newrows3);
             }
         });
     }
@@ -348,8 +383,9 @@
             dataType: "json",
             success: function (response) {
                 var $rows = "";
+                var $rows2 = "";
                 $.each(response.wishlistItems, function(key, wishlistItem){
-                    var $product = wishlistItem.product;
+                    var $product = response.products[key];
                     var $price ='';
                     if($product.discount_price){
                         $price = $product.discount_price + '<span>' + $product.base_price + '</span>';
@@ -359,7 +395,7 @@
                     $rows += `<tr>
                                         <td class="col-md-2"><img src="${response.images[key]}" alt="imga" ></td>
                                         <td class="col-md-7">
-                                            <div class="product-name"><a href="/san-pham/`+ wishlistItem.product.slug +`">${$product.name }</a></div>
+                                            <div class="product-name"><a href="/san-pham/`+ $product.slug +`">${$product.name }</a></div>
                                             <div class="rating">
                                                 <i class="fa fa-star rate"></i>
                                                 <i class="fa fa-star rate"></i>
@@ -373,14 +409,35 @@
                                             </div>
                                         </td>
                                         <td class="col-md-2">
-                                            <button id="${wishlistItem.id }" onclick="moveToCart(this.id)" class="btn-upper btn btn-primary">Chuyển vào giỏ hàng</button>
+                                            <button id="${wishlistItem.rowId }" onclick="moveToCart(this.id)" class="btn-upper btn btn-primary">Chuyển vào giỏ hàng</button>
                                         </td>
                                         <td class="col-md-1 close-btn">
-                                            <button id="${wishlistItem.id }" onclick="removeWishlistItem(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                            <button id="${wishlistItem.rowId }" onclick="removeWishlistItem(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
                                         </td>
                                     </tr>`
+                    $rows2 +=`<div class="row" style="padding-bottom:10px ">
+                                <div class="col-md-2 col-xs-12 "><img src="${response.images[key]}" alt="imga" ></div>
+                                <div class="col-md-6 col-xs-12 text-center" style="padding-top:25px ">
+                                    <div class="product-name"><a href="/san-pham/`+ $product.slug +`">${$product.name }</a></div>
+                                    <div class="rating">
+                                        <i class="fa fa-star rate"></i>
+                                        <i class="fa fa-star rate"></i>
+                                        <i class="fa fa-star rate"></i>
+                                        <i class="fa fa-star rate"></i>
+                                        <i class="fa fa-star non-rate"></i>
+                                        <span class="review">( 06 Reviews )</span>
+                                    </div>
+                                    <div class="price">
+                                        ${$price}
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12 text-center" style="padding-top:30px ">
+                                    <button id="${wishlistItem.rowId }" onclick="moveToCart(this.id)" class="btn-upper btn btn-primary">Chuyển vào giỏ hàng</button>
+                                    <button id="${wishlistItem.rowId }" onclick="removeWishlistItem(this.id)" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>`
                 })
-                $('#wishlistTableBody').html($rows);
+                $('#wishlistTableBody').html($rows2);
             }
         });
     }

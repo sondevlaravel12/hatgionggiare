@@ -296,9 +296,9 @@ Route::get('tag/{tag}/bai-viet', [TagController::class,'postsByTag'])->name('tag
 
 
 // cart controller
-Route::post('gio-hang/them-vao-gio-hang', [CartController::class,'ajaxAddtoCart'])->name('cart.store');
-Route::get('mini-gio-hang/fill-in', [CartController::class,'ajaxFillinMiniCart'])->name('minicart.fill');
-Route::get('mini-gio-hang/item/remove/{rowId}', [CartController::class,'ajaxRemoveMiniCartItem'])->name('minicart.item.remove');
+Route::post('gio-hang/them-vao-gio-hang', [UserCartController::class,'ajaxAddtoCart'])->name('cart.store');
+Route::get('mini-gio-hang/fill-in', [UserCartController::class,'ajaxFillinMiniCart'])->name('minicart.fill');
+Route::get('mini-gio-hang/item/remove/{rowId}', [UserCartController::class,'ajaxRemoveMiniCartItem'])->name('minicart.item.remove');
 Route::get('gio-hang', [UserCartController::class, 'index'])->name('cart.index');
 
 // checkout process
