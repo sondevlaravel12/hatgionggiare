@@ -21,8 +21,11 @@
         <!-- DataTables -->
         <link href="{{asset('backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 
+        {{-- like qlshop.net  included Responsive datatable--}}
+        {{-- <link href="https://cdn.datatables.net/v/bs/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/r-3.0.2/sl-2.0.3/datatables.min.css" rel="stylesheet"> --}}
+
         <!-- Responsive datatable examples -->
-        {{-- <link href="{{asset('backend/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" /> --}}
+        <link href="{{asset('backend/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- Taginput -->
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" >
         <!-- Bootstrap Css -->
@@ -94,7 +97,6 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-
         <script src="{{asset('backend/assets/libs/jquery/jquery.min.js?3.6.')}}"></script>
         <script src="{{asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('backend/assets/libs/metismenu/metisMenu.min.js')}}"></script>
@@ -121,9 +123,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <!-- Datatable modify sorting with non english language : not work-->
         <script src="//cdn.datatables.net/plug-ins/1.12.1/sorting/intl.js"></script>
-        {{-- <script src="{{asset('backend/assets/js/pages/datatable_sorting_intl.js')}}"></script> --}}
+        <!-- Responsive examples -->
+        <script src="{{asset('backend/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+        <script src="{{asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
+
+        {{-- like qlshop.net included Responsive datatable--}}
+        {{-- <script src="https://cdn.datatables.net/v/bs/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/r-3.0.2/sl-2.0.3/datatables.min.js"></script> --}}
         <!-- Datatable init js -->
         <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script>
+
+
         {{-- <script src="{{asset('backend/assets/js/pages/datatables_default_setting.js')}}"></script> --}}
 
 

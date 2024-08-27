@@ -18,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::latest()->get();
         $arrayStatus = Order::getArrayStatus();
         return view('admin.order.from_cart.index', compact('orders','arrayStatus'));
     }
@@ -91,9 +91,28 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function ajaxUpdateOrderStatus(Request $request)
     {
-        //
+        $status = $request->orderStatus;
+        $orderId = $request->orderId;
+        $order = Order::find( $orderId);
+        if($order){
+            $order->status =$status;
+            $order->save();
+            return response()->json(['success'=>'cap nhat trang thai don hang thanh cong']);
+        }
+    }
+    public function ajaxUpdateOrderInfors(Request $request){
+        $status = $request->orderStatus;
+        $orderId = $request->orderId;
+        $adminNotes = $request->adminNotes;
+        $order = Order::find( $orderId);
+        if($order){
+            $order->status =$status;
+            $order->admin_notes = $adminNotes;
+            $order->save();
+            return response()->json(['success'=>'cap nhat don hang thanh cong']);
+        }
     }
 
     /**

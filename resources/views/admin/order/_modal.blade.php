@@ -66,6 +66,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light waves-effect " data-bs-dismiss="modal">Đóng</button>
+                <button id="btn-update-order-infors" type="button" class="btn btn-primary waves-effect waves-light ">Lưu</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -81,14 +82,14 @@
             <div class="modal-body">
                 {{-- <input type="hidden" class="tag-id-in-modal"> --}}
                 <select class="form-select" aria-label="Default select example" name="status">
-                    @foreach ($arrayStatus as $status=>$vnstatus)
+                    {{-- @foreach ($arrayStatus as $status=>$vnstatus)
                     <option value="{{$status}}" {{old('status',$order->status)==$status? 'selected':''}}>{{$vnstatus}}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light waves-effect " data-bs-dismiss="modal">Đóng</button>
-                <button id="btn-save-addnew-tag" type="button" class="btn btn-primary waves-effect waves-light ">Lưu</button>
+                <button id="btn-update-order-status" type="button" class="btn btn-primary waves-effect waves-light ">Lưu</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

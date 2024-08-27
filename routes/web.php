@@ -91,6 +91,8 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
         Route::get('/order/fromcarts/{order}/edit', 'edit')->name('admin.order.fromcarts.edit');
         Route::post('/order/fromcarts/{order}/update', 'update')->name('admin.order.fromcarts.update');
         Route::get('/order/fromcarts/ajax-get-order-info', 'getOrderInfo')->name('admin.order.fromcarts.getOrderInfo');
+        Route::get('/order/fromcarts/ajax-update-order-status', 'ajaxUpdateOrderStatus')->name('admin.order.fromcarts.ajaxUpdateOrderStatus');
+        Route::get('/order/fromcarts/ajax-update-order-infors', 'ajaxUpdateOrderInfors')->name('admin.order.fromcarts.ajaxUpdateOrderInfors');
 
 
     });

@@ -16,20 +16,20 @@
 
                 <h4 class="card-title">Danh sách đơn hàng</h4>
 
-                <table id="datatable-default" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-style1" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                     <tr>
 
 
-                        <th>ID</th>
+                        {{-- <th>ID</th> --}}
                         <th>Khách Hàng</th>
                         <th>SDT</th>
                         <th>Tổng Tiền</th>
                         <th>Tình Trạng</th>
-                        <th>Xem</th>
+                        <th>Chi tiết</th>
+                        <th>Admin Ghi Chú</th>
                         <th>Thời Gian Đặt Hàng</th>
                         <th>Thời Gian Cập Nhật</th>
-                        <th>Admin Ghi Chú</th>
 
 
 
@@ -49,23 +49,22 @@
                         @foreach ($orders as $order)
 
                         <tr>
-                            <td >{{$order->id}}</td>
+                            {{-- <td >{{$order->id}}</td> --}}
                             <td>{{$order->client_name}}</td>
                             <td>{{$order->phone_number}}</td>
                             <td>{{$order->total}}</td>
                             <td>
                                 <span class="badge bg-{{$statusStype[$order->status]}}">{{$arrayStatus[$order->status]}}</span>
-                                <input type="hidden" class="order-id" value="{{ $order->id }}">
+                                <input type="hidden" id="{{ $order->id }}" class="order-id" value="{{ $order->id }}">
                                 <button type="button" class="btn btn-sm btn-link js-edit-order"><i class="fas fa-edit"></i></button>
                             </td>
-
                             <td>
                                 <input type="hidden" class="order-id" value="{{ $order->id }}">
                                 <button type="button" class="btn btn-sm btn-link js-show-order"><i class="fas fa-eye"></i> Xem</button>
                             </td>
+                            <td>{{$order->admin_notes}}</td>
                             <td>{{$order->created_at ? \Carbon\Carbon::parse($order->created_at)->diffForHumans() : ''}}</td>
                             <td>{{$order->updated_at ? \Carbon\Carbon::parse($order->updated_at)->diffForHumans() : ''}}</td>
-                            <td>{{$order->admin_notes}}</td>
                         </tr>
                         @endforeach
 

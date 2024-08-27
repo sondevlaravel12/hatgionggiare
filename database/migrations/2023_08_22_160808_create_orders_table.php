@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('phone_number');
             $table->text('notes')->nullable();
+            $table->text('admin_notes')->nullable();
             $table->string('email')->nullable();
             $table->integer('discount')->unsigned()->nullable();
 
