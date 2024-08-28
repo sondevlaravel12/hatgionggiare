@@ -22,6 +22,7 @@ class CategoryController extends Controller
     }
     public function show(Category $category){
         if($category->products->count()>0){
+            $this->setupSeoWithModel($category);
             $products = $category->products->toQuery()->paginate(12);
             return view('frontend.category.detail')->with([
                 'products'=>$products,

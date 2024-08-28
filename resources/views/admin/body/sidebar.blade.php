@@ -42,7 +42,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.order.fromcarts.index') }}">Đơn hàng giỏ hàng</a></li>
-                        <li><a href="#">Đơn hàng form chat</a></li>
+                        {{-- <li><a href="#">Đơn hàng form chat</a></li> --}}
                     </ul>
                 </li>
                 @role('superadmin', 'admin')
