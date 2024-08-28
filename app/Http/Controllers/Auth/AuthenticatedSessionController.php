@@ -45,8 +45,11 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+        // $request->session()->invalidate();
+         // Xóa session chỉ cho guard 'web'
+         $request->session()->remove('web');
 
+         // Tạo lại token CSRF
         $request->session()->regenerateToken();
 
         return redirect('/');

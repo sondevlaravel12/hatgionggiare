@@ -220,7 +220,7 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
 
 /* --------------------- Backend route  --------------------------- */
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['adminmiddleware']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
