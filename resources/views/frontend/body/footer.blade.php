@@ -110,10 +110,10 @@
 
             <div class="module-body">
               <ul class='list-unstyled'>
-                <li class="first"><a href="#" title="About us">Điều khoản mua hàng và thanh toán</a></li>
-                <li><a href="#" title="Blog">Chính sách đổi trả</a></li>
-                <li><a href="#" title="Investor Relations">Câu hỏi thường gặp</a></li>
-                <li><a href="#" title="Company">Liên hệ</a></li>
+                <li class="first"><a href="{{ route('purchasingPolicy') }}" title="About us">Điều khoản mua hàng và thanh toán</a></li>
+                <li><a href="{{ route('returnPolicy') }}" title="Blog">Chính sách đổi trả</a></li>
+                <li><a href="https://hatgionggiare.net/bai-viet/chinh-sach-va-dieu-khoan-mua-hang/cau-hoi-thuong-gap-faq" title="Investor Relations">Câu hỏi thường gặp</a></li>
+                <li><a href="{{ route('contact') }}" title="Company">Liên hệ</a></li>
               </ul>
             </div>
             <!-- /.module-body -->
