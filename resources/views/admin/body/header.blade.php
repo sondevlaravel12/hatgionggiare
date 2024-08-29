@@ -3,24 +3,24 @@
         <div class="d-flex">
             <!-- LOGO -->
             @php
-                $logo = asset('logo_softviet.jpg')
+                $logo = asset('logo_hatgionggiare.png')
             @endphp
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{$logo}}" alt="logo-sm" height="22">
+                        <img src="{{$logo}}" alt="logo-sm" height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{$logo}}" alt="logo-dark" height="20">
+                        <img src="{{$logo}}" alt="logo-dark" height="40">
                     </span>
                 </a>
 
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{$logo}}" alt="logo-sm-light" height="22">
+                        <img src="{{$logo}}" alt="logo-sm-light" height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{$logo}}" alt="logo-light" height="20">
+                        <img src="{{$logo}}" alt="logo-light" height="50">
                     </span>
                 </a>
             </div>
@@ -50,7 +50,7 @@
             <div class="dropdown d-inline-block user-dropdown">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{asset('backend/assets/images/users/avatar-1.jpg')}}"
+                    <img class="rounded-circle header-profile-user" src="{{asset('backend/assets/images/users/avatar-8.jpg')}}"
                         alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ms-1">{{Auth::guard('admin')->check()?Auth::guard('admin')->user()->name:''}}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>

@@ -43,7 +43,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
             <!-- ============================================================= LOGO ============================================================= -->
-            <div class="logo"> <a href="{{ route('home') }}"> <img style="width:40px;" src="{{ asset('logo_softviet.jpg')}}" alt="logo"> <span style="color:white; font-size:18px;">&nbsp;Hạt Giống Giá Rẻ</span></a> </div>
+            <div class="logo"> <a href="{{ route('home') }}"> <img style="width:70px;" src="{{ asset('logo_hatgionggiare.png')}}" alt="logo"> <span style="color:white; font-size:14px;"></span></a> </div>
             <!-- /.logo -->
             <!-- ============================================================= LOGO : END ============================================================= --> </div>
           <!-- /.logo-holder -->
