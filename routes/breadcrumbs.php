@@ -101,9 +101,9 @@ Breadcrumbs::for('posts.withCategory.show', function (BreadcrumbTrail $trail, $c
         if ($category) {
             if ($index == count($categorySlugs) - 1) {
                 // Last category does not link
-                $trail->push(ucfirst($category->slug), route('pcategories.show', $categories));
+                $trail->push(ucfirst($category->name), route('pcategories.show', $categories));
             } else {
-                $trail->push(ucfirst($category->slug), route('pcategories.show', $slug));
+                $trail->push(ucfirst($category->name), route('pcategories.show', $slug));
             }
         }
     }
@@ -145,9 +145,9 @@ Breadcrumbs::for('pcategories.show', function (BreadcrumbTrail $trail, $categori
         if ($category) {
             if ($index == count($categorySlugs) - 1) {
                 // Last category does not link
-                $trail->push(ucfirst($category->slug));
+                $trail->push(ucfirst($category->name));
             } else {
-                $trail->push(ucfirst($category->slug), route('pcategories.show', implode('/', array_slice($categorySlugs, 0, $index + 1))));
+                $trail->push(ucfirst($category->name), route('pcategories.show', implode('/', array_slice($categorySlugs, 0, $index + 1))));
             }
         }
     }

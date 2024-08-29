@@ -20,7 +20,7 @@
 
                 <div class="blog-post inner-bottom-30 " >
                     <img class="img-responsive" src="assets/images/blog-post/blog_big_01.jpg" alt="">
-                    <h4><a href="blog-details.html">{{ $populerPost->title }}</a></h4>
+                    <h4><a href="{{ route('posts.withoutCategory.show', $populerPost) }}">{{ $populerPost->title }}</a></h4>
                         <span class="review">6 Comments</span>
                     <span class="date-time">{{ $populerPost->created_at ? \Carbon\Carbon::parse($populerPost->created_at)->diffForHumans() : '' }}</span>
                     <p>{{ $populerPost->excerpt?$populerPost->excerpt:'' }}</p>
@@ -36,7 +36,7 @@
 
                 <div class="blog-post inner-bottom-30" >
                     <img class="img-responsive" src="assets/images/blog-post/blog_big_03.jpg" alt="">
-                    <h4><a href="blog-details.html">{{ $recentPost->title }}</a></h4>
+                    <h4><a href="{{ route('posts.withoutCategory.show', $populerPost) }}">{{ $recentPost->title }}</a></h4>
                     <span class="review">6 Comments</span>
                     <span class="date-time">{{ $recentPost->created_at ? \Carbon\Carbon::parse($recentPost->created_at)->diffForHumans() : '' }}</span>
                     <p>{{ $recentPost->excerpt?$recentPost->excerpt:'' }}</p>
