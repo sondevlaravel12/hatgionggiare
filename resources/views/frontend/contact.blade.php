@@ -5,7 +5,10 @@
             <div class="row">
 
                 <div class="col-md-12 contact-map outer-bottom-vs">
-                    {!! $contact->map !!}
+                    {{-- {!! $contact->map !!} --}}
+                    <a href="https://www.google.com/maps/place/11%C2%B032'20.2%22N+107%C2%B046'34.2%22E/@11.5384457,107.7742642,16.75z/data=!4m13!1m8!3m7!1s0x3173f66e05f5cf77:0xb5b73f9bbe8af84e!2zMTA3IMSQxrDhu51uZyBQaGFuIENodSBUcmluaCwgTOG7mWMgVGnhur9uLCBC4bqjbyBM4buZYywgTMOibSDEkOG7k25nLCBWaeG7h3QgTmFt!3b1!8m2!3d11.5389404!4d107.7761842!16s%2Fg%2F11thsmcjsr!3m3!8m2!3d11.5389444!4d107.7761667?entry=ttu&g_ep=EgoyMDI0MDgyNy4wIKXMDSoASAFQAw%3D%3D">
+                        <img style="max-width: 1000px; margin:auto" class="img-responsive" src="{{ asset('hggr_map.png') }}" alt="">
+                    </a>
                 </div>
                 <div class="col-md-9 contact-form">
                     <div class="col-md-12 contact-title">
