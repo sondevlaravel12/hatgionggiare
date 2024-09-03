@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('admin.admin_master')
 
 @section('content')
 <div class="row">
@@ -26,7 +26,7 @@
                         <th>SDT</th>
 
                         <th>Tình Trạng</th>
-                        <th>Chỉnh Sửa</th>
+                        <th>Chi Tiết</th>
                         <th>Thời Gian Đặt Hàng</th>
                         <th>Thời Gian Cập Nhật</th>
                         <th>Admin Ghi Chú</th>
@@ -56,8 +56,8 @@
 
                             <td><span class="badge bg-{{$statusStype[$order->status]}}">{{$arrayStatus[$order->status]}}</span></td>
                             <td>
-                                <a href="{{route('admin.order.fromchats.detail', $order)}}" class="btn btn-sm btn-link"><i class="fas fa-eye"></i> Xem</a>
-                                <a href="{{route('admin.order.fromchats.edit',  $order)}}" class="btn btn-sm btn-link"><i class="far fa-edit"></i> Sửa</a>
+                                {{-- <a href="{{route('admin.order.fromchats.detail', $order)}}" class="btn btn-sm btn-link"><i class="fas fa-eye"></i> Xem</a> --}}
+                                {{-- <a href="{{route('admin.order.fromchats.edit',  $order)}}" class="btn btn-sm btn-link"><i class="far fa-edit"></i> Sửa</a> --}}
                             </td>
                             <td>{{$order->created_at ? \Carbon\Carbon::parse($order->created_at)->diffForHumans() : ''}}</td>
                             <td>{{$order->updated_at ? \Carbon\Carbon::parse($order->updated_at)->diffForHumans() : ''}}</td>
@@ -75,14 +75,6 @@
 @endsection
 @push('scripts')
 
-<script>
 
-$(document).ready( function () {
-    $('#datatable').DataTable({
-
-        });
-} );
-
-</script>
 @endpush
 

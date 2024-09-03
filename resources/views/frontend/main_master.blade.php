@@ -95,6 +95,7 @@
         @yield('content')
     </div>
 </div>
+@include('frontend.contact.contact_button')
 <!-- /#top-banner-and-menu -->
 
 <!-- ============================================================= FOOTER ============================================================= -->
@@ -210,6 +211,9 @@ $(function(){
 {{-- cart & wishlist --}}
 @include('frontend.body.js_cart_wishlist')
 {{-- cart & wishlist end --}}
+
+{{-- khung chat mua hang  --}}
+@include('frontend.order.chat_order')
 
 
 @yield('javascript')

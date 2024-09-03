@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chatorder;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -21,6 +22,12 @@ class OrderController extends Controller
         $orders = Order::latest()->get();
         $arrayStatus = Order::getArrayStatus();
         return view('admin.order.from_cart.index', compact('orders','arrayStatus'));
+    }
+    public function indexChatOrder()
+    {
+        $orders = Chatorder::latest()->get();
+        $arrayStatus = Chatorder::getArrayStatus();
+        return view('admin.order.from_chat.index', compact('orders','arrayStatus'));
     }
     public function getOrderInfo(Request $request){
         $order = Order::find($request->id);

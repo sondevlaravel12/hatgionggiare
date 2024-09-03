@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\ProductController as BackendProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\TagController as BackendTagController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChatorderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\frontend\AboutController;
 use App\Http\Controllers\frontend\CategoryController;
@@ -93,6 +94,13 @@ Route::prefix('admin')->middleware('adminmiddleware')->group(function(){
         Route::get('/order/fromcarts/ajax-get-order-info', 'getOrderInfo')->name('admin.order.fromcarts.getOrderInfo');
         Route::get('/order/fromcarts/ajax-update-order-status', 'ajaxUpdateOrderStatus')->name('admin.order.fromcarts.ajaxUpdateOrderStatus');
         Route::get('/order/fromcarts/ajax-update-order-infors', 'ajaxUpdateOrderInfors')->name('admin.order.fromcarts.ajaxUpdateOrderInfors');
+
+        Route::get('/order/fromchats', 'indexChatOrder')->name('admin.order.fromchats.index');
+        Route::get('/order-fromcarts/{order}', 'showChatOrder')->name('admin.order.fromchats.detail');
+        Route::get('/order/fromchats/{order}/edit', 'editChatOrder')->name('admin.order.fromchats.edit');
+
+
+
 
 
     });
@@ -308,6 +316,8 @@ Route::get('thanh-toan-don-hang', [UserCartController::class, 'checkout'])->name
 Route::post('hoan-thanh-don-hang', [OrderController::class,'store'])->name('order.store');
 Route::get('don-hang-da-hoan-thanh/{order}', [OrderController::class, 'thankyou'])->name('order.thankyou');
 
+// chat order
+Route::post('don-hang-form-chat/dat-hang', [ChatorderController::class,'store'])->name('chatorder.store');
 
 
 
