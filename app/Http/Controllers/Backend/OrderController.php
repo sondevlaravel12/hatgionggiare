@@ -30,22 +30,31 @@ class OrderController extends Controller
         return view('admin.order.from_chat.index', compact('orders','arrayStatus'));
     }
     public function getOrderInfo(Request $request){
-        $order = Order::find($request->id);
-        // $orderItems =  $order->items;
-        // use eager load instead of call relationship directelly
-        $orderItems = OrderItem::where('order_id',$order->id)->with('product')->get();
-        if($order){
-            // because can not use diffForHumans in text value if whe want to do this function in view
+        $orderType = $request->orderType;
+        if($orderType=='cart_order'){
+            $order = Order::find($request->id);
+            $orderItems = OrderItem::where('order_id',$order->id)->with('product')->get();
+            if($order){
+                // because can not use diffForHumans in text value if whe want to do this function in view
+                $response = $order->toArray();
+                // do this job here instead of in view
+                $response['created_at']= Carbon::parse($order->created_at)->diffForHumans();
+                $response['updated_at']= Carbon::parse($order->updated_at)->diffForHumans();
+                // add items to response
+                // if($orderItems->count()>0){
+                $response['items']= $orderItems;
+                // }
+                return response()->json($response);
+            }
+        }elseif($orderType=='chat_order'){
+            $order = Chatorder::find($request->id);
             $response = $order->toArray();
-            // do this job here instead of in view
             $response['created_at']= Carbon::parse($order->created_at)->diffForHumans();
             $response['updated_at']= Carbon::parse($order->updated_at)->diffForHumans();
-            // add items to response
-            // if($orderItems->count()>0){
-                $response['items']= $orderItems;
-            // }
             return response()->json($response);
+
         }
+
     }
 
     /**
@@ -102,7 +111,12 @@ class OrderController extends Controller
     {
         $status = $request->orderStatus;
         $orderId = $request->orderId;
-        $order = Order::find( $orderId);
+        $orderType = $request->orderType;
+        if($orderType=='cart_order'){
+            $order = Order::find( $orderId);
+        }elseif($orderType=='chat_order'){
+            $order = Chatorder::find( $orderId);
+        }
         if($order){
             $order->status =$status;
             $order->save();
@@ -112,8 +126,13 @@ class OrderController extends Controller
     public function ajaxUpdateOrderInfors(Request $request){
         $status = $request->orderStatus;
         $orderId = $request->orderId;
+        $orderType = $request->orderType;
         $adminNotes = $request->adminNotes;
-        $order = Order::find( $orderId);
+        if($orderType=='cart_order'){
+            $order = Order::find( $orderId);
+        }elseif($orderType=='chat_order'){
+            $order = Chatorder::find( $orderId);
+        }
         if($order){
             $order->status =$status;
             $order->admin_notes = $adminNotes;

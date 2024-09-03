@@ -56,10 +56,12 @@
                             <td>
                                 <span class="badge bg-{{$statusStype[$order->status]}}">{{$arrayStatus[$order->status]}}</span>
                                 <input type="hidden" id="{{ $order->id }}" class="order-id" value="{{ $order->id }}">
+                                <input type="hidden"  class="order-type" value="cart_order" id="">
                                 <button type="button" class="btn btn-sm btn-link js-edit-order"><i class="fas fa-edit"></i></button>
                             </td>
                             <td>
                                 <input type="hidden" class="order-id" value="{{ $order->id }}">
+                                <input type="hidden"  class="order-type" value="cart_order" id="">
                                 <button type="button" class="btn btn-sm btn-link js-show-order"><i class="fas fa-eye"></i> Xem</button>
                             </td>
                             <td>{{$order->admin_notes}}</td>

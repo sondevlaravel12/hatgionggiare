@@ -4,6 +4,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Đơn hàng: {{ $order->id }} </h5>
+                <input type="hidden"  class="order-type">
+
                 {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
             </div>
             <div class="modal-body">
@@ -19,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card items-ordered">
                     <div class="card-body">
 
                         <h4 class="card-title">Sản phẩm đặt</h4><br/>
@@ -77,6 +79,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Đơn hàng: {{ $order->id }} </h5>
+                <input type="hidden"  class="order-type">
                 {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
             </div>
             <div class="modal-body">

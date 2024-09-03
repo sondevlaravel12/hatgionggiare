@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('admin.order.order_master')
 
 @section('content')
 <div class="row">
@@ -54,10 +54,16 @@
                             <td>{{$order->client_name}}</td>
                             <td>{{$order->phone_number}}</td>
 
-                            <td><span class="badge bg-{{$statusStype[$order->status]}}">{{$arrayStatus[$order->status]}}</span></td>
                             <td>
-                                {{-- <a href="{{route('admin.order.fromchats.detail', $order)}}" class="btn btn-sm btn-link"><i class="fas fa-eye"></i> Xem</a> --}}
-                                {{-- <a href="{{route('admin.order.fromchats.edit',  $order)}}" class="btn btn-sm btn-link"><i class="far fa-edit"></i> Sửa</a> --}}
+                                <span class="badge bg-{{$statusStype[$order->status]}}">{{$arrayStatus[$order->status]}}</span>
+                                <input type="hidden" id="{{ $order->id }}" class="order-id" value="{{ $order->id }}">
+                                <input type="hidden"  class="order-type" value="chat_order" id="">
+                                <button type="button" class="btn btn-sm btn-link js-edit-order"><i class="fas fa-edit"></i></button>
+                            </td>
+                            <td>
+                                <input type="hidden" class="order-id" value="{{ $order->id }}">
+                                <input type="hidden"  class="order-type" value="chat_order" id="">
+                                <button type="button" class="btn btn-sm btn-link js-show-order"><i class="fas fa-eye"></i> Xem</button>
                             </td>
                             <td>{{$order->created_at ? \Carbon\Carbon::parse($order->created_at)->diffForHumans() : ''}}</td>
                             <td>{{$order->updated_at ? \Carbon\Carbon::parse($order->updated_at)->diffForHumans() : ''}}</td>
@@ -71,8 +77,9 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
-
+@include('admin.order._modal')
 @endsection
+
 @push('scripts')
 
 

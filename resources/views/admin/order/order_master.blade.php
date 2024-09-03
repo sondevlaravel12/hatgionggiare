@@ -25,11 +25,13 @@ $('#datatable-style1').DataTable({
     var $modalShowOrder = $('#show-order-modal');
     var $modalShowOrderContent = $modalShowOrder.find('.modal-content');
     var $modalSOCTitle = $modalShowOrderContent.find('.modal-title');
+    var $modalSOCType = $modalShowOrder.find('input.order-type');
     var $modalSOCBody = $modalShowOrderContent.find('.modal-body');
 
     var $modalEditOrder = $('#edit-order-modal');
     var $modalEditOrderContent = $modalEditOrder.find('.modal-content');
     var $modalEditOrderTitle = $modalEditOrderContent.find('.modal-title');
+    var $modalEditOrderType = $modalEditOrderContent.find('input.order-type');
     var $modalEditOrderBody = $modalEditOrderContent.find('.modal-body');
     // var $modalEditClientName = $modalShowOrderContent.find('input.client_name_showordermodal');
     // var $modalTagId = $modalcontent.find('input.tag-id-in-modal');
@@ -43,16 +45,19 @@ $('#datatable-style1').DataTable({
     $table.on('click','.js-show-order', function () {
         // get order id
         $orderId = $(this).siblings('input.order-id').val();
+        $orderType = $(this).siblings('input.order-type').val();
         // call ajax to get all order info and fill in modal with infors just get
-        getOrderinfo($orderId).done(function(data){
+        getOrderinfo($orderId, $orderType).done(function(data){
             // fill modal with order data just get
             $modalSOCTitle.html($orderId);
-            fillinCutomerInformations($('#customer_info'), data);
-            fillinOrderItems($('#order_items'),data.items);
-            // console.log(data);
-            // $modalSOCBody.find('.client_name').html(data['client_name']);
-            // $modalSOClientName.val(data['client_name']);
-
+            $modalSOCType.val($orderType);
+            if($orderType=='cart_order'){
+                fillinOrderItems($('#order_items'),data.items);
+            }else if($orderType=='chat_order'){
+                $modalSOCBody.find('.items-ordered').html('');
+                // $('#order_items').html='';
+            }
+            fillinCutomerInformations($('#customer_info'), data, $orderType );
             // show modal
             $modalShowOrder.modal('show');
 
@@ -62,9 +67,11 @@ $('#datatable-style1').DataTable({
         // -----fill in modal -----//
         // get order id
         $orderId = $(this).siblings('input.order-id').val();
+        $orderType = $(this).siblings('input.order-type').val();
         $orderStatusInTable = $(this).siblings('span').text();
-        // console.log($orderStatusInTable);
+        console.log($orderType);
         $modalEditOrderTitle.html($orderId);
+        $modalEditOrderType.val($orderType);
         $selectTag = $modalEditOrderContent.find("select[name='status']");
         $options = '';
         $status ={
@@ -127,12 +134,12 @@ $('#datatable-style1').DataTable({
 
     // });
 
-    function getOrderinfo(oderId){
+    function getOrderinfo(oderId, orderType){
         // return the ajax promise
         return $.ajax({
             type: "get",
             url: "/admin/order/fromcarts/ajax-get-order-info",
-            data: {id:oderId},
+            data: {id:oderId, orderType:orderType},
             dataType: "json",
         });
     }
@@ -150,7 +157,7 @@ $('#datatable-style1').DataTable({
 
 {{-- other function  --}}
 <script>
-    function fillinCutomerInformations(selector, data){
+    function fillinCutomerInformations(selector, data, type){
         // associative array (object)
         $statusStype = {'pending' :'danger',
             'processing' :'info',
@@ -170,8 +177,98 @@ $('#datatable-style1').DataTable({
             $selected = key==data['status']?'selected':'';
             $orderStatus+= '<option value="'+ key +'" ' +$selected+ '>'+ val +'</option>';
         });
-        // console.log($orderStatus);
-        selector.html(`<tr>
+        $customerInforFormChatOrder =`<tr>
+                    <tr>
+                        <td>
+                            <strong>Khách hàng:</strong>
+                        </td>
+                        <td>
+                            <span class="client_name">
+                                `+ data['client_name'] +`
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>SDT:</strong>
+                        </td>
+                        <td>
+                            <span class="phone_number">
+                                `+ data['phone_number'] +`
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Địa chỉ:</strong>
+                        </td>
+                        <td>
+                            <span class="address">
+                                `+ data['address'] +`
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <strong>Tình trạng đơn hàng:</strong>
+                        </td>
+                        <td class="status">
+                            <select class="form-select" aria-label="Default select example" name="status">
+                                `+$orderStatus+`
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Sản phẩm đặt:</strong>
+                        </td>
+                        <td>
+                            <span class="notes">
+                                `+ data['product'] +`
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Trang đặt hàng:</strong>
+                        </td>
+                        <td>
+                            <a href='`+ data['urltrangweb'] +`'>
+                                `+ data['urltrangweb'] +`
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Admin ghi chú:</strong>
+                        </td>
+                        <td>
+                            <textarea class="form-control" name="admin_notes" id="admin_notes" rows="2">`+ $admin_notes +`</textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <strong>Ngày đặt hàng:</strong>
+                        </td>
+                        <td>
+                            <span class="created_at">
+                            `+ data['created_at'] + `
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Ngày cập nhật:</strong>
+                        </td>
+                        <td>
+                            <span class="updated_at">
+                                `+ data['updated_at'] +`
+                            </span>
+                        </td>
+                    </tr>`;
+        $customerInforFormCart = `<tr>
                         <td>
                             <strong>Tổng tiền:</strong>
                         </td>
@@ -269,7 +366,13 @@ $('#datatable-style1').DataTable({
                                 `+ data['updated_at'] +`
                             </span>
                         </td>
-                    </tr>`)
+                    </tr>`;
+        // console.log($orderStatus);
+        if(type=='cart_order'){
+            selector.html($customerInforFormCart);
+        }else if(type=='chat_order'){
+            selector.html($customerInforFormChatOrder);
+        }
     }
 
 </script>
@@ -342,8 +445,9 @@ $('#datatable-style1').DataTable({
         // $model = $('#edit-order-modal');
         $orderStatus = $modalEditOrder.find('select[name="status"]').val();
         $orderId = $modalEditOrder.find('.modal-title').html();
-        // console.log($orderId);
-        updateOrderStatus($orderId, $orderStatus).done(function(data){
+        $orderType = $modalEditOrderType.val();
+        // console.log($orderType);
+        updateOrderStatus($orderId, $orderStatus,$orderType ).done(function(data){
             // find orderrow and change order status of this row
             $statusStype ={
                 'pending' :'danger',
@@ -390,11 +494,11 @@ $('#datatable-style1').DataTable({
 
         // })
     })
-    function updateOrderStatus(orderId, orderStatus){
+    function updateOrderStatus(orderId, orderStatus, orderType){
         return $.ajax({
             type: "get",
             url: "/admin/order/fromcarts/ajax-update-order-status",
-            data: {orderId:orderId, orderStatus:orderStatus},
+            data: {orderId:orderId, orderStatus:orderStatus, orderType:orderType},
             dataType: "json",
         });
     }
@@ -403,9 +507,9 @@ $('#datatable-style1').DataTable({
         // $model = $('#edit-order-modal');
         $orderStatus = $modalShowOrder.find('select[name="status"]').val();
         $orderId = $modalShowOrder.find('.modal-title').html();
+        $orderType = $modalShowOrder.find('input.order-type').val();
         $adminNotes = $modalShowOrder.find('textarea#admin_notes').val();
-        console.log($adminNotes);
-        updateOrderInfors($orderId, $orderStatus, $adminNotes).done(function(data){
+        updateOrderInfors($orderId, $orderStatus, $adminNotes, $orderType).done(function(data){
             // find orderrow and change order status of this row
             $statusStype ={
                 'pending' :'danger',
@@ -429,11 +533,11 @@ $('#datatable-style1').DataTable({
         $modalShowOrder.modal('hide');
 
     })
-    function updateOrderInfors(orderId, orderStatus, adminNotes){
+    function updateOrderInfors(orderId, orderStatus, adminNotes, orderType){
         return $.ajax({
             type: "get",
             url: "/admin/order/fromcarts/ajax-update-order-infors",
-            data: {orderId:orderId, orderStatus:orderStatus, adminNotes:adminNotes},
+            data: {orderId:orderId, orderStatus:orderStatus, adminNotes:adminNotes, orderType:orderType},
             dataType: "json",
         });
     }
