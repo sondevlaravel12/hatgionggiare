@@ -180,7 +180,7 @@
          <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
 
          <!-- init js -->
-         <script src="{{ asset('backend/assets/js/pages/form-editor.init.js?3333') }}"></script>
+         <script src="{{ asset('backend/assets/js/pages/form-editor.init.js?33') }}"></script>
          <!-- Taginput -->
          <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
          <script src="{{asset('backend/assets/js/typeahead.bundle.js')}}"></script>

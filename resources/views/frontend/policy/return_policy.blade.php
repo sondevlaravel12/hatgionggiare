@@ -5,7 +5,7 @@
         <div class="blog-page">
             <div class="col-md-9">
                 <div class="blog-returnPolicy wow fadeInUp">
-                        <h1>{!!$returnPolicy->title!!}</h1>
+                        <h2 class="heading-title">{{$returnPolicy->title}}</h2>
                         <span class="author">{{ $returnPolicy->user?$returnPolicy->user->name:'' }}</span>
                         <span class="date-time">{{ $returnPolicy->created_at }}</span>
                         {!!$returnPolicy->content !!}

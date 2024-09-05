@@ -5,7 +5,7 @@
         <div class="blog-page">
             <div class="col-md-9">
                 <div class="blog-purchasingPolicy wow fadeInUp">
-                        <h1>{!!$purchasingPolicy->title!!}</h1>
+                        <h2 class="heading-title">{{$purchasingPolicy->title}}</h2>
                         <span class="author">{{ $purchasingPolicy->user?$purchasingPolicy->user->name:'' }}</span>
                         <span class="date-time">{{ $purchasingPolicy->created_at }}</span>
                         {!!$purchasingPolicy->content !!}
@@ -18,5 +18,6 @@
         </div>
     </div>
     @include('frontend.body.brands')
+
 </div>
 @endsection

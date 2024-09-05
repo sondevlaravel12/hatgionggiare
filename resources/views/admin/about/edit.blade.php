@@ -18,7 +18,7 @@
                     @method('PUT')
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Tên Cty</label>
-                        <textarea  class="shorttext" name="company_name">{!!old('company_name')??$about->company_name!!}</textarea>
+                        <textarea  class="" name="company_name">{!!old('company_name')??$about->company_name!!}</textarea>
                         @error('company_name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

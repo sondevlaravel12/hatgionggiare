@@ -18,7 +18,7 @@
                     @method('PUT')
                     <div class="row mb-3">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Tiêu đề</label>
-                        <textarea  class="shorttext" name="title">{!!old('title')??$otherInformation->title!!}</textarea>
+                        <textarea  class="" name="title">{!!old('title')??$otherInformation->title!!}</textarea>
                         @error('title')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

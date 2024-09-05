@@ -6,7 +6,7 @@
     <div class="terms-conditions-page">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 homebanner-holder">
-              <h2 class="heading-title">{!!$about->company_name!!}</h2>
+              <h2 class="heading-title">{{$about->company_name}}</h2>
 
               {!! $about->description !!}
               {!! $about->contact !!}
@@ -16,7 +16,7 @@
           </div>
     </div>
     <!-- ============================================== BANNER ============================================== -->
-    <div class="wide-banners wow fadeInUp outer-bottom-xs">
+    {{-- <div class="wide-banners wow fadeInUp outer-bottom-xs">
         <div class="row">
           <div class="col-md-12">
             <div class="wide-banner cnt-strip">
@@ -40,7 +40,7 @@
 
         </div>
         <!-- /.row -->
-      </div>
+      </div> --}}
       <!-- /.wide-banners -->
       <!-- ============================================== BANNER : END ============================================== -->
       <!-- ============================================== BEST SELLER ============================================== -->

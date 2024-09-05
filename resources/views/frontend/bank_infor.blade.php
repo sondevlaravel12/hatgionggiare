@@ -17,7 +17,7 @@ Giới thiệu
     <div class="terms-conditions-page">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 homebanner-holder">
-              <h2 class="heading-title">{!!$bankInfor->title!!}</h2>
+              <h2 class="heading-title">{{$bankInfor->title}}</h2>
 
               {!! $bankInfor->content1 !!}
 
