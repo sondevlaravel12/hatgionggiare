@@ -68,6 +68,14 @@
     max-width: 100% !important;
     height: auto !important;
     } */
+    /* custome imagae that inserted by tinymce */
+    .img-responsive-custome{
+        max-width: 100%;
+        height: auto;
+        /* align image center no need to change in editor */
+        display: block; margin-left: auto; margin-right: auto;
+    }
+
 
 </style>
 @yield('css')

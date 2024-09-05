@@ -234,7 +234,7 @@ $('#datatable-style1').DataTable({
                             <strong>Trang đặt hàng:</strong>
                         </td>
                         <td>
-                            <a href='`+ data['urltrangweb'] +`'>
+                            <a target="_blank" href='`+ data['urltrangweb'] +`'>
                                 `+ data['urltrangweb'] +`
                             </a>
                         </td>

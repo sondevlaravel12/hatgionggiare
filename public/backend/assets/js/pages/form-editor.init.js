@@ -66,9 +66,9 @@ var description_config = {
         italic: { inline: 'i' }
       },
     extended_valid_elements: 'b[*],i[*],span[*]',
-    image_dimensions: false,
+    // image_dimensions: false,
          image_class_list: [
-            {title: 'Responsive', value: 'img-responsive'}
+            {title: 'Responsive', value: 'img-responsive-custome'}
         ]
   };
 

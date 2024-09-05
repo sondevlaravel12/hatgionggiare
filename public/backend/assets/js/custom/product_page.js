@@ -70,7 +70,7 @@ load images directory inorder to insert into post/ product, use in post/product 
     // insert image into textare when clicking the image
     $('#imagesHolder').on('click', 'a', function () {
         var sr = $('img', this).attr('src');
-        tinymce.activeEditor.insertContent('<img class="img-responsive" src="' + sr + '"/>');
+        tinymce.activeEditor.insertContent('<img class="img-responsive-custome" src="' + sr + '"/>');
         // if image just selected so hide it in the box holder
         ajaxLoadImageByDirectory($( "select[name*='image_directory']").val(),getImagesLoaded());
     });
