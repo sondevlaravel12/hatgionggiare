@@ -190,7 +190,7 @@
         {{-- https://christianbayer.github.io/image-uploader/ --}}
         <script type="text/javascript" src="{{asset('backend/assets/image-uploader/image-uploader.min.js')}}"></script>
 
-        <script src="{{ asset('backend/assets/js/custom/admin_master_page.js') }}"></script>
+        <script src="{{ asset('backend/assets/js/custom/admin_master_page.js?2') }}"></script>
 
         @stack('scripts')
     </body>

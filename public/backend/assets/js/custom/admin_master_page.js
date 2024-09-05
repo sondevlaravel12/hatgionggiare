@@ -113,7 +113,9 @@ characters count live
     }
     // call on tinymce init keyup event
     function descriptionCharCountLive(currentLength,range='110-110000'){
-        document.getElementById("description-char-count").innerHTML = currentLength + ' out of range ' + range + ' characters';
+        if(document.getElementById("description-char-count")){
+            document.getElementById("description-char-count").innerHTML = currentLength + ' out of range ' + range + ' characters';
+        }
     }
 /* ---------------------------------------------
 end characters count live
