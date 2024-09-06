@@ -67,7 +67,7 @@ class Pcategory extends Model implements HasMedia
         $categories = $descendants->push($this->id);
 
         // Lấy tất cả các bài viết thuộc các danh mục
-        return Post::whereIn('pcategory_id', $categories)->get();
+        return Post::whereIn('pcategory_id', $categories)->latest();
     }
 
     public function parent(){

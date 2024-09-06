@@ -60,7 +60,7 @@ class PostController extends Controller
             }
             if($category->allPosts()->count()>0){
                 $this->setupSeoWithModel($category);
-                $posts = $category->allPosts()->toQuery()->paginate(12);
+                $posts = $category->allPosts()->paginate(12);
                 return view('frontend.post.index')->with([
                     'posts'=>$posts,
                     'category'=>$category,
