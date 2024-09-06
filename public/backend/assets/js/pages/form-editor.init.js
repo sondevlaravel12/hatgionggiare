@@ -65,6 +65,7 @@ var description_config = {
         bold: { inline: 'b' },
         italic: { inline: 'i' }
       },
+    content_style: 'img.img-responsive-custome {max-width: 100%;height: auto; display: block; margin-left: auto; margin-right: auto;}',
     extended_valid_elements: 'b[*],i[*],span[*]',
     // image_dimensions: false,
          image_class_list: [
