@@ -173,6 +173,7 @@
                         <li><a  href="{{ route('superadmin.sample.index') }}">only text product multiple version</a></li>
                         <li><a  href="{{ route('superadmin.originalproduct.index') }}">Original product</a></li>
                         <li><a  href="{{ route('superadmin.oproduct.import') }}">Import sản phẩm gốc từ file csv</a></li>
+                        <li><a  href="{{ route('superadmin.webconfig.manage') }}">Cấu hình web</a></li>
                     </ul>
 
 

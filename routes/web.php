@@ -29,10 +29,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\User\CartController as UserCartController;
 use App\Http\Controllers\User\WishlistController;
+use App\Http\Controllers\WebconfigController;
 use App\Models\Pcategory;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Spatie\MediaLibrary\Conversions\ImageGenerators\Webp;
 
 /*
 |--------------------------------------------------------------------------
@@ -407,6 +409,10 @@ Route::middleware('adminmiddleware')->group((function(){
 
     Route::get('/superadmin/products/create-from-sample/{sampleid}',[SampleController::class,'createProductFromSample'])->name('superadmin.products.createfromsample');
     Route::get('/superadmin/posts/create-from-sample/{sampleid}',[SampleController::class,'createPostFromSample'])->name('superadmin.posts.createfromsample');
+
+    Route::get('/superadmin/webconfig/manage',[WebconfigController::class,'webconfigManage'])->name('superadmin.webconfig.manage');
+    Route::put('/superadmin/webconfig/update',[WebconfigController::class,'update'])->name('superadmin.webconfig.update');
+
 
 
 

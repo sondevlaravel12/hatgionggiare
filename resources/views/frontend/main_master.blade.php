@@ -76,11 +76,20 @@
         display: block; margin-left: auto; margin-right: auto;
     }
 
-
 </style>
 @yield('css')
+<!-- Chèn các đoạn script từ database -->
+@php
+$webconfig = \App\Models\Webconfig::first();
+@endphp
+@if(!empty($webconfig))
+{!! $webconfig->header_code !!}
+@endif
 </head>
 <body class="cnt-home">
+@if(!empty($webconfig))
+{!! $webconfig->body_code!!}
+@endif
 <!-- ============================================== HEADER ============================================== -->
 @include('frontend.body.header')
 <!-- ============================================== HEADER : END ============================================== -->
@@ -225,5 +234,8 @@ $(function(){
 
 
 @yield('javascript')
+@if(!empty($webconfig))
+{!! $webconfig->footer_code !!}
+@endif
 </body>
 </html>
