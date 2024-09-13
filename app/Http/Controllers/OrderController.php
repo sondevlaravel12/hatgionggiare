@@ -51,7 +51,7 @@ class OrderController extends Controller
 
     }
     public function thankyou(Order $order){
-        // if(session('order_status')=='successful'){
+        if(session('order_status')=='successful'){
             $shipping_fee = Webinfo::first()->shipping_fee;
             // $total =$order->total + $shipping_fee;
             $totalPrice = $order->getRawOriginal('total') + $order->discount;
@@ -62,12 +62,12 @@ class OrderController extends Controller
             $orderItems = $order->items;
             Cart::destroy();
             return view('cart.thankyou', compact('order','orderItems','shipping_fee','total','totalPrice'));
-        // }else{
-        //     return redirect()->route('home')->with([
-        //         'message'=>'Bạn không có quyền truy cập trang này',
-        //         'alert-type'=>'error'
-        //     ]);
-        // }
+        }else{
+            return redirect()->route('home')->with([
+                // 'message'=>'Bạn không có quyền truy cập trang này',
+                // 'alert-type'=>'error'
+            ]);
+        }
 
 
     }

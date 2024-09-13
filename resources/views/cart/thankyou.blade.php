@@ -265,3 +265,15 @@
         </div><!-- /.container -->
     </div>
 @endsection
+@section('javascript')
+{{-- using for google ads conversion value  --}}
+<script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'purchase',
+      'transactionValue': {{ $totalPrice }},
+      'currency': 'vnd' // Hoặc mã tiền tệ phù hợp
+    });
+    // console.log({{ $totalPrice }});
+  </script>
+@endsection
