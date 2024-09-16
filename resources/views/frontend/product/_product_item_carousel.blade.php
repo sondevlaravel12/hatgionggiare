@@ -33,7 +33,7 @@
                     id="{{ $product->id }}" onclick="productModalShow(this.id)">
                     <i class="fa fa-shopping-cart"></i>
                     </button>
-                    <button class="btn btn-primary cart-btn" type="button" id="{{ $product->id }}" onclick="productModalShow(this.id)">
+                    <button class="btn btn-primary cart-btn add-to-cart-trigger" type="button" id="{{ $product->id }}" onclick="productModalShow(this.id)">
                         Thêm vào giỏ hàng
                     </button>
                 </li>

@@ -145,7 +145,7 @@
 									</div>
                                     <input type="hidden" id="product_id" value="{{ $product->id }}">
 									<div class="col-sm-7">
-										<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ hàng</button>
+										<button type="submit" onclick="addToCart()" class="btn btn-primary add-to-cart-trigger"><i class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ hàng</button>
 									</div>
 
 

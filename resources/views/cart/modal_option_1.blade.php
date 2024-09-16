@@ -23,7 +23,7 @@
                             <input id="quantity" type="number" style="width:100px; height:30px"  id="exampleFormControlInput1" value="1" min="1" >
                         </div>
                         <input type="hidden" id="product_id">
-                        <button type="submit" class="btn btn-primary mb-2" onclick="addToCart()" >Thêm vào giỏ hàng</button>
+                        <button type="submit" class="btn btn-primary mb-2 add-to-cart-trigger" onclick="addToCart()" >Thêm vào giỏ hàng</button>
                     </div>
                 </div>
                 <div class="row">
