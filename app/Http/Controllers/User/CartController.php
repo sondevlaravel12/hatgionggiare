@@ -54,7 +54,15 @@ class CartController extends Controller
             // Lưu lại wishlist vào database
             $this->updateCartDb(Auth::id());
         }
-        return response()->json(['success'=>"Thêm sản phẩm vào giỏ hàng thành công"]);
+        $dataForDataLayer = ['item_name'=>$product->name,
+                                'item_category'=>$product->category?$product->category->name:'',
+                                'item_price'=>$product->getRawOriginal('discount_price'),
+                                'quantity'=>$quantity
+                            ];
+        return response()->json(['success'=>"Thêm sản phẩm vào giỏ hàng thành công",
+                                'dataForDataLayer'=>$dataForDataLayer
+
+                                ]);
     }
     public function ajaxFillinMiniCart(){
         $contents = Cart::content();

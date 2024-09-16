@@ -520,6 +520,7 @@
                     fillinMiniCart();
                     calculateTotal();
                     $('#closeModel').click();
+                    pushToDataLayer(response.dataForDataLayer);
 
                     // Start Message
                     const Toast = Swal.mixin({
@@ -541,6 +542,18 @@
                         })
                     }
                 }
+        });
+    }
+    // push data to GA4 dataLayer
+    function pushToDataLayer(data){
+        // Đẩy dữ liệu vào Data Layer
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'event': 'add_to_cart',
+          'item_name': data.item_name,
+          'item_category': data.item_category,
+          'item_price': data.item_price,
+          'quantity': data.quantity
         });
     }
     // function removeWishlistItem($wishlistId){
