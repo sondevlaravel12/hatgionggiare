@@ -271,9 +271,10 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       'event': 'purchase',
-      'transactionValue': {{ $totalPrice }},
+      'transactionValue': {{ str_replace('.', '', $totalPrice) }},
       'currency': 'vnd' // Hoặc mã tiền tệ phù hợp
     });
-    // console.log({{ $totalPrice }});
+    // console.log({{ number_format($totalPrice, 0, '', '') }});
+    // console.log({{ str_replace('.', '', $totalPrice) }});
   </script>
 @endsection
