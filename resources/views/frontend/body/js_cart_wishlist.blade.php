@@ -550,11 +550,16 @@
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           'event': 'add_to_cart',
-          'item_name': data.item_name,
-          'item_category': data.item_category,
-          'item_price': data.item_price,
-          'quantity': data.quantity
+          'ecommerce': {
+                            'items': [{
+                                    'item_name': data.item_name,
+                                    'item_category': data.item_category,
+                                    'price': data.item_price,
+                                    'quantity': data.quantity
+                                    }]
+                        }
         });
+
     }
     // function removeWishlistItem($wishlistId){
     //     $.ajax({
