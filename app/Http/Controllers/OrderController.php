@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use App\Models\Webinfo;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -38,6 +39,7 @@ class OrderController extends Controller
             ]
         );
         $order = $this->storeOrderDetails($request);
+
         if($order){
             session()->flash('order_status','successful');
             return redirect()->route('order.thankyou', $order);
@@ -60,8 +62,17 @@ class OrderController extends Controller
             $shipping_fee = number_format($shipping_fee,0,',','.');
             $total = number_format($total,0,',','.');
             $orderItems = $order->items;
+            $itemsForDataLayer = $orderItems->map(function($item) {
+                $product = Product::find($item->product_id);
+                return [
+                    'item_name' => $product->name,
+                    'item_category' => $product->category?$product->category->name:'',
+                    'price' => $item->price,
+                    'quantity' => $item->quantity
+                ];
+            })->toArray();
             Cart::destroy();
-            return view('cart.thankyou', compact('order','orderItems','shipping_fee','total','totalPrice'));
+            return view('cart.thankyou', compact('order','orderItems','shipping_fee','total','totalPrice','itemsForDataLayer'));
         }else{
             return redirect()->route('home')->with([
                 // 'message'=>'Bạn không có quyền truy cập trang này',

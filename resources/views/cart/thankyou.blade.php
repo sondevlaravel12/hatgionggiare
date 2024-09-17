@@ -271,10 +271,18 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       'event': 'purchase',
-      'transactionValue': {{ str_replace('.', '', $totalPrice) }},
-      'currency': 'vnd' // Hoặc mã tiền tệ phù hợp
+      'ecommerce': {
+        'transaction_id': {{ $order->id }},
+        'affiliation': 'Online Store',
+        'value': {{ $order->getRawOriginal('total') }},
+        'currency': 'vnd',
+        'items': @json($itemsForDataLayer)
+        }
     });
     // console.log({{ number_format($totalPrice, 0, '', '') }});
     // console.log({{ str_replace('.', '', $totalPrice) }});
+    // console.log(@json($itemsForDataLayer));
+    console.log({{ $order->order_number }});
+
   </script>
 @endsection
