@@ -282,7 +282,7 @@
     // console.log({{ number_format($totalPrice, 0, '', '') }});
     // console.log({{ str_replace('.', '', $totalPrice) }});
     // console.log(@json($itemsForDataLayer));
-    console.log({{ $order->order_number }});
+    // console.log({{ $order->order_number }});
 
   </script>
 @endsection

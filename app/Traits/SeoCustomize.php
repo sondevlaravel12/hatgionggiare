@@ -338,7 +338,7 @@ trait SeoCustomize{
             return true; // This is a supplementary URL
         }
         // If the post has a category and the current route is not the category route
-        if ($model->pcategory && $routeName !== 'products.pcategory.show') {
+        if ($model->pcategory && $routeName !== 'posts.withCategory.show') {
             return true; // This is a supplementary URL
         }
 
