@@ -18,6 +18,7 @@
         "spatie/laravel-image-optimizer": "^1.8",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-permission": "^6.4",
+        "spatie/laravel-sitemap": "^6.4",
         "spatie/laravel-sluggable": "^3.4",
         "spatie/laravel-tags": "^4.5",
         "unisharp/laravel-filemanager": "^2.6"
