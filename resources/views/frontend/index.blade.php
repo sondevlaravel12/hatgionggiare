@@ -65,9 +65,9 @@
 
 
         <!-- ============================================== MIDDLE BANNER ============================================== -->
-        <div class="wide-banners wow fadeInUp outer-bottom-xs">
+        {{-- <div class="wide-banners wow fadeInUp outer-bottom-xs">
           @include('frontend.body.middel_banner')
-        </div>
+        </div> --}}
         <!-- ============================================== MIDDLE BANNER : END ============================================== -->
 
 
