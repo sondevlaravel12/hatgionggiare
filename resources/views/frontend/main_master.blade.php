@@ -30,16 +30,16 @@
 
 <!-- Customizable CSS -->
 {{-- <link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.13.3.custom/jquery-ui.min.css') }}"></link> --}}
-<link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.11.4/jquery-ui.css?1') }}"></link>
-<link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css?1')}}">
+<link rel="stylesheet" href="{{ asset('backend/assets/jquery-ui-1.11.4/jquery-ui.css?1') }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css?1')}}" >
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/blue.css')}}">
-<link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.carousel.css')}}">
-<link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.transitions.css')}}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.carousel.css')}}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.transitions.css')}}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/rateit.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap-select.min.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/custome.css?1')}}">
-<link href="{{ asset('frontend/assets/css/lightbox.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/assets/css/lightbox.css') }}" rel="stylesheet" media="print" onload="this.media='all'">
 
 {{-- website favicon  --}}
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/favicon/apple-touch-icon.png') }}">
@@ -51,10 +51,10 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/font-awesome.css')}}">
 
 <!-- Fonts -->
-<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css' media="print" onload="this.media='all'">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" media="print" onload="this.media='all'" >
 
 <style>
     .breadcrumb{
