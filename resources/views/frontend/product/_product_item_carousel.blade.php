@@ -6,7 +6,7 @@
         <div class="image"> <a href="
             {{ $product->category?route('products.category.show',[$product->category, $product]): route('products.show',[$product])}}
             "><img src="{{ $product->getFirstImageUrl('medium') }}"
-                alt=""></a> </div>
+                alt="" loading="lazy"></a> </div>
         <!-- /.image -->
 
         <div class="tag {{ $tag }}"><span>{{ $tag }}</span></div>

@@ -2,7 +2,7 @@
     <div class="col-md-12">
       <div class="wide-banner cnt-strip">
         @if ($bigMiddelbanner = App\Models\Slider::where('type','=','big_middle_banner')->first())
-        <div class="image"> <img style="margin: auto" class="img-responsive" src="{{ $bigMiddelbanner->getFirstImageUrl('wider') }}" alt="">
+        <div class="image"> <img style="margin: auto" class="img-responsive" src="{{ $bigMiddelbanner->getFirstImageUrl('wider') }}" alt="" loading="lazy">
         </div>
         <div class="strip strip-text">
           <div class="strip-inner">

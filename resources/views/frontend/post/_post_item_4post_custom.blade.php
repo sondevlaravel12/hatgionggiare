@@ -11,7 +11,7 @@
             <div class="item">
                 <div class="blog-post">
                 <div class="blog-post-image">
-                    <div class="image"> <a href="{{ route('posts.withoutCategory.show', $post) }}"><img class="img-thumbnail" src="{{ $post->getFirstImageUrl('medium') }}" alt=""></a>
+                    <div class="image"> <a href="{{ route('posts.withoutCategory.show', $post) }}"><img class="img-thumbnail" src="{{ $post->getFirstImageUrl('medium') }}" alt="" loading="lazy"></a>
                     </div>
                 </div>
                 <!-- /.blog-post-image -->
