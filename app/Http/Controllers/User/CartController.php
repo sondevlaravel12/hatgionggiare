@@ -143,13 +143,17 @@ class CartController extends Controller
         $coupon = Coupon::where('code',$request->couponName)->first();
 
         if($coupon){
-            $discountPercentage =  $coupon->discount;
-            Cart::setGlobalDiscount($discountPercentage);
-            Session::put('coupon',[
-                'code'=>$coupon->code,
-                'discount'=>$coupon->discount
-            ]);
-            return response()->json(['success'=>'Thêm mã giảm giá thành công']);
+            if ($coupon->isExpired()) {
+                return response()->json(['error'=>'Mã giảm giá đã hết hạn']);
+            }else{
+                $discountPercentage =  $coupon->discount;
+                Cart::setGlobalDiscount($discountPercentage);
+                Session::put('coupon',[
+                    'code'=>$coupon->code,
+                    'discount'=>$coupon->discount
+                ]);
+                return response()->json(['success'=>'Thêm mã giảm giá thành công']);
+            }
         }else{
             Session::forget('coupon');
             Cart::setGlobalDiscount(0);
